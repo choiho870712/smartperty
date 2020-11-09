@@ -2,8 +2,8 @@ package com.example.smartperty.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.smartperty.data.login.LoginDataSource
-import com.example.smartperty.data.login.LoginRepository
+import com.example.smartperty.ui.login.data.LoginDataSource
+import com.example.smartperty.ui.login.data.LoginRepository
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.

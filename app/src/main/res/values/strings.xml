@@ -11,8 +11,8 @@
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_chat">Chat</string>
+    <string name="title_menu">Menu</string>
     <string name="home_greet">Hello~</string>
     <string name="home_message">早安</string>
     <string name="home_temperature">21°C</string>
@@ -24,6 +24,12 @@
     <string name="home_title_repair">報修</string>
     <string name="action_register">註冊</string>
     <string name="action_forget_password">忘記密碼</string>
-    <string name="login_about_us">about as</string>
+    <string name="login_about_us">about us</string>
     <string name="login_policy">policy</string>
+    <string name="toolbar_button_setup">設定</string>
+    <string name="navigation_drawer_open">drawer開</string>
+    <string name="navigation_drawer_close">drawer關</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

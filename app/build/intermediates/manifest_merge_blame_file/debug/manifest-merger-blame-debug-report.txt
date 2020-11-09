@@ -30,8 +30,8 @@
 20-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:11:9-40
 21        <activity
 21-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:12:9-14:81
-22            android:name="com.example.smartperty.ui.bottomNavigation.BottomNavigationActivity"
-22-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:13:13-73
+22            android:name="com.example.smartperty.ui.main.MainActivity"
+22-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:13:13-49
 23            android:label="@string/title_activity_bottom_navigation" />
 23-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:14:13-69
 24        <activity

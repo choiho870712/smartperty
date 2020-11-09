@@ -19,7 +19,7 @@
         android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.smartperty.ui.bottomNavigation.BottomNavigationActivity"
+            android:name="com.example.smartperty.ui.main.MainActivity"
             android:label="@string/title_activity_bottom_navigation" />
         <activity
             android:name="com.example.smartperty.ui.login.LoginActivity"

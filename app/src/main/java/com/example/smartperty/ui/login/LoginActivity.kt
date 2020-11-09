@@ -17,7 +17,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 
 import com.example.smartperty.R
-import com.example.smartperty.ui.bottomNavigation.BottomNavigationActivity
+import com.example.smartperty.ui.main.MainActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -109,7 +109,7 @@ class LoginActivity : AppCompatActivity() {
             Toast.LENGTH_LONG
         ).show()
 
-        val intent = Intent(this, BottomNavigationActivity().javaClass)
+        val intent = Intent(this, MainActivity().javaClass)
         startActivity(intent)
     }
 

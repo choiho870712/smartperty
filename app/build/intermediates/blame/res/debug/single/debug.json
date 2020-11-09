@@ -8,12 +8,12 @@
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-mdpi-v4/abc_ab_share_pack_mtrl_alpha.9.png"
     },
     {
-        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-ldrtl-xhdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
-        "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-ldrtl-xhdpi-v17/abc_ic_menu_cut_mtrl_alpha.png"
-    },
-    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_mtrl_calendar_horizontal.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/6cf6d65990dfb99c3c91b655f28d63b1/material-1.2.1/res/layout/mtrl_calendar_horizontal.xml"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-ldrtl-xhdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
+        "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-ldrtl-xhdpi-v17/abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/color_material_slider_active_tick_marks_color.xml.flat",
@@ -36,6 +36,10 @@
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-xxhdpi-v4/abc_ic_star_half_black_16dp.png"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_repair.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_repair.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_ic_mtrl_chip_checked_black.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/6cf6d65990dfb99c3c91b655f28d63b1/material-1.2.1/res/drawable/ic_mtrl_chip_checked_black.xml"
     },
@@ -54,10 +58,6 @@
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/color_test_mtrl_calendar_day_selected.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/6cf6d65990dfb99c3c91b655f28d63b1/material-1.2.1/res/color/test_mtrl_calendar_day_selected.xml"
-    },
-    {
-        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_ic_notifications_black_24dp.xml.flat",
-        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_notifications_black_24dp.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-v21_notification_action_background.xml.flat",
@@ -124,6 +124,10 @@
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/6cf6d65990dfb99c3c91b655f28d63b1/material-1.2.1/res/layout/text_view_with_line_height_from_layout.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_notification_media_action.xml.flat",
+        "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/bfded8ca817896873203d9e2d603c5ec/media-1.0.0/res/layout/notification_media_action.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_spinner_mtrl_am_alpha.9.png.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-xhdpi-v4/abc_spinner_mtrl_am_alpha.9.png"
     },
@@ -144,6 +148,14 @@
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-xxhdpi-v4/abc_btn_check_to_on_mtrl_015.png"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_home_main.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_home_main.xml"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_nav_drawer_header.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/nav_drawer_header.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_test_toolbar_surface.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/6cf6d65990dfb99c3c91b655f28d63b1/material-1.2.1/res/layout/test_toolbar_surface.xml"
     },
@@ -158,6 +170,10 @@
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_star_black_16dp.png.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-xxhdpi-v4/abc_ic_star_black_16dp.png"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_content_main.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/content_main.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_text_select_handle_left_mtrl_dark.png.flat",
@@ -190,6 +206,10 @@
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_text_select_handle_middle_mtrl_dark.png.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-mdpi-v4/abc_text_select_handle_middle_mtrl_dark.png"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_notification_template_big_media_narrow_custom.xml.flat",
+        "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/bfded8ca817896873203d9e2d603c5ec/media-1.0.0/res/layout/notification_template_big_media_narrow_custom.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_menu_selectall_mtrl_alpha.png.flat",
@@ -296,12 +316,12 @@
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-xxhdpi-v4/abc_list_focused_holo.9.png"
     },
     {
-        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/color-v23_abc_tint_seek_thumb.xml.flat",
-        "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/color-v23/abc_tint_seek_thumb.xml"
-    },
-    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/anim_abc_slide_out_bottom.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/anim/abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/color-v23_abc_tint_seek_thumb.xml.flat",
+        "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/color-v23/abc_tint_seek_thumb.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/anim_fragment_close_exit.xml.flat",
@@ -374,6 +394,10 @@
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_text_select_handle_left_mtrl_dark.png.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-mdpi-v4/abc_text_select_handle_left_mtrl_dark.png"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_notification_media_cancel_action.xml.flat",
+        "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/bfded8ca817896873203d9e2d603c5ec/media-1.0.0/res/layout/notification_media_cancel_action.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/color_abc_tint_default.xml.flat",
@@ -480,10 +504,6 @@
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/menu_bottom_nav_menu.xml.flat",
-        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/menu/bottom_nav_menu.xml"
-    },
-    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/color_mtrl_calendar_item_stroke_color.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/6cf6d65990dfb99c3c91b655f28d63b1/material-1.2.1/res/color/mtrl_calendar_item_stroke_color.xml"
     },
@@ -494,10 +514,6 @@
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_star_half_black_36dp.png.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-mdpi-v4/abc_ic_star_half_black_36dp.png"
-    },
-    {
-        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_dashboard.xml.flat",
-        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_dashboard.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_list_focused_holo.9.png.flat",
@@ -548,12 +564,12 @@
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-hdpi-v4/abc_scrubber_control_off_mtrl_alpha.png"
     },
     {
-        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/color_abc_tint_btn_checkable.xml.flat",
-        "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/color/abc_tint_btn_checkable.xml"
-    },
-    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_round_button.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/round_button.xml"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/color_abc_tint_btn_checkable.xml.flat",
+        "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/color/abc_tint_btn_checkable.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",
@@ -588,12 +604,20 @@
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/6cf6d65990dfb99c3c91b655f28d63b1/material-1.2.1/res/interpolator-v21/mtrl_linear_out_slow_in.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_content_chat.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/content_chat.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/color_material_on_surface_emphasis_medium.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/6cf6d65990dfb99c3c91b655f28d63b1/material-1.2.1/res/color/material_on_surface_emphasis_medium.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_check_to_on_mtrl_015.png.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-mdpi-v4/abc_btn_check_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_notification_template_big_media_narrow.xml.flat",
+        "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/bfded8ca817896873203d9e2d603c5ec/media-1.0.0/res/layout/notification_template_big_media_narrow.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/anim_abc_grow_fade_in_from_bottom.xml.flat",
@@ -744,8 +768,16 @@
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-hdpi-v4/abc_text_select_handle_left_mtrl_dark.png"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/navigation_chat_navigation.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/navigation/chat_navigation.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_btn_checkbox_checked_mtrl.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable/btn_checkbox_checked_mtrl.xml"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_notification_template_lines_media.xml.flat",
+        "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/bfded8ca817896873203d9e2d603c5ec/media-1.0.0/res/layout/notification_template_lines_media.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/anim_abc_tooltip_enter.xml.flat",
@@ -808,6 +840,10 @@
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable/abc_ic_go_search_api_material.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_notification_template_media.xml.flat",
+        "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/bfded8ca817896873203d9e2d603c5ec/media-1.0.0/res/layout/notification_template_media.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_mtrl_picker_header_title_text.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/6cf6d65990dfb99c3c91b655f28d63b1/material-1.2.1/res/layout/mtrl_picker_header_title_text.xml"
     },
@@ -820,16 +856,16 @@
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_ic_home_black_24dp.xml.flat",
-        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_home_black_24dp.xml"
-    },
-    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_abc_expanded_menu_layout.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/layout/abc_expanded_menu_layout.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_abc_action_bar_up_container.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/layout/abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_notification_template_media_custom.xml.flat",
+        "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/bfded8ca817896873203d9e2d603c5ec/media-1.0.0/res/layout/notification_template_media_custom.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_star_black_36dp.png.flat",
@@ -896,12 +932,20 @@
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/layout/select_dialog_item_material.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_hosing_rules.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_hosing_rules.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/xml_standalone_badge_gravity_bottom_start.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/6cf6d65990dfb99c3c91b655f28d63b1/material-1.2.1/res/xml/standalone_badge_gravity_bottom_start.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_notification_template_part_time.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/0ca4d021793a005878dab45b000f7432/core-1.3.2/res/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_content_home.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/content_home.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/color-v21_abc_btn_colored_borderless_text_material.xml.flat",
@@ -974,10 +1018,6 @@
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/anim_abc_tooltip_exit.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/anim/abc_tooltip_exit.xml"
-    },
-    {
-        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_notifications.xml.flat",
-        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_notifications.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_material_ic_keyboard_arrow_left_black_24dp.xml.flat",
@@ -1196,12 +1236,20 @@
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/6cf6d65990dfb99c3c91b655f28d63b1/material-1.2.1/res/layout/mtrl_calendar_months.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/menu_bottom_navigation.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/menu/bottom_navigation.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/color_mtrl_chip_surface_color.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/6cf6d65990dfb99c3c91b655f28d63b1/material-1.2.1/res/color/mtrl_chip_surface_color.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_star_black_36dp.png.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-hdpi-v4/abc_ic_star_black_36dp.png"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_ic_menu_24dp.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_menu_24dp.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-v23_abc_control_background_material.xml.flat",
@@ -1218,6 +1266,10 @@
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_textfield_activated_mtrl_alpha.9.png.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-hdpi-v4/abc_textfield_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_ic_settings_24dp.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_settings_24dp.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_material_ic_menu_arrow_down_black_24dp.xml.flat",
@@ -1242,6 +1294,10 @@
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_star_black_36dp.png.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-mdpi-v4/abc_ic_star_black_36dp.png"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_ic_home_24dp.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_home_24dp.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_abc_list_selector_holo_light.xml.flat",
@@ -1298,6 +1354,10 @@
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_custom_dialog.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/0ca4d021793a005878dab45b000f7432/core-1.3.2/res/layout/custom_dialog.xml"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_ic_search_24dp.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_search_24dp.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/color_material_on_background_disabled.xml.flat",
@@ -1364,6 +1424,10 @@
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-mdpi-v4/abc_text_select_handle_right_mtrl_light.png"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-v24_ic_logo.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable-v24/ic_logo.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_abc_tab_indicator_material.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable/abc_tab_indicator_material.xml"
     },
@@ -1392,12 +1456,20 @@
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable/abc_ic_arrow_drop_right_black_24dp.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_ic_chat_24dp.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_chat_24dp.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_mtrl_picker_header_dialog.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/6cf6d65990dfb99c3c91b655f28d63b1/material-1.2.1/res/layout/mtrl_picker_header_dialog.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_attractions_nearby.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_attractions_nearby.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-ldrtl-hdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
@@ -1520,6 +1592,10 @@
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/6cf6d65990dfb99c3c91b655f28d63b1/material-1.2.1/res/color/mtrl_chip_text_color.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_notification_template_big_media_custom.xml.flat",
+        "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/bfded8ca817896873203d9e2d603c5ec/media-1.0.0/res/layout/notification_template_big_media_custom.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_ic_star_black_36dp.png.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-xxxhdpi-v4/abc_ic_star_black_36dp.png"
     },
@@ -1534,10 +1610,6 @@
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_abc_popup_menu_header_item_layout.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/layout/abc_popup_menu_header_item_layout.xml"
-    },
-    {
-        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/navigation_mobile_navigation.xml.flat",
-        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/navigation/mobile_navigation.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/color_mtrl_btn_bg_color_selector.xml.flat",
@@ -1586,10 +1658,6 @@
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_mtrl_calendar_day_of_week.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/6cf6d65990dfb99c3c91b655f28d63b1/material-1.2.1/res/layout/mtrl_calendar_day_of_week.xml"
-    },
-    {
-        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_home.xml.flat",
-        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_home.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_switch_track_mtrl_alpha.9.png.flat",
@@ -1752,10 +1820,6 @@
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/color/abc_primary_text_disable_only_material_light.xml"
     },
     {
-        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_activity_bottom_navigation.xml.flat",
-        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/activity_bottom_navigation.xml"
-    },
-    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-xxhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png"
     },
@@ -1846,6 +1910,10 @@
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-xhdpi-v4/abc_scrubber_control_off_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_activity_main.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/activity_main.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_abc_ic_clear_material.xml.flat",
@@ -2052,8 +2120,16 @@
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/6cf6d65990dfb99c3c91b655f28d63b1/material-1.2.1/res/drawable/mtrl_ic_cancel.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_rent_and_utilities.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_rent_and_utilities.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/color_abc_hint_foreground_material_light.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/color/abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_equipment_manual.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_equipment_manual.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-ldrtl-mdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
@@ -2124,6 +2200,10 @@
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/color-v23/abc_tint_default.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-v24_ic_test_image.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable-v24/ic_test_image.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-mdpi-v4/abc_list_divider_mtrl_alpha.9.png"
     },
@@ -2158,6 +2238,10 @@
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_abc_alert_dialog_material.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/layout/abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/menu_toolbar.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/menu/toolbar.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
@@ -2198,6 +2282,10 @@
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-hdpi-v4/abc_ic_menu_share_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_chat_main.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_chat_main.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_textfield_activated_mtrl_alpha.9.png.flat",
@@ -2292,6 +2380,10 @@
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-xxhdpi-v4/abc_textfield_default_mtrl_alpha.9.png"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/menu_drawer.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/menu/drawer.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/animator_design_fab_hide_motion_spec.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/6cf6d65990dfb99c3c91b655f28d63b1/material-1.2.1/res/animator/design_fab_hide_motion_spec.xml"
     },
@@ -2312,6 +2404,10 @@
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/0ca4d021793a005878dab45b000f7432/core-1.3.2/res/drawable/notification_bg.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_contract.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_contract.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_avd_show_password.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/6cf6d65990dfb99c3c91b655f28d63b1/material-1.2.1/res/drawable/avd_show_password.xml"
     },
@@ -2322,6 +2418,10 @@
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/color_mtrl_fab_ripple_color.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/6cf6d65990dfb99c3c91b655f28d63b1/material-1.2.1/res/color/mtrl_fab_ripple_color.xml"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/navigation_home_navigation.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/navigation/home_navigation.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",
@@ -2378,6 +2478,10 @@
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_tooltip_frame_light.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable/tooltip_frame_light.xml"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_app_bar_main.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/app_bar_main.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-ldrtl-xhdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
@@ -2476,6 +2580,10 @@
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-xxxhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_launcher_foreground.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_btn_radio_on_mtrl.xml.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable/btn_radio_on_mtrl.xml"
     },
@@ -2510,6 +2618,10 @@
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_btn_check_to_on_mtrl_015.png.flat",
         "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/drawable-xhdpi-v4/abc_btn_check_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_notification_template_big_media.xml.flat",
+        "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/bfded8ca817896873203d9e2d603c5ec/media-1.0.0/res/layout/notification_template_big_media.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_ic_launcher_background.xml.flat",

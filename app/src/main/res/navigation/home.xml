@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home"
+    app:startDestination="@+id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.smartperty.ui.main.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home_main" >
+        <action
+            android:id="@+id/action_homeFragment_to_hosingRulesFragment"
+            app:destination="@id/hosingRulesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_rentAndUtilitiesFragment"
+            app:destination="@id/rentAndUtilitiesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_equipmentManualFragment"
+            app:destination="@id/equipmentManualFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_contractFragment"
+            app:destination="@id/contractFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_attractionsNearbyFragment"
+            app:destination="@id/attractionsNearbyFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_repairFragment"
+            app:destination="@id/repairFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hosingRulesFragment"
+        android:name="com.example.smartperty.ui.main.home.hosingRules.HosingRulesFragment"
+        android:label="fragment_hosing_rules"
+        tools:layout="@layout/fragment_hosing_rules" />
+    <fragment
+        android:id="@+id/rentAndUtilitiesFragment"
+        android:name="com.example.smartperty.ui.main.home.rentAndUtilities.RentAndUtilitiesFragment"
+        android:label="RentAndUtilitiesFragment"
+        tools:layout="@layout/fragment_rent_and_utilities"/>
+    <fragment
+        android:id="@+id/equipmentManualFragment"
+        android:name="com.example.smartperty.ui.main.home.equipmentManual.EquipmentManualFragment"
+        android:label="EquipmentManualFragment"
+        tools:layout="@layout/fragment_equipment_manual"/>
+    <fragment
+        android:id="@+id/contractFragment"
+        android:name="com.example.smartperty.ui.main.home.contract.ContractFragment"
+        android:label="contractFragment"
+        tools:layout="@layout/fragment_contract" />
+    <fragment
+        android:id="@+id/attractionsNearbyFragment"
+        android:name="com.example.smartperty.ui.main.home.attractionsNearby.AttractionsNearbyFragment"
+        android:label="AttractionsNearbyFragment"
+        tools:layout="@layout/fragment_attractions_nearby"/>
+    <fragment
+        android:id="@+id/repairFragment"
+        android:name="com.example.smartperty.ui.main.home.repair.RepairFragment"
+        android:label="RepairFragment"
+        tools:layout="@layout/fragment_repair"/>
+
+</navigation>

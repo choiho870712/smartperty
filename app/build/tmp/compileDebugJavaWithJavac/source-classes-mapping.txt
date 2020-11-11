@@ -1,0 +1,2 @@
+com/example/smartperty/BuildConfig.java
+ com.example.smartperty.BuildConfig

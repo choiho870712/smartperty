@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/0fd7ebb8be7d44c8f5dfb835dc2fd84a/jetified-navigation-ui-2.0.0/res/values-ca/values-ca.xml",
+                    "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/be3cecbc32801df3eeaaddd70bcc43d7/navigation-ui-2.3.1/res/values-ca/values-ca.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

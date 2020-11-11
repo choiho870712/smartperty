@@ -4,6 +4,23 @@
             "outputFile": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-af/values-af.xml",
             "map": [
                 {
+                    "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/be3cecbc32801df3eeaaddd70bcc43d7/navigation-ui-2.3.1/res/values-af/values-af.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,157",
+                        "endColumns": "101,116",
+                        "endOffsets": "152,269"
+                    },
+                    "to": {
+                        "startLines": "29,30",
+                        "startColumns": "4,4",
+                        "startOffsets": "2777,2879",
+                        "endColumns": "101,116",
+                        "endOffsets": "2874,2991"
+                    }
+                },
+                {
                     "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/7866392d1fc1efd29533eb3a0502a6f3/appcompat-1.2.0/res/values-af/values-af.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
@@ -35,23 +52,6 @@
                         "startOffsets": "3077",
                         "endColumns": "100",
                         "endOffsets": "3173"
-                    }
-                },
-                {
-                    "source": "/home/chou/.gradle/caches/transforms-2/files-2.1/0fd7ebb8be7d44c8f5dfb835dc2fd84a/jetified-navigation-ui-2.0.0/res/values-af/values-af.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,157",
-                        "endColumns": "101,116",
-                        "endOffsets": "152,269"
-                    },
-                    "to": {
-                        "startLines": "29,30",
-                        "startColumns": "4,4",
-                        "startOffsets": "2777,2879",
-                        "endColumns": "101,116",
-                        "endOffsets": "2874,2991"
                     }
                 }
             ]

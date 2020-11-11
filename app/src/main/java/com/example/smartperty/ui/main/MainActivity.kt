@@ -1,119 +1,84 @@
+/*
+ * Copyright 2019, The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.example.smartperty.ui.main
 
 import android.os.Bundle
-import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
-import androidx.core.view.doOnAttach
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.viewpager.widget.ViewPager
 import com.example.smartperty.R
-import com.example.smartperty.tools.CommonViewPagerAdapter
-import com.example.smartperty.ui.main.chat.ChatContainerFragment
-import com.example.smartperty.ui.main.chat.ChatFragment
-import com.example.smartperty.ui.main.home.HomeContainerFragment
-import com.example.smartperty.ui.main.home.HomeFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.nav_view
-import kotlinx.android.synthetic.main.app_bar_main.toolbar
-import kotlinx.android.synthetic.main.content_chat.*
-import kotlinx.android.synthetic.main.content_home.*
-import kotlinx.android.synthetic.main.content_main.*
 
+/**
+ * An activity that inflates a layout that has a [BottomNavigationView].
+ */
 class MainActivity : AppCompatActivity() {
 
-    private val viewPagerAdapter =  CommonViewPagerAdapter(supportFragmentManager)
+    private var currentNavController: LiveData<NavController>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        if (savedInstanceState == null) {
+            setupBottomNavigationBar()
+            toolbar.inflateMenu(R.menu.toolbar)
+            bottom_nav.selectedItemId = R.id.home
+        } // Else, need to wait for onRestoreInstanceState
+    }
 
-        initActionBarDrawer()
-        initFragments()
-
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        // Now that BottomNavigationBar has restored its instance state
+        // and its selectedItemId, we can proceed with setting up the
+        // BottomNavigationBar with Navigation
+        setupBottomNavigationBar()
         toolbar.inflateMenu(R.menu.toolbar)
-        bottom_navigation.menu.getItem(1).isChecked = true
-
-        nav_view.setNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.drawer_menu -> {
-                    Toast.makeText(applicationContext,
-                        R.string.title_menu, Toast.LENGTH_SHORT).show()
-                }
-                R.id.drawer_home -> {
-                    Toast.makeText(applicationContext,
-                        R.string.title_home, Toast.LENGTH_SHORT).show()
-                }
-                R.id.drawer_chat -> {
-                    Toast.makeText(applicationContext,
-                        R.string.title_chat, Toast.LENGTH_SHORT).show()
-                }
-            }
-            drawer_layout.closeDrawer(GravityCompat.START)
-
-            true
-        }
-
-        view_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrollStateChanged(state: Int) {
-            }
-
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-
-            }
-
-            override fun onPageSelected(position: Int) {
-                bottom_navigation.menu.getItem(position+1).isChecked = true
-                val navController = viewPagerAdapter.getItem(position).findNavController()
-                toolbar.setupWithNavController(navController, AppBarConfiguration(navController.graph))
-            }
-        })
-
-        bottom_navigation.setOnNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.navigation_menu -> {
-                    drawer_layout.openDrawer(GravityCompat.START)
-                    return@setOnNavigationItemSelectedListener false
-                }
-                R.id.navigation_home -> {
-                    view_pager.currentItem = 0
-                    return@setOnNavigationItemSelectedListener true
-                }
-                R.id.navigation_chat -> {
-                    view_pager.currentItem = 1
-                    return@setOnNavigationItemSelectedListener true
-                }
-            }
-            false
-        }
+        bottom_nav.selectedItemId = R.id.home
     }
 
-    private fun initActionBarDrawer() {
-        val toggle = ActionBarDrawerToggle(
-            this,
-            drawer_layout,
-            R.string.navigation_drawer_open,
-            R.string.navigation_drawer_close
+    /**
+     * Called on first creation and when restoring state.
+     */
+    private fun setupBottomNavigationBar() {
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
+
+        val navGraphIds = listOf(R.navigation.menu, R.navigation.home, R.navigation.chat)
+
+        // Setup the bottom navigation view with a list of navigation graphs
+        val controller = bottomNavigationView.setupWithNavController(
+            navGraphIds = navGraphIds,
+            fragmentManager = supportFragmentManager,
+            containerId = R.id.nav_host_container,
+            intent = intent
         )
-        drawer_layout.addDrawerListener(toggle)
-        toggle.syncState()
+
+        // Whenever the selected controller changes, setup the action bar.
+        controller.observe(this, Observer { navController ->
+            toolbar.setupWithNavController(navController, AppBarConfiguration(navController.graph))
+        })
+        currentNavController = controller
     }
 
-    private fun initFragments() {
-        viewPagerAdapter.addFragment(HomeContainerFragment())
-        viewPagerAdapter.addFragment(ChatContainerFragment())
-
-        view_pager.offscreenPageLimit = 1
-        view_pager.adapter = viewPagerAdapter
+    override fun onSupportNavigateUp(): Boolean {
+        return currentNavController?.value?.navigateUp() ?: false
     }
 }

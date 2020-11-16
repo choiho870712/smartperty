@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tenant_chat"
+    app:startDestination="@id/tenantChatFragment">
+
+    <fragment
+        android:id="@+id/tenantChatFragment"
+        android:name="com.example.smartperty.tenant.chat.TenantChatFragment"
+        android:label="TenantChatFragment"
+        tools:layout="@layout/tenant_fragment_chat_main"/>
+
+</navigation>

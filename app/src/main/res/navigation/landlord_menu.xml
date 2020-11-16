@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/landlord_menu"
+    app:startDestination="@id/landlordMenuFragment">
+
+    <fragment
+        android:id="@+id/landlordMenuFragment"
+        android:name="com.example.smartperty.landlord.menu.LandlordMenuFragment"
+        android:label="@string/landlord_title_menu"
+        tools:layout="@layout/landlord_fragment_menu_main">
+        <action
+            android:id="@+id/action_landlordMenuFragment_to_landlordObjectFolderFragment"
+            app:destination="@id/landlordObjectFolderFragment" />
+        <action
+            android:id="@+id/action_landlordMenuFragment_to_landlordContractFragment"
+            app:destination="@id/landlordContractFragment" />
+        <action
+            android:id="@+id/action_landlordMenuFragment_to_landlordRepairFragment"
+            app:destination="@id/landlordRepairFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/landlordObjectFragment"
+        android:name="com.example.smartperty.landlord.menu.object.objectItem.LandlordObjectItemFragment"
+        android:label="@string/landlord_title_object_item"
+        tools:layout="@layout/landlord_fragment_object_item" />
+    <fragment
+        android:id="@+id/landlordObjectFolderFragment"
+        android:name="com.example.smartperty.landlord.menu.object.objectFolder.LandlordObjectFolderFragment"
+        android:label="@string/landlord_title_object_folder"
+        tools:layout="@layout/landlord_fragment_object_folder">
+        <action
+            android:id="@+id/action_landlordObjectFolderFragment_to_landlordObjectListFragment"
+            app:destination="@id/landlordObjectListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/landlordObjectListFragment"
+        android:name="com.example.smartperty.landlord.menu.object.objectList.LandlordObjectListFragment"
+        android:label="@string/landlord_title_object_list"
+        tools:layout="@layout/landlord_fragment_object_list">
+        <action
+            android:id="@+id/action_landlordObjectListFragment_to_landlordObjectItemFragment"
+            app:destination="@id/landlordObjectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/landlordContractFragment"
+        android:name="com.example.smartperty.landlord.menu.contract.LandlordContractFragment"
+        android:label="@string/landlord_title_contract"
+        tools:layout="@layout/landlord_fragment_contract">
+        <action
+            android:id="@+id/action_landlordContractFragment_to_landlordObjectItemFragment"
+            app:destination="@id/landlordObjectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/landlordRepairFragment"
+        android:name="com.example.smartperty.landlord.menu.repair.LandlordRepairFragment"
+        android:label="@string/landlord_title_repair"
+        tools:layout="@layout/landlord_fragment_repair" />
+
+</navigation>

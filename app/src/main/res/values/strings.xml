@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">SmartPerty</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -9,26 +10,41 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_chat">Chat</string>
-    <string name="title_menu">Menu</string>
-    <string name="home_greet">Hello~</string>
-    <string name="home_message">早安</string>
-    <string name="home_temperature">21°C</string>
-    <string name="home_title_housing_rules">住屋守則</string>
-    <string name="home_title_rent_and_utilities">付房租水電費</string>
-    <string name="home_title_equipment_manual">設備手冊</string>
-    <string name="home_title_contract">你的房子合約</string>
-    <string name="home_title_attractions_nearby">周邊景點</string>
-    <string name="home_title_repair">報修</string>
     <string name="action_register">註冊</string>
     <string name="action_forget_password">忘記密碼</string>
     <string name="login_about_us">about us</string>
     <string name="login_policy">policy</string>
+
+    <!-- Strings related to tenant -->
+    <string name="title_activity_tenant">TenantActivity</string>
+    <string name="tenant_title_menu">控制</string>
+    <string name="tenant_title_notification">消息</string>
+    <string name="tenant_title_home">首頁</string>
+    <string name="tenant_title_chat">聊天</string>
+    <string name="tenant_title_group">我們</string>
+    <string name="tenant_home_greet">Hello~</string>
+    <string name="tenant_home_message">早安</string>
+    <string name="tenant_home_temperature">21°C</string>
+    <string name="tenant_home_title_housing_rules">住屋守則</string>
+    <string name="tenant_home_title_rent_and_utilities">付房租水電費</string>
+    <string name="tenant_home_title_equipment_manual">設備手冊</string>
+    <string name="tenant_home_title_contract">你的房子合約</string>
+    <string name="tenant_home_title_attractions_nearby">周邊景點</string>
+    <string name="tenant_home_title_repair">報修</string>
     <string name="toolbar_button_setup">設定</string>
-    <string name="navigation_drawer_open">drawer開</string>
-    <string name="navigation_drawer_close">drawer關</string>
+
+    <!-- Strings related to landlord-->
+    <string name="title_activity_landlord">LandlordActivity</string>
+    <string name="landlord_title_menu">控制</string>
+    <string name="landlord_title_notification">消息</string>
+    <string name="landlord_title_home">首頁</string>
+    <string name="landlord_title_chat">聊天</string>
+    <string name="landlord_title_group">我們</string>
+    <string name="landlord_title_object_folder">大樓列表</string>
+    <string name="landlord_title_object_list">單位列表</string>
+    <string name="landlord_title_object_item">單位資訊</string>
+    <string name="landlord_title_contract">合約</string>
+    <string name="landlord_title_repair">維修</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

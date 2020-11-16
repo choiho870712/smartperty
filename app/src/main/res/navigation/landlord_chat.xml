@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/landlord_chat"
+    app:startDestination="@id/landlordMenuFragment">
+
+    <fragment
+        android:id="@+id/landlordMenuFragment"
+        android:name="com.example.smartperty.landlord.chat.LandlordChatFragment"
+        android:label="@string/landlord_title_chat"
+        tools:layout="@layout/landlord_fragment_chat_main" />
+
+</navigation>

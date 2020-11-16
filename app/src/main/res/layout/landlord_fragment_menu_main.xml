@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/text_sectioned_menu"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:singleLine="true"
+        android:background="@android:color/transparent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="Menu"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/layout_object_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/text_sectioned_menu"
+        tools:layout_editor_absoluteX="37dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_object_folder"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:cardElevation="1dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:text="物件"
+                android:layout_gravity="center" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_contract"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:cardElevation="1dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:text="@string/landlord_title_contract"
+                android:layout_gravity="center" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_data_analysis"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:cardElevation="1dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:text="數據"
+                android:layout_gravity="center" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_finance"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:cardElevation="1dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:text="財務"
+                android:layout_gravity="center" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_repair"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:cardElevation="1dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:text="@string/landlord_title_repair"
+                android:layout_gravity="center" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_personnel"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:cardElevation="1dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:text="人員"
+                android:layout_gravity="center" />
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_sectioned_notification"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:singleLine="true"
+        android:textAllCaps="true"
+        android:background="@android:color/transparent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="提醒"
+        app:layout_constraintTop_toBottomOf="@id/layout_object_section"/>
+
+    <TextView
+        android:id="@+id/text_sectioned_dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:singleLine="true"
+        android:textAllCaps="true"
+        android:background="@android:color/transparent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="Dashboard"
+        app:layout_constraintTop_toBottomOf="@id/text_sectioned_notification"/>
+
+    <TextView
+        android:id="@+id/text_sectioned_message"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:singleLine="true"
+        android:textAllCaps="true"
+        android:background="@android:color/transparent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="Massage"
+        app:layout_constraintTop_toBottomOf="@id/text_sectioned_dashboard"/>
+
+    <TextView
+        android:id="@+id/text_sectioned_mySP"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:singleLine="true"
+        android:textAllCaps="true"
+        android:background="@android:color/transparent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="MySP"
+        app:layout_constraintTop_toBottomOf="@id/text_sectioned_message"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

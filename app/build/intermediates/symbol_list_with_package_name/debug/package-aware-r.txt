@@ -974,6 +974,8 @@ color cardview_shadow_end_color
 color cardview_shadow_start_color
 color checkbox_themeable_attribute_color
 color colorAccent
+color colorBackground
+color colorMiddleBlue
 color colorPrimary
 color colorPrimaryDark
 color design_bottom_navigation_shadow_color
@@ -1587,9 +1589,17 @@ drawable design_snackbar_background
 drawable ic_baseline_add_24
 drawable ic_baseline_groups_24
 drawable ic_baseline_notifications_24
+drawable ic_baseline_wb_sunny_24
 drawable ic_chat_24dp
+drawable ic_contract_icon
 drawable ic_dashboard_black_24dp
+drawable ic_equipment_manual_icon
 drawable ic_home_24dp
+drawable ic_housing_rules_icon
+drawable ic_landlord_chat_icon
+drawable ic_landlord_home_icon
+drawable ic_landlord_menu_icon
+drawable ic_landlord_notification_icon
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_logo
@@ -1598,8 +1608,13 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_nearby_attraction
+drawable ic_personnal_icon
+drawable ic_rent_and_utilities_icon
+drawable ic_repair
 drawable ic_search_24dp
 drawable ic_settings_24dp
+drawable ic_setup_icon
 drawable ic_test_image
 drawable material_ic_calendar_black_24dp
 drawable material_ic_clear_black_24dp
@@ -1738,6 +1753,9 @@ id blocking
 id bottom
 id bottom_nav
 id bounce
+id button
+id button2
+id button3
 id buttonPanel
 id button_add
 id button_home_attractions_nearby
@@ -1750,6 +1768,7 @@ id button_setup
 id cache_measures
 id cancel_action
 id cancel_button
+id cardView
 id card_contract
 id card_data_analysis
 id card_finance
@@ -1838,7 +1857,10 @@ id graph_wrap
 id group_divider
 id grouping
 id groups
+id guideline
+id guideline2
 id guideline3
+id guideline4
 id hideable
 id home
 id homeAsUp
@@ -1955,6 +1977,7 @@ id ratio
 id rectangles
 id recycler_contract_list
 id recycler_equipment_manual
+id recycler_notification
 id recycler_object_folder
 id recycler_object_list
 id register
@@ -2050,9 +2073,27 @@ id textEnd
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
+id textView
+id textView10
+id textView11
+id textView12
+id textView13
+id textView14
+id textView15
+id textView16
+id textView17
+id textView18
+id textView19
+id textView2
+id textView3
+id textView4
+id textView5
+id textView6
+id textView7
+id textView8
+id textView9
 id text_amount
 id text_equipment
-id text_home
 id text_home_greet
 id text_home_message
 id text_home_temperature
@@ -2060,6 +2101,7 @@ id text_input_end_icon
 id text_input_start_icon
 id text_login_about_us
 id text_login_policy
+id text_message
 id text_object_folder_title
 id text_object_list_title
 id text_sectioned_dashboard
@@ -2248,14 +2290,14 @@ layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 layout tenant_card_equipment
 layout tenant_card_image_page
+layout tenant_card_notification
 layout tenant_fragment_attractions_nearby
 layout tenant_fragment_chat_main
 layout tenant_fragment_contract
 layout tenant_fragment_equipment_manual
 layout tenant_fragment_equipment_manual_pdf
-layout tenant_fragment_home
 layout tenant_fragment_home_main
-layout tenant_fragment_hosing_rules
+layout tenant_fragment_housing_rules
 layout tenant_fragment_notification_main
 layout tenant_fragment_rent_and_utilities
 layout tenant_fragment_repair
@@ -2670,7 +2712,6 @@ style Platform_V21_AppCompat_Light
 style Platform_V25_AppCompat
 style Platform_V25_AppCompat_Light
 style Platform_Widget_AppCompat_Spinner
-style RoundButton
 style RtlOverlay_DialogWindowTitle_AppCompat
 style RtlOverlay_Widget_AppCompat_ActionBar_TitleItem
 style RtlOverlay_Widget_AppCompat_DialogTitle_Icon
@@ -3116,6 +3157,9 @@ style Widget_MaterialComponents_Toolbar_PrimarySurface
 style Widget_MaterialComponents_Toolbar_Surface
 style Widget_MaterialComponents_Tooltip
 style Widget_Support_CoordinatorLayout
+style tenant_home_select_button_icon
+style tenant_home_select_button_layout
+style tenant_home_select_button_text
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity
 styleable ActionMenuItemView android_minWidth

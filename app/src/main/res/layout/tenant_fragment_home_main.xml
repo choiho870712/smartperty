@@ -3,106 +3,168 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
 
-    <Button
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <LinearLayout
         android:id="@+id/button_home_housing_rules"
-        style="@style/RoundButton"
-        android:text="@string/tenant_home_title_housing_rules"
-        app:layout_constraintBottom_toTopOf="@+id/button_home_equipment_manual"
+        style="@style/tenant_home_select_button_layout"
         app:layout_constraintEnd_toStartOf="@+id/button_home_rent_and_utilities"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/button_home_rent_and_utilities">
 
-    <Button
+        <ImageView
+            style="@style/tenant_home_select_button_icon"
+            app:srcCompat="@drawable/ic_housing_rules_icon" />
+
+        <TextView
+            style="@style/tenant_home_select_button_text"
+            android:text="@string/tenant_home_title_housing_rules" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/button_home_rent_and_utilities"
-        style="@style/RoundButton"
-        android:text="@string/tenant_home_title_rent_and_utilities"
-        app:layout_constraintBottom_toTopOf="@+id/button_home_contract"
-        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/tenant_home_select_button_layout"
+        app:layout_constraintBottom_toTopOf="@+id/button_home_attractions_nearby"
+        app:layout_constraintEnd_toStartOf="@+id/button_home_equipment_manual"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button_home_housing_rules"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        app:layout_constraintTop_toTopOf="@+id/guideline3">
 
-    <Button
+        <ImageView
+            style="@style/tenant_home_select_button_icon"
+            app:srcCompat="@drawable/ic_rent_and_utilities_icon" />
+
+        <TextView
+            style="@style/tenant_home_select_button_text"
+            android:text="@string/tenant_home_title_rent_and_utilities" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/button_home_equipment_manual"
-        style="@style/RoundButton"
-        android:text="@string/tenant_home_title_equipment_manual"
-        app:layout_constraintBottom_toTopOf="@+id/button_home_attractions_nearby"
-        app:layout_constraintEnd_toStartOf="@+id/button_home_contract"
+        style="@style/tenant_home_select_button_layout"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_home_housing_rules" />
+        app:layout_constraintStart_toEndOf="@+id/button_home_rent_and_utilities"
+        app:layout_constraintTop_toTopOf="@+id/button_home_rent_and_utilities">
 
-    <Button
+        <ImageView
+            style="@style/tenant_home_select_button_icon"
+            app:srcCompat="@drawable/ic_equipment_manual_icon" />
+
+        <TextView
+            style="@style/tenant_home_select_button_text"
+            android:text="@string/tenant_home_title_equipment_manual" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/button_home_contract"
-        style="@style/RoundButton"
-        android:text="@string/tenant_home_title_contract"
-        app:layout_constraintBottom_toTopOf="@+id/button_home_repair"
-        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/tenant_home_select_button_layout"
+        app:layout_constraintBottom_toBottomOf="@+id/button_home_attractions_nearby"
+        app:layout_constraintEnd_toStartOf="@+id/button_home_attractions_nearby"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button_home_equipment_manual"
-        app:layout_constraintTop_toBottomOf="@+id/button_home_rent_and_utilities" />
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/button_home_attractions_nearby">
 
-    <Button
+        <ImageView
+            style="@style/tenant_home_select_button_icon"
+            app:srcCompat="@drawable/ic_contract_icon" />
+
+        <TextView
+            style="@style/tenant_home_select_button_text"
+            android:text="@string/tenant_home_title_contract" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/button_home_attractions_nearby"
-        style="@style/RoundButton"
-        android:text="@string/tenant_home_title_attractions_nearby"
-        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/tenant_home_select_button_layout"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toStartOf="@+id/button_home_repair"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_home_equipment_manual" />
+        app:layout_constraintStart_toEndOf="@+id/button_home_contract"
+        app:layout_constraintTop_toBottomOf="@+id/button_home_rent_and_utilities">
 
-    <Button
+        <ImageView
+            style="@style/tenant_home_select_button_icon"
+            app:srcCompat="@drawable/ic_nearby_attraction" />
+
+        <TextView
+            style="@style/tenant_home_select_button_text"
+            android:text="@string/tenant_home_title_attractions_nearby" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/button_home_repair"
-        style="@style/RoundButton"
-        android:text="@string/tenant_home_title_repair"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/tenant_home_select_button_layout"
+        app:layout_constraintBottom_toBottomOf="@+id/button_home_attractions_nearby"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button_home_attractions_nearby"
-        app:layout_constraintTop_toBottomOf="@+id/button_home_contract" />
+        app:layout_constraintTop_toTopOf="@+id/button_home_attractions_nearby">
+
+        <ImageView
+            style="@style/tenant_home_select_button_icon"
+            app:srcCompat="@drawable/ic_repair" />
+
+        <TextView
+            style="@style/tenant_home_select_button_text"
+            android:text="@string/tenant_home_title_repair" />
+
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25622255" />
+        app:layout_constraintGuide_percent="0.3" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="423dp"
-            android:layout_height="175dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary">
 
             <ImageView
                 android:id="@+id/image_home_weather"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/text_home_temperature"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/text_home_greet"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_test_image" />
+                app:srcCompat="@drawable/ic_baseline_wb_sunny_24" />
 
             <TextView
                 android:id="@+id/text_home_greet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
                 android:text="@string/tenant_home_greet"
-                app:layout_constraintBottom_toTopOf="@+id/text_home_message"
-                app:layout_constraintEnd_toStartOf="@+id/image_home_weather"
-                app:layout_constraintHorizontal_bias="0.5"
+                android:textSize="32sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -110,8 +172,9 @@
                 android:id="@+id/text_home_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="@string/tenant_home_message"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textSize="24dp"
                 app:layout_constraintStart_toStartOf="@+id/text_home_greet"
                 app:layout_constraintTop_toBottomOf="@+id/text_home_greet" />
 
@@ -119,12 +182,28 @@
                 android:id="@+id/text_home_temperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+
                 android:text="@string/tenant_home_temperature"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="@+id/image_home_weather"
                 app:layout_constraintStart_toStartOf="@+id/image_home_weather"
                 app:layout_constraintTop_toBottomOf="@+id/image_home_weather" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

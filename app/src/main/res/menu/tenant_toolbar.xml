@@ -11,7 +11,7 @@
 
     <item
         android:id="@+id/button_setup"
-        android:icon="@drawable/ic_settings_24dp"
+        android:icon="@drawable/ic_setup_icon"
         android:title="@string/toolbar_button_setup"
         app:showAsAction="always" />
 </menu>

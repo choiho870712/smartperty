@@ -14,6 +14,6 @@ class TenantHosingRulesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.tenant_fragment_hosing_rules, container, false)
+        return inflater.inflate(R.layout.tenant_fragment_housing_rules, container, false)
     }
 }

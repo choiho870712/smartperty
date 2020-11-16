@@ -32,17 +32,17 @@
     <fragment
         android:id="@+id/tenantHosingRulesFragment"
         android:name="com.example.smartperty.tenant.home.hosingRules.TenantHosingRulesFragment"
-        android:label="tenant_fragment_hosing_rules"
-        tools:layout="@layout/tenant_fragment_hosing_rules" />
+        android:label="@string/tenant_home_title_housing_rules"
+        tools:layout="@layout/tenant_fragment_housing_rules" />
     <fragment
         android:id="@+id/tenantRentAndUtilitiesFragment"
         android:name="com.example.smartperty.tenant.home.rentAndUtilities.TenantRentAndUtilitiesFragment"
-        android:label="TenantRentAndUtilitiesFragment"
-        tools:layout="@layout/tenant_fragment_rent_and_utilities"/>
+        android:label="@string/tenant_home_title_rent_and_utilities"
+        tools:layout="@layout/tenant_fragment_rent_and_utilities" />
     <fragment
         android:id="@+id/tenantEquipmentManualFragment"
         android:name="com.example.smartperty.tenant.home.equipmentManual.TenantEquipmentManualFragment"
-        android:label="TenantEquipmentManualFragment"
+        android:label="@string/tenant_home_title_equipment_manual"
         tools:layout="@layout/tenant_fragment_equipment_manual">
         <action
             android:id="@+id/action_tenantEquipmentManualFragment_to_tenantEquipmentManualPdfFragment"
@@ -51,18 +51,18 @@
     <fragment
         android:id="@+id/tenantContractFragment"
         android:name="com.example.smartperty.tenant.home.contract.TenantContractFragment"
-        android:label="TenantContractFragment"
+        android:label="@string/tenant_home_title_contract"
         tools:layout="@layout/tenant_fragment_contract" />
     <fragment
         android:id="@+id/tenantAttractionsNearbyFragment"
         android:name="com.example.smartperty.tenant.home.attractionsNearby.TenantAttractionsNearbyFragment"
-        android:label="TenantAttractionsNearbyFragment"
-        tools:layout="@layout/tenant_fragment_attractions_nearby"/>
+        android:label="@string/tenant_home_title_attractions_nearby"
+        tools:layout="@layout/tenant_fragment_attractions_nearby" />
     <fragment
         android:id="@+id/tenantRepairFragment"
         android:name="com.example.smartperty.tenant.home.repair.TenantRepairFragment"
-        android:label="TenantRepairFragment"
-        tools:layout="@layout/tenant_fragment_repair"/>
+        android:label="@string/tenant_home_title_repair"
+        tools:layout="@layout/tenant_fragment_repair" />
     <fragment
         android:id="@+id/tenantEquipmentManualPdfFragment"
         android:name="com.example.smartperty.tenant.home.equipmentManualPdf.TenantEquipmentManualPdfFragment"

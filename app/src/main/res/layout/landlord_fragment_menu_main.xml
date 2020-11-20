@@ -28,97 +28,69 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_object_folder"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:cardElevation="1dp">
+            style="@style/card_notification">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp"
-                android:text="物件"
-                android:layout_gravity="center" />
+                android:layout_gravity="start"
+                style="@style/text_normal_black_16sp"
+                android:text="物件" />
 
         </androidx.cardview.widget.CardView>
 
+
+
         <androidx.cardview.widget.CardView
             android:id="@+id/card_contract"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:cardElevation="1dp">
+            style="@style/card_notification">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp"
-                android:text="@string/landlord_title_contract"
-                android:layout_gravity="center" />
+                android:layout_gravity="start"
+                style="@style/text_normal_black_16sp"
+                android:text="@string/landlord_title_contract"/>
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_data_analysis"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:cardElevation="1dp">
+            style="@style/card_notification">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp"
-                android:text="數據"
-                android:layout_gravity="center" />
+                android:layout_gravity="start"
+                style="@style/text_normal_black_16sp"
+                android:text="數據"/>
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_finance"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:cardElevation="1dp">
+            style="@style/card_notification">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp"
-                android:text="財務"
-                android:layout_gravity="center" />
+                android:layout_gravity="start"
+                style="@style/text_normal_black_16sp"
+                android:text="財務" />
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_repair"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:cardElevation="1dp">
+            style="@style/card_notification">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp"
-                android:text="@string/landlord_title_repair"
-                android:layout_gravity="center" />
+                android:layout_gravity="start"
+                style="@style/text_normal_black_16sp"
+                android:text="@string/landlord_title_repair" />
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_personnel"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:cardElevation="1dp">
+            style="@style/card_notification">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp"
-                android:text="人員"
-                android:layout_gravity="center" />
+                android:layout_gravity="start"
+                style="@style/text_normal_black_16sp"
+                android:text="人員" />
 
         </androidx.cardview.widget.CardView>
 

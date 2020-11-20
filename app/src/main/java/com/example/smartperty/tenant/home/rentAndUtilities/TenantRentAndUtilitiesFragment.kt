@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.smartperty.R
+import com.example.smartperty.utils.GlobalVariables
 
 class TenantRentAndUtilitiesFragment : Fragment() {
 
@@ -15,6 +16,8 @@ class TenantRentAndUtilitiesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
+
         return inflater.inflate(R.layout.tenant_fragment_rent_and_utilities, container, false)
     }
 

@@ -1,0 +1,42 @@
+[
+  {
+    "name": "tenant_notification",
+    "navigationXmlIds": [],
+    "deepLinks": []
+  },
+  {
+    "name": "landlord_chat",
+    "navigationXmlIds": [],
+    "deepLinks": []
+  },
+  {
+    "name": "tenant_home",
+    "navigationXmlIds": [],
+    "deepLinks": []
+  },
+  {
+    "name": "tenant_chat",
+    "navigationXmlIds": [],
+    "deepLinks": []
+  },
+  {
+    "name": "landlord_menu",
+    "navigationXmlIds": [],
+    "deepLinks": []
+  },
+  {
+    "name": "landlord_notification",
+    "navigationXmlIds": [],
+    "deepLinks": []
+  },
+  {
+    "name": "landlord_home",
+    "navigationXmlIds": [],
+    "deepLinks": []
+  },
+  {
+    "name": "landlord_group",
+    "navigationXmlIds": [],
+    "deepLinks": []
+  }
+]

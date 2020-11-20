@@ -32,6 +32,12 @@ class LandlordObjectFolderFragment : Fragment() {
                     itemList = mutableListOf(
                         LandlordObjectItem(title = "item1")
                     )
+                ),
+                LandlordObjectList(
+                    title = "list2",
+                    itemList = mutableListOf(
+                        LandlordObjectItem(title = "item1")
+                    )
                 )
             )
         )

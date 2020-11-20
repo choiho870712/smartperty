@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.smartperty.R
+import com.example.smartperty.utils.GlobalVariables.Companion.toolBarUtils
+import com.example.smartperty.utils.GlobalVariables.Companion.toolbar
 import kotlinx.android.synthetic.main.tenant_fragment_home_main.view.*
 
 class TenantHomeFragment : Fragment() {
@@ -17,6 +19,23 @@ class TenantHomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.tenant_fragment_home_main, container, false)
+
+        toolBarUtils.setTitle("")
+        toolBarUtils.removeAllButtonAndLogo()
+        toolBarUtils.setLogoVisibility(true)
+        toolBarUtils.setSetupButtonVisibility(true)
+        toolBarUtils.setSearchButtonVisibility(true)
+
+        toolbar.setOnMenuItemClickListener {
+            when( it.itemId ) {
+                R.id.button_setup -> {
+                    root.findNavController().navigate(
+                        R.id.action_tenantHomeFragment_to_tenantSetupFragment)
+                    true
+                }
+                else -> false
+            }
+        }
 
         root.button_home_housing_rules.setOnClickListener {
             root.findNavController().navigate(

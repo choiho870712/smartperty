@@ -9,6 +9,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.smartperty.R
 import com.example.smartperty.tools.setupWithNavController
+import com.example.smartperty.utils.GlobalVariables
+import com.example.smartperty.utils.ToolBarUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_tenant.*
 
@@ -18,11 +20,12 @@ import kotlinx.android.synthetic.main.activity_tenant.*
  */
 class LandlordActivity : AppCompatActivity() {
 
-    private var currentNavController: LiveData<NavController>? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landlord)
+
+        setupUtils()
+
         if (savedInstanceState == null) {
             setupBottomNavigationBar()
         } // Else, need to wait for onRestoreInstanceState
@@ -62,13 +65,19 @@ class LandlordActivity : AppCompatActivity() {
         controller.observe(this, Observer { navController ->
             toolbar.setupWithNavController(navController, AppBarConfiguration(navController.graph))
         })
-        currentNavController = controller
+        GlobalVariables.currentNavController = controller
 
         toolbar.inflateMenu(R.menu.landlord_toolbar)
         bottomNavigationView.selectedItemId = R.id.landlord_home
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return currentNavController?.value?.navigateUp() ?: false
+        return GlobalVariables.currentNavController?.value?.navigateUp() ?: false
+    }
+
+    private fun setupUtils() {
+        GlobalVariables.activity = this
+        GlobalVariables.toolbar = toolbar
+        GlobalVariables.toolBarUtils = ToolBarUtils()
     }
 }

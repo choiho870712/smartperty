@@ -8,8 +8,7 @@
     <fragment
         android:id="@+id/tenantHomeFragment"
         android:name="com.example.smartperty.tenant.home.TenantHomeFragment"
-        android:label="@string/tenant_title_home"
-        tools:layout="@layout/tenant_fragment_home_main" >
+        tools:layout="@layout/tenant_fragment_home_main">
         <action
             android:id="@+id/action_tenantHomeFragment_to_tenantHosingRulesFragment"
             app:destination="@id/tenantHosingRulesFragment" />
@@ -28,6 +27,9 @@
         <action
             android:id="@+id/action_tenantHomeFragment_to_tenantRepairFragment"
             app:destination="@id/tenantRepairFragment" />
+        <action
+            android:id="@+id/action_tenantHomeFragment_to_tenantSetupFragment"
+            app:destination="@id/tenantSetupFragment" />
     </fragment>
     <fragment
         android:id="@+id/tenantHosingRulesFragment"
@@ -68,5 +70,19 @@
         android:name="com.example.smartperty.tenant.home.equipmentManualPdf.TenantEquipmentManualPdfFragment"
         android:label="TenantEquipmentManualPdfFragment"
         tools:layout="@layout/tenant_fragment_equipment_manual_pdf"/>
+    <fragment
+        android:id="@+id/tenantSetupFragment"
+        android:name="com.example.smartperty.tenant.setup.TenantSetupFragment"
+        android:label="設定"
+        tools:layout="@layout/tenant_fragment_setup">
+        <action
+            android:id="@+id/action_tenantSetupFragment_to_tenantHelpFragment"
+            app:destination="@id/tenantHelpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tenantHelpFragment"
+        android:name="com.example.smartperty.tenant.setup.help.TenantHelpFragment"
+        android:label="支援中心"
+        tools:layout="@layout/tenant_fragment_help" />
 
 </navigation>

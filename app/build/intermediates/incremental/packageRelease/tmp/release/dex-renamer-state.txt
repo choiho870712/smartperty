@@ -1,0 +1,4 @@
+#Tue Nov 17 15:05:03 CST 2020
+base.0=/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/dex/release/mergeDexRelease/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

@@ -8,7 +8,6 @@
     <fragment
         android:id="@+id/tenantNotificationFragment"
         android:name="com.example.smartperty.tenant.notification.TenantNotificationFragment"
-        android:label="@string/tenant_title_notification"
-        tools:layout="@layout/tenant_fragment_notification_main"/>
+        tools:layout="@layout/tenant_fragment_notification_main" />
 
 </navigation>

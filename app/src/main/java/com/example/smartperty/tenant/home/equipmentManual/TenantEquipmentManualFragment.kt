@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.smartperty.R
 import com.example.smartperty.tenant.home.equipmentManual.data.TenantEquipmentManual
+import com.example.smartperty.utils.GlobalVariables.Companion.toolBarUtils
 import kotlinx.android.synthetic.main.tenant_fragment_equipment_manual.view.*
 
 
@@ -26,6 +27,8 @@ class TenantEquipmentManualFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.tenant_fragment_equipment_manual, container, false)
+
+        toolBarUtils.removeAllButtonAndLogo()
 
         val equipmentManual = TenantEquipmentManual()
         equipmentManual.loadData()

@@ -26,7 +26,8 @@ class LandlordObjectListFragment : Fragment() {
         val folderList = LandlordObjectList(
             title = "list1",
             itemList = mutableListOf(
-                LandlordObjectItem(title = "item1")
+                LandlordObjectItem(title = "item1"),
+                LandlordObjectItem(title = "item2")
             )
         )
 

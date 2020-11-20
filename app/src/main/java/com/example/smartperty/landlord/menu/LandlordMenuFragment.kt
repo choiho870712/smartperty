@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 
 import com.example.smartperty.R
+import com.example.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.landlord_fragment_menu_main.view.*
 
 /**
@@ -24,6 +25,8 @@ class LandlordMenuFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.landlord_fragment_menu_main, container, false)
+
+        GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
 
         root.card_object_folder.setOnClickListener {
             root.findNavController().navigate(

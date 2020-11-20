@@ -9,12 +9,28 @@
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@color/colorWhite</item>
+    </style>
+
+    <style name="AppTheme.Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="searchViewStyle">@style/AppTheme.SearchView</item>
+        <item name="homeAsUpIndicator">@drawable/ic_baseline_arrow_back_ios_24</item>
+        <item name="android:editTextColor">@color/colorBlack</item>
+        <item name="android:textColorHint">@color/colorSilver</item>
+    </style>
+
+    <style name="AppTheme.SearchView" parent="Widget.AppCompat.SearchView">
+        <item name="searchIcon">@drawable/ic_search_blue_24dp</item>
+        <item name="closeIcon">@drawable/ic_search_blue_24dp</item>
+        <item name="queryBackground">@drawable/radius_gray_text_box</item>
+        <item name="goIcon">@drawable/ic_search_blue_24dp</item>
+        <item name="queryHint">搜尋</item>
     </style>
 
     <style name="tenant_home_select_button_layout" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:background">@color/colorBackground</item>
-        <item name="android:layout_width">80dp</item>
-        <item name="android:layout_height">100dp</item>
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">70dp</item>
         <item name="android:orientation">vertical</item>
     </style>
 
@@ -29,9 +45,90 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/colorMiddleBlue</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:singleLine">true</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="card_notification" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="cardElevation">1dp</item>
+    </style>
+
+    <style name="card_80dp" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="cardElevation">1dp</item>
+    </style>
+
+    <style name="text_normal_black_16sp" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="text_normal_black_20sp" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="text_normal_black_24sp" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="text_normal_black_12sp" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="edit_text_normal_black_16sp" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:background">@drawable/square_text_box</item>
+        <item name="android:gravity">top|left</item>
+    </style>
+
+    <style name="button_radius_primary" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@drawable/radius_button</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="button_rectangle_primary" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@drawable/rectangle_button</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

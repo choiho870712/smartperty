@@ -37,23 +37,32 @@ class TenantEquipmentAdapter(private val activity: Activity,
         holder.title.text = myDataset[position].equipment
         holder.amount.text = myDataset[position].amount.toString()
 
-        Thread {
-            val image = BitmapFactory.decodeStream(URL(myDataset[position].imageUrl).
-            openConnection().getInputStream())
+        holder.image.setOnClickListener {
+            imageCard.image_card.setImageDrawable(holder.image.drawable)
+            imageCard.visibility = View.VISIBLE
+        }
 
-            activity.runOnUiThread {
-                holder.image.setImageBitmap(image)
+        imageCard.image_card.setOnClickListener {
+            imageCard.visibility = View.GONE
+        }
 
-                holder.image.setOnClickListener {
-                    imageCard.image_card.setImageBitmap(image)
-                    imageCard.visibility = View.VISIBLE
-                }
-
-                imageCard.image_card.setOnClickListener {
-                    imageCard.visibility = View.GONE
-                }
-            }
-        }.start()
+//        Thread {
+//            val image = BitmapFactory.decodeStream(URL(myDataset[position].imageUrl).
+//            openConnection().getInputStream())
+//
+//            activity.runOnUiThread {
+//                holder.image.setImageBitmap(image)
+//
+//                holder.image.setOnClickListener {
+//                    imageCard.image_card.setImageBitmap(image)
+//                    imageCard.visibility = View.VISIBLE
+//                }
+//
+//                imageCard.image_card.setOnClickListener {
+//                    imageCard.visibility = View.GONE
+//                }
+//            }
+//        }.start()
 
         holder.cardView.setOnClickListener {
             parentView.findNavController().navigate(

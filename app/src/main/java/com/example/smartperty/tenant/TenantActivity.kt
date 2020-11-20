@@ -25,6 +25,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.smartperty.R
 import com.example.smartperty.tools.setupWithNavController
+import com.example.smartperty.utils.GlobalVariables
+import com.example.smartperty.utils.ToolBarUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_tenant.*
 
@@ -33,13 +35,15 @@ import kotlinx.android.synthetic.main.activity_tenant.*
  */
 class TenantActivity : AppCompatActivity() {
 
-    private var currentNavController: LiveData<NavController>? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tenant)
+
+        setupUtils()
+
         if (savedInstanceState == null) {
             setupBottomNavigationBar()
+            setupToolBar()
         } // Else, need to wait for onRestoreInstanceState
     }
 
@@ -49,6 +53,7 @@ class TenantActivity : AppCompatActivity() {
         // and its selectedItemId, we can proceed with setting up the
         // BottomNavigationBar with Navigation
         setupBottomNavigationBar()
+        setupToolBar()
     }
 
     /**
@@ -75,13 +80,22 @@ class TenantActivity : AppCompatActivity() {
         controller.observe(this, Observer { navController ->
             toolbar.setupWithNavController(navController, AppBarConfiguration(navController.graph))
         })
-        currentNavController = controller
+        GlobalVariables.currentNavController = controller
 
-        toolbar.inflateMenu(R.menu.tenant_toolbar)
         bottomNavigationView.selectedItemId = R.id.tenant_home
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return currentNavController?.value?.navigateUp() ?: false
+        return GlobalVariables.currentNavController?.value?.navigateUp() ?: false
+    }
+
+    private fun setupToolBar() {
+        toolbar.inflateMenu(R.menu.tenant_toolbar)
+    }
+
+    private fun setupUtils() {
+        GlobalVariables.activity = this
+        GlobalVariables.toolbar = toolbar
+        GlobalVariables.toolBarUtils = ToolBarUtils()
     }
 }

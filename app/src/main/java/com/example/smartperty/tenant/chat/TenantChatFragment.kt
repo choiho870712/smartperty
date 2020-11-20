@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.smartperty.R
 import com.example.smartperty.utils.BarChartManager
+import com.example.smartperty.utils.GlobalVariables
 import com.github.mikephil.charting.charts.BarChart
 import kotlinx.android.synthetic.main.tenant_fragment_chat_main.view.*
 import kotlin.collections.ArrayList

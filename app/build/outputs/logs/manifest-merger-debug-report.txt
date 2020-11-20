@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:2:1-33:12
-INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:2:1-33:12
-INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:2:1-33:12
-INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:2:1-33:12
+ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:2:1-34:12
+INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:2:1-34:12
+INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:2:1-34:12
+INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:2:1-34:12
 MERGED from [androidx.navigation:navigation-ui-ktx:2.3.1] /root/.gradle/caches/transforms-2/files-2.1/ecec0636d5ef0a739ba781ac8fd99783/navigation-ui-ktx-2.3.1/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.navigation:navigation-ui:2.3.1] /root/.gradle/caches/transforms-2/files-2.1/0fb1d2f38cc96bc2707334903379b24a/navigation-ui-2.3.1/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.material:material:1.2.1] /root/.gradle/caches/transforms-2/files-2.1/f345633d67ed04c4acba19838c6ebb20/material-1.2.1/AndroidManifest.xml:17:1-24:12
@@ -44,6 +44,9 @@ MERGED from [androidx.core:core:1.3.2] /root/.gradle/caches/transforms-2/files-2
 MERGED from [androidx.cardview:cardview:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/eaa4184ef95fb51bf07a251cf4549871/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/074abd9060072704ac256d127beff65b/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:17:1-32:12
 MERGED from [androidx.lifecycle:lifecycle-service:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/9641485479a084d93d282b99d4fc3ae0/jetified-lifecycle-service-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.gcacace:signature-pad:1.2.1] /root/.gradle/caches/transforms-2/files-2.1/5a9e8c95d74dba682799bdfa9138ba8b/jetified-signature-pad-1.2.1/AndroidManifest.xml:2:1-13:12
+MERGED from [androidx.databinding:databinding-adapters:4.1.1] /root/.gradle/caches/transforms-2/files-2.1/371b13abbba8dd7131eeec5669d1462d/databinding-adapters-4.1.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.databinding:databinding-runtime:4.1.1] /root/.gradle/caches/transforms-2/files-2.1/927a76d2ddd706c939f18835f5b66a48/databinding-runtime-4.1.1/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/6663aca644434e7fb3ce090058a4a257/jetified-lifecycle-runtime-ktx-2.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/815916781babbaca3c7217cc30e9dd5a/lifecycle-runtime-2.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/09a89028801a7919bbaf66f35954adb2/lifecycle-livedata-2.2.0/AndroidManifest.xml:17:1-24:12
@@ -59,22 +62,24 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] /root/.gradle/caches/tran
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/bda1cb07149af1656253a0bcc08a595a/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/d9126316df8ad7334ba694e709fa7b8b/print-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/29d820506409cfa38b75a3337969ce53/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.databinding:viewbinding:4.1.1] /root/.gradle/caches/transforms-2/files-2.1/a813cb07305b70c7e2fb2b46fb918b52/jetified-viewbinding-4.1.1/AndroidManifest.xml:17:1-22:12
 MERGED from [io.reactivex.rxjava2:rxandroid:2.1.1] /root/.gradle/caches/transforms-2/files-2.1/f4f7dd0e2cfed46772e45707757d09ad/jetified-rxandroid-2.1.1/AndroidManifest.xml:15:1-20:12
+MERGED from [de.hdodenhof:circleimageview:3.1.0] /root/.gradle/caches/transforms-2/files-2.1/f8bd862c361c9a7fe21d3d99ee615cad/jetified-circleimageview-3.1.0/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/baa17257aefd75970d3ac2c84146bf83/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:17:1-24:12
-INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:2:1-33:12
-INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:2:1-33:12
-INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:2:1-33:12
+INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:2:1-34:12
+INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:2:1-34:12
+INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:2:1-34:12
 	package
 		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:3:5-37
 		INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml
 		INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:2:1-33:12
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:2:1-34:12
 		INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:2:1-33:12
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:2:1-34:12
 		INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:2:11-69
@@ -87,7 +92,7 @@ ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManif
 	android:name
 		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:6:22-76
 application
-ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:8:5-31:19
+ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:8:5-32:19
 MERGED from [com.google.android.material:material:1.2.1] /root/.gradle/caches/transforms-2/files-2.1/f345633d67ed04c4acba19838c6ebb20/material-1.2.1/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.2.1] /root/.gradle/caches/transforms-2/files-2.1/f345633d67ed04c4acba19838c6ebb20/material-1.2.1/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /root/.gradle/caches/transforms-2/files-2.1/00b60f8f01b296ff47fb9c9968d271d6/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
@@ -98,50 +103,56 @@ MERGED from [androidx.core:core:1.3.2] /root/.gradle/caches/transforms-2/files-2
 MERGED from [androidx.core:core:1.3.2] /root/.gradle/caches/transforms-2/files-2.1/a510bdf27626ef8d83148f7f7a9f9a33/core-1.3.2/AndroidManifest.xml:24:5-89
 MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/074abd9060072704ac256d127beff65b/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:24:5-30:19
 MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/074abd9060072704ac256d127beff65b/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:24:5-30:19
+MERGED from [com.github.gcacace:signature-pad:1.2.1] /root/.gradle/caches/transforms-2/files-2.1/5a9e8c95d74dba682799bdfa9138ba8b/jetified-signature-pad-1.2.1/AndroidManifest.xml:11:5-20
+MERGED from [com.github.gcacace:signature-pad:1.2.1] /root/.gradle/caches/transforms-2/files-2.1/5a9e8c95d74dba682799bdfa9138ba8b/jetified-signature-pad-1.2.1/AndroidManifest.xml:11:5-20
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/cacf7ff0fa88ad6204736ae1f1598ba0/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/cacf7ff0fa88ad6204736ae1f1598ba0/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+MERGED from [de.hdodenhof:circleimageview:3.1.0] /root/.gradle/caches/transforms-2/files-2.1/f8bd862c361c9a7fe21d3d99ee615cad/jetified-circleimageview-3.1.0/AndroidManifest.xml:9:5-20
+MERGED from [de.hdodenhof:circleimageview:3.1.0] /root/.gradle/caches/transforms-2/files-2.1/f8bd862c361c9a7fe21d3d99ee615cad/jetified-circleimageview-3.1.0/AndroidManifest.xml:9:5-20
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.3.2] /root/.gradle/caches/transforms-2/files-2.1/a510bdf27626ef8d83148f7f7a9f9a33/core-1.3.2/AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:13:9-35
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:14:9-35
 	android:label
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:11:9-41
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:12:9-41
 	android:roundIcon
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:12:9-54
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:13:9-54
 	android:icon
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:10:9-43
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:11:9-43
 	android:allowBackup
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:9:9-35
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:10:9-35
 	android:theme
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:14:9-40
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:15:9-40
+	android:name
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:9:9-46
 activity#com.example.smartperty.landlord.LandlordActivity
-ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:15:9-18:20
+ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:16:9-19:20
 	android:label
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:17:13-60
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:18:13-60
 	android:name
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:16:13-54
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:17:13-54
 activity#com.example.smartperty.tenant.TenantActivity
-ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:19:9-21:61
+ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:20:9-22:61
 	android:label
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:21:13-58
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:22:13-58
 	android:name
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:20:13-50
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:21:13-50
 activity#com.example.smartperty.login.LoginActivity
-ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:22:9-30:20
+ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:23:9-31:20
 	android:label
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:24:13-45
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:25:13-45
 	android:name
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:23:13-48
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:24:13-48
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:25:13-29:29
+ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:26:13-30:29
 action#android.intent.action.MAIN
-ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:26:17-69
+ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:27:17-69
 	android:name
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:26:25-66
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:27:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:28:17-77
+ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:29:17-77
 	android:name
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:28:27-74
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:29:27-74
 uses-sdk
 INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml
@@ -226,6 +237,12 @@ MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] /root/.gradle/caches/tr
 MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/074abd9060072704ac256d127beff65b/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-service:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/9641485479a084d93d282b99d4fc3ae0/jetified-lifecycle-service-2.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-service:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/9641485479a084d93d282b99d4fc3ae0/jetified-lifecycle-service-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.gcacace:signature-pad:1.2.1] /root/.gradle/caches/transforms-2/files-2.1/5a9e8c95d74dba682799bdfa9138ba8b/jetified-signature-pad-1.2.1/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.gcacace:signature-pad:1.2.1] /root/.gradle/caches/transforms-2/files-2.1/5a9e8c95d74dba682799bdfa9138ba8b/jetified-signature-pad-1.2.1/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.databinding:databinding-adapters:4.1.1] /root/.gradle/caches/transforms-2/files-2.1/371b13abbba8dd7131eeec5669d1462d/databinding-adapters-4.1.1/AndroidManifest.xml:22:5-44
+MERGED from [androidx.databinding:databinding-adapters:4.1.1] /root/.gradle/caches/transforms-2/files-2.1/371b13abbba8dd7131eeec5669d1462d/databinding-adapters-4.1.1/AndroidManifest.xml:22:5-44
+MERGED from [androidx.databinding:databinding-runtime:4.1.1] /root/.gradle/caches/transforms-2/files-2.1/927a76d2ddd706c939f18835f5b66a48/databinding-runtime-4.1.1/AndroidManifest.xml:22:5-44
+MERGED from [androidx.databinding:databinding-runtime:4.1.1] /root/.gradle/caches/transforms-2/files-2.1/927a76d2ddd706c939f18835f5b66a48/databinding-runtime-4.1.1/AndroidManifest.xml:22:5-44
 MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/6663aca644434e7fb3ce090058a4a257/jetified-lifecycle-runtime-ktx-2.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/6663aca644434e7fb3ce090058a4a257/jetified-lifecycle-runtime-ktx-2.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/815916781babbaca3c7217cc30e9dd5a/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
@@ -256,8 +273,12 @@ MERGED from [androidx.print:print:1.0.0] /root/.gradle/caches/transforms-2/files
 MERGED from [androidx.print:print:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/d9126316df8ad7334ba694e709fa7b8b/print-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/29d820506409cfa38b75a3337969ce53/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/29d820506409cfa38b75a3337969ce53/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.databinding:viewbinding:4.1.1] /root/.gradle/caches/transforms-2/files-2.1/a813cb07305b70c7e2fb2b46fb918b52/jetified-viewbinding-4.1.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.databinding:viewbinding:4.1.1] /root/.gradle/caches/transforms-2/files-2.1/a813cb07305b70c7e2fb2b46fb918b52/jetified-viewbinding-4.1.1/AndroidManifest.xml:20:5-44
 MERGED from [io.reactivex.rxjava2:rxandroid:2.1.1] /root/.gradle/caches/transforms-2/files-2.1/f4f7dd0e2cfed46772e45707757d09ad/jetified-rxandroid-2.1.1/AndroidManifest.xml:18:5-43
 MERGED from [io.reactivex.rxjava2:rxandroid:2.1.1] /root/.gradle/caches/transforms-2/files-2.1/f4f7dd0e2cfed46772e45707757d09ad/jetified-rxandroid-2.1.1/AndroidManifest.xml:18:5-43
+MERGED from [de.hdodenhof:circleimageview:3.1.0] /root/.gradle/caches/transforms-2/files-2.1/f8bd862c361c9a7fe21d3d99ee615cad/jetified-circleimageview-3.1.0/AndroidManifest.xml:5:5-7:41
+MERGED from [de.hdodenhof:circleimageview:3.1.0] /root/.gradle/caches/transforms-2/files-2.1/f8bd862c361c9a7fe21d3d99ee615cad/jetified-circleimageview-3.1.0/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/baa17257aefd75970d3ac2c84146bf83/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/baa17257aefd75970d3ac2c84146bf83/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
 INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml

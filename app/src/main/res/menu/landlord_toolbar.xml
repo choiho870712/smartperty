@@ -13,11 +13,17 @@
         android:id="@+id/button_add"
         android:icon="@drawable/ic_baseline_add_24"
         android:title="Add"
-        app:showAsAction="always" />
+        app:showAsAction="always"/>
 
     <item
         android:id="@+id/button_setup"
         android:icon="@drawable/ic_setup_icon"
         android:title="@string/toolbar_button_setup"
-        app:showAsAction="always" />
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/button_edit"
+        android:icon="@drawable/ic_baseline_edit_24"
+        android:title="edit"
+        app:showAsAction="always"/>
 </menu>

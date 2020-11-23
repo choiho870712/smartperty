@@ -2,9 +2,7 @@ package com.example.smartperty.landlord
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import androidx.navigation.NavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.smartperty.R
@@ -13,7 +11,6 @@ import com.example.smartperty.utils.GlobalVariables
 import com.example.smartperty.utils.ToolBarUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_tenant.*
-
 
 /**
  * An activity that inflates a layout that has a [BottomNavigationView].

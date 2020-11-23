@@ -18,6 +18,7 @@ import android.widget.Toast
 import com.example.smartperty.tenant.TenantActivity
 import com.example.smartperty.R
 import com.example.smartperty.landlord.LandlordActivity
+import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -96,6 +97,19 @@ class LoginActivity : AppCompatActivity() {
                 loading.visibility = View.VISIBLE
                 loginViewModel.login(username.text.toString(), password.text.toString())
             }
+        }
+
+
+        button_landlord_test.setOnClickListener {
+            setResult(Activity.RESULT_OK)
+            startActivity(Intent(this, LandlordActivity().javaClass))
+            finish()
+        }
+
+        button_tenant_test.setOnClickListener {
+            setResult(Activity.RESULT_OK)
+            startActivity(Intent(this, TenantActivity().javaClass))
+            finish()
         }
     }
 

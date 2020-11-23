@@ -58,4 +58,11 @@ class ToolBarUtils() {
             toolbar.setBackgroundColor(activity.resources.getColor(colorId))
         }
     }
+
+    fun setEditButtonVisibility(visible: Boolean) {
+        val button = toolbar.menu.findItem(R.id.button_edit)
+        activity.runOnUiThread {
+            button.isVisible = visible
+        }
+    }
 }

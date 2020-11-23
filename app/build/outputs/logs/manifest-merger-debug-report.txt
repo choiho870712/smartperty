@@ -18,6 +18,7 @@ MERGED from [androidx.core:core-ktx:1.3.2] /root/.gradle/caches/transforms-2/fil
 MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /root/.gradle/caches/transforms-2/files-2.1/40b4f4d387f9cd495a49facb46c215fd/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/55abb7e948258522d575f8dc4ee0df62/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/4f2ba545a4331b28b7adb2460751a1ff/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.PhilJay:MPAndroidChart:v3.1.0] /root/.gradle/caches/transforms-2/files-2.1/836ae9e948553e937d6131fd376135ec/jetified-MPAndroidChart-v3.1.0/AndroidManifest.xml:2:1-20:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/d2d9a9905fba49314b7b6e18ec91e140/legacy-support-v4-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/8b60fde4d77862462db8051e92db572c/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/71d05889cd3319b59e0a4fc26ad09558/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
@@ -185,6 +186,8 @@ MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /root/.gradl
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/55abb7e948258522d575f8dc4ee0df62/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/4f2ba545a4331b28b7adb2460751a1ff/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/4f2ba545a4331b28b7adb2460751a1ff/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.PhilJay:MPAndroidChart:v3.1.0] /root/.gradle/caches/transforms-2/files-2.1/836ae9e948553e937d6131fd376135ec/jetified-MPAndroidChart-v3.1.0/AndroidManifest.xml:16:5-18:41
+MERGED from [com.github.PhilJay:MPAndroidChart:v3.1.0] /root/.gradle/caches/transforms-2/files-2.1/836ae9e948553e937d6131fd376135ec/jetified-MPAndroidChart-v3.1.0/AndroidManifest.xml:16:5-18:41
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/d2d9a9905fba49314b7b6e18ec91e140/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/d2d9a9905fba49314b7b6e18ec91e140/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/8b60fde4d77862462db8051e92db572c/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44

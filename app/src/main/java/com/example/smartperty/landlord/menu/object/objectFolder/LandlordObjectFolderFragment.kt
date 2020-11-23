@@ -10,6 +10,7 @@ import com.example.smartperty.R
 import com.example.smartperty.landlord.menu.`object`.data.LandlordObjectFolder
 import com.example.smartperty.landlord.menu.`object`.data.LandlordObjectItem
 import com.example.smartperty.landlord.menu.`object`.data.LandlordObjectList
+import com.example.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.landlord_fragment_object_folder.view.*
 
 
@@ -23,6 +24,8 @@ class LandlordObjectFolderFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.landlord_fragment_object_folder, container, false)
+
+        GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
 
         val folder = LandlordObjectFolder(
             title = "folder1",

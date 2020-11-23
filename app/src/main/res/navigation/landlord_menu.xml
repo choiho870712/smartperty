@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_landlordMenuFragment_to_landlordRepairFragment"
             app:destination="@id/landlordRepairFragment" />
+        <action
+            android:id="@+id/action_landlordMenuFragment_to_landlordPersonnelListFragment"
+            app:destination="@id/landlordPersonnelListFragment" />
     </fragment>
     <fragment
         android:id="@+id/landlordObjectFragment"
@@ -54,8 +57,22 @@
     </fragment>
     <fragment
         android:id="@+id/landlordRepairFragment"
-        android:name="com.example.smartperty.landlord.menu.repair.LandlordRepairFragment"
+        android:name="com.example.smartperty.landlord.menu.repair.repairList.LandlordRepairListFragment"
         android:label="@string/landlord_title_repair"
-        tools:layout="@layout/landlord_fragment_repair" />
+        tools:layout="@layout/landlord_fragment_repair_list" >
+        <action
+            android:id="@+id/action_landlordRepairListFragment_to_landlordRepairItemFragment"
+            app:destination="@id/landlordRepairItemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/landlordRepairItemFragment"
+        android:name="com.example.smartperty.landlord.menu.repair.repairItem.LandlordRepairItemFragment"
+        android:label="landlord_fragment_repair_item"
+        tools:layout="@layout/landlord_fragment_repair_item" />
+    <fragment
+        android:id="@+id/landlordPersonnelListFragment"
+        android:name="com.example.smartperty.landlord.menu.personnel.LandlordPersonnelListFragment"
+        android:label="人員"
+        tools:layout="@layout/landlord_fragment_personnel_list" />
 
 </navigation>

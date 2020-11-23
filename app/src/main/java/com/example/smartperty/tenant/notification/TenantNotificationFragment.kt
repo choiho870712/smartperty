@@ -37,7 +37,7 @@ class TenantNotificationFragment : Fragment() {
         root.recycler_notification.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(activity)
-            adapter = TenantNOtificationAdapter(requireActivity(), root, notification.list)
+            adapter = TenantNotificationAdapter(requireActivity(), root, notification.list)
         }
 
         return root

@@ -3,153 +3,126 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/text_sectioned_menu"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:gravity="center_vertical"
-        android:paddingStart="16dp"
-        android:singleLine="true"
-        android:background="@android:color/transparent"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:text="Menu"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <LinearLayout
-        android:id="@+id/layout_object_section"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/text_sectioned_menu"
-        tools:layout_editor_absoluteX="37dp">
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_object_folder"
-            style="@style/card_notification">
-
-            <TextView
-                android:layout_gravity="start"
-                style="@style/text_normal_black_16sp"
-                android:text="物件" />
-
-        </androidx.cardview.widget.CardView>
-
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_contract"
-            style="@style/card_notification">
-
-            <TextView
-                android:layout_gravity="start"
-                style="@style/text_normal_black_16sp"
-                android:text="@string/landlord_title_contract"/>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_data_analysis"
-            style="@style/card_notification">
-
-            <TextView
-                android:layout_gravity="start"
-                style="@style/text_normal_black_16sp"
-                android:text="數據"/>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_finance"
-            style="@style/card_notification">
-
-            <TextView
-                android:layout_gravity="start"
-                style="@style/text_normal_black_16sp"
-                android:text="財務" />
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_repair"
-            style="@style/card_notification">
-
-            <TextView
-                android:layout_gravity="start"
-                style="@style/text_normal_black_16sp"
-                android:text="@string/landlord_title_repair" />
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_personnel"
-            style="@style/card_notification">
-
-            <TextView
-                android:layout_gravity="start"
-                style="@style/text_normal_black_16sp"
-                android:text="人員" />
-
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
+        android:id="@+id/card_object_folder"
+        style="@style/text_normal_black_20sp"
+        android:layout_width="0dp"
+        android:layout_gravity="start"
+        android:text="物件"
+        app:layout_constraintBottom_toTopOf="@+id/card_contract"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/text_sectioned_notification"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:gravity="center_vertical"
-        android:paddingStart="16dp"
-        android:singleLine="true"
-        android:textAllCaps="true"
-        android:background="@android:color/transparent"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:text="提醒"
-        app:layout_constraintTop_toBottomOf="@id/layout_object_section"/>
+        android:id="@+id/card_contract"
+        style="@style/text_normal_black_20sp"
+        android:layout_width="0dp"
+        android:layout_gravity="start"
+        android:text="@string/landlord_title_contract"
+        app:layout_constraintBottom_toTopOf="@+id/card_data_analysis"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_object_folder" />
 
     <TextView
-        android:id="@+id/text_sectioned_dashboard"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:gravity="center_vertical"
-        android:paddingStart="16dp"
-        android:singleLine="true"
-        android:textAllCaps="true"
-        android:background="@android:color/transparent"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:text="Dashboard"
-        app:layout_constraintTop_toBottomOf="@id/text_sectioned_notification"/>
+        android:id="@+id/card_data_analysis"
+        style="@style/text_normal_black_20sp"
+        android:layout_width="0dp"
+        android:layout_gravity="start"
+        android:text="數據"
+        app:layout_constraintBottom_toTopOf="@+id/card_finance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_contract" />
 
     <TextView
-        android:id="@+id/text_sectioned_message"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:gravity="center_vertical"
-        android:paddingStart="16dp"
-        android:singleLine="true"
-        android:textAllCaps="true"
-        android:background="@android:color/transparent"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:text="Massage"
-        app:layout_constraintTop_toBottomOf="@id/text_sectioned_dashboard"/>
+        android:id="@+id/card_finance"
+        style="@style/text_normal_black_20sp"
+        android:layout_width="0dp"
+        android:layout_gravity="start"
+        android:text="財務"
+        app:layout_constraintBottom_toTopOf="@+id/card_repair"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_data_analysis" />
 
     <TextView
-        android:id="@+id/text_sectioned_mySP"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:gravity="center_vertical"
-        android:paddingStart="16dp"
-        android:singleLine="true"
-        android:textAllCaps="true"
-        android:background="@android:color/transparent"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:text="MySP"
-        app:layout_constraintTop_toBottomOf="@id/text_sectioned_message"/>
+        android:id="@+id/card_repair"
+        style="@style/text_normal_black_20sp"
+        android:layout_width="0dp"
+        android:layout_gravity="start"
+        android:text="@string/landlord_title_repair"
+        app:layout_constraintBottom_toTopOf="@+id/card_personnel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_finance" />
+
+    <TextView
+        android:id="@+id/card_personnel"
+        style="@style/text_normal_black_20sp"
+        android:layout_width="0dp"
+        android:layout_gravity="start"
+        android:text="人員"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_repair" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:src="@color/colorSilver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_object_folder" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:src="@color/colorSilver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_contract" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:src="@color/colorSilver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_data_analysis" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:src="@color/colorSilver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_finance" />
+
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:src="@color/colorSilver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_repair" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:src="@color/colorSilver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_personnel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

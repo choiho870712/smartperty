@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2" xmlns:ns2="http://schemas.android.com/tools">
+    <string-array name="tenant_repair_question_class_list">
+        <item>設備</item>
+        <item>租約</item>
+        <item>使用</item>
+    </string-array>
     <attr format="reference" name="animate_relativeTo"/>
     <attr format="reference" name="appBarLayoutStyle"/>
     <attr format="enum" name="arcMode">
@@ -403,10 +408,13 @@
     <color name="cardview_shadow_end_color">#03000000</color>
     <color name="cardview_shadow_start_color">#37000000</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="colorBackground">#FFFFFF</color>
-    <color name="colorMiddleBlue">#83A1BC</color>
-    <color name="colorPrimary">#0fd69d</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorLightBlue">#329FBC</color>
+    <color name="colorPrimary">#D1E7F2</color>
+    <color name="colorPrimaryDark">#3781C5</color>
+    <color name="colorSilver">#909090</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorWhiteSmoke">#eeeef0</color>
     <color name="design_bottom_navigation_shadow_color">#14000000</color>
     <color name="design_dark_default_color_background">#121212</color>
     <color name="design_dark_default_color_error">#CF6679</color>
@@ -452,6 +460,7 @@
     <color name="foreground_material_light">@android:color/black</color>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
+    <color name="ic_launcher_background">#FFFFFF</color>
     <color name="material_blue_grey_800">#ff37474f</color>
     <color name="material_blue_grey_900">#ff263238</color>
     <color name="material_blue_grey_950">#ff21272b</color>
@@ -885,6 +894,7 @@
     <item name="action_bar_spinner" type="id"/>
     <item name="action_menu_divider" type="id"/>
     <item name="action_menu_presenter" type="id"/>
+    <item name="dataBinding" type="id"/>
     <item name="fragment_container_view_tag" type="id"/>
     <item name="ghost_view" type="id"/>
     <item name="ghost_view_holder" type="id"/>
@@ -899,6 +909,8 @@
     <item name="mtrl_motion_snapshot_view" type="id"/>
     <item name="nav_controller_view_tag" type="id"/>
     <item name="nav_host_fragment_container" type="id"/>
+    <item name="onAttachStateChangeListener" type="id"/>
+    <item name="onDateChanged" type="id"/>
     <item name="parent_matrix" type="id"/>
     <item name="progress_circular" type="id"/>
     <item name="progress_horizontal" type="id"/>
@@ -918,6 +930,7 @@
     <item name="tag_unhandled_key_listeners" type="id"/>
     <item name="text" type="id"/>
     <item name="text2" type="id"/>
+    <item name="textWatcher" type="id"/>
     <item name="textinput_counter" type="id"/>
     <item name="textinput_error" type="id"/>
     <item name="textinput_helper_text" type="id"/>
@@ -998,6 +1011,7 @@
     <string name="character_counter_pattern" translatable="false">%1$d/%2$d</string>
     <string name="chip_text">Chip text</string>
     <string name="clear_text_end_icon_content_description">Clear text</string>
+    <string name="dash">-</string>
     <string name="error_icon_content_description">Error</string>
     <string name="exposed_dropdown_menu_content_description">Show dropdown menu</string>
     <string name="fab_transformation_scrim_behavior" translatable="false">com.google.android.material.transformation.FabTransformationScrimBehavior</string>
@@ -1065,8 +1079,8 @@
     <string name="path_password_eye_mask_strike_through" translatable="false">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_eye_mask_visible" translatable="false">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
+    <string name="prompt_email">帳號</string>
+    <string name="prompt_password">密碼</string>
     <string name="search_menu_title">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="tenant_home_greet">Hello~Derek君!</string>
@@ -1111,6 +1125,20 @@
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@color/colorWhite</item>
+    </style>
+    <style name="AppTheme.SearchView" parent="Widget.AppCompat.SearchView">
+        <item name="searchIcon">@drawable/ic_search_blue_24dp</item>
+        <item name="closeIcon">@drawable/ic_search_blue_24dp</item>
+        <item name="queryBackground">@drawable/radius_gray_text_box</item>
+        <item name="goIcon">@drawable/ic_search_blue_24dp</item>
+        <item name="queryHint">搜尋</item>
+    </style>
+    <style name="AppTheme.Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="searchViewStyle">@style/AppTheme.SearchView</item>
+        <item name="homeAsUpIndicator">@drawable/ic_baseline_arrow_back_ios_24</item>
+        <item name="android:editTextColor">@color/colorBlack</item>
+        <item name="android:textColorHint">@color/colorSilver</item>
     </style>
     <style name="Base.AlertDialog.AppCompat" parent="android:Widget">
         <item name="android:layout">@layout/abc_alert_dialog_material</item>
@@ -4682,15 +4710,54 @@
     <style name="Widget.Support.CoordinatorLayout" parent="android:Widget">
         <item name="statusBarBackground">#000000</item>
     </style>
+    <style name="button_radius_primary" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@drawable/radius_button</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="button_rectangle_primary" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@drawable/rectangle_button</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="card_80dp" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="cardElevation">1dp</item>
+    </style>
+    <style name="card_notification" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="cardElevation">1dp</item>
+    </style>
+    <style name="edit_text_normal_black_16sp" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:background">@drawable/square_text_box</item>
+        <item name="android:gravity">top|left</item>
+    </style>
     <style name="tenant_home_select_button_icon" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">10</item>
     </style>
     <style name="tenant_home_select_button_layout" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:background">@color/colorBackground</item>
-        <item name="android:layout_width">80dp</item>
-        <item name="android:layout_height">100dp</item>
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">70dp</item>
         <item name="android:orientation">vertical</item>
     </style>
     <style name="tenant_home_select_button_text" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -4698,10 +4765,58 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/colorMiddleBlue</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:singleLine">true</item>
         <item name="android:textStyle">bold</item>
+    </style>
+    <style name="text_normal_black_12sp" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="text_normal_black_14sp" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="text_normal_black_16sp" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="text_normal_black_20sp" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="text_normal_black_24sp" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="text_normal_gray_16sp" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorSilver</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_gravity">center</item>
     </style>
     <declare-styleable name="ActionBar">
         <!-- The type of navigation to use. -->
@@ -5826,6 +5941,12 @@
     <attr format="reference" name="checkedChip"/>
 
   </declare-styleable>
+    <declare-styleable name="CircleImageView">
+        <attr format="dimension" name="civ_border_width"/>
+        <attr format="color" name="civ_border_color"/>
+        <attr format="boolean" name="civ_border_overlay"/>
+        <attr format="color" name="civ_circle_background_color"/>
+    </declare-styleable>
     <declare-styleable name="CollapsingToolbarLayout">
     <!--  Specifies extra space on the start, top, end and bottom
           sides of the the expanded title text. Margin values should be positive. -->
@@ -7005,6 +7126,7 @@
          -->
     <attr name="shapeAppearanceOverlay"/>
   </declare-styleable>
+    <declare-styleable name="SignaturePad"><attr format="dimension" name="penMinWidth"/><attr format="dimension" name="penMaxWidth"/><attr format="color" name="penColor"/><attr format="float" name="velocityFilterWeight"/><attr format="boolean" name="clearOnDoubleClick"/></declare-styleable>
     <declare-styleable name="Slider">
     <attr name="android:value"/>
     <attr name="android:valueFrom"/>

@@ -62,6 +62,7 @@ animator nav_default_enter_anim
 animator nav_default_exit_anim
 animator nav_default_pop_enter_anim
 animator nav_default_pop_exit_anim
+array tenant_repair_question_class_list
 attr action
 attr actionBarDivider
 attr actionBarItemBackground
@@ -220,6 +221,11 @@ attr chipStrokeWidth
 attr chipStyle
 attr chipSurfaceColor
 attr circleRadius
+attr civ_border_color
+attr civ_border_overlay
+attr civ_border_width
+attr civ_circle_background_color
+attr clearOnDoubleClick
 attr clickAction
 attr closeIcon
 attr closeIconEnabled
@@ -670,6 +676,9 @@ attr passwordToggleTint
 attr passwordToggleTintMode
 attr pathMotionArc
 attr path_percent
+attr penColor
+attr penMaxWidth
+attr penMinWidth
 attr percentHeight
 attr percentWidth
 attr percentX
@@ -900,6 +909,7 @@ attr uri
 attr useCompatPadding
 attr useMaterialThemeColors
 attr values
+attr velocityFilterWeight
 attr verticalOffset
 attr viewInflaterClass
 attr visibilityMode
@@ -974,10 +984,13 @@ color cardview_shadow_end_color
 color cardview_shadow_start_color
 color checkbox_themeable_attribute_color
 color colorAccent
-color colorBackground
-color colorMiddleBlue
+color colorBlack
+color colorLightBlue
 color colorPrimary
 color colorPrimaryDark
+color colorSilver
+color colorWhite
+color colorWhiteSmoke
 color design_bottom_navigation_shadow_color
 color design_box_stroke_color
 color design_dark_default_color_background
@@ -1026,6 +1039,7 @@ color foreground_material_dark
 color foreground_material_light
 color highlighted_text_material_dark
 color highlighted_text_material_light
+color ic_launcher_background
 color material_blue_grey_800
 color material_blue_grey_900
 color material_blue_grey_950
@@ -1587,8 +1601,12 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable ic_baseline_add_24
+drawable ic_baseline_add_a_photo_24
+drawable ic_baseline_arrow_back_ios_24
+drawable ic_baseline_edit_24
 drawable ic_baseline_groups_24
 drawable ic_baseline_notifications_24
+drawable ic_baseline_video_call_24
 drawable ic_baseline_wb_sunny_24
 drawable ic_chat_24dp
 drawable ic_contract_icon
@@ -1613,9 +1631,12 @@ drawable ic_personnal_icon
 drawable ic_rent_and_utilities_icon
 drawable ic_repair
 drawable ic_search_24dp
+drawable ic_search_blue_24dp
 drawable ic_settings_24dp
 drawable ic_setup_icon
 drawable ic_test_image
+drawable ironman
+drawable marker2
 drawable material_ic_calendar_black_24dp
 drawable material_ic_clear_black_24dp
 drawable material_ic_edit_black_24dp
@@ -1645,7 +1666,17 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
-drawable round_button
+drawable radius_button
+drawable radius_gray_text_box
+drawable rectangle_button
+drawable rectangle_marker
+drawable rectangle_marker_left
+drawable rectangle_marker_right
+drawable rectangle_marker_top
+drawable rectangle_marker_top_left
+drawable rectangle_marker_top_right
+drawable square_text_box
+drawable star
 drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -1712,9 +1743,11 @@ id action_image
 id action_landlordContractFragment_to_landlordObjectItemFragment
 id action_landlordMenuFragment_to_landlordContractFragment
 id action_landlordMenuFragment_to_landlordObjectFolderFragment
+id action_landlordMenuFragment_to_landlordPersonnelListFragment
 id action_landlordMenuFragment_to_landlordRepairFragment
 id action_landlordObjectFolderFragment_to_landlordObjectListFragment
 id action_landlordObjectListFragment_to_landlordObjectItemFragment
+id action_landlordRepairListFragment_to_landlordRepairItemFragment
 id action_menu_divider
 id action_menu_presenter
 id action_mode_bar
@@ -1728,6 +1761,8 @@ id action_tenantHomeFragment_to_tenantEquipmentManualFragment
 id action_tenantHomeFragment_to_tenantHosingRulesFragment
 id action_tenantHomeFragment_to_tenantRentAndUtilitiesFragment
 id action_tenantHomeFragment_to_tenantRepairFragment
+id action_tenantHomeFragment_to_tenantSetupFragment
+id action_tenantSetupFragment_to_tenantHelpFragment
 id action_text
 id actions
 id activity_chooser_view_content
@@ -1754,17 +1789,28 @@ id bottom
 id bottom_nav
 id bounce
 id button
-id button2
-id button3
 id buttonPanel
 id button_add
+id button_clear_tenant_contract_signature
+id button_edit
 id button_home_attractions_nearby
 id button_home_contract
 id button_home_equipment_manual
 id button_home_housing_rules
 id button_home_rent_and_utilities
 id button_home_repair
+id button_landlord_test
+id button_login_submit
 id button_setup
+id button_submit_tenant_contract_signature
+id button_tenant_setup_expiration
+id button_tenant_setup_help
+id button_tenant_setup_language
+id button_tenant_setup_logout
+id button_tenant_setup_person_info
+id button_tenant_setup_privacy
+id button_tenant_setup_score
+id button_tenant_test
 id cache_measures
 id cancel_action
 id cancel_button
@@ -1780,6 +1826,8 @@ id center_horizontal
 id center_vertical
 id chain
 id chains
+id chart1
+id checkBox
 id checkbox
 id checked
 id chip
@@ -1793,6 +1841,7 @@ id clip_horizontal
 id clip_vertical
 id collapseActionView
 id confirm_button
+id constraintLayout
 id container
 id content
 id contentPanel
@@ -1801,6 +1850,7 @@ id cos
 id custom
 id customPanel
 id cut
+id dataBinding
 id date_picker_actions
 id decelerate
 id decelerateAndComplete
@@ -1858,9 +1908,15 @@ id group_divider
 id grouping
 id groups
 id guideline
+id guideline10
 id guideline2
 id guideline3
 id guideline4
+id guideline5
+id guideline6
+id guideline7
+id guideline8
+id guideline9
 id hideable
 id home
 id homeAsUp
@@ -1871,10 +1927,28 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imageButton
+id imageButton2
+id imageView
+id imageView10
+id imageView11
+id imageView12
+id imageView13
+id imageView14
+id imageView15
+id imageView16
+id imageView17
+id imageView4
+id imageView5
+id imageView6
+id imageView7
+id imageView8
+id imageView9
 id image_card
 id image_equipment
 id image_home_weather
 id image_logo
+id image_userIcon_shopFragment
 id include_image_card
 id info
 id invisible
@@ -1889,7 +1963,9 @@ id landlordMenuFragment
 id landlordObjectFolderFragment
 id landlordObjectFragment
 id landlordObjectListFragment
+id landlordPersonnelListFragment
 id landlordRepairFragment
+id landlordRepairItemFragment
 id landlord_chat
 id landlord_group
 id landlord_home
@@ -1898,7 +1974,6 @@ id landlord_notification
 id largeLabel
 id layout
 id layout_image_card
-id layout_object_section
 id left
 id line1
 id line3
@@ -1954,6 +2029,8 @@ id notification_main_column
 id notification_main_column_container
 id off
 id on
+id onAttachStateChangeListener
+id onDateChanged
 id outline
 id packed
 id parallax
@@ -1975,12 +2052,18 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id recycler_chat
 id recycler_contract_list
 id recycler_equipment_manual
+id recycler_image
 id recycler_notification
 id recycler_object_folder
 id recycler_object_list
-id register
+id recycler_personnel_accountant
+id recycler_personnel_manager
+id recycler_personnel_plumber
+id recycler_repair
+id recycler_repair_list
 id reverseSawtooth
 id right
 id right_icon
@@ -2013,6 +2096,7 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id signaturePad
 id sin
 id skipCollapsed
 id slide
@@ -2022,6 +2106,7 @@ id snackbar_text
 id snap
 id snapMargins
 id spacer
+id spinner
 id spline
 id split_action_bar
 id spread
@@ -2042,6 +2127,7 @@ id stretch
 id submenuarrow
 id submit_area
 id tabMode
+id tab_layout_tenant_contract
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
 id tag_accessibility_heading
@@ -2055,11 +2141,13 @@ id tenantChatFragment
 id tenantContractFragment
 id tenantEquipmentManualFragment
 id tenantEquipmentManualPdfFragment
+id tenantHelpFragment
 id tenantHomeFragment
 id tenantHosingRulesFragment
 id tenantNotificationFragment
 id tenantRentAndUtilitiesFragment
 id tenantRepairFragment
+id tenantSetupFragment
 id tenant_chat
 id tenant_home
 id tenant_notification
@@ -2085,30 +2173,86 @@ id textView17
 id textView18
 id textView19
 id textView2
+id textView20
+id textView21
+id textView22
+id textView23
+id textView24
+id textView25
+id textView26
+id textView27
+id textView28
+id textView29
 id textView3
+id textView30
+id textView31
+id textView32
+id textView33
+id textView34
+id textView35
+id textView36
+id textView37
+id textView38
+id textView39
 id textView4
+id textView40
+id textView41
+id textView42
+id textView43
+id textView44
+id textView45
+id textView46
+id textView47
+id textView48
+id textView49
 id textView5
+id textView50
+id textView51
+id textView52
+id textView53
+id textView54
+id textView55
+id textView56
+id textView57
+id textView58
+id textView59
 id textView6
+id textView60
+id textView61
+id textView62
+id textView63
 id textView7
 id textView8
 id textView9
+id textWatcher
 id text_amount
 id text_equipment
 id text_home_greet
 id text_home_message
+id text_home_message2
 id text_home_temperature
 id text_input_end_icon
 id text_input_start_icon
 id text_login_about_us
 id text_login_policy
 id text_message
+id text_name
+id text_object_folder_address
+id text_object_folder_information
+id text_object_folder_rent_rate
 id text_object_folder_title
+id text_object_list_address
+id text_object_list_information
+id text_object_list_tenant
 id text_object_list_title
-id text_sectioned_dashboard
-id text_sectioned_menu
-id text_sectioned_message
-id text_sectioned_mySP
-id text_sectioned_notification
+id text_personnel_list_name
+id text_repair_date
+id text_repair_list_address
+id text_repair_list_content
+id text_repair_list_date
+id text_repair_spend
+id text_repair_status
+id text_repair_title
 id text_sectioned_title_equipment
 id text_sectioned_title_menu
 id textinput_counter
@@ -2134,6 +2278,7 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tvContent
 id unchecked
 id uniform
 id unlabeled
@@ -2141,6 +2286,7 @@ id up
 id useLogo
 id username
 id view_offset_helper
+id viewpager_tenant_contract
 id visible
 id visible_removing_fragment_view_tag
 id withText
@@ -2213,6 +2359,7 @@ layout activity_landlord
 layout activity_login
 layout activity_tenant
 layout custom_dialog
+layout custom_marker_view
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -2228,8 +2375,14 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout landlord_card_chat
+layout landlord_card_notification
 layout landlord_card_object_folder
+layout landlord_card_object_item_image
+layout landlord_card_object_item_repair
 layout landlord_card_object_list
+layout landlord_card_personnel_list
+layout landlord_card_repair_list
 layout landlord_fragment_chat_main
 layout landlord_fragment_contract
 layout landlord_fragment_group_main
@@ -2239,7 +2392,9 @@ layout landlord_fragment_notification_main
 layout landlord_fragment_object_folder
 layout landlord_fragment_object_item
 layout landlord_fragment_object_list
-layout landlord_fragment_repair
+layout landlord_fragment_personnel_list
+layout landlord_fragment_repair_item
+layout landlord_fragment_repair_list
 layout landlord_section_menu
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
@@ -2294,13 +2449,17 @@ layout tenant_card_notification
 layout tenant_fragment_attractions_nearby
 layout tenant_fragment_chat_main
 layout tenant_fragment_contract
+layout tenant_fragment_contract_page1
+layout tenant_fragment_contract_page2
 layout tenant_fragment_equipment_manual
 layout tenant_fragment_equipment_manual_pdf
+layout tenant_fragment_help
 layout tenant_fragment_home_main
 layout tenant_fragment_housing_rules
 layout tenant_fragment_notification_main
 layout tenant_fragment_rent_and_utilities
 layout tenant_fragment_repair
+layout tenant_fragment_setup
 layout tenant_section_equipment
 layout test_action_chip
 layout test_chip_zero_corner_radius
@@ -2370,6 +2529,7 @@ string character_counter_overflowed_content_description
 string character_counter_pattern
 string chip_text
 string clear_text_end_icon_content_description
+string dash
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
@@ -2468,6 +2628,8 @@ style Animation_AppCompat_Tooltip
 style Animation_Design_BottomSheetDialog
 style Animation_MaterialComponents_BottomSheetDialog
 style AppTheme
+style AppTheme_SearchView
+style AppTheme_Toolbar
 style Base_AlertDialog_AppCompat
 style Base_AlertDialog_AppCompat_Light
 style Base_Animation_AppCompat_Dialog
@@ -3157,9 +3319,20 @@ style Widget_MaterialComponents_Toolbar_PrimarySurface
 style Widget_MaterialComponents_Toolbar_Surface
 style Widget_MaterialComponents_Tooltip
 style Widget_Support_CoordinatorLayout
+style button_radius_primary
+style button_rectangle_primary
+style card_80dp
+style card_notification
+style edit_text_normal_black_16sp
 style tenant_home_select_button_icon
 style tenant_home_select_button_layout
 style tenant_home_select_button_text
+style text_normal_black_12sp
+style text_normal_black_14sp
+style text_normal_black_16sp
+style text_normal_black_20sp
+style text_normal_black_24sp
+style text_normal_gray_16sp
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity
 styleable ActionMenuItemView android_minWidth
@@ -3187,6 +3360,7 @@ styleable ButtonBarLayout allowStacking
 styleable CardView android_minWidth android_minHeight cardBackgroundColor cardCornerRadius cardElevation cardMaxElevation cardPreventCornerOverlap cardUseCompatPadding contentPadding contentPaddingBottom contentPaddingLeft contentPaddingRight contentPaddingTop
 styleable Chip android_textAppearance android_textColor android_ellipsize android_maxWidth android_text android_checkable checkedIcon checkedIconEnabled checkedIconTint checkedIconVisible chipBackgroundColor chipCornerRadius chipEndPadding chipIcon chipIconEnabled chipIconSize chipIconTint chipIconVisible chipMinHeight chipMinTouchTargetSize chipStartPadding chipStrokeColor chipStrokeWidth chipSurfaceColor closeIcon closeIconEnabled closeIconEndPadding closeIconSize closeIconStartPadding closeIconTint closeIconVisible ensureMinTouchTargetSize hideMotionSpec iconEndPadding iconStartPadding rippleColor shapeAppearance shapeAppearanceOverlay showMotionSpec textEndPadding textStartPadding
 styleable ChipGroup checkedChip chipSpacing chipSpacingHorizontal chipSpacingVertical selectionRequired singleLine singleSelection
+styleable CircleImageView civ_border_color civ_border_overlay civ_border_width civ_circle_background_color
 styleable CollapsingToolbarLayout collapsedTitleGravity collapsedTitleTextAppearance contentScrim expandedTitleGravity expandedTitleMargin expandedTitleMarginBottom expandedTitleMarginEnd expandedTitleMarginStart expandedTitleMarginTop expandedTitleTextAppearance maxLines scrimAnimationDuration scrimVisibleHeightTrigger statusBarScrim title titleEnabled toolbarId
 styleable CollapsingToolbarLayout_Layout layout_collapseMode layout_collapseParallaxMultiplier
 styleable ColorStateListItem android_color android_alpha alpha
@@ -3272,6 +3446,7 @@ styleable ScrollingViewBehavior_Layout behavior_overlapTop
 styleable SearchView android_focusable android_maxWidth android_inputType android_imeOptions closeIcon commitIcon defaultQueryHint goIcon iconifiedByDefault layout queryBackground queryHint searchHintIcon searchIcon submitBackground suggestionRowLayout voiceIcon
 styleable ShapeAppearance cornerFamily cornerFamilyBottomLeft cornerFamilyBottomRight cornerFamilyTopLeft cornerFamilyTopRight cornerSize cornerSizeBottomLeft cornerSizeBottomRight cornerSizeTopLeft cornerSizeTopRight
 styleable ShapeableImageView shapeAppearance shapeAppearanceOverlay strokeColor strokeWidth
+styleable SignaturePad clearOnDoubleClick penColor penMaxWidth penMinWidth velocityFilterWeight
 styleable Slider android_enabled android_value android_stepSize android_valueFrom android_valueTo haloColor haloRadius labelBehavior labelStyle thumbColor thumbElevation thumbRadius tickColor tickColorActive tickColorInactive trackColor trackColorActive trackColorInactive trackHeight
 styleable Snackbar snackbarButtonStyle snackbarStyle snackbarTextViewStyle
 styleable SnackbarLayout android_maxWidth actionTextColorAlpha animationMode backgroundOverlayColorAlpha backgroundTint backgroundTintMode elevation maxActionInlineWidth

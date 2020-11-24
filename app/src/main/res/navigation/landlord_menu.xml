@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_landlordMenuFragment_to_landlordPersonnelListFragment"
             app:destination="@id/landlordPersonnelListFragment" />
+        <action
+            android:id="@+id/action_landlordMenuFragment_to_landlordDataAnalysisFragment"
+            app:destination="@id/landlordDataAnalysisFragment" />
     </fragment>
     <fragment
         android:id="@+id/landlordObjectFragment"
@@ -74,5 +77,10 @@
         android:name="com.example.smartperty.landlord.menu.personnel.LandlordPersonnelListFragment"
         android:label="人員"
         tools:layout="@layout/landlord_fragment_personnel_list" />
+    <fragment
+        android:id="@+id/landlordDataAnalysisFragment"
+        android:name="com.example.smartperty.landlord.menu.dataAnalysis.LandlordDataAnalysisFragment"
+        android:label="數據"
+        tools:layout="@layout/landlord_fragment_data_analysis" />
 
 </navigation>

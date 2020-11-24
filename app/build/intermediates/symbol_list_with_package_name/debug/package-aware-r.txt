@@ -1600,6 +1600,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable fade_red
 drawable ic_baseline_add_24
 drawable ic_baseline_add_a_photo_24
 drawable ic_baseline_arrow_back_ios_24
@@ -1742,6 +1743,7 @@ id action_divider
 id action_image
 id action_landlordContractFragment_to_landlordObjectItemFragment
 id action_landlordMenuFragment_to_landlordContractFragment
+id action_landlordMenuFragment_to_landlordDataAnalysisFragment
 id action_landlordMenuFragment_to_landlordObjectFolderFragment
 id action_landlordMenuFragment_to_landlordPersonnelListFragment
 id action_landlordMenuFragment_to_landlordRepairFragment
@@ -1958,6 +1960,7 @@ id jumpToEnd
 id jumpToStart
 id labeled
 id landlordContractFragment
+id landlordDataAnalysisFragment
 id landlordGroupFragment
 id landlordMenuFragment
 id landlordObjectFolderFragment
@@ -2385,6 +2388,7 @@ layout landlord_card_personnel_list
 layout landlord_card_repair_list
 layout landlord_fragment_chat_main
 layout landlord_fragment_contract
+layout landlord_fragment_data_analysis
 layout landlord_fragment_group_main
 layout landlord_fragment_home_main
 layout landlord_fragment_menu_main

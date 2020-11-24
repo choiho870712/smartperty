@@ -5,9 +5,6 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.SeekBar
-import android.widget.SeekBar.OnSeekBarChangeListener
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager

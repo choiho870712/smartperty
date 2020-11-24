@@ -735,10 +735,10 @@ library {
   maven_library {
     groupId: "com.github.PhilJay"
     artifactId: "MPAndroidChart"
-    version: "v3.0.3"
+    version: "v3.1.0"
   }
   digests {
-    sha256: "\233y\355\005~\\\253p\236\247\265\363@9\331\344_\2048\233\242\264\vK\364y\322[\375wg\233"
+    sha256: "V\315\021<1\2330\034e\a\216\310\242o/\217g\252N\354\215i\023\311\360\n\326,5C\v\321"
   }
 }
 library {
@@ -749,6 +749,66 @@ library {
   }
   digests {
     sha256: "\310\373H9\005M(\v03\370\000\321\365\251}\342\360(\353\213\242\353E\212\322\207\3456\363\362_"
+  }
+}
+library {
+  maven_library {
+    groupId: "de.hdodenhof"
+    artifactId: "circleimageview"
+    version: "3.1.0"
+  }
+  digests {
+    sha256: "\216\231e\265@r\356\025\220t\245]\362\026\341}Zb,\224\316\221^\363\021\261\241\363&`\307\373"
+  }
+}
+library {
+  maven_library {
+    groupId: "com.github.gcacace"
+    artifactId: "signature-pad"
+    version: "1.2.1"
+  }
+  digests {
+    sha256: "\203\306\320k\351\333$\227#5\230\341#\3758\277\342[\207<Im\231\337}.S\270\003\236\024\373"
+  }
+}
+library {
+  maven_library {
+    groupId: "androidx.databinding"
+    artifactId: "databinding-common"
+    version: "4.1.1"
+  }
+  digests {
+    sha256: "q\310\214\227h\277\024\300\220x\360\213p\233[\217\017\253\3421\264\345\036Q\216m\3233Q6\303\210"
+  }
+}
+library {
+  maven_library {
+    groupId: "androidx.databinding"
+    artifactId: "databinding-runtime"
+    version: "4.1.1"
+  }
+  digests {
+    sha256: "p\227\005hE\342\272\230z`\340.\003F\232\355F\207\202E\031\022_vl\220\377\005\254]\ae"
+  }
+}
+library {
+  maven_library {
+    groupId: "androidx.databinding"
+    artifactId: "databinding-adapters"
+    version: "4.1.1"
+  }
+  digests {
+    sha256: "\307\001N&z\270\250\025\364d\263\267JK|\261d\027\223\273\rR\341\332\275#\017\347\354\341\2323"
+  }
+}
+library {
+  maven_library {
+    groupId: "androidx.databinding"
+    artifactId: "viewbinding"
+    version: "4.1.1"
+  }
+  digests {
+    sha256: "2c\032\306\n<\242\232\276\254Nk\356j\037\370r\222\346\250\030\354\264b\276\235\003drj\335^"
   }
 }
 library_dependencies {
@@ -1173,6 +1233,32 @@ library_dependencies {
   library_index: 71
   library_dep_index: 69
 }
+library_dependencies {
+  library_index: 73
+  library_dep_index: 6
+}
+library_dependencies {
+  library_index: 76
+  library_dep_index: 77
+  library_dep_index: 78
+  library_dep_index: 79
+}
+library_dependencies {
+  library_index: 78
+  library_dep_index: 80
+  library_dep_index: 13
+  library_dep_index: 12
+  library_dep_index: 77
+}
+library_dependencies {
+  library_index: 80
+  library_dep_index: 6
+}
+library_dependencies {
+  library_index: 79
+  library_dep_index: 77
+  library_dep_index: 78
+}
 module_dependencies {
   module_name: "base"
   dependency_index: 0
@@ -1187,6 +1273,8 @@ module_dependencies {
   dependency_index: 73
   dependency_index: 74
   dependency_index: 43
+  dependency_index: 75
+  dependency_index: 76
   dependency_index: 57
   dependency_index: 27
   dependency_index: 59

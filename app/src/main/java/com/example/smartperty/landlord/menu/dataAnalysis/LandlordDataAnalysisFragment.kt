@@ -27,8 +27,7 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import com.github.mikephil.charting.utils.Utils
 import kotlinx.android.synthetic.main.landlord_fragment_data_analysis.view.*
 
-
-class LandlordDataAnalysisFragment : Fragment(), OnChartValueSelectedListener  {
+class LandlordDataAnalysisFragment : Fragment(), OnChartValueSelectedListener {
 
     private lateinit var root: View
     private lateinit var chart: LineChart

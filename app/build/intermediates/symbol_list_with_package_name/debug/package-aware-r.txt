@@ -1623,6 +1623,12 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_logo
 drawable ic_menu_24dp
+drawable ic_menu_icon_contract
+drawable ic_menu_icon_data_analysis
+drawable ic_menu_icon_object
+drawable ic_menu_icon_repair
+drawable ic_menu_item_finance
+drawable ic_menu_item_personnel
 drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
@@ -1940,6 +1946,12 @@ id imageView14
 id imageView15
 id imageView16
 id imageView17
+id imageView18
+id imageView19
+id imageView2
+id imageView20
+id imageView21
+id imageView3
 id imageView4
 id imageView5
 id imageView6
@@ -3328,6 +3340,8 @@ style button_rectangle_primary
 style card_80dp
 style card_notification
 style edit_text_normal_black_16sp
+style landlord_menu_icon
+style landlord_menu_text
 style tenant_home_select_button_icon
 style tenant_home_select_button_layout
 style tenant_home_select_button_text

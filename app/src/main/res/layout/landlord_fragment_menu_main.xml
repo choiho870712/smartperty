@@ -5,77 +5,113 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        style="@style/landlord_menu_icon"
+        android:id="@+id/imageView2"
+        app:layout_constraintBottom_toTopOf="@+id/imageView8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/card_object_folder"
+        app:srcCompat="@drawable/ic_menu_icon_object" />
+
+    <ImageView
+        style="@style/landlord_menu_icon"
+        android:id="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/card_contract"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/card_contract"
+        app:srcCompat="@drawable/ic_menu_icon_contract" />
+
+    <ImageView
+        style="@style/landlord_menu_icon"
+        android:id="@+id/imageView18"
+        app:layout_constraintBottom_toTopOf="@+id/card_finance"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_contract"
+        app:srcCompat="@drawable/ic_menu_icon_data_analysis" />
+
+    <ImageView
+        style="@style/landlord_menu_icon"
+        android:id="@+id/imageView19"
+        app:layout_constraintBottom_toBottomOf="@+id/card_finance"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/card_finance"
+        app:srcCompat="@drawable/ic_menu_item_finance" />
+
+    <ImageView
+        style="@style/landlord_menu_icon"
+        android:id="@+id/imageView20"
+        app:layout_constraintBottom_toBottomOf="@+id/card_repair"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/card_repair"
+        app:srcCompat="@drawable/ic_menu_icon_repair" />
+
+    <ImageView
+        android:id="@+id/imageView21"
+        style="@style/landlord_menu_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/card_personnel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/card_personnel"
+        app:srcCompat="@drawable/ic_menu_item_personnel" />
+
     <TextView
         android:id="@+id/card_object_folder"
-        style="@style/text_normal_black_20sp"
-        android:layout_width="0dp"
-        android:layout_gravity="start"
+        style="@style/landlord_menu_text"
         android:text="物件"
         app:layout_constraintBottom_toTopOf="@+id/card_contract"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/card_contract"
-        style="@style/text_normal_black_20sp"
-        android:layout_width="0dp"
-        android:layout_gravity="start"
+        style="@style/landlord_menu_text"
         android:text="@string/landlord_title_contract"
         app:layout_constraintBottom_toTopOf="@+id/card_data_analysis"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/card_object_folder" />
 
     <TextView
         android:id="@+id/card_data_analysis"
-        style="@style/text_normal_black_20sp"
-        android:layout_width="0dp"
-        android:layout_gravity="start"
+        style="@style/landlord_menu_text"
         android:text="數據"
         app:layout_constraintBottom_toTopOf="@+id/card_finance"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView18"
         app:layout_constraintTop_toBottomOf="@+id/card_contract" />
 
     <TextView
         android:id="@+id/card_finance"
-        style="@style/text_normal_black_20sp"
-        android:layout_width="0dp"
-        android:layout_gravity="start"
+        style="@style/landlord_menu_text"
         android:text="財務"
         app:layout_constraintBottom_toTopOf="@+id/card_repair"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView19"
         app:layout_constraintTop_toBottomOf="@+id/card_data_analysis" />
 
     <TextView
         android:id="@+id/card_repair"
-        style="@style/text_normal_black_20sp"
-        android:layout_width="0dp"
-        android:layout_gravity="start"
+        style="@style/landlord_menu_text"
         android:text="@string/landlord_title_repair"
         app:layout_constraintBottom_toTopOf="@+id/card_personnel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView20"
         app:layout_constraintTop_toBottomOf="@+id/card_finance" />
 
     <TextView
         android:id="@+id/card_personnel"
-        style="@style/text_normal_black_20sp"
-        android:layout_width="0dp"
-        android:layout_gravity="start"
+        style="@style/landlord_menu_text"
         android:text="人員"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView21"
         app:layout_constraintTop_toBottomOf="@+id/card_repair" />
 
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:src="@color/colorSilver"
+        android:src="@color/colorWhiteSmoke"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_object_folder" />
@@ -84,7 +120,7 @@
         android:id="@+id/imageView13"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:src="@color/colorSilver"
+        android:src="@color/colorWhiteSmoke"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_contract" />
@@ -93,7 +129,7 @@
         android:id="@+id/imageView14"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:src="@color/colorSilver"
+        android:src="@color/colorWhiteSmoke"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_data_analysis" />
@@ -102,7 +138,7 @@
         android:id="@+id/imageView15"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:src="@color/colorSilver"
+        android:src="@color/colorWhiteSmoke"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_finance" />
@@ -111,7 +147,7 @@
         android:id="@+id/imageView16"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:src="@color/colorSilver"
+        android:src="@color/colorWhiteSmoke"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_repair" />
@@ -120,7 +156,7 @@
         android:id="@+id/imageView17"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:src="@color/colorSilver"
+        android:src="@color/colorWhiteSmoke"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_personnel" />

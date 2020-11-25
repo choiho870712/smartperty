@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/tenantHomeFragment"
-        android:name="com.example.smartperty.tenant.home.TenantHomeFragment"
+        android:name="com.smartperty.smartperty.tenant.home.TenantHomeFragment"
         tools:layout="@layout/tenant_fragment_home_main">
         <action
             android:id="@+id/action_tenantHomeFragment_to_tenantHosingRulesFragment"
@@ -33,17 +33,17 @@
     </fragment>
     <fragment
         android:id="@+id/tenantHosingRulesFragment"
-        android:name="com.example.smartperty.tenant.home.hosingRules.TenantHosingRulesFragment"
+        android:name="com.smartperty.smartperty.tenant.home.hosingRules.TenantHosingRulesFragment"
         android:label="@string/tenant_home_title_housing_rules"
         tools:layout="@layout/tenant_fragment_housing_rules" />
     <fragment
         android:id="@+id/tenantRentAndUtilitiesFragment"
-        android:name="com.example.smartperty.tenant.home.rentAndUtilities.TenantRentAndUtilitiesFragment"
+        android:name="com.smartperty.smartperty.tenant.home.rentAndUtilities.TenantRentAndUtilitiesFragment"
         android:label="@string/tenant_home_title_rent_and_utilities"
         tools:layout="@layout/tenant_fragment_rent_and_utilities" />
     <fragment
         android:id="@+id/tenantEquipmentManualFragment"
-        android:name="com.example.smartperty.tenant.home.equipmentManual.TenantEquipmentManualFragment"
+        android:name="com.smartperty.smartperty.tenant.home.equipmentManual.TenantEquipmentManualFragment"
         android:label="@string/tenant_home_title_equipment_manual"
         tools:layout="@layout/tenant_fragment_equipment_manual">
         <action
@@ -52,27 +52,27 @@
     </fragment>
     <fragment
         android:id="@+id/tenantContractFragment"
-        android:name="com.example.smartperty.tenant.home.contract.TenantContractFragment"
+        android:name="com.smartperty.smartperty.tenant.home.contract.TenantContractFragment"
         android:label="@string/tenant_home_title_contract"
         tools:layout="@layout/tenant_fragment_contract" />
     <fragment
         android:id="@+id/tenantAttractionsNearbyFragment"
-        android:name="com.example.smartperty.tenant.home.attractionsNearby.TenantAttractionsNearbyFragment"
+        android:name="com.smartperty.smartperty.tenant.home.attractionsNearby.TenantAttractionsNearbyFragment"
         android:label="@string/tenant_home_title_attractions_nearby"
         tools:layout="@layout/tenant_fragment_attractions_nearby" />
     <fragment
         android:id="@+id/tenantRepairFragment"
-        android:name="com.example.smartperty.tenant.home.repair.TenantRepairFragment"
+        android:name="com.smartperty.smartperty.tenant.home.repair.TenantRepairFragment"
         android:label="@string/tenant_home_title_repair"
         tools:layout="@layout/tenant_fragment_repair" />
     <fragment
         android:id="@+id/tenantEquipmentManualPdfFragment"
-        android:name="com.example.smartperty.tenant.home.equipmentManualPdf.TenantEquipmentManualPdfFragment"
+        android:name="com.smartperty.smartperty.tenant.home.equipmentManualPdf.TenantEquipmentManualPdfFragment"
         android:label="TenantEquipmentManualPdfFragment"
         tools:layout="@layout/tenant_fragment_equipment_manual_pdf"/>
     <fragment
         android:id="@+id/tenantSetupFragment"
-        android:name="com.example.smartperty.tenant.setup.TenantSetupFragment"
+        android:name="com.smartperty.smartperty.tenant.setup.TenantSetupFragment"
         android:label="設定"
         tools:layout="@layout/tenant_fragment_setup">
         <action
@@ -81,7 +81,7 @@
     </fragment>
     <fragment
         android:id="@+id/tenantHelpFragment"
-        android:name="com.example.smartperty.tenant.setup.help.TenantHelpFragment"
+        android:name="com.smartperty.smartperty.tenant.setup.help.TenantHelpFragment"
         android:label="支援中心"
         tools:layout="@layout/tenant_fragment_help" />
 

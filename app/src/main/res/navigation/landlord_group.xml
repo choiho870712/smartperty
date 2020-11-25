@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/landlordGroupFragment"
-        android:name="com.example.smartperty.landlord.group.LandlordGroupFragment"
+        android:name="com.smartperty.smartperty.landlord.group.LandlordGroupFragment"
         android:label="@string/landlord_title_group"
         tools:layout="@layout/landlord_fragment_group_main" />
 

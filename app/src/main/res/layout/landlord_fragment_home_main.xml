@@ -1,19 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/scroll_view">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:text="home"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:background="@color/colorWhite">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="250dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/image_home_weather"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/text_home_greet"
+                    app:srcCompat="@drawable/ic_baseline_wb_sunny_24" />
+
+                <TextView
+                    android:id="@+id/text_home_greet"
+                    style="@style/text_normal_black_24sp"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/tenant_home_greet"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView22" />
+
+                <TextView
+                    android:id="@+id/text_home_message"
+                    style="@style/text_normal_black_16sp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/tenant_home_message"
+                    app:layout_constraintStart_toStartOf="@+id/text_home_greet"
+                    app:layout_constraintTop_toBottomOf="@+id/image_home_weather" />
+
+                <TextView
+                    android:id="@+id/text_home_message2"
+                    style="@style/text_normal_black_16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2020年12月5日房租到期\n冷氣機維修\n已完成..."
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/text_home_greet"
+                    app:layout_constraintTop_toBottomOf="@+id/text_home_message" />
+
+                <TextView
+                    android:id="@+id/text_home_temperature"
+                    style="@style/text_normal_black_24sp"
+                    android:text="@string/tenant_home_temperature"
+                    app:layout_constraintEnd_toEndOf="@+id/image_home_weather"
+                    app:layout_constraintStart_toStartOf="@+id/image_home_weather"
+                    app:layout_constraintTop_toBottomOf="@+id/image_home_weather" />
+
+                <ImageView
+                    android:id="@+id/imageView22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_logo" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline3"/>
+
+        <TextView
+            android:id="@+id/textView64"
+            style="@style/text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhiteSmoke"
+            android:text="即將到期房租"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chart1" />
+
+        <TextView
+            android:id="@+id/textView65"
+            style="@style/text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhiteSmoke"
+            android:text="即將到期合約"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="720dp"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_rent_list"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_rent_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/textView64"
+            tools:layout_editor_absoluteX="73dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_contract_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/textView65"
+            tools:layout_editor_absoluteX="73dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

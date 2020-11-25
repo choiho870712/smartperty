@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/landlordMenuFragment"
-        android:name="com.example.smartperty.landlord.menu.LandlordMenuFragment"
+        android:name="com.smartperty.smartperty.landlord.menu.LandlordMenuFragment"
         android:label="@string/landlord_title_menu"
         tools:layout="@layout/landlord_fragment_menu_main">
         <action
@@ -28,12 +28,12 @@
     </fragment>
     <fragment
         android:id="@+id/landlordObjectFragment"
-        android:name="com.example.smartperty.landlord.menu.object.objectItem.LandlordObjectItemFragment"
+        android:name="com.smartperty.smartperty.landlord.menu.object.objectItem.LandlordObjectItemFragment"
         android:label="@string/landlord_title_object_item"
         tools:layout="@layout/landlord_fragment_object_item" />
     <fragment
         android:id="@+id/landlordObjectFolderFragment"
-        android:name="com.example.smartperty.landlord.menu.object.objectFolder.LandlordObjectFolderFragment"
+        android:name="com.smartperty.smartperty.landlord.menu.object.objectFolder.LandlordObjectFolderFragment"
         android:label="@string/landlord_title_object_folder"
         tools:layout="@layout/landlord_fragment_object_folder">
         <action
@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/landlordObjectListFragment"
-        android:name="com.example.smartperty.landlord.menu.object.objectList.LandlordObjectListFragment"
+        android:name="com.smartperty.smartperty.landlord.menu.object.objectList.LandlordObjectListFragment"
         android:label="@string/landlord_title_object_list"
         tools:layout="@layout/landlord_fragment_object_list">
         <action
@@ -51,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/landlordContractFragment"
-        android:name="com.example.smartperty.landlord.menu.contract.LandlordContractFragment"
+        android:name="com.smartperty.smartperty.landlord.menu.contract.LandlordContractFragment"
         android:label="@string/landlord_title_contract"
         tools:layout="@layout/landlord_fragment_contract">
         <action
@@ -60,7 +60,7 @@
     </fragment>
     <fragment
         android:id="@+id/landlordRepairFragment"
-        android:name="com.example.smartperty.landlord.menu.repair.repairList.LandlordRepairListFragment"
+        android:name="com.smartperty.smartperty.landlord.menu.repair.repairList.LandlordRepairListFragment"
         android:label="@string/landlord_title_repair"
         tools:layout="@layout/landlord_fragment_repair_list" >
         <action
@@ -69,17 +69,17 @@
     </fragment>
     <fragment
         android:id="@+id/landlordRepairItemFragment"
-        android:name="com.example.smartperty.landlord.menu.repair.repairItem.LandlordRepairItemFragment"
+        android:name="com.smartperty.smartperty.landlord.menu.repair.repairItem.LandlordRepairItemFragment"
         android:label="landlord_fragment_repair_item"
         tools:layout="@layout/landlord_fragment_repair_item" />
     <fragment
         android:id="@+id/landlordPersonnelListFragment"
-        android:name="com.example.smartperty.landlord.menu.personnel.LandlordPersonnelListFragment"
+        android:name="com.smartperty.smartperty.landlord.menu.personnel.LandlordPersonnelListFragment"
         android:label="人員"
         tools:layout="@layout/landlord_fragment_personnel_list" />
     <fragment
         android:id="@+id/landlordDataAnalysisFragment"
-        android:name="com.example.smartperty.landlord.menu.dataAnalysis.LandlordDataAnalysisFragment"
+        android:name="com.smartperty.smartperty.landlord.menu.dataAnalysis.LandlordDataAnalysisFragment"
         android:label="數據"
         tools:layout="@layout/landlord_fragment_data_analysis" />
 

@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/landlordMenuFragment"
-        android:name="com.example.smartperty.landlord.home.LandlordHomeFragment"
+        android:name="com.smartperty.smartperty.landlord.home.LandlordHomeFragment"
         android:label="@string/landlord_title_home"
         tools:layout="@layout/landlord_fragment_home_main" />
 

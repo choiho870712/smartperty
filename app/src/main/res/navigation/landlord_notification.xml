@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/landlordMenuFragment"
-        android:name="com.example.smartperty.landlord.notification.LandlordNotificationFragment"
+        android:name="com.smartperty.smartperty.landlord.notification.LandlordNotificationFragment"
         android:label="@string/landlord_title_notification"
         tools:layout="@layout/landlord_fragment_notification_main" />
 

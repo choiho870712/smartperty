@@ -1,2 +1,2 @@
-com/example/smartperty/BuildConfig.java
- com.example.smartperty.BuildConfig
+com/smartperty/smartperty/BuildConfig.java
+ com.smartperty.smartperty.BuildConfig

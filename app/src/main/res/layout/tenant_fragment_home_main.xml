@@ -145,16 +145,15 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorPrimary">
+            android:background="@color/colorPrimaryLight">
 
             <ImageView
                 android:id="@+id/image_home_weather"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/text_home_greet"
                 app:srcCompat="@drawable/ic_baseline_wb_sunny_24" />
 
             <TextView
@@ -163,7 +162,7 @@
                 android:layout_marginStart="16dp"
                 android:text="@string/tenant_home_greet"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView22" />
 
             <TextView
                 android:id="@+id/text_home_message"
@@ -190,6 +189,36 @@
                 app:layout_constraintEnd_toEndOf="@+id/image_home_weather"
                 app:layout_constraintStart_toStartOf="@+id/image_home_weather"
                 app:layout_constraintTop_toBottomOf="@+id/image_home_weather" />
+
+            <ImageView
+                android:id="@+id/imageView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_logo" />
+
+            <ImageButton
+                android:id="@+id/button_tenant_setup"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/colorPrimaryLight"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_setup_icon" />
+
+            <SearchView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/button_tenant_setup"
+                app:layout_constraintEnd_toStartOf="@+id/button_tenant_setup"
+                app:layout_constraintStart_toEndOf="@+id/imageView22"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

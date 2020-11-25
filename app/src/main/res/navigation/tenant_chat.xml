@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/tenantChatFragment"
-        android:name="com.example.smartperty.tenant.chat.TenantChatFragment"
+        android:name="com.smartperty.smartperty.tenant.chat.TenantChatFragment"
         android:label="TenantChatFragment"
         tools:layout="@layout/tenant_fragment_chat_main"/>
 

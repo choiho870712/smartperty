@@ -10,6 +10,10 @@ import com.smartperty.smartperty.tools.setupWithNavController
 import com.smartperty.smartperty.utils.GlobalVariables
 import com.smartperty.smartperty.utils.ToolBarUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.jakewharton.threetenabp.AndroidThreeTen
+import com.smartperty.smartperty.data.User
+import com.smartperty.smartperty.data.UserInfo
+import com.smartperty.smartperty.data.UserType
 import kotlinx.android.synthetic.main.activity_tenant.*
 
 /**
@@ -64,7 +68,7 @@ class LandlordActivity : AppCompatActivity() {
         })
         GlobalVariables.currentNavController = controller
 
-        toolbar.inflateMenu(R.menu.landlord_toolbar)
+        toolbar.inflateMenu(R.menu.toolbar)
         bottomNavigationView.selectedItemId = R.id.landlord_home
     }
 
@@ -76,5 +80,20 @@ class LandlordActivity : AppCompatActivity() {
         GlobalVariables.activity = this
         GlobalVariables.toolbar = toolbar
         GlobalVariables.toolBarUtils = ToolBarUtils()
+
+        // TODO call api : get user info
+        GlobalVariables.user = User(
+            userInfo = UserInfo(
+                name = "Landlord",
+                homePhone = "03-1234567",
+                cellPhone = "0912345678",
+                email = "landlord@gmail.com",
+                address = "桃園市大園區埔心里22鄰96之38號",
+                company = "中原土木系",
+                type = UserType.LANDLORD
+            )
+        )
+
+        AndroidThreeTen.init(GlobalVariables.activity)
     }
 }

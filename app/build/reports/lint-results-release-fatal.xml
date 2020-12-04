@@ -1,4 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <issues format="5" by="lint 4.1.1">
 
+    <issue
+        id="NotSibling"
+        severity="Fatal"
+        message="`@+id/image_object_folder_add` is not a sibling in the same `ConstraintLayout`"
+        category="Correctness"
+        priority="6"
+        summary="Invalid Constraints"
+        explanation="Layout constraints in a given `ConstraintLayout` or `RelativeLayout` should reference other views within the same relative layout (but not itself!)"
+        errorLine1="            app:layout_constraintEnd_toStartOf=&quot;@+id/image_object_folder_add&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/card_estate_list.xml"
+            line="33"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="NotSibling"
+        severity="Fatal"
+        message="`@+id/textView28` is not a sibling in the same `ConstraintLayout`"
+        category="Correctness"
+        priority="6"
+        summary="Invalid Constraints"
+        explanation="Layout constraints in a given `ConstraintLayout` or `RelativeLayout` should reference other views within the same relative layout (but not itself!)"
+        errorLine1="        app:layout_constraintTop_toBottomOf=&quot;@+id/textView28&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_choose_plumber.xml"
+            line="110"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NotSibling"
+        severity="Fatal"
+        message="`@+id/chart1` is not a sibling in the same `ConstraintLayout`"
+        category="Correctness"
+        priority="6"
+        summary="Invalid Constraints"
+        explanation="Layout constraints in a given `ConstraintLayout` or `RelativeLayout` should reference other views within the same relative layout (but not itself!)"
+        errorLine1="        app:layout_constraintTop_toBottomOf=&quot;@+id/chart1&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_choose_tenant.xml"
+            line="18"
+            column="9"/>
+    </issue>
+
 </issues>

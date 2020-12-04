@@ -49,7 +49,7 @@ class TenantHomeFragment : Fragment() {
         }
         root.button_home_repair.setOnClickListener {
             root.findNavController().navigate(
-                R.id.action_tenantHomeFragment_to_tenantRepairFragment)
+                R.id.action_tenantHomeFragment_to_repairListFragment)
         }
 
         return root

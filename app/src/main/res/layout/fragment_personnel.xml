@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView_personnel_name"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Jason"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView29"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_personnel_company"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="company"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView30"
+        app:layout_constraintTop_toBottomOf="@+id/textView_personnel_name" />
+
+    <TextView
+        android:id="@+id/textView_personnel_phone"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="012345678"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView31"
+        app:layout_constraintTop_toBottomOf="@+id/textView_personnel_company" />
+
+    <TextView
+        android:id="@+id/textView29"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="暱稱"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView30"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="公司"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+
+    <TextView
+        android:id="@+id/textView31"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="電話"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView30" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

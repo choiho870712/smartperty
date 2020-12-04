@@ -18,10 +18,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 import com.smartperty.smartperty.R
-import com.smartperty.smartperty.landlord.menu.contract.LandlordContractAdapter
 import com.smartperty.smartperty.tenant.home.attractionsNearby.data.TenantAttractionNearbyItem
 import com.smartperty.smartperty.utils.GlobalVariables
-import kotlinx.android.synthetic.main.landlord_fragment_contract.view.*
 import kotlinx.android.synthetic.main.tenant_fragment_attractions_nearby.view.*
 
 /**

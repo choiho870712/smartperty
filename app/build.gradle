@@ -5,6 +5,10 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
     defaultConfig {
@@ -64,4 +68,7 @@ dependencies {
     implementation 'com.github.gcacace:signature-pad:1.2.1'
 
     implementation 'com.android.support:multidex:1.0.3'
+
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.4'
+
 }

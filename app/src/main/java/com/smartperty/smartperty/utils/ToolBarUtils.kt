@@ -64,4 +64,18 @@ class ToolBarUtils() {
             button.isVisible = visible
         }
     }
+
+    fun setAddButtonVisibility(visible: Boolean) {
+        val button = toolbar.menu.findItem(R.id.button_add)
+        activity.runOnUiThread {
+            button.isVisible = visible
+        }
+    }
+
+    fun setSubmitButtonVisibility(visible: Boolean) {
+        val button = toolbar.menu.findItem(R.id.button_submit)
+        activity.runOnUiThread {
+            button.isVisible = visible
+        }
+    }
 }

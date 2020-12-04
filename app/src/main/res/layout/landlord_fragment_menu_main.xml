@@ -56,7 +56,7 @@
     <TextView
         android:id="@+id/card_object_folder"
         style="@style/landlord_menu_text"
-        android:text="物件"
+        android:text="@string/landlord_title_object_folder"
         app:layout_constraintBottom_toTopOf="@+id/card_contract"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -75,7 +75,7 @@
     <TextView
         android:id="@+id/card_data_analysis"
         style="@style/landlord_menu_text"
-        android:text="數據"
+        android:text="@string/landlord_title_data_analysis"
         app:layout_constraintBottom_toTopOf="@+id/card_finance"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView18"
@@ -84,7 +84,7 @@
     <TextView
         android:id="@+id/card_finance"
         style="@style/landlord_menu_text"
-        android:text="財務"
+        android:text="@string/landlord_title_finance"
         app:layout_constraintBottom_toTopOf="@+id/card_repair"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView19"
@@ -102,7 +102,7 @@
     <TextView
         android:id="@+id/card_personnel"
         style="@style/landlord_menu_text"
-        android:text="人員"
+        android:text="@string/landlord_title_personnel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView21"
         app:layout_constraintTop_toBottomOf="@+id/card_repair" />

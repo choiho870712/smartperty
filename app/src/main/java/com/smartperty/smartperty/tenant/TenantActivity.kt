@@ -16,6 +16,7 @@
 
 package com.smartperty.smartperty.tenant
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -26,6 +27,8 @@ import com.smartperty.smartperty.tools.setupWithNavController
 import com.smartperty.smartperty.utils.GlobalVariables
 import com.smartperty.smartperty.utils.ToolBarUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.jakewharton.threetenabp.AndroidThreeTen
+import com.smartperty.smartperty.data.*
 import kotlinx.android.synthetic.main.activity_tenant.*
 
 /**
@@ -88,12 +91,50 @@ class TenantActivity : AppCompatActivity() {
     }
 
     private fun setupToolBar() {
-        toolbar.inflateMenu(R.menu.tenant_toolbar)
+        toolbar.inflateMenu(R.menu.toolbar)
     }
 
     private fun setupUtils() {
         GlobalVariables.activity = this
         GlobalVariables.toolbar = toolbar
         GlobalVariables.toolBarUtils = ToolBarUtils()
+
+        // TODO call api : get user info
+        GlobalVariables.user = User(
+            userInfo = UserInfo(
+                name = "Tenant",
+                homePhone = "03-2870018",
+                cellPhone = "0976256290",
+                email = "choiho870712@gmail.com",
+                address = "桃園市大園區致祥一街105號12樓",
+                company = "聶星行銷科技有限公司",
+                type = UserType.TENANT
+            )
+        )
+        GlobalVariables.landlord = UserInfo(
+            name = "Landlord",
+            homePhone = "03-1234567",
+            cellPhone = "0912345678",
+            email = "landlord@gmail.com",
+            address = "桃園市大園區埔心里22鄰96之38號",
+            company = "中原土木系"
+        )
+        GlobalVariables.estate = Estate(
+            title = "",
+            address = "桃園市大園區致祥一街105號12樓",
+            floor = 30,
+            squareFt = 50,
+            parkingSpace = "none",
+            content = "",
+            imageList = mutableListOf(),
+            repairList = mutableListOf(),
+            contract = Contract(
+                rentAmount = 10000,
+                rentPerMonthNumber = 1,
+                rentEndDate = "12/10"
+            )
+        )
+
+        AndroidThreeTen.init(GlobalVariables.activity)
     }
 }

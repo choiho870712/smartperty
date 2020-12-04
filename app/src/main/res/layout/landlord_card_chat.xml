@@ -18,7 +18,7 @@
             android:layout_marginStart="16dp"
             android:text="你好"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/image_object_folder_add"
             app:layout_constraintTop_toBottomOf="@+id/text_name" />
 
         <TextView
@@ -28,11 +28,11 @@
             android:layout_marginStart="16dp"
             android:text="Jason"
             app:layout_constraintBottom_toTopOf="@+id/text_message"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/image_object_folder_add"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/image_object_folder_add"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="16dp"

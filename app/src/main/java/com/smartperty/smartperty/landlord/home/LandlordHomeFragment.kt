@@ -31,7 +31,6 @@ import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.landlord_fragment_data_analysis.view.*
 import kotlinx.android.synthetic.main.landlord_fragment_data_analysis.view.chart1
 import kotlinx.android.synthetic.main.landlord_fragment_home_main.view.*
-import kotlinx.android.synthetic.main.landlord_fragment_object_folder.view.*
 
 class LandlordHomeFragment : Fragment(), OnChartValueSelectedListener {
 

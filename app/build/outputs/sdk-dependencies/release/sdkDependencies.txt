@@ -693,6 +693,46 @@ library {
 }
 library {
   maven_library {
+    groupId: "com.google.android.gms"
+    artifactId: "play-services-maps"
+    version: "17.0.0"
+  }
+  digests {
+    sha256: "\371\344y\274W\377B9Y\306\335\235\b\324c\306w\364@\342\235\220\336yT\030\352\'\332lg\373"
+  }
+}
+library {
+  maven_library {
+    groupId: "com.google.android.gms"
+    artifactId: "play-services-base"
+    version: "17.0.0"
+  }
+  digests {
+    sha256: "\335\t\200\355\367)\340\323F\342\265\216p\200\035\3027\301\256\320\307\253\'O\243\361\310\310\357\306L\307"
+  }
+}
+library {
+  maven_library {
+    groupId: "com.google.android.gms"
+    artifactId: "play-services-basement"
+    version: "17.0.0"
+  }
+  digests {
+    sha256: "\323$\241x[\274H\277\343c\237\310G\317\323\317C\324\236\226{\\\257\'\224$\n\205EW\243\234"
+  }
+}
+library {
+  maven_library {
+    groupId: "com.google.android.gms"
+    artifactId: "play-services-tasks"
+    version: "17.0.0"
+  }
+  digests {
+    sha256: ".m\0278\2676G\363\376z\003\213\227\200\271w\027\263tn\256%\200\t\031~6\347\2771\022\245"
+  }
+}
+library {
+  maven_library {
     groupId: "io.reactivex.rxjava2"
     artifactId: "rxjava"
     version: "2.2.18"
@@ -809,6 +849,36 @@ library {
   }
   digests {
     sha256: "2c\032\306\n<\242\232\276\254Nk\356j\037\370r\222\346\250\030\354\264b\276\235\003drj\335^"
+  }
+}
+library {
+  maven_library {
+    groupId: "androidx.multidex"
+    artifactId: "multidex"
+    version: "2.0.0"
+  }
+  digests {
+    sha256: "\300\027\000\t\020r\340\377]\216\302\320\016\254k\217\226\352\030d`\200B^\234\343\306\247\265\366n3"
+  }
+}
+library {
+  maven_library {
+    groupId: "com.jakewharton.threetenabp"
+    artifactId: "threetenabp"
+    version: "1.2.4"
+  }
+  digests {
+    sha256: "[\035*\003\351#yl\005\317\330}C\2734m\243\314\220\254bO\2164\316\243\f\254\320+I\022"
+  }
+}
+library {
+  maven_library {
+    groupId: "org.threeten"
+    artifactId: "threetenbp"
+    version: "1.4.4"
+  }
+  digests {
+    sha256: "|\306\006\364\310\261\235\256<\224\343\036\354\304\201\223\376\200\257\304\350\242\274\003Z\3768Y\257\t~\321"
   }
 }
 library_dependencies {
@@ -1227,37 +1297,65 @@ library_dependencies {
 }
 library_dependencies {
   library_index: 69
+  library_dep_index: 9
   library_dep_index: 70
+  library_dep_index: 71
+}
+library_dependencies {
+  library_index: 70
+  library_dep_index: 12
+  library_dep_index: 7
+  library_dep_index: 9
+  library_dep_index: 71
+  library_dep_index: 72
 }
 library_dependencies {
   library_index: 71
-  library_dep_index: 69
+  library_dep_index: 12
+  library_dep_index: 7
+  library_dep_index: 9
+}
+library_dependencies {
+  library_index: 72
+  library_dep_index: 71
 }
 library_dependencies {
   library_index: 73
+  library_dep_index: 74
+}
+library_dependencies {
+  library_index: 75
+  library_dep_index: 73
+}
+library_dependencies {
+  library_index: 77
   library_dep_index: 6
-}
-library_dependencies {
-  library_index: 76
-  library_dep_index: 77
-  library_dep_index: 78
-  library_dep_index: 79
-}
-library_dependencies {
-  library_index: 78
-  library_dep_index: 80
-  library_dep_index: 13
-  library_dep_index: 12
-  library_dep_index: 77
 }
 library_dependencies {
   library_index: 80
+  library_dep_index: 81
+  library_dep_index: 82
+  library_dep_index: 83
+}
+library_dependencies {
+  library_index: 82
+  library_dep_index: 84
+  library_dep_index: 13
+  library_dep_index: 12
+  library_dep_index: 81
+}
+library_dependencies {
+  library_index: 84
   library_dep_index: 6
 }
 library_dependencies {
-  library_index: 79
-  library_dep_index: 77
-  library_dep_index: 78
+  library_index: 83
+  library_dep_index: 81
+  library_dep_index: 82
+}
+library_dependencies {
+  library_index: 86
+  library_dep_index: 87
 }
 module_dependencies {
   module_name: "base"
@@ -1267,14 +1365,17 @@ module_dependencies {
   dependency_index: 69
   dependency_index: 6
   dependency_index: 38
-  dependency_index: 71
   dependency_index: 40
-  dependency_index: 72
   dependency_index: 73
-  dependency_index: 74
   dependency_index: 43
   dependency_index: 75
   dependency_index: 76
+  dependency_index: 77
+  dependency_index: 78
+  dependency_index: 79
+  dependency_index: 80
+  dependency_index: 85
+  dependency_index: 86
   dependency_index: 57
   dependency_index: 27
   dependency_index: 59

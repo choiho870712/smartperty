@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.fragment_estate_directory.view.*
 class EstateDirectoryFragment : Fragment() {
 
     private lateinit var root:View
+    private var lockRefresh = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,8 +53,31 @@ class EstateDirectoryFragment : Fragment() {
             adapter = GlobalVariables.estateDirectoryAdapter
         }
 
+        linkRefreshListener()
+
         return root
     }
 
+    private fun linkRefreshListener() {
+        root.swipe_layout.setOnRefreshListener {
+            if (!lockRefresh) {
+                lockRefresh = true
 
+                GlobalVariables.estateDirectory.forEach {
+                    it.image = null
+                }
+                GlobalVariables.estateDirectory.clear()
+                GlobalVariables.estateDirectoryAdapter!!.notifyDataSetChanged()
+
+                Thread {
+                    GlobalVariables.api.getGroupTag(GlobalVariables.user.id)
+                    if (activity != null) requireActivity().runOnUiThread {
+                        GlobalVariables.estateDirectoryAdapter!!.notifyDataSetChanged()
+                        lockRefresh = false
+                        root.swipe_layout.isRefreshing = false
+                    }
+                }.start()
+            }
+        }
+    }
 }

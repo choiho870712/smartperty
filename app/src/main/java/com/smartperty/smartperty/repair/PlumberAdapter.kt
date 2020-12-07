@@ -4,10 +4,8 @@ import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.UserInfo
@@ -32,8 +30,8 @@ class PlumberAdapter(private val activity: Activity,
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
         holder.index = position
         holder.name.text = myDataset[position].name
-        if (myDataset[position].image != null)
-            holder.image.setImageBitmap(myDataset[position].image)
+        if (myDataset[position].icon != null)
+            holder.image.setImageBitmap(myDataset[position].icon)
 
         holder.cardView.setOnClickListener {
             GlobalVariables.plumber = myDataset[holder.index]

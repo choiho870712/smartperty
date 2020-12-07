@@ -6,7 +6,7 @@ import com.smartperty.smartperty.R
 import com.smartperty.smartperty.utils.GlobalVariables.Companion.activity
 import com.smartperty.smartperty.utils.GlobalVariables.Companion.toolbar
 
-class ToolBarUtils() {
+class ToolBarUtils {
 
     fun removeAllButtonAndLogo() {
         activity.runOnUiThread {

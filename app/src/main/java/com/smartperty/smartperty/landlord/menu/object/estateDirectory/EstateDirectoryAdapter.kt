@@ -1,6 +1,7 @@
 package com.smartperty.smartperty.landlord.menu.`object`.estateDirectory
 
 import android.app.Activity
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,6 +38,9 @@ class EstateDirectoryAdapter(private val activity: Activity,
 
         if(myDataset[position].image != null)
             holder.image.setImageBitmap(myDataset[position].image)
+        else
+            holder.image.setImageDrawable(
+                activity.resources.getDrawable(R.drawable.ic_baseline_add_photo_alternate_24))
 
         holder.cardView.setOnClickListener {
             GlobalVariables.estateList = myDataset[holder.index]

@@ -10,7 +10,7 @@ android {
         abortOnError false
     }
     compileSdkVersion 30
-    buildToolsVersion "30.0.0"
+    buildToolsVersion "30.0.2"
     defaultConfig {
         applicationId "com.smartperty.smartperty"
         minSdkVersion 19
@@ -71,4 +71,6 @@ dependencies {
 
     implementation 'com.jakewharton.threetenabp:threetenabp:1.2.4'
 
+    implementation 'com.squareup.okhttp:okhttp:2.5.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
 }

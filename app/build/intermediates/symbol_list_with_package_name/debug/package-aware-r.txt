@@ -1769,6 +1769,7 @@ id SHOW_PROGRESS
 id SYM
 id TOP_END
 id TOP_START
+id aboutUsFragment
 id accelerate
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
@@ -1828,6 +1829,8 @@ id action_landlordObjectFolderFragment_to_landlordObjectListFragment
 id action_landlordObjectFragment_to_landlordObjectItemEditFragment
 id action_landlordObjectListFragment_to_landlordObjectItemFragment
 id action_landlordObjectListFragment_to_landlordObjectListAddFragment
+id action_loginFragment_to_aboutUsFragment
+id action_loginFragment_to_forgetPasswordFragment
 id action_menu_divider
 id action_menu_presenter
 id action_mode_bar
@@ -1880,9 +1883,12 @@ id bottom_nav
 id bounce
 id button
 id button2
+id button3
+id button4
 id buttonPanel
 id button_add
 id button_add_message
+id button_back
 id button_choose_plumber
 id button_choose_tenant
 id button_clear_tenant_contract_signature
@@ -2002,7 +2008,10 @@ id fixed
 id flip
 id floating
 id forever
+id forgetPasswordFragment
 id forget_password
+id forget_password2
+id forget_password3
 id fragment_container_view_tag
 id ghost_view
 id ghost_view_holder
@@ -2098,6 +2107,8 @@ id listMode
 id list_item
 id loading
 id login
+id loginFragment
+id login_fragment
 id map_view
 id masked
 id media_actions
@@ -2256,6 +2267,7 @@ id stop
 id stretch
 id submenuarrow
 id submit_area
+id swipe_layout
 id tabMode
 id tab_layout_tenant_contract
 id tag_accessibility_actions
@@ -2330,13 +2342,21 @@ id textView41
 id textView42
 id textView43
 id textView44
+id textView45
 id textView46
+id textView47
 id textView48
 id textView49
 id textView5
+id textView50
 id textView51
+id textView52
 id textView53
+id textView54
 id textView55
+id textView56
+id textView57
+id textView58
 id textView59
 id textView6
 id textView60
@@ -2345,6 +2365,9 @@ id textView62
 id textView63
 id textView64
 id textView65
+id textView66
+id textView67
+id textView68
 id textView7
 id textView8
 id textView9
@@ -2398,7 +2421,11 @@ id text_home_temperature
 id text_input_end_icon
 id text_input_start_icon
 id text_login_about_us
+id text_login_about_us2
+id text_login_about_us_entry
 id text_login_policy
+id text_login_policy3
+id text_login_policy4
 id text_message
 id text_name
 id text_object_folder_address
@@ -2459,6 +2486,7 @@ id unlabeled
 id up
 id useLogo
 id username
+id username_toggle
 id view_offset_helper
 id viewpager_tenant_contract
 id visible
@@ -2559,6 +2587,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout fragment_about_us
 layout fragment_add_post
 layout fragment_choose_plumber
 layout fragment_choose_tenant
@@ -2568,6 +2597,8 @@ layout fragment_estate_directory_create
 layout fragment_estate_edit
 layout fragment_estate_list
 layout fragment_estate_list_create
+layout fragment_forget_password
+layout fragment_login
 layout fragment_personnel
 layout fragment_personnel_list
 layout fragment_recycler
@@ -2676,6 +2707,7 @@ navigation landlord_group
 navigation landlord_home
 navigation landlord_menu
 navigation landlord_notification
+navigation login
 navigation tenant_chat
 navigation tenant_home
 navigation tenant_notification
@@ -2707,6 +2739,7 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string about_us
 string action_forget_password
 string action_register
 string action_sign_in
@@ -3542,7 +3575,10 @@ style landlord_menu_text
 style tenant_home_select_button_icon
 style tenant_home_select_button_layout
 style tenant_home_select_button_text
+style text_link
+style text_normal_black_10sp
 style text_normal_black_12sp
+style text_normal_black_12sp_no_padding
 style text_normal_black_14sp
 style text_normal_black_16sp
 style text_normal_black_20sp

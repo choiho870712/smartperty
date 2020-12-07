@@ -3,6 +3,7 @@ package com.smartperty.smartperty.landlord.menu.`object`.estateDirectory
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_estate_directory_create.view.*
 class EstateDirectroyCreateFragment : Fragment() {
 
     private lateinit var root: View
+    private var image: Bitmap? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,11 +35,21 @@ class EstateDirectroyCreateFragment : Fragment() {
         GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.button_submit -> {
+
+                    Thread {
+                        GlobalVariables.api.createPropertyGroupTag(
+                            GlobalVariables.user.id,
+                            GlobalVariables.user.system_id,
+                            root.text_object_folder_title.text.toString(),
+                            image
+                        )
+                    }.start()
+
                     GlobalVariables.estateDirectory.add(
                         EstateList(
                             title = root.text_object_folder_title.text.toString(),
                             address = root.text_object_folder_address.text.toString(),
-                            image = root.image_object_folder_add.drawable.toBitmap()
+                            image = image
                         )
                     )
 
@@ -92,6 +104,7 @@ class EstateDirectroyCreateFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
             root.image_object_folder_add.setImageURI(data?.data)
+            image = root.image_object_folder_add.drawable.toBitmap()
         }
     }
 }

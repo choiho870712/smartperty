@@ -881,6 +881,26 @@ library {
     sha256: "|\306\006\364\310\261\235\256<\224\343\036\354\304\201\223\376\200\257\304\350\242\274\003Z\3768Y\257\t~\321"
   }
 }
+library {
+  maven_library {
+    groupId: "com.squareup.okhttp"
+    artifactId: "okhttp"
+    version: "2.5.0"
+  }
+  digests {
+    sha256: "\034\307\026\342\2259\255\315\246w\224\225\b\026\'\226\332\377\355\264yL\277\224zoe\346\226\3608\034"
+  }
+}
+library {
+  maven_library {
+    groupId: "com.squareup.okio"
+    artifactId: "okio"
+    version: "1.6.0"
+  }
+  digests {
+    sha256: "\021K\334\037G3\212h\274\274\225\253\362\365\315\307+\356\354\221\201//\315{R\034\0317\207bf"
+  }
+}
 library_dependencies {
   library_dep_index: 1
 }
@@ -1357,6 +1377,10 @@ library_dependencies {
   library_index: 86
   library_dep_index: 87
 }
+library_dependencies {
+  library_index: 88
+  library_dep_index: 89
+}
 module_dependencies {
   module_name: "base"
   dependency_index: 0
@@ -1376,6 +1400,7 @@ module_dependencies {
   dependency_index: 80
   dependency_index: 85
   dependency_index: 86
+  dependency_index: 88
   dependency_index: 57
   dependency_index: 27
   dependency_index: 59

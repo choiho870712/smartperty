@@ -31,6 +31,7 @@ data class EstateList(
     var title: String = "title",
     var address: String = "address",
     var image: Bitmap? = null,
+    var imageUrl: String = "",
     var list: MutableList<Estate> = mutableListOf(
         Estate(
             title = "幸福大樓3樓15室",

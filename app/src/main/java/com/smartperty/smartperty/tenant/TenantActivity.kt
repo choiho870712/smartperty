@@ -16,7 +16,6 @@
 
 package com.smartperty.smartperty.tenant
 
-import android.graphics.Bitmap
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -29,6 +28,7 @@ import com.smartperty.smartperty.utils.ToolBarUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.smartperty.smartperty.data.*
+import com.smartperty.smartperty.utils.DBHelper
 import kotlinx.android.synthetic.main.activity_tenant.*
 
 /**
@@ -98,6 +98,7 @@ class TenantActivity : AppCompatActivity() {
         GlobalVariables.activity = this
         GlobalVariables.toolbar = toolbar
         GlobalVariables.toolBarUtils = ToolBarUtils()
+        GlobalVariables.dbHelper = DBHelper(this)
 
         // TODO call api : get user info
         GlobalVariables.user = User(
@@ -108,7 +109,7 @@ class TenantActivity : AppCompatActivity() {
                 email = "choiho870712@gmail.com",
                 address = "桃園市大園區致祥一街105號12樓",
                 company = "聶星行銷科技有限公司",
-                type = UserType.TENANT
+                auth = UserType.TENANT
             )
         )
         GlobalVariables.landlord = UserInfo(

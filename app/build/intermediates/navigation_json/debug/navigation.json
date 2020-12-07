@@ -35,6 +35,11 @@
     "deepLinks": []
   },
   {
+    "name": "login",
+    "navigationXmlIds": [],
+    "deepLinks": []
+  },
+  {
     "name": "landlord_group",
     "navigationXmlIds": [],
     "deepLinks": []

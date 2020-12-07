@@ -39,7 +39,7 @@ data class RepairOrder(
     var postList: MutableList<RepairOrderPost> = mutableListOf()
 ) {
     init {
-        when (GlobalVariables.user.userInfo.type) {
+        when (GlobalVariables.user.userInfo.auth) {
             UserType.LANDLORD -> {
                 landlord = GlobalVariables.user.userInfo
             }
@@ -48,7 +48,7 @@ data class RepairOrder(
                 landlord = GlobalVariables.landlord
                 estate = GlobalVariables.estate
             }
-            UserType.PLUMBER -> {
+            UserType.TECHNICIAN -> {
                 plumber = GlobalVariables.user.userInfo
             }
             else -> {
@@ -60,9 +60,9 @@ data class RepairOrder(
     fun nextStatus() {
         when(status) {
             RepairStatus.CREATED -> {
-                if (creator.type == UserType.TENANT)
+                if (creator.auth == UserType.TENANT)
                     status = RepairStatus.SENDING_TO_LANDLORD
-                else if (creator.type == UserType.LANDLORD)
+                else if (creator.auth == UserType.LANDLORD)
                     status = RepairStatus.CHOOSING_TENANT
             }
             RepairStatus.SENDING_TO_LANDLORD -> {

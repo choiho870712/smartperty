@@ -14,6 +14,7 @@ import com.jakewharton.threetenabp.AndroidThreeTen
 import com.smartperty.smartperty.data.User
 import com.smartperty.smartperty.data.UserInfo
 import com.smartperty.smartperty.data.UserType
+import com.smartperty.smartperty.utils.DBHelper
 import kotlinx.android.synthetic.main.activity_tenant.*
 
 /**
@@ -80,19 +81,7 @@ class LandlordActivity : AppCompatActivity() {
         GlobalVariables.activity = this
         GlobalVariables.toolbar = toolbar
         GlobalVariables.toolBarUtils = ToolBarUtils()
-
-        // TODO call api : get user info
-        GlobalVariables.user = User(
-            userInfo = UserInfo(
-                name = "Landlord",
-                homePhone = "03-1234567",
-                cellPhone = "0912345678",
-                email = "landlord@gmail.com",
-                address = "桃園市大園區埔心里22鄰96之38號",
-                company = "中原土木系",
-                type = UserType.LANDLORD
-            )
-        )
+        GlobalVariables.dbHelper = DBHelper(this)
 
         AndroidThreeTen.init(GlobalVariables.activity)
     }

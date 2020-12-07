@@ -21,6 +21,10 @@ class GlobalVariables : Application() {
     companion object {
 
         lateinit var activity: Activity
+        lateinit var dbHelper: DBHelper
+        val imageHelper = ImageHelper()
+        val api = Api()
+
         lateinit var toolbar: Toolbar
         lateinit var toolBarUtils: ToolBarUtils
         var currentNavController: LiveData<NavController>? = null
@@ -98,10 +102,7 @@ class GlobalVariables : Application() {
         lateinit var estateListLayoutManager: LinearLayoutManager
         var estateListAdapter:
                 RecyclerView.Adapter<EstateListAdapter.CardHolder>? = null
-        val estateDirectory =  mutableListOf(
-            EstateList(title = "大樓A", address = "台北市大安街1號"),
-            EstateList(title = "大樓B", address = "台北市大安街2號")
-        )
+        val estateDirectory = user.estateDirectory
         lateinit var estateDirectoryLayoutManager: LinearLayoutManager
         var estateDirectoryAdapter:
                 RecyclerView.Adapter<EstateDirectoryAdapter.CardHolder>? = null

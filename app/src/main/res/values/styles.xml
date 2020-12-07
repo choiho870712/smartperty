@@ -110,12 +110,37 @@
         <item name="android:layout_gravity">center</item>
     </style>
 
+    <style name="text_normal_black_10sp" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
     <style name="text_normal_black_12sp" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/colorBlack</item>
         <item name="android:textSize">12sp</item>
         <item name="android:padding">4dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="text_normal_black_12sp_no_padding" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="text_link" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorLightBlue</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:layout_gravity">center</item>
     </style>
 

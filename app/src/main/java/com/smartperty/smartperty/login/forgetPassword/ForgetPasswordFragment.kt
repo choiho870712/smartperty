@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.smartperty.smartperty.R
+import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.fragment_forget_password.view.*
 
 class ForgetPasswordFragment : Fragment() {
@@ -20,9 +21,8 @@ class ForgetPasswordFragment : Fragment() {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_forget_password, container, false)
 
-        root.button_back.setOnClickListener {
-            root.findNavController().navigateUp()
-        }
+        GlobalVariables.toolBarUtils.setVisibility(true)
+        GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
 
         return root
     }

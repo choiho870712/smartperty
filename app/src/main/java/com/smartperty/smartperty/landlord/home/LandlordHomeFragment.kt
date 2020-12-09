@@ -1,38 +1,39 @@
 package com.smartperty.smartperty.landlord.home
 
-import android.annotation.SuppressLint
+import android.app.Activity
 import android.graphics.Color
-import android.graphics.DashPathEffect
-import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.components.LimitLine
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.formatter.IFillFormatter
+import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
-import com.github.mikephil.charting.utils.Utils
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.chartUtil.MyMarkerView
 import com.smartperty.smartperty.landlord.home.data.LandlordExpiringContract
 import com.smartperty.smartperty.landlord.home.data.LandlordExpiringRent
 import com.smartperty.smartperty.utils.GlobalVariables
-import kotlinx.android.synthetic.main.landlord_fragment_data_analysis.view.*
 import kotlinx.android.synthetic.main.landlord_fragment_data_analysis.view.chart1
 import kotlinx.android.synthetic.main.landlord_fragment_home_main.view.*
+import kotlin.math.roundToInt
 
-class LandlordHomeFragment : Fragment(), OnChartValueSelectedListener {
+class LandlordHomeFragment : Fragment() {
+
+    companion object {
+        lateinit var lineChart: LineChart
+    }
 
     private lateinit var root:View
     private lateinit var chart: LineChart
@@ -45,6 +46,7 @@ class LandlordHomeFragment : Fragment(), OnChartValueSelectedListener {
         root = inflater.inflate(R.layout.landlord_fragment_home_main, container, false)
 
         GlobalVariables.toolBarUtils.setVisibility(false)
+        root.text_home_greet_name.text = GlobalVariables.user.userInfo.name
 
         root.scroll_view.requestFocus()
 
@@ -102,157 +104,192 @@ class LandlordHomeFragment : Fragment(), OnChartValueSelectedListener {
         return root
     }
 
+    class LineChartActivity : Activity(), OnChartValueSelectedListener {
+        override fun onValueSelected(e: Entry?, h: Highlight?) {
+            Log.i("Entry selected", e.toString())
+            Log.i(
+                "LOW HIGH",
+                "low: " + lineChart.getLowestVisibleX()
+                    .toString() + ", high: " + lineChart.getHighestVisibleX()
+            )
+            Log.i(
+                "MIN MAX",
+                "xMin: " + lineChart.getXChartMin()
+                    .toString() + ", xMax: " + lineChart.getXChartMax()
+                    .toString() + ", yMin: " + lineChart.getYChartMin()
+                    .toString() + ", yMax: " + lineChart.getYChartMax()
+            )
+        }
+
+        override fun onNothingSelected() {
+
+        }
+    }
+
     private fun createLineChart() {
-        chart = root.chart1
-        chart.setBackgroundColor(Color.WHITE)
-        chart.description.isEnabled = false
-        chart.setTouchEnabled(true)
-        chart.setOnChartValueSelectedListener(this)
-        chart.setDrawGridBackground(false)
+        run {
+            // // Chart Style // //
+            lineChart = root.chart1
 
-        val mv = MyMarkerView(requireContext(), R.layout.custom_marker_view)
-        mv.chartView = chart
-        chart.marker = mv
-        chart.isDragEnabled = true
-        chart.setScaleEnabled(true)
-        chart.setPinchZoom(true)
+            // background color
+            lineChart.setBackgroundColor(Color.WHITE)
 
-        val xAxis = chart.xAxis
-        xAxis.enableGridDashedLine(10f, 10f, 0f)
+            // disable description text
+            lineChart.getDescription().setEnabled(false)
 
-        val yAxis = chart.axisLeft
-        chart.axisRight.isEnabled = false
-        yAxis.enableGridDashedLine(10f, 10f, 0f)
-        yAxis.axisMaximum = 200f
-        yAxis.axisMinimum = -50f
+            // enable touch gestures
+            lineChart.setTouchEnabled(true)
 
+            // set listeners
+            lineChart.setOnChartValueSelectedListener(
+                LineChartActivity()
+            )
+            lineChart.setDrawGridBackground(false)
+            lineChart.setDrawBorders(false)
 
-        val llXAxis = LimitLine(9f, "Index 10")
-        llXAxis.lineWidth = 4f
-        llXAxis.enableDashedLine(10f, 10f, 0f)
-        llXAxis.labelPosition = LimitLine.LimitLabelPosition.RIGHT_BOTTOM
-        llXAxis.textSize = 10f
-        llXAxis.typeface = Typeface.DEFAULT
-        val ll1 = LimitLine(150f, "Upper Limit")
-        ll1.lineWidth = 4f
-        ll1.enableDashedLine(10f, 10f, 0f)
-        ll1.labelPosition = LimitLine.LimitLabelPosition.RIGHT_TOP
-        ll1.textSize = 10f
-        ll1.typeface = Typeface.DEFAULT
-        val ll2 = LimitLine(-30f, "Lower Limit")
-        ll2.lineWidth = 4f
-        ll2.enableDashedLine(10f, 10f, 0f)
-        ll2.labelPosition = LimitLine.LimitLabelPosition.RIGHT_BOTTOM
-        ll2.textSize = 10f
-        ll2.typeface = Typeface.DEFAULT
+            // create marker to display box when values are selected
+            val mv = MyMarkerView(requireContext(), R.layout.custom_marker_view)
 
-        // draw limit lines behind data instead of on top
-        yAxis.setDrawLimitLinesBehindData(true)
-        xAxis.setDrawLimitLinesBehindData(true)
+            // Set the marker to the chart
+            mv.setChartView(lineChart)
+            lineChart.setMarker(mv)
 
-        // add limit lines
-        yAxis.addLimitLine(ll1)
-        yAxis.addLimitLine(ll2)
+            // enable scaling and dragging
+            lineChart.setDragEnabled(true)
+            lineChart.setScaleEnabled(true)
+            // chart.setScaleXEnabled(true);
+            // chart.setScaleYEnabled(true);
+
+            // force pinch zoom along both axis
+            lineChart.setPinchZoom(true)
+        }
+        var xAxis: XAxis
+        run {
+            // // X-Axis Style // //
+            xAxis = lineChart.getXAxis()
+
+            // vertical grid lines
+            xAxis.setDrawGridLines(false)
+
+            xAxis.position = XAxis.XAxisPosition.BOTTOM
+
+            xAxis.axisMinimum = 0f
+            xAxis.axisMaximum = 3f
+            xAxis.labelCount = 4
+            xAxis.granularity = 1.0f
+
+            xAxis.valueFormatter = object : ValueFormatter() {
+                override fun getFormattedValue(value: Float): String {
+                    return value.toInt().toString() + "/16"
+                }
+            }
+        }
+        var leftAxis: YAxis
+        run {
+            // // Y-Axis Style // //
+            leftAxis = lineChart.getAxisLeft()
+
+            // axis range
+            leftAxis.axisMaximum = 20000f
+            leftAxis.axisMinimum = 0f
+            leftAxis.granularity = 4000f
+        }
+        var rightAxis: YAxis
+        run {
+            // // Y-Axis Style // //
+            rightAxis = lineChart.axisRight
+
+            // axis range
+            rightAxis.axisMaximum = 20000f
+            rightAxis.axisMinimum = 0f
+            rightAxis.granularity = 4000f
+        }
+
+        // add data
+        setLineChartData(4, 20000)
 
         // draw points over time
-        chart.animateX(1500)
+        lineChart.animateXY(1000, 1000)
 
         // get the legend (only possible after setting data)
-        val l = chart.legend
+        val l: Legend = lineChart.getLegend()
 
         // draw legend entries as lines
         l.form = Legend.LegendForm.LINE
-
-        setData(45, 180f)
-        chart.invalidate()
     }
 
-    @SuppressLint("UseCompatLoadingForDrawables")
-    private fun setData(count: Int, range: Float) {
+    private fun setLineChartData(count: Int, range: Int) {
         val values: ArrayList<Entry> = ArrayList()
         for (i in 0 until count) {
-            val `val` = (Math.random() * range).toFloat() - 30
-            values.add(
-                Entry(i.toFloat(),
-                    `val`,
-                    resources.getDrawable(R.drawable.star)
-                )
-            )
+            val `val` = (Math.random() * range).roundToInt().toFloat()
+            values.add(Entry(i.toFloat(), `val`, getResources().getDrawable(R.drawable.star)))
+        }
+        val values2: ArrayList<Entry> = ArrayList()
+        for (i in 0 until count) {
+            val `val` = (Math.random() * range).roundToInt().toFloat()
+            values2.add(Entry(i.toFloat(), `val`, getResources().getDrawable(R.drawable.star)))
         }
         val set1: LineDataSet
-        if (chart.data != null &&
-            chart.data.dataSetCount > 0
+        val set2: LineDataSet
+        if (lineChart.getData() != null &&
+            lineChart.getData().getDataSetCount() > 1
         ) {
-            set1 = chart.data.getDataSetByIndex(0) as LineDataSet
-            set1.values = values
+            set1 = lineChart.getData().getDataSetByIndex(0) as LineDataSet
+            set1.setValues(values)
             set1.notifyDataSetChanged()
-            chart.data.notifyDataChanged()
-            chart.notifyDataSetChanged()
+            set2 = lineChart.getData().getDataSetByIndex(1) as LineDataSet
+            set2.setValues(values2)
+            set2.notifyDataSetChanged()
+            lineChart.getData().notifyDataChanged()
+            lineChart.notifyDataSetChanged()
         } else {
             // create a dataset and give it a type
-            set1 = LineDataSet(values, "DataSet 1")
+            set1 = LineDataSet(values, "收入")
             set1.setDrawIcons(false)
 
-            // draw dashed line
-            set1.enableDashedLine(10f, 5f, 0f)
-
             // black lines and points
-            set1.color = Color.BLACK
-            set1.setCircleColor(Color.BLACK)
+            set1.setColor(Color.BLUE)
+            set1.setCircleColor(Color.BLUE)
 
             // line thickness and point size
-            set1.lineWidth = 1f
-            set1.circleRadius = 3f
+            set1.setLineWidth(3f)
+            set1.setCircleRadius(6f)
 
             // draw points as solid circles
-            set1.setDrawCircleHole(false)
-
-            // customize legend entry
-            set1.formLineWidth = 1f
-            set1.formLineDashEffect = DashPathEffect(floatArrayOf(10f, 5f), 0f)
-            set1.formSize = 15f
+            set1.setDrawCircleHole(true)
+            set1.circleHoleRadius = 3f
 
             // text size of values
-            set1.valueTextSize = 9f
+            set1.setValueTextSize(10f)
 
-            // draw selection line as dashed
-            set1.enableDashedHighlightLine(10f, 5f, 0f)
+            // create a dataset and give it a type
+            set2 = LineDataSet(values2, "支出")
+            set2.setDrawIcons(false)
 
-            // set the filled area
-            set1.setDrawFilled(true)
-            set1.fillFormatter =
-                IFillFormatter { dataSet, dataProvider -> chart.axisLeft.axisMinimum }
+            // black lines and points
+            set2.setColor(Color.RED)
+            set2.setCircleColor(Color.BLUE)
 
-            // set color of filled area
-            if (Utils.getSDKInt() >= 18) {
-                // drawables only supported on api level 18 and above
-                val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.fade_red)
-                set1.fillDrawable = drawable
-            } else {
-                set1.fillColor = Color.BLACK
-            }
+            // line thickness and point size
+            set2.setLineWidth(3f)
+            set2.setCircleRadius(6f)
+
+            // draw points as solid circles
+            set2.setDrawCircleHole(true)
+            set2.circleHoleRadius = 3f
+
+            // text size of values
+            set2.setValueTextSize(10f)
+
             val dataSets: ArrayList<ILineDataSet> = ArrayList()
             dataSets.add(set1) // add the data sets
+            dataSets.add(set2) // add the data sets
 
             // create a data object with the data sets
             val data = LineData(dataSets)
 
             // set data
-            chart.data = data
+            lineChart.setData(data)
         }
-    }
-
-
-    override fun onValueSelected(e: Entry?, h: Highlight?) {
-        Log.i("Entry selected", e.toString())
-        Log.i("LOW HIGH", "low: " + chart.lowestVisibleX + ", high: " + chart.highestVisibleX)
-        Log.i(
-            "MIN MAX",
-            "xMin: " + chart.xChartMin + ", xMax: " + chart.xChartMax + ", yMin: " + chart.yChartMin + ", yMax: " + chart.yChartMax
-        )
-    }
-
-    override fun onNothingSelected() {
-        Log.i("Nothing selected", "Nothing selected.")
     }
 }

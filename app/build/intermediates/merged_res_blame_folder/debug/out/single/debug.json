@@ -24,10 +24,6 @@
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/landlord_fragment_data_analysis.xml"
     },
     {
-        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_landlord_card_object_folder.xml.flat",
-        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/landlord_card_object_folder.xml"
-    },
-    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_card_plumber.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/card_plumber.xml"
     },
@@ -112,6 +108,10 @@
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/landlord_section_menu.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_indicator_unselected.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/indicator_unselected.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_choose_tenant.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_choose_tenant.xml"
     },
@@ -132,16 +132,16 @@
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_tenant_fragment_housing_rules.xml.flat",
-        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/tenant_fragment_housing_rules.xml"
-    },
-    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_card_repair_order_post.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/card_repair_order_post.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/navigation_login.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/navigation/login.xml"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_tenant_fragment_housing_rules.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/tenant_fragment_housing_rules.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_ic_baseline_video_call_24.xml.flat",
@@ -164,16 +164,20 @@
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_landlord_chat_icon.xml"
     },
     {
-        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
-    },
-    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_repair_order_create.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_repair_order_create.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher_round.png.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_ic_rainny.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_rainny.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_tenant_card_image_page.xml.flat",
@@ -196,10 +200,6 @@
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/tenant_fragment_contract.xml"
     },
     {
-        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_landlord_card_notification.xml.flat",
-        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/landlord_card_notification.xml"
-    },
-    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_tenant_fragment_contract_page2.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/tenant_fragment_contract_page2.xml"
     },
@@ -212,12 +212,12 @@
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_estate_directory_create.xml"
     },
     {
-        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
-    },
-    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/menu_toolbar.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/menu/toolbar.xml"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_ic_menu_icon_contract.xml.flat",
@@ -232,6 +232,10 @@
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_menu_icon_data_analysis.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_contact_us.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_contact_us.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_rectangle_marker_left.9.png.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/rectangle_marker_left.9.png"
     },
@@ -242,6 +246,10 @@
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_ic_menu_item_personnel.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_menu_item_personnel.xml"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_fade_black.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/fade_black.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_login.xml.flat",
@@ -276,12 +284,16 @@
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/radius_button.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_card_personnel_list.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/card_personnel_list.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_square_text_box.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/square_text_box.xml"
     },
     {
-        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_card_personnel_list.xml.flat",
-        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/card_personnel_list.xml"
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_fade_yellow.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/fade_yellow.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat",
@@ -302,6 +314,10 @@
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_ic_equipment_manual_icon.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_equipment_manual_icon.xml"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_red_dot.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/red_dot.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_tenant_card_equipment.xml.flat",
@@ -360,6 +376,10 @@
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_personnal_icon.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_privacy.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_privacy.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_ic_baseline_image_24.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_baseline_image_24.xml"
     },
@@ -400,6 +420,10 @@
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/navigation/landlord_home.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_before_login_view_pager.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_before_login_view_pager.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/navigation_tenant_notification.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/navigation/tenant_notification.xml"
     },
@@ -408,16 +432,16 @@
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/card_estate.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_personnel_list.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_personnel_list.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_tenant_fragment_contract_page1.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/tenant_fragment_contract_page1.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_landlord_fragment_notification_main.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/landlord_fragment_notification_main.xml"
-    },
-    {
-        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_personnel_list.xml.flat",
-        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_personnel_list.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_ic_landlord_home_icon.xml.flat",
@@ -452,16 +476,20 @@
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_menu_icon_repair.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_fade_blue.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/fade_blue.xml"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_card_estate_list.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/card_estate_list.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_ic_launcher_foreground.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_launcher_foreground.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/menu_landlord_bottom_nav.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/menu/landlord_bottom_nav.xml"
-    },
-    {
-        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_card_estate_list.xml.flat",
-        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/card_estate_list.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_landlord_fragment_chat_main.xml.flat",
@@ -482,6 +510,10 @@
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/anim_fade_out.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/anim/fade_out.xml"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_before_login_page.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_before_login_page.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_round.png.flat",
@@ -508,12 +540,28 @@
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_repair.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_card_estate_directory.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/card_estate_directory.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_ic_launcher_background.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_launcher_background.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_card_notification.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/card_notification.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_tenant_fragment_setup.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/tenant_fragment_setup.xml"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_fade_green.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/fade_green.xml"
+    },
+    {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_indicator_selected.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/indicator_selected.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_ic_menu_24dp.xml.flat",
@@ -548,16 +596,16 @@
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_baseline_notifications_24.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_card_estate_image.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/card_estate_image.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_ic_home_24dp.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_home_24dp.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_landlord_card_chat.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/landlord_card_chat.xml"
-    },
-    {
-        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_card_estate_image.xml.flat",
-        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/card_estate_image.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable-v24_marker2.png.flat",

@@ -55,6 +55,10 @@ class EstateDirectoryFragment : Fragment() {
 
         linkRefreshListener()
 
+        root.card_image_large.setOnClickListener {
+            root.card_image_large.visibility = View.GONE
+        }
+
         return root
     }
 

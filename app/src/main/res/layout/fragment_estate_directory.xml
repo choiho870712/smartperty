@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".landlord.menu.object.estateDirectory.EstateDirectoryFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -18,5 +19,24 @@
             tools:layout_editor_absoluteY="31dp" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_image_large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="2dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/imageView_large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="center"/>
+
+    </androidx.cardview.widget.CardView>
 
 </FrameLayout>

@@ -83,6 +83,15 @@
         <item name="android:layout_gravity">center</item>
     </style>
 
+    <style name="text_normal_gray_12sp" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorSilver</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
     <style name="text_normal_black_14sp" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

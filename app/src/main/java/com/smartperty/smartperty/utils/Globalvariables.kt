@@ -107,6 +107,35 @@ class GlobalVariables : Application() {
         var estateDirectoryAdapter:
                 RecyclerView.Adapter<EstateDirectoryAdapter.CardHolder>? = null
 
+        // notification
+        var notificationList = mutableListOf<Notification>(
+            Notification(
+                message = "合約類型",
+                date = "2020/12/01",
+                type = NotificationType.CONTRACT
+            ),
+            Notification(
+                message = "租金類型",
+                date = "2020/12/01",
+                type = NotificationType.RENT
+            ),
+            Notification(
+                message = "代辦類型",
+                date = "2020/12/01",
+                type = NotificationType.AGENT
+            ),
+            Notification(
+                message = "維修類型",
+                date = "2020/12/01",
+                type = NotificationType.REPAIR
+            ),
+            Notification(
+                message = "系統類型",
+                date = "2020/12/01",
+                type = NotificationType.SYSTEM
+            )
+        )
+
         @SuppressLint("SimpleDateFormat")
         fun getCurrentDateTime(): String {
             val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")

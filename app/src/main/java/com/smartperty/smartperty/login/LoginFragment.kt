@@ -35,6 +35,8 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_login, container, false)
 
+        GlobalVariables.toolBarUtils.setVisibility(false)
+
         val username = root.username
         val password = root.password
         val login = root.login
@@ -113,6 +115,18 @@ class LoginFragment : Fragment() {
         root.text_login_about_us_entry.setOnClickListener {
             root.findNavController().navigate(
                 R.id.action_loginFragment_to_aboutUsFragment)
+        }
+
+        root.textView_contact_us.setOnClickListener {
+            root.findNavController().navigate(
+                R.id.action_loginFragment_to_contactUsFragment
+            )
+        }
+
+        root.text_login_policy_entry.setOnClickListener {
+            root.findNavController().navigate(
+                R.id.action_loginFragment_to_privacyFragment
+            )
         }
 
         root.button_landlord_test.setOnClickListener {

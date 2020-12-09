@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tenant_chat"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/beforeLoginViewPagerFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -16,17 +16,42 @@
         <action
             android:id="@+id/action_loginFragment_to_aboutUsFragment"
             app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_contactUsFragment"
+            app:destination="@id/contactUsFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_privacyFragment"
+            app:destination="@id/privacyFragment" />
     </fragment>
 
 
     <fragment
         android:id="@+id/forgetPasswordFragment"
         android:name="com.smartperty.smartperty.login.forgetPassword.ForgetPasswordFragment"
-        android:label="fragment_forget_password"
+        android:label="忘記密碼"
         tools:layout="@layout/fragment_forget_password" />
     <fragment
         android:id="@+id/aboutUsFragment"
-        android:name="com.smartperty.smartperty.login.forgetPassword.AboutUsFragment"
-        android:label="fragment_about_us"
+        android:name="com.smartperty.smartperty.login.aboutUs.AboutUsFragment"
+        android:label="使用條款"
         tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/beforeLoginViewPagerFragment"
+        android:name="com.smartperty.smartperty.login.beforeLogin.BeforeLoginViewPagerFragment"
+        android:label="fragment_before_login_view_pager"
+        tools:layout="@layout/fragment_before_login_view_pager" >
+        <action
+            android:id="@+id/action_beforeLoginViewPagerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contactUsFragment"
+        android:name="com.smartperty.smartperty.login.contactUs.ContactUsFragment"
+        android:label="聯繫我們"
+        tools:layout="@layout/fragment_contact_us" />
+    <fragment
+        android:id="@+id/privacyFragment"
+        android:name="com.smartperty.smartperty.login.pravicy.PrivacyFragment"
+        android:label="隱私政策"
+        tools:layout="@layout/fragment_privacy" />
 </navigation>

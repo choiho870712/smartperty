@@ -31,10 +31,16 @@ class RepairListAdapter(private val activity: Activity,
         holder.index = position
         holder.address.text = myDataset[position].estate?.address ?: ""
         holder.title.text = myDataset[position].title
+//        holder.status.text = RepairStatus.getStringByStatus(myDataset[position].status)
+        holder.status.text = myDataset[position].statusString
+
         if (myDataset[position].postList.isNotEmpty()) {
             holder.date.text = myDataset[position].postList[0].createDateTime
             if (myDataset[position].postList[0].imageList.isNotEmpty())
                 holder.image.setImageBitmap(myDataset[position].postList[0].imageList[0])
+        }
+        else {
+            holder.date.text = ""
         }
 
         holder.cardView.setOnClickListener {
@@ -57,5 +63,6 @@ class RepairListAdapter(private val activity: Activity,
         val title: TextView = card.text_repair_list_title
         val date: TextView = card.text_repair_list_date
         val image: ImageView = card.image_repair_list
+        val status: TextView = card.text_repair_list_status
     }
 }

@@ -68,6 +68,13 @@ class EstateFragment : Fragment() {
             )
         }
 
+        if (GlobalVariables.estate.contract.tenant != null)
+        root.textView_object_item_tenant_name.setOnClickListener {
+            GlobalVariables.personnel = GlobalVariables.estate.contract.tenant!!
+            root.findNavController().navigate(
+                R.id.action_estateFragment_to_landlordPersonnelItemFragment
+            )
+        }
 
         return root
     }

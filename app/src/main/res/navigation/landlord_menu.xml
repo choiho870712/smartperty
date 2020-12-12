@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_landlordMenuFragment_to_landlordDataAnalysisFragment"
             app:destination="@id/landlordDataAnalysisFragment" />
+        <action
+            android:id="@+id/action_landlordMenuFragment_to_financeFragment"
+            app:destination="@id/financeFragment" />
     </fragment>
     <fragment
         android:id="@+id/estateFragment"
@@ -38,6 +41,9 @@
         <action
             android:id="@+id/action_estateFragment_to_repairOrderFragment"
             app:destination="@id/repairOrderFragment" />
+        <action
+            android:id="@+id/action_estateFragment_to_landlordPersonnelItemFragment"
+            app:destination="@id/landlordPersonnelItemFragment" />
     </fragment>
     <fragment
         android:id="@+id/estateDirectoryFragment"
@@ -92,12 +98,15 @@
         <action
             android:id="@+id/action_personnelListFragment_to_personnelFragment"
             app:destination="@id/landlordPersonnelItemFragment" />
+        <action
+            android:id="@+id/action_landlordPersonnelListFragment_to_personnelAddFragment"
+            app:destination="@id/personnelAddFragment" />
     </fragment>
     <fragment
         android:id="@+id/landlordDataAnalysisFragment"
-        android:name="com.smartperty.smartperty.landlord.menu.dataAnalysis.LandlordDataAnalysisFragment"
+        android:name="com.smartperty.smartperty.landlord.menu.dataAnalysis.DataAnalysisFragment"
         android:label="@string/landlord_title_data_analysis"
-        tools:layout="@layout/landlord_fragment_data_analysis" />
+        tools:layout="@layout/fragment_data_analysis" />
     <fragment
         android:id="@+id/estateDirectoryCreateFragment"
         android:name="com.smartperty.smartperty.landlord.menu.object.estateDirectory.EstateDirectroyCreateFragment"
@@ -160,6 +169,16 @@
         android:id="@+id/addMessageFragment"
         android:name="com.smartperty.smartperty.repair.AddPostFragment"
         android:label="新增訊息"
-        tools:layout="@layout/fragment_add_post"/>
+        tools:layout="@layout/fragment_repair_add_post"/>
+    <fragment
+        android:id="@+id/financeFragment"
+        android:name="com.smartperty.smartperty.landlord.menu.finance.FinanceFragment"
+        android:label="收支表"
+        tools:layout="@layout/fragment_finance" />
+    <fragment
+        android:id="@+id/personnelAddFragment"
+        android:name="com.smartperty.smartperty.landlord.menu.personnel.PersonnelAddFragment"
+        android:label="新增人員"
+        tools:layout="@layout/fragment_personnel_add" />
 
 </navigation>

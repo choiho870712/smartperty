@@ -67,9 +67,9 @@
         tools:layout="@layout/tenant_fragment_equipment_manual_pdf"/>
     <fragment
         android:id="@+id/tenantSetupFragment"
-        android:name="com.smartperty.smartperty.tenant.setup.TenantSetupFragment"
+        android:name="com.smartperty.smartperty.tenant.setup.SetupFragment"
         android:label="設定"
-        tools:layout="@layout/tenant_fragment_setup">
+        tools:layout="@layout/fragment_setup">
         <action
             android:id="@+id/action_tenantSetupFragment_to_tenantHelpFragment"
             app:destination="@id/tenantHelpFragment" />

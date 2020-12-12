@@ -13,6 +13,7 @@
         android:background="@color/colorWhite">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_landlord_home_notification"
             style="@style/edit_text_normal_black_16sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

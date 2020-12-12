@@ -53,7 +53,7 @@ class EstateDirectoryFragment : Fragment() {
             adapter = GlobalVariables.estateDirectoryAdapter
         }
 
-        linkRefreshListener()
+        //linkRefreshListener()
 
         root.card_image_large.setOnClickListener {
             root.card_image_large.visibility = View.GONE
@@ -62,26 +62,26 @@ class EstateDirectoryFragment : Fragment() {
         return root
     }
 
-    private fun linkRefreshListener() {
-        root.swipe_layout.setOnRefreshListener {
-            if (!lockRefresh) {
-                lockRefresh = true
-
-                GlobalVariables.estateDirectory.forEach {
-                    it.image = null
-                }
-                GlobalVariables.estateDirectory.clear()
-                GlobalVariables.estateDirectoryAdapter!!.notifyDataSetChanged()
-
-                Thread {
-                    GlobalVariables.api.getGroupTag(GlobalVariables.user.id)
-                    if (activity != null) requireActivity().runOnUiThread {
-                        GlobalVariables.estateDirectoryAdapter!!.notifyDataSetChanged()
-                        lockRefresh = false
-                        root.swipe_layout.isRefreshing = false
-                    }
-                }.start()
-            }
-        }
-    }
+//    private fun linkRefreshListener() {
+//        root.swipe_layout.setOnRefreshListener {
+//            if (!lockRefresh) {
+//                lockRefresh = true
+//
+//                GlobalVariables.estateDirectory.forEach {
+//                    it.image = null
+//                }
+//                GlobalVariables.estateDirectory.clear()
+//                GlobalVariables.estateDirectoryAdapter!!.notifyDataSetChanged()
+//
+//                Thread {
+//                    GlobalVariables.api.getGroupTag(GlobalVariables.user.id)
+//                    if (activity != null) requireActivity().runOnUiThread {
+//                        GlobalVariables.estateDirectoryAdapter!!.notifyDataSetChanged()
+//                        lockRefresh = false
+//                        root.swipe_layout.isRefreshing = false
+//                    }
+//                }.start()
+//            }
+//        }
+//    }
 }

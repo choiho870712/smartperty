@@ -47,10 +47,10 @@ class EstateDirectoryAdapter(private val activity: Activity,
                 R.id.action_landlordObjectFolderFragment_to_landlordObjectListFragment)
         }
 
-        holder.image.setOnClickListener {
-            parentView.imageView_large.setImageDrawable(holder.image.drawable)
-            parentView.card_image_large.visibility = View.VISIBLE
-        }
+//        holder.image.setOnClickListener {
+//            parentView.imageView_large.setImageDrawable(holder.image.drawable)
+//            parentView.card_image_large.visibility = View.VISIBLE
+//        }
     }
 
     class CardHolder(card: View) : RecyclerView.ViewHolder(card) {

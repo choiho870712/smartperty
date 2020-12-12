@@ -15,24 +15,38 @@
             android:id="@+id/text_personnel_list_name"
             style="@style/text_normal_black_20sp"
             android:layout_width="0dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="16dp"
             android:text="Jason"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_personnel_control"
+            app:layout_constraintStart_toEndOf="@+id/image_object_folder_add"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_object_folder_add"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ironman"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/image_object_folder_add"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="16dp"
+        <ImageButton
+            android:id="@+id/button_personnel_control"
+            android:layout_width="64dp"
+            android:layout_height="0dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:background="@color/colorWhite"
+            android:padding="32dp"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ironman" />
+            app:srcCompat="@drawable/ic_landlord_menu_icon" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -102,7 +102,6 @@ class TenantActivity : AppCompatActivity() {
 
         // TODO call api : get user info
         GlobalVariables.user = User(
-            userInfo = UserInfo(
                 name = "Tenant",
                 homePhone = "03-2870018",
                 cellPhone = "0976256290",
@@ -110,9 +109,8 @@ class TenantActivity : AppCompatActivity() {
                 address = "桃園市大園區致祥一街105號12樓",
                 company = "聶星行銷科技有限公司",
                 auth = UserType.TENANT
-            )
         )
-        GlobalVariables.landlord = UserInfo(
+        GlobalVariables.landlord = User(
             name = "Landlord",
             homePhone = "03-1234567",
             cellPhone = "0912345678",

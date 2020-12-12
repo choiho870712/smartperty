@@ -11,9 +11,6 @@ import com.smartperty.smartperty.utils.GlobalVariables
 import com.smartperty.smartperty.utils.ToolBarUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.jakewharton.threetenabp.AndroidThreeTen
-import com.smartperty.smartperty.data.User
-import com.smartperty.smartperty.data.UserInfo
-import com.smartperty.smartperty.data.UserType
 import com.smartperty.smartperty.utils.DBHelper
 import kotlinx.android.synthetic.main.activity_tenant.*
 

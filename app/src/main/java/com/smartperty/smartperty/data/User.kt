@@ -6,6 +6,9 @@ enum class UserType {
     LANDLORD, TENANT, TECHNICIAN, ACCOUNTANT, AGENT, UNKNOWN;
 
     companion object {
+        private val VALUES = values()
+        fun getByValue(value: Int) = VALUES.firstOrNull { it.ordinal == value }
+
         fun getByString(str: String): UserType {
             return when (str) {
                 "landlord" -> {
@@ -33,10 +36,7 @@ enum class UserType {
 
 data class User(
     var id: String = "",
-    var account: String = "",
-    var password: String = "",
     var permissions: String = "",
-    var userInfo: UserInfo = UserInfo(),
     var accountantIdList: MutableList<String> = mutableListOf(),
     var agentIdList: MutableList<String> = mutableListOf(),
     var contractIdList: MutableList<String> = mutableListOf(),
@@ -44,11 +44,7 @@ data class User(
     var technicianIdList: MutableList<String> = mutableListOf(),
     var tenantIdList: MutableList<String> = mutableListOf(),
     var estateDirectory: MutableList<EstateList> = mutableListOf(),
-    var system_id: String = ""
-) {
-}
-
-data class UserInfo(
+    var system_id: String = "",
     var name: String = "",
     var homePhone: String = "",
     var cellPhone: String = "",
@@ -57,7 +53,8 @@ data class UserInfo(
     var company: String = "",
     var auth: UserType = UserType.UNKNOWN,
     var icon: Bitmap? = null,
-    var iconString: String = ""
+    var iconString: String = "",
+    var account: String = "",
+    var password: String = ""
 ) {
-
 }

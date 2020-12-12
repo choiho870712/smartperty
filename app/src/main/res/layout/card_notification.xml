@@ -28,10 +28,10 @@
             style="@style/text_normal_black_16sp"
             android:layout_width="0dp"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             android:text="title"
             app:layout_constraintBottom_toTopOf="@+id/text_date"
-            app:layout_constraintEnd_toStartOf="@+id/imageView_red_dot"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView_notification_color"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
@@ -45,16 +45,6 @@
             app:layout_constraintEnd_toEndOf="@+id/text_message"
             app:layout_constraintStart_toStartOf="@+id/text_message"
             app:layout_constraintTop_toBottomOf="@+id/text_message" />
-
-        <ImageView
-            android:id="@+id/imageView_red_dot"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/red_dot"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

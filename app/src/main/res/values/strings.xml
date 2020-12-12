@@ -37,22 +37,17 @@
         <item>租約</item>
         <item>使用</item>
     </string-array>
-    <string-array name="repair_status_list">
-        <item>已建立報修單</item>
-        <item>請選擇住戶</item>
-        <item>請選擇維修人員</item>
-        <item>正在通知房東</item>
-        <item>正在通知維修人員</item>
-        <item>已通知房東</item>
-        <item>已通知維修人員</item>
-        <item>維修人員處理中</item>
-        <item>已完成</item>
+    <string-array name="personnel_type_list">
+        <item>租客</item>
+        <item>維修人員</item>
+        <item>會計</item>
+        <item>管理</item>
     </string-array>
-    <string-array name="contract_pie_chart_by_square_ft_label">
-        <item>0~20坪</item>
-        <item>21~30坪</item>
-        <item>31~50坪</item>
-        <item>51~100坪</item>
+    <string-array name="repair_status_list">
+        <item>已接案</item>
+        <item>已指派</item>
+        <item>處理中</item>
+        <item>已結案</item>
     </string-array>
 
     <!-- Strings related to landlord-->

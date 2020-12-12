@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.Contract
 import com.smartperty.smartperty.data.Estate
-import com.smartperty.smartperty.data.UserInfo
+import com.smartperty.smartperty.data.User
 import com.smartperty.smartperty.repair.ImageListAdapter
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.activity_landlord.*
@@ -65,7 +65,7 @@ class EstateListCreateFragment : Fragment() {
                         contract = Contract(
                             rentAmount = rentAmount,
                             rentEndDate = root.textView_object_item_rent_end_date.text.toString(),
-                            tenant = UserInfo(
+                            tenant = User(
                                 name = root.textView_object_item_tenant_name.text.toString(),
                                 cellPhone = root.textView_object_item_phone.text.toString()
                             )

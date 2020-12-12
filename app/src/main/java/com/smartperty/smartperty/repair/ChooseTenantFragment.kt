@@ -44,7 +44,7 @@ class ChooseTenantFragment : Fragment() {
             GlobalVariables.estateList.list.clear()
             GlobalVariables.estateList.list.addAll(
                 GlobalVariables.estateDirectory[pos].list)
-            GlobalVariables.estateAdapter.notifyDataSetChanged()
+            GlobalVariables.estateAdapter!!.notifyDataSetChanged()
         }
 
         override fun onNothingSelected(parent: AdapterView<*>) {

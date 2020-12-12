@@ -53,6 +53,11 @@ class LandlordMenuFragment : Fragment() {
                 R.id.action_landlordMenuFragment_to_landlordDataAnalysisFragment)
         }
 
+        root.card_finance.setOnClickListener {
+            root.findNavController().navigate(
+                R.id.action_landlordMenuFragment_to_financeFragment)
+        }
+
 
         return root
     }

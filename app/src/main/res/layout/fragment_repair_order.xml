@@ -35,7 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_repair_order_content" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_repair_order_repair_date_time" />
 
     <TextView
         android:id="@+id/textView43"
@@ -138,17 +138,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_repair_order_title" />
 
     <TextView
-        android:id="@+id/textView53"
-        style="@style/text_normal_gray_16sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="報修說明"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toBottomOf="@+id/textView_repair_order_repair_date_time" />
-
-    <TextView
         android:id="@+id/textView9"
         style="@style/text_normal_gray_16sp"
         android:layout_width="0dp"
@@ -243,26 +232,16 @@
         app:layout_constraintTop_toBottomOf="@+id/textView51" />
 
     <TextView
-        android:id="@+id/textView_repair_order_content"
-        style="@style/text_normal_black_16sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="textView_repair_order_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toBottomOf="@+id/textView53" />
-
-    <TextView
         android:id="@+id/textView_repair_order_status"
-        style="@style/text_normal_black_16sp"
-        android:layout_width="0dp"
+        style="@style/button_rectangle_primary_hollow"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:padding="4dp"
         android:text="textView_repair_order_status"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:singleLine="true"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
@@ -301,6 +280,7 @@
         android:id="@+id/recyclerView_repair_order_post"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/textView_repair_order_status"
         tools:layout_editor_absoluteX="75dp" />
 
@@ -326,16 +306,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView39" />
 
+    <Button
+        android:id="@+id/button_add_message"
+        style="@style/button_radius_primary"
+        android:layout_marginEnd="16dp"
+        android:text="新增動態"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_repair_order_status"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:srcCompat="@drawable/ic_baseline_add_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 
-    <ImageButton
-        android:id="@+id/button_add_message"
-        style="@style/button_radius_primary"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="32dp"
-        app:srcCompat="@drawable/ic_baseline_add_24"/>
 </RelativeLayout>

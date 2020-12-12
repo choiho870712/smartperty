@@ -4,12 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/landlord_group"
     android:label="@string/landlord_title_group"
-    app:startDestination="@id/landlordGroupFragment">
+    app:startDestination="@id/setupFragment">
 
     <fragment
-        android:id="@+id/landlordGroupFragment"
-        android:name="com.smartperty.smartperty.landlord.group.LandlordGroupFragment"
-        android:label="@string/landlord_title_group"
-        tools:layout="@layout/landlord_fragment_group_main" />
+        android:id="@+id/setupFragment"
+        android:name="com.smartperty.smartperty.tenant.setup.SetupFragment"
+        android:label=""
+        tools:layout="@layout/fragment_setup">
+        <action
+            android:id="@+id/action_setupFragment_to_privacyFragment2"
+            app:destination="@id/privacyFragment2" />
+        <action
+            android:id="@+id/action_setupFragment_to_aboutUsFragment2"
+            app:destination="@id/aboutUsFragment2" />
+        <action
+            android:id="@+id/action_setupFragment_to_personnelUserInfoFragment"
+            app:destination="@id/personnelUserInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/privacyFragment2"
+        android:name="com.smartperty.smartperty.login.pravicy.PrivacyFragment"
+        android:label="fragment_privacy"
+        tools:layout="@layout/fragment_privacy" />
+    <fragment
+        android:id="@+id/aboutUsFragment2"
+        android:name="com.smartperty.smartperty.login.aboutUs.AboutUsFragment"
+        android:label="AboutUsFragment"
+        tools:layout="@layout/fragment_about_us"/>
+    <fragment
+        android:id="@+id/personnelUserInfoFragment"
+        android:name="com.smartperty.smartperty.landlord.menu.personnel.PersonnelUserInfoFragment"
+        android:label="個人資料"
+        tools:layout="@layout/fragment_personnel_user_info" />
 
 </navigation>

@@ -24,8 +24,10 @@ class PersonnelFragment : Fragment() {
         GlobalVariables.toolBarUtils.setTitle(GlobalVariables.personnel.name)
 
         root.textView_personnel_name.text = GlobalVariables.personnel.name
-        root.textView_personnel_company.text = GlobalVariables.personnel.company
+        root.textView_personnel_account.text = GlobalVariables.personnel.account
         root.textView_personnel_phone.text = GlobalVariables.personnel.cellPhone
+        root.textView_personnel_email.text = GlobalVariables.personnel.email
+        root.textView_personnel_password.text = GlobalVariables.personnel.password
 
         return root
     }

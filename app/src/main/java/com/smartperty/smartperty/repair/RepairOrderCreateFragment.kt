@@ -111,19 +111,18 @@ class RepairOrderCreateFragment : Fragment() {
     }
 
     private fun writeInfoToView() {
-        root.textView_repair_order_writer.text = GlobalVariables.user.userInfo.name
-        root.textView_repair_order_phone.text = GlobalVariables.user.userInfo.homePhone
-        root.textView_repair_order_cell_phone.text = GlobalVariables.user.userInfo.cellPhone
-        root.textView_repair_order_email.text = GlobalVariables.user.userInfo.email
+        root.textView_repair_order_writer.text = GlobalVariables.user.name
+        root.textView_repair_order_phone.text = GlobalVariables.user.homePhone
+        root.textView_repair_order_cell_phone.text = GlobalVariables.user.cellPhone
+        root.textView_repair_order_email.text = GlobalVariables.user.email
         root.textView_repair_order_address.text = GlobalVariables.estate.address
     }
 
     private fun initRepairOrder() {
         GlobalVariables.repairOrder = RepairOrder(
-            creator = GlobalVariables.user.userInfo,
+            creator = GlobalVariables.user,
             type = RepairType.EQUIPMENT
         )
-        GlobalVariables.repairOrder.nextStatus()
     }
 
     private fun submitOrder() {
@@ -132,14 +131,12 @@ class RepairOrderCreateFragment : Fragment() {
 
         GlobalVariables.repairOrder.postList.add(
             RepairOrderPost(
-                sender = GlobalVariables.user.userInfo,
+                sender = GlobalVariables.user,
                 message = root.textView_repair_order_content.text.toString(),
                 createDateTime = GlobalVariables.getCurrentDateTime(),
                 imageList = imageList
             )
         )
-
-        GlobalVariables.repairOrder.nextStatus()
 
         GlobalVariables.repairList.add(GlobalVariables.repairOrder)
         GlobalVariables.repairListAdapter!!.notifyDataSetChanged()
@@ -164,15 +161,10 @@ class RepairOrderCreateFragment : Fragment() {
     }
 
     private fun setChooseTenantButton() {
-        if (GlobalVariables.repairOrder.status != RepairStatus.CHOOSING_TENANT) {
-            root.button_choose_tenant.visibility = View.GONE
-        }
-        else {
-            root.button_choose_tenant.visibility = View.VISIBLE
-            root.button_choose_tenant.setOnClickListener {
-                root.findNavController().navigate(
-                    R.id.action_repairOrderCreateFragment_to_chooseTenantFragment)
-            }
+        root.button_choose_tenant.visibility = View.VISIBLE
+        root.button_choose_tenant.setOnClickListener {
+            root.findNavController().navigate(
+                R.id.action_repairOrderCreateFragment_to_chooseTenantFragment)
         }
     }
 

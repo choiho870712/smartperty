@@ -15,7 +15,7 @@ import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.RepairOrderPost
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.activity_landlord.toolbar
-import kotlinx.android.synthetic.main.fragment_add_post.view.*
+import kotlinx.android.synthetic.main.fragment_repair_add_post.view.*
 
 class AddPostFragment : Fragment() {
 
@@ -28,7 +28,7 @@ class AddPostFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        root = inflater.inflate(R.layout.fragment_add_post, container, false)
+        root = inflater.inflate(R.layout.fragment_repair_add_post, container, false)
 
         setToolBar()
         setPickImageButton()
@@ -54,7 +54,7 @@ class AddPostFragment : Fragment() {
                     builder.setPositiveButton("是") { _, _ ->
                         post.message = root.textView_message.text.toString()
                         post.createDateTime = root.textView_date_time.text.toString()
-                        post.sender = GlobalVariables.user.userInfo
+                        post.sender = GlobalVariables.user
                         GlobalVariables.repairOrder.postList.add(post)
                         root.findNavController().navigateUp()
                     }

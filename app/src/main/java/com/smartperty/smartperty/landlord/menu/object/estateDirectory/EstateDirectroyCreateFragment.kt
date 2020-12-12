@@ -48,7 +48,6 @@ class EstateDirectroyCreateFragment : Fragment() {
                     GlobalVariables.estateDirectory.add(
                         EstateList(
                             title = root.text_object_folder_title.text.toString(),
-                            address = root.text_object_folder_address.text.toString(),
                             image = image
                         )
                     )

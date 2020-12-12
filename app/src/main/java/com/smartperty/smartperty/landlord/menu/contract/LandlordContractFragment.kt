@@ -116,6 +116,8 @@ class LandlordContractFragment : Fragment() {
 
             // force pinch zoom along both axis
             lineChart.setPinchZoom(true)
+
+            lineChart
         }
         var xAxis: XAxis
         run {
@@ -127,14 +129,12 @@ class LandlordContractFragment : Fragment() {
 
             xAxis.position = XAxis.XAxisPosition.BOTTOM
 
-            xAxis.axisMinimum = 0f
-            xAxis.axisMaximum = 3f
-            xAxis.labelCount = 4
             xAxis.granularity = 1.0f
 
             xAxis.valueFormatter = object : ValueFormatter() {
                 override fun getFormattedValue(value: Float): String {
-                    return value.toInt().toString() + "/16"
+                    val month = (value-1)%12 +1
+                    return month.toInt().toString() + "/16"
                 }
             }
         }
@@ -143,22 +143,18 @@ class LandlordContractFragment : Fragment() {
             // // Y-Axis Style // //
             leftAxis = lineChart.getAxisLeft()
 
-            // axis range
-            leftAxis.axisMaximum = 20f
-            leftAxis.axisMinimum = 0f
+            leftAxis.granularity = 1.0f
         }
         var rightAxis: YAxis
         run {
             // // Y-Axis Style // //
             rightAxis = lineChart.axisRight
 
-            // axis range
-            rightAxis.axisMaximum = 20f
-            rightAxis.axisMinimum = 0f
+            rightAxis.granularity = 1.0f
         }
 
         // add data
-        setLineChartData(4, 18)
+        setLineChartData()
 
         // draw points over time
         lineChart.animateXY(1000, 1000)
@@ -170,11 +166,13 @@ class LandlordContractFragment : Fragment() {
         l.form = Legend.LegendForm.LINE
     }
 
-    private fun setLineChartData(count: Int, range: Int) {
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private fun setLineChartData() {
         val values: ArrayList<Entry> = ArrayList()
-        for (i in 0 until count) {
-            val `val` = (Math.random() * range).roundToInt().toFloat()
-            values.add(Entry(i.toFloat(), `val`, getResources().getDrawable(R.drawable.star)))
+        GlobalVariables.contractExpireLineChartDataSet.dataList.forEach {
+            val month = it.tag.toInt()
+            values.add(Entry((month).toFloat(), it.value.toFloat(),
+                resources.getDrawable(R.drawable.star)))
         }
         val set1: LineDataSet
         if (lineChart.getData() != null &&
@@ -204,6 +202,12 @@ class LandlordContractFragment : Fragment() {
 
             // text size of values
             set1.setValueTextSize(10f)
+
+            set1.valueFormatter = object : ValueFormatter() {
+                override fun getFormattedValue(value: Float): String {
+                    return value.toInt().toString()
+                }
+            }
 
             val dataSets: ArrayList<ILineDataSet> = ArrayList()
             dataSets.add(set1) // add the data sets
@@ -273,22 +277,20 @@ class LandlordContractFragment : Fragment() {
         pieChart1.setEntryLabelTypeface(Typeface.DEFAULT)
         pieChart1.setEntryLabelTextSize(12f)
 
-        setPieChart1Data(4, 10f)
+        setPieChart1Data()
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
-    private fun setPieChart1Data(count: Int, range: Float) {
+    private fun setPieChart1Data() {
         val entries: ArrayList<PieEntry> = ArrayList()
-
-        val labelString = resources.getStringArray(R.array.contract_pie_chart_by_square_ft_label)
 
         // NOTE: The order of the entries when being added to the entries array determines their position around the center of
         // the chart.
-        for (i in 0 until count) {
+        GlobalVariables.contractExpireIn3MonthBySquareFtPieChartDataSet.dataList.forEach {
             entries.add(
                 PieEntry(
-                    (Math.random() * range + range / 5).toFloat(),
-                    labelString[i],
+                    it.value.toFloat(),
+                    it.tag,
                     resources.getDrawable(R.drawable.star)
                 )
             )
@@ -314,6 +316,15 @@ class LandlordContractFragment : Fragment() {
         data.setValueTextSize(11f)
         data.setValueTextColor(Color.WHITE)
         data.setValueTypeface(Typeface.DEFAULT)
+
+        data.setValueFormatter(
+            object : ValueFormatter() {
+                override fun getFormattedValue(value: Float): String {
+                    return value.toInt().toString()
+                }
+            }
+        )
+
         pieChart1.data = data
 
         // undo all highlights
@@ -373,22 +384,21 @@ class LandlordContractFragment : Fragment() {
         pieChart2.setEntryLabelTypeface(Typeface.DEFAULT)
         pieChart2.setEntryLabelTextSize(12f)
 
-        setPieChart2Data(4, 10f)
+        setPieChart2Data()
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
-    private fun setPieChart2Data(count: Int, range: Float) {
+    private fun setPieChart2Data() {
         val entries: ArrayList<PieEntry> = ArrayList()
-
-        val labelString = resources.getStringArray(R.array.contract_pie_chart_by_square_ft_label)
 
         // NOTE: The order of the entries when being added to the entries array determines their position around the center of
         // the chart.
-        for (i in 0 until count) {
+
+        GlobalVariables.contractExpireIn3MonthByTypePieChartDataSet.dataList.forEach {
             entries.add(
                 PieEntry(
-                    (Math.random() * range + range / 5).toFloat(),
-                    labelString[i],
+                    it.value.toFloat(),
+                    it.tag,
                     resources.getDrawable(R.drawable.star)
                 )
             )
@@ -414,6 +424,15 @@ class LandlordContractFragment : Fragment() {
         data.setValueTextSize(11f)
         data.setValueTextColor(Color.WHITE)
         data.setValueTypeface(Typeface.DEFAULT)
+
+        data.setValueFormatter(
+            object : ValueFormatter() {
+                override fun getFormattedValue(value: Float): String {
+                    return value.toInt().toString()
+                }
+            }
+        )
+
         pieChart2.data = data
 
         // undo all highlights

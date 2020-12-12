@@ -14,79 +14,37 @@ enum class RepairType {
     }
 }
 
-enum class RepairStatus {
-    CREATED, CHOOSING_TENANT, CHOOSING_PLUMBER,
-    SENDING_TO_LANDLORD, SENDING_TO_PLUMBER,
-    SENT_TO_LANDLORD, SENT_TO_PLUMBER, RUNNING, DONE;
-
-    companion object {
-        fun getStringByStatus(status: RepairStatus) =
-            GlobalVariables.activity.resources
-                .getStringArray(R.array.repair_status_list)[status.ordinal]
-    }
-}
-
 data class RepairOrder(
-    var creator: UserInfo = GlobalVariables.user.userInfo,
-    var landlord: UserInfo = UserInfo(),
-    var tenant: UserInfo = UserInfo(),
-    var plumber: UserInfo = UserInfo(),
+    var creator: User = GlobalVariables.user,
+    var landlord: User = User(),
+    var tenant: User = User(),
+    var tenant_id: String = "",
+    var plumber: User = User(),
+    var plumber_id: String = "",
     var estate: Estate? = null,
     var type: RepairType = RepairType.UNKNOWN,
+    var typeString: String = "",
     var title: String = "",
     var repairDateTime: String = "",
-    var status: RepairStatus = RepairStatus.CREATED,
+    var timestamp: Int = 0,
+    var statusString: String = "",
+    var event_id: String = "",
+    var object_id: String = "",
+    var initiate_id: String = "",
     var postList: MutableList<RepairOrderPost> = mutableListOf()
 ) {
     init {
-        when (GlobalVariables.user.userInfo.auth) {
+        when (GlobalVariables.user.auth) {
             UserType.LANDLORD -> {
-                landlord = GlobalVariables.user.userInfo
+                landlord = GlobalVariables.user
             }
             UserType.TENANT -> {
-                tenant = GlobalVariables.user.userInfo
+                tenant = GlobalVariables.user
                 landlord = GlobalVariables.landlord
                 estate = GlobalVariables.estate
             }
             UserType.TECHNICIAN -> {
-                plumber = GlobalVariables.user.userInfo
-            }
-            else -> {
-
-            }
-        }
-    }
-
-    fun nextStatus() {
-        when(status) {
-            RepairStatus.CREATED -> {
-                if (creator.auth == UserType.TENANT)
-                    status = RepairStatus.SENDING_TO_LANDLORD
-                else if (creator.auth == UserType.LANDLORD)
-                    status = RepairStatus.CHOOSING_TENANT
-            }
-            RepairStatus.SENDING_TO_LANDLORD -> {
-                status = RepairStatus.SENT_TO_LANDLORD
-            }
-            RepairStatus.SENT_TO_LANDLORD -> {
-                status = RepairStatus.CHOOSING_PLUMBER
-            }
-            RepairStatus.CHOOSING_TENANT -> {
-                if (estate != null)
-                    status = RepairStatus.CHOOSING_PLUMBER
-            }
-            RepairStatus.CHOOSING_PLUMBER -> {
-                if (plumber.name.isNotEmpty())
-                    status = RepairStatus.SENDING_TO_PLUMBER
-            }
-            RepairStatus.SENDING_TO_PLUMBER -> {
-                status = RepairStatus.SENT_TO_PLUMBER
-            }
-            RepairStatus.SENT_TO_PLUMBER -> {
-                status = RepairStatus.RUNNING
-            }
-            RepairStatus.RUNNING -> {
-                status = RepairStatus.DONE
+                plumber = GlobalVariables.user
             }
             else -> {
 
@@ -96,10 +54,11 @@ data class RepairOrder(
 }
 
 data class RepairOrderPost(
-    var sender: UserInfo = UserInfo(),
+    var sender: User = User(),
     var message: String = "message",
     var createDateTime: String = "createDateTime",
-    var imageList: MutableList<Bitmap> = mutableListOf()
+    var imageList: MutableList<Bitmap> = mutableListOf(),
+    var imageStringList: MutableList<String> = mutableListOf()
 ) {
 
 }

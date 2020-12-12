@@ -154,11 +154,11 @@ class LoginFragment : Fragment() {
             Toast.LENGTH_LONG
         ).show()
 
-        if (GlobalVariables.user.userInfo.auth == UserType.LANDLORD) {
+        if (GlobalVariables.user.auth == UserType.LANDLORD) {
             requireActivity().intent = Intent(requireActivity(), LandlordActivity().javaClass)
             startActivity(requireActivity().intent)
         }
-        else if (GlobalVariables.user.userInfo.auth == UserType.TENANT) {
+        else if (GlobalVariables.user.auth == UserType.TENANT) {
             requireActivity().intent = Intent(requireActivity(), TenantActivity().javaClass)
             startActivity(requireActivity().intent)
         }

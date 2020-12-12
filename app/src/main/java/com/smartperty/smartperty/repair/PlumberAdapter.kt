@@ -8,14 +8,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.smartperty.smartperty.R
-import com.smartperty.smartperty.data.UserInfo
+import com.smartperty.smartperty.data.User
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.card_plumber.view.*
 import kotlinx.android.synthetic.main.fragment_choose_plumber.view.*
 
 class PlumberAdapter(private val activity: Activity,
                      private val parentView: View,
-                     private val myDataset: MutableList<UserInfo>)
+                     private val myDataset: MutableList<User>)
     : RecyclerView.Adapter<PlumberAdapter.CardHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardHolder {

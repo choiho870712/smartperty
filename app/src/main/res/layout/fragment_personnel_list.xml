@@ -10,54 +10,202 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView59"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/layout_manager_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorSilver"
-        android:padding="8dp"
-        android:text="管理"
-        android:textColor="@color/colorWhite"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/recycler_personnel_tenant">
 
-    <TextView
-        android:id="@+id/textView60"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/colorSilver"
-        android:padding="8dp"
-        android:text="會計"
-        android:textColor="@color/colorWhite"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recycler_personnel_manager" />
+        <TextView
+            android:id="@+id/textView53"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSilver"
+            android:padding="8dp"
+            android:text="管理 ("
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_personnel_tenant" />
 
-    <TextView
-        android:id="@+id/textView61"
-        android:layout_width="0dp"
+        <TextView
+            android:id="@+id/textView_manager_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSilver"
+            android:padding="8dp"
+            android:text="0"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView53"
+            app:layout_constraintStart_toEndOf="@+id/textView53"
+            app:layout_constraintTop_toTopOf="@+id/textView53" />
+
+        <TextView
+            android:id="@+id/textView70"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSilver"
+            android:padding="8dp"
+            android:text=")"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView53"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView_manager_count"
+            app:layout_constraintTop_toTopOf="@+id/textView53" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_tenant_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorSilver"
-        android:padding="8dp"
-        android:text="維修"
-        android:textColor="@color/colorWhite"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recycler_personnel_accountant" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <TextView
+            android:id="@+id/textView59"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSilver"
+            android:padding="8dp"
+            android:text="租客 ("
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_tenant_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSilver"
+            android:padding="8dp"
+            android:text="0"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView59"
+            app:layout_constraintStart_toEndOf="@+id/textView59"
+            app:layout_constraintTop_toTopOf="@+id/textView59" />
+
+        <TextView
+            android:id="@+id/textView76"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSilver"
+            android:padding="8dp"
+            android:text=")"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView59"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView_tenant_count"
+            app:layout_constraintTop_toTopOf="@+id/textView59" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_accountant_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_personnel_manager">
+
+        <TextView
+            android:id="@+id/textView60"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSilver"
+            android:padding="8dp"
+            android:text="會計 ("
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_personnel_manager" />
+
+        <TextView
+            android:id="@+id/textView_accountant_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSilver"
+            android:padding="8dp"
+            android:text="0"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/textView60"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_personnel_manager" />
+
+        <TextView
+            android:id="@+id/textView72"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSilver"
+            android:padding="8dp"
+            android:text=")"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView_accountant_count"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_personnel_manager" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_plumber_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_personnel_accountant">
+
+        <TextView
+            android:id="@+id/textView61"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSilver"
+            android:padding="8dp"
+            android:text="維修 ("
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_personnel_accountant" />
+
+        <TextView
+            android:id="@+id/textView_plumber_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSilver"
+            android:padding="8dp"
+            android:text="0"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/textView61"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_personnel_accountant" />
+
+        <TextView
+            android:id="@+id/textView75"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSilver"
+            android:padding="8dp"
+            android:text=")"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView_plumber_count"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_personnel_accountant" />
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_personnel_manager"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView59" />
+        app:layout_constraintTop_toBottomOf="@+id/layout_manager_title" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_personnel_accountant"
@@ -65,7 +213,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView60" />
+        app:layout_constraintTop_toBottomOf="@+id/layout_accountant_title" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_personnel_plumber"
@@ -73,7 +221,15 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView61" />
+        app:layout_constraintTop_toBottomOf="@+id/layout_plumber_title" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_personnel_tenant"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_tenant_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

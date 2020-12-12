@@ -11,7 +11,6 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.Estate
-import com.smartperty.smartperty.data.RepairStatus
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.card_estate.view.*
 
@@ -50,7 +49,6 @@ class EstateAdapter(private val activity: Activity,
         holder.buttonSubmit.setOnClickListener {
             GlobalVariables.estate = myDataset[holder.index]
             GlobalVariables.repairOrder.estate = myDataset[holder.index]
-            GlobalVariables.repairOrder.nextStatus()
             parentView.findNavController().navigateUp()
         }
     }

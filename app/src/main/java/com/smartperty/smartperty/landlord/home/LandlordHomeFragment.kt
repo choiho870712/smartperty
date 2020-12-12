@@ -25,7 +25,7 @@ import com.smartperty.smartperty.chartUtil.MyMarkerView
 import com.smartperty.smartperty.landlord.home.data.LandlordExpiringContract
 import com.smartperty.smartperty.landlord.home.data.LandlordExpiringRent
 import com.smartperty.smartperty.utils.GlobalVariables
-import kotlinx.android.synthetic.main.landlord_fragment_data_analysis.view.chart1
+import kotlinx.android.synthetic.main.activity_landlord.*
 import kotlinx.android.synthetic.main.landlord_fragment_home_main.view.*
 import kotlin.math.roundToInt
 
@@ -46,7 +46,7 @@ class LandlordHomeFragment : Fragment() {
         root = inflater.inflate(R.layout.landlord_fragment_home_main, container, false)
 
         GlobalVariables.toolBarUtils.setVisibility(false)
-        root.text_home_greet_name.text = GlobalVariables.user.userInfo.name
+        root.text_home_greet_name.text = GlobalVariables.user.name
 
         root.scroll_view.requestFocus()
 
@@ -100,6 +100,10 @@ class LandlordHomeFragment : Fragment() {
 
 
         createLineChart()
+
+        root.card_landlord_home_notification.setOnClickListener {
+            GlobalVariables.activity.bottom_nav.selectedItemId = R.id.landlord_notification
+        }
 
         return root
     }

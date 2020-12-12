@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".landlord.menu.dataAnalysis.DataAnalysisPageFragment">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textView35"
+        style="@style/text_normal_black_20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="依"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barChart" />
+
+    <TextView
+        android:id="@+id/textView_data_analysis_type"
+        style="@style/text_normal_black_20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="組別"
+        app:layout_constraintStart_toEndOf="@+id/textView35"
+        app:layout_constraintTop_toTopOf="@+id/textView35" />
+
+    <TextView
+        android:id="@+id/textView_data_analysis_type2"
+        style="@style/text_normal_black_20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="組別"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView68"
+        style="@style/text_normal_black_20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="分物件"
+        app:layout_constraintStart_toEndOf="@+id/textView_data_analysis_type"
+        app:layout_constraintTop_toTopOf="@+id/textView35" />
+
+    <TextView
+        android:id="@+id/textView69"
+        style="@style/text_normal_black_20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="分佈"
+        app:layout_constraintStart_toEndOf="@+id/textView_data_analysis_type2"
+        app:layout_constraintTop_toTopOf="@+id/textView_data_analysis_type2" />
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pieChart"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView35" />
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChart"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView_data_analysis_type2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

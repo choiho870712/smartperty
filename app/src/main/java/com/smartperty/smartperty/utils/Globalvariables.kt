@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.smartperty.smartperty.data.*
 import com.smartperty.smartperty.landlord.menu.`object`.estateDirectory.EstateDirectoryAdapter
 import com.smartperty.smartperty.landlord.menu.`object`.estateList.EstateListAdapter
-import com.smartperty.smartperty.landlord.menu.personnel.data.LandlordPersonneInfo
 import com.smartperty.smartperty.repair.EstateAdapter
 import com.smartperty.smartperty.repair.RepairListAdapter
 import org.threeten.bp.LocalDateTime
@@ -31,61 +30,14 @@ class GlobalVariables : Application() {
 
         // account
         var user = User()
-        var landlord = UserInfo()
-        var tenant = UserInfo()
-        var plumber = UserInfo()
-        var personnel = UserInfo()
-        var managerList = mutableListOf<UserInfo>(
-            UserInfo(
-                name = "manager Jason",
-                company = "avatar",
-                cellPhone = "023456789"
-            ),
-            UserInfo(
-                name = "manager Aiden",
-                company = "avatar",
-                cellPhone = "023456781"
-            ),
-            UserInfo(
-                name = "manager Hugo",
-                company = "gama bear",
-                cellPhone = "023456123"
-            )
-        )
-        var accountantList = mutableListOf<UserInfo>(
-            UserInfo(
-                name = "accountant Jason",
-                company = "avatar",
-                cellPhone = "023456789"
-            ),
-            UserInfo(
-                name = "accountant Aiden",
-                company = "avatar",
-                cellPhone = "023456781"
-            ),
-            UserInfo(
-                name = "accountant Hugo",
-                company = "gama bear",
-                cellPhone = "023456123"
-            )
-        )
-        var plumberList = mutableListOf<UserInfo>(
-            UserInfo(
-                name = "plumber Jason",
-                company = "avatar",
-                cellPhone = "023456789"
-            ),
-            UserInfo(
-                name = "plumber Aiden",
-                company = "avatar",
-                cellPhone = "023456781"
-            ),
-            UserInfo(
-                name = "plumber Hugo",
-                company = "gama bear",
-                cellPhone = "023456123"
-            )
-        )
+        var landlord = User()
+        var tenant = User()
+        var plumber = User()
+        var personnel = User()
+        var managerList = mutableListOf<User>()
+        var accountantList = mutableListOf<User>()
+        var plumberList = mutableListOf<User>()
+        var tenantList = mutableListOf<User>()
 
         // repair
         var repairList = mutableListOf<RepairOrder>()
@@ -97,12 +49,12 @@ class GlobalVariables : Application() {
         // estate
         var estate = Estate()
         lateinit var estateLayoutManager: LinearLayoutManager
-        lateinit var estateAdapter: EstateAdapter
+        var estateAdapter: EstateAdapter? = null
         var estateList = EstateList()
         lateinit var estateListLayoutManager: LinearLayoutManager
         var estateListAdapter:
                 RecyclerView.Adapter<EstateListAdapter.CardHolder>? = null
-        val estateDirectory = user.estateDirectory
+        var estateDirectory = user.estateDirectory
         lateinit var estateDirectoryLayoutManager: LinearLayoutManager
         var estateDirectoryAdapter:
                 RecyclerView.Adapter<EstateDirectoryAdapter.CardHolder>? = null
@@ -136,11 +88,296 @@ class GlobalVariables : Application() {
             )
         )
 
+        // chart
+        var contractExpireLineChartDataSet = ChartData(
+            type = ChartDataType.LINE_CHART,
+            dataList = mutableListOf(
+                ChartDataPair("11", 2),
+                ChartDataPair("12", 3),
+                ChartDataPair("13", 4),
+                ChartDataPair("14", 5)
+            )
+        )
+        var contractExpireIn3MonthBySquareFtPieChartDataSet = ChartData(
+            type = ChartDataType.PIE_CHART,
+            dataList = mutableListOf(
+                ChartDataPair("0~20坪", 3),
+                ChartDataPair("21~30坪", 5),
+                ChartDataPair("31~50坪", 7),
+                ChartDataPair("51~100坪", 9)
+            )
+        )
+        var contractExpireIn3MonthByTypePieChartDataSet = ChartData(
+            type = ChartDataType.PIE_CHART,
+            dataList = mutableListOf(
+                ChartDataPair("停車位", 2),
+                ChartDataPair("辦公室", 4),
+                ChartDataPair("店面", 6),
+                ChartDataPair("套房", 8)
+            )
+        )
+        var dataAnalysisByGroupBarChartDataSet = ChartData(
+            type = ChartDataType.BAR_CHART,
+            dataList = mutableListOf(
+                ChartDataPair("A", 4000, 1f),
+                ChartDataPair("B", 2000, 3f),
+                ChartDataPair("C", 8000, 7f),
+                ChartDataPair("D", 3000, 8f),
+                ChartDataPair("E", 5000, 6f),
+                ChartDataPair("其他", 10000, 5f)
+            )
+        )
+        var dataAnalysisByGroupPieChartDataSet = ChartData(
+            type = ChartDataType.PIE_CHART,
+            dataList = mutableListOf(
+                ChartDataPair("A", 4),
+                ChartDataPair("B", 2),
+                ChartDataPair("C", 8),
+                ChartDataPair("D", 3),
+                ChartDataPair("E", 5),
+                ChartDataPair("其他", 10)
+            )
+        )
+        var dataAnalysisByTypeBarChartDataSet = ChartData(
+            type = ChartDataType.BAR_CHART,
+            dataList = mutableListOf(
+                ChartDataPair("A", 4000, 1f),
+                ChartDataPair("B", 2000, 3f),
+                ChartDataPair("C", 8000, 7f),
+                ChartDataPair("D", 3000, 8f),
+                ChartDataPair("E", 5000, 6f),
+                ChartDataPair("其他", 10000, 5f)
+            )
+        )
+        var dataAnalysisByTypePieChartDataSet = ChartData(
+            type = ChartDataType.PIE_CHART,
+            dataList = mutableListOf(
+                ChartDataPair("A", 4),
+                ChartDataPair("B", 2),
+                ChartDataPair("C", 8),
+                ChartDataPair("D", 3),
+                ChartDataPair("E", 5),
+                ChartDataPair("其他", 10)
+            )
+        )
+        var dataAnalysisBySquareFtBarChartDataSet = ChartData(
+            type = ChartDataType.BAR_CHART,
+            dataList = mutableListOf(
+                ChartDataPair("A", 4000, 1f),
+                ChartDataPair("B", 2000, 3f),
+                ChartDataPair("C", 8000, 7f),
+                ChartDataPair("D", 3000, 8f),
+                ChartDataPair("E", 5000, 6f),
+                ChartDataPair("其他", 10000, 5f)
+            )
+        )
+        var dataAnalysisBySquareFtPieChartDataSet = ChartData(
+            type = ChartDataType.PIE_CHART,
+            dataList = mutableListOf(
+                ChartDataPair("A", 4),
+                ChartDataPair("B", 2),
+                ChartDataPair("C", 8),
+                ChartDataPair("D", 3),
+                ChartDataPair("E", 5),
+                ChartDataPair("其他", 10)
+            )
+        )
+
+        // finance
+        var finance = Finance(
+            income = mutableListOf(
+                FinanceItem("租金",30000),
+                FinanceItem("合計",30000)
+            ),
+            outcome = mutableListOf(
+                FinanceItem("修繕 漏水 2020/03/20",8000),
+                FinanceItem("修繕 冷氣 2020/01/20",10000),
+                FinanceItem("地價",7500),
+                FinanceItem("房屋稅",1500),
+                FinanceItem("營業稅",1600),
+                FinanceItem("廣告 519.c...",796),
+                FinanceItem("水電",800),
+                FinanceItem("利息 2%",24500),
+                FinanceItem("合計",50000)
+            )
+        )
+
         @SuppressLint("SimpleDateFormat")
         fun getCurrentDateTime(): String {
             val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
             val formatter = SimpleDateFormat("yyyy/MM/dd HH:mm")
             return formatter.format(parser.parse(LocalDateTime.now().toString())!!)
+        }
+
+        fun logout() {
+            currentNavController = null
+
+            // account
+            user = User()
+            landlord = User()
+            tenant = User()
+            plumber = User()
+            personnel = User()
+            managerList = mutableListOf<User>()
+            accountantList = mutableListOf<User>()
+            plumberList = mutableListOf<User>()
+            tenantList = mutableListOf<User>()
+
+            // repair
+            repairList = mutableListOf<RepairOrder>()
+            repairListAdapter = null
+            repairOrder = RepairOrder()
+
+            // estate
+            estate = Estate()
+            estateAdapter = null
+            estateList = EstateList()
+            estateListAdapter = null
+            estateDirectory = user.estateDirectory
+            estateDirectoryAdapter = null
+
+            // notification
+            notificationList = mutableListOf<Notification>(
+                Notification(
+                    message = "合約類型",
+                    date = "2020/12/01",
+                    type = NotificationType.CONTRACT
+                ),
+                Notification(
+                    message = "租金類型",
+                    date = "2020/12/01",
+                    type = NotificationType.RENT
+                ),
+                Notification(
+                    message = "代辦類型",
+                    date = "2020/12/01",
+                    type = NotificationType.AGENT
+                ),
+                Notification(
+                    message = "維修類型",
+                    date = "2020/12/01",
+                    type = NotificationType.REPAIR
+                ),
+                Notification(
+                    message = "系統類型",
+                    date = "2020/12/01",
+                    type = NotificationType.SYSTEM
+                )
+            )
+
+            // chart
+            contractExpireLineChartDataSet = ChartData(
+                type = ChartDataType.LINE_CHART,
+                dataList = mutableListOf(
+                    ChartDataPair("11", 2),
+                    ChartDataPair("12", 3),
+                    ChartDataPair("13", 4),
+                    ChartDataPair("14", 5)
+                )
+            )
+            contractExpireIn3MonthBySquareFtPieChartDataSet = ChartData(
+                type = ChartDataType.PIE_CHART,
+                dataList = mutableListOf(
+                    ChartDataPair("0~20坪", 3),
+                    ChartDataPair("21~30坪", 5),
+                    ChartDataPair("31~50坪", 7),
+                    ChartDataPair("51~100坪", 9)
+                )
+            )
+            contractExpireIn3MonthByTypePieChartDataSet = ChartData(
+                type = ChartDataType.PIE_CHART,
+                dataList = mutableListOf(
+                    ChartDataPair("停車位", 2),
+                    ChartDataPair("辦公室", 4),
+                    ChartDataPair("店面", 6),
+                    ChartDataPair("套房", 8)
+                )
+            )
+            dataAnalysisByGroupBarChartDataSet = ChartData(
+                type = ChartDataType.BAR_CHART,
+                dataList = mutableListOf(
+                    ChartDataPair("A", 4000, 1f),
+                    ChartDataPair("B", 2000, 3f),
+                    ChartDataPair("C", 8000, 7f),
+                    ChartDataPair("D", 3000, 8f),
+                    ChartDataPair("E", 5000, 6f),
+                    ChartDataPair("其他", 10000, 5f)
+                )
+            )
+            dataAnalysisByGroupPieChartDataSet = ChartData(
+                type = ChartDataType.PIE_CHART,
+                dataList = mutableListOf(
+                    ChartDataPair("A", 4),
+                    ChartDataPair("B", 2),
+                    ChartDataPair("C", 8),
+                    ChartDataPair("D", 3),
+                    ChartDataPair("E", 5),
+                    ChartDataPair("其他", 10)
+                )
+            )
+            dataAnalysisByTypeBarChartDataSet = ChartData(
+                type = ChartDataType.BAR_CHART,
+                dataList = mutableListOf(
+                    ChartDataPair("A", 4000, 1f),
+                    ChartDataPair("B", 2000, 3f),
+                    ChartDataPair("C", 8000, 7f),
+                    ChartDataPair("D", 3000, 8f),
+                    ChartDataPair("E", 5000, 6f),
+                    ChartDataPair("其他", 10000, 5f)
+                )
+            )
+            dataAnalysisByTypePieChartDataSet = ChartData(
+                type = ChartDataType.PIE_CHART,
+                dataList = mutableListOf(
+                    ChartDataPair("A", 4),
+                    ChartDataPair("B", 2),
+                    ChartDataPair("C", 8),
+                    ChartDataPair("D", 3),
+                    ChartDataPair("E", 5),
+                    ChartDataPair("其他", 10)
+                )
+            )
+            dataAnalysisBySquareFtBarChartDataSet = ChartData(
+                type = ChartDataType.BAR_CHART,
+                dataList = mutableListOf(
+                    ChartDataPair("A", 4000, 1f),
+                    ChartDataPair("B", 2000, 3f),
+                    ChartDataPair("C", 8000, 7f),
+                    ChartDataPair("D", 3000, 8f),
+                    ChartDataPair("E", 5000, 6f),
+                    ChartDataPair("其他", 10000, 5f)
+                )
+            )
+            dataAnalysisBySquareFtPieChartDataSet = ChartData(
+                type = ChartDataType.PIE_CHART,
+                dataList = mutableListOf(
+                    ChartDataPair("A", 4),
+                    ChartDataPair("B", 2),
+                    ChartDataPair("C", 8),
+                    ChartDataPair("D", 3),
+                    ChartDataPair("E", 5),
+                    ChartDataPair("其他", 10)
+                )
+            )
+
+            // finance
+            finance = Finance(
+                income = mutableListOf(
+                    FinanceItem("租金",30000),
+                    FinanceItem("合計",30000)
+                ),
+                outcome = mutableListOf(
+                    FinanceItem("修繕 漏水 2020/03/20",8000),
+                    FinanceItem("修繕 冷氣 2020/01/20",10000),
+                    FinanceItem("地價",7500),
+                    FinanceItem("房屋稅",1500),
+                    FinanceItem("營業稅",1600),
+                    FinanceItem("廣告 519.c...",796),
+                    FinanceItem("水電",800),
+                    FinanceItem("利息 2%",24500),
+                    FinanceItem("合計",50000)
+                )
+            )
         }
     }
 }

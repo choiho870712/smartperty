@@ -281,7 +281,7 @@ class DataAnalysisPageFragment(
         val values2: ArrayList<BarEntry> = ArrayList()
         myBarChartDataSet.forEachIndexed { index, chartDataPair ->
             values1.add(BarEntry(index.toFloat(), chartDataPair.value.toFloat()))
-            values2.add(BarEntry(index.toFloat(), chartDataPair.value2))
+            values2.add(BarEntry(index.toFloat(), chartDataPair.value2.toFloat()))
         }
         val set1: BarDataSet
         val set2: BarDataSet

@@ -38,9 +38,14 @@ class RepairListAdapter(private val activity: Activity,
             holder.date.text = myDataset[position].postList[0].createDateTime
             if (myDataset[position].postList[0].imageList.isNotEmpty())
                 holder.image.setImageBitmap(myDataset[position].postList[0].imageList[0])
+            else
+                holder.image.setImageDrawable(
+                    activity.resources.getDrawable(R.drawable.ic_empty_house))
         }
         else {
             holder.date.text = ""
+            holder.image.setImageDrawable(
+                activity.resources.getDrawable(R.drawable.ic_empty_house))
         }
 
         holder.cardView.setOnClickListener {

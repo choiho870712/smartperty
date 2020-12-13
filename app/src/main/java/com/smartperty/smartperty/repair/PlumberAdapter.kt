@@ -34,6 +34,7 @@ class PlumberAdapter(private val activity: Activity,
             holder.image.setImageBitmap(myDataset[position].icon)
 
         holder.cardView.setOnClickListener {
+            GlobalVariables.repairOrder.plumber = myDataset[holder.index]
             GlobalVariables.plumber = myDataset[holder.index]
             parentView.textView_choose_plumber_name.text = GlobalVariables.plumber.name
             parentView.textView_choose_plumber_cell_phone.text = GlobalVariables.plumber.cellPhone

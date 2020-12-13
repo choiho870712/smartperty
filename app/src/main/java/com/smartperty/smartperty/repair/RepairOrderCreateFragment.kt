@@ -19,9 +19,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.*
+import com.smartperty.smartperty.tools.TimeUtil
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.activity_tenant.*
 import kotlinx.android.synthetic.main.fragment_repair_order_create.view.*
+import java.util.*
 
 class RepairOrderCreateFragment : Fragment() {
 
@@ -126,14 +128,32 @@ class RepairOrderCreateFragment : Fragment() {
     }
 
     private fun submitOrder() {
+        GlobalVariables.repairOrder.initiate_id = GlobalVariables.user.id
+        GlobalVariables.repairOrder.timestamp = TimeUtil.getCurrentUnixTimeStamp()
+        GlobalVariables.repairOrder.typeString = "maintain"
+        GlobalVariables.repairOrder.statusString = "nil"
+
+        if (GlobalVariables.repairOrder.estate != null) {
+            if (GlobalVariables.repairOrder.estate!!.contract.tenant != null) {
+                GlobalVariables.repairOrder.tenant = GlobalVariables.repairOrder.estate!!.contract.tenant!!
+                GlobalVariables.repairOrder.tenant_id = GlobalVariables.repairOrder.estate!!.contract.tenant!!.id
+            }
+            GlobalVariables.repairOrder.object_id = GlobalVariables.repairOrder.estate!!.objectId
+        }
+        if (GlobalVariables.repairOrder.plumber.id.isNotEmpty()) {
+            GlobalVariables.repairOrder.plumber_id = GlobalVariables.repairOrder.plumber.id
+        }
+
         GlobalVariables.repairOrder.title = root.textView_repair_order_title.text.toString()
-        GlobalVariables.repairOrder.estate = GlobalVariables.estate
+        GlobalVariables.repairOrder.repairDateTime = TimeUtil.StampToDate(
+            GlobalVariables.repairOrder.timestamp, Locale.TAIWAN
+        )
 
         GlobalVariables.repairOrder.postList.add(
             RepairOrderPost(
                 sender = GlobalVariables.user,
                 message = root.textView_repair_order_content.text.toString(),
-                createDateTime = GlobalVariables.getCurrentDateTime(),
+                createDateTime = TimeUtil.getCurrentDateTime(),
                 imageList = imageList
             )
         )
@@ -141,7 +161,16 @@ class RepairOrderCreateFragment : Fragment() {
         GlobalVariables.repairList.add(GlobalVariables.repairOrder)
         GlobalVariables.repairListAdapter!!.notifyDataSetChanged()
 
-        // TODO call api : submit repair order
+        Thread {
+            GlobalVariables.repairOrder.event_id =
+                GlobalVariables.api.createEvent(GlobalVariables.repairOrder)
+
+            GlobalVariables.api.updateEventInformation(
+                GlobalVariables.repairOrder.event_id,
+                GlobalVariables.repairOrder.title,
+                GlobalVariables.repairOrder.postList[0]
+            )
+        }.start()
     }
 
     private fun setPickImageButton() {

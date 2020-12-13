@@ -34,16 +34,16 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".tenant.home.attractionsNearby.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
-        <activity
             android:name=".landlord.LandlordActivity"
-            android:label="@string/title_activity_landlord"></activity>
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_landlord" />
         <activity
             android:name=".tenant.TenantActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_tenant" />
         <activity
             android:name=".login.LoginActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

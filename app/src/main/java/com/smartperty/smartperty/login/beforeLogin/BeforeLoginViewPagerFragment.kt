@@ -28,21 +28,25 @@ class BeforeLoginViewPagerFragment : Fragment() {
         viewPagerAdapter = CommonViewPagerAdapter(manager = childFragmentManager)
         viewPagerAdapter.addFragment(
             BeforeLoginPageFragment(
+                R.drawable.ic_before_login_image1,
                 "雲端數據", "即時，一致，正確，遠距工作"
             )
         )
         viewPagerAdapter.addFragment(
             BeforeLoginPageFragment(
+                R.drawable.ic_before_login_image2,
                 "自動化耗時工作", "所有修繕紀錄與維修費用，計算報酬率，產生報告書"
             )
         )
         viewPagerAdapter.addFragment(
             BeforeLoginPageFragment(
+                R.drawable.ic_before_login_image3,
                 "分析數據", "幫您分析數據，尋找下一個機會"
             )
         )
         viewPagerAdapter.addFragment(
             BeforeLoginPageFragment(
+                R.drawable.ic_before_login_image4,
                 "提昇房客體驗", "把繁瑣的是交給軟體做，把時間精神留給服務客戶，建立關係"
             )
         )

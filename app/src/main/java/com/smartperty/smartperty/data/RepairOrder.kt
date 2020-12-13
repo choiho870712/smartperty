@@ -26,7 +26,7 @@ data class RepairOrder(
     var typeString: String = "",
     var title: String = "",
     var repairDateTime: String = "",
-    var timestamp: Int = 0,
+    var timestamp: Long = 0,
     var statusString: String = "",
     var event_id: String = "",
     var object_id: String = "",

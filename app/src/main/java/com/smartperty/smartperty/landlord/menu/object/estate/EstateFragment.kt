@@ -61,7 +61,7 @@ class EstateFragment : Fragment() {
 
         root.recycler_repair.apply {
             setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(activity)
+            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, true )
             adapter = RepairListAdapter(
                 requireActivity(), root,
                 GlobalVariables.estate.repairList

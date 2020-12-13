@@ -23,6 +23,189 @@ class Api {
     private val urlLandlordGetEventInformation = urlDirectory + "eventmanagement/landlordgeteventinformation"
     private val urlGetPropertyByObjectId = urlDirectory + "propertymanagement/getpropertybyobjectid"
     private val urlCreateEvent = urlDirectory + "eventmanagement/createevent"
+    private val urlUpdateEventInformation = urlDirectory + "eventmanagement/updateeventinformation"
+    private val urlGetEventInformation = urlDirectory + "eventmanagement/geteventinformation"
+    private val urlGetBarChartByGroupTag = urlDirectory + "reportmanagement/getbarchartbygrouptag"
+    private val urlGetPieChartByGroupTag = urlDirectory + "reportmanagement/getpiechartbygrouptag"
+    private val urlGetBarChartByObjectType = urlDirectory + "reportmanagement/getbarchartbyobjecttype"
+    private val urlGetPieChartByObjectType = urlDirectory + "reportmanagement/getpiechartbyobjecttype"
+    private val urlGetBarChartByArea = urlDirectory + "reportmanagement/getbarchartbyarea"
+    private val urlGetPieChartByArea = urlDirectory + "reportmanagement/getpiechartbyarea"
+
+    private fun getBarChartByGroupTagJson(rawJsonString:String): ChartData {
+        val chartData = ChartData(type = ChartDataType.BAR_CHART)
+
+        val jsonObject = JSONObject(rawJsonString)
+        val items = jsonObject.getJSONArray("Items")
+        for (i in 0 until(items.length())) {
+            val item = items.getJSONObject(i)
+            chartData.dataList.add(
+                ChartDataPair(
+                    tag = item.getString("group_name"),
+                    value = item.getInt("rent"),
+                    value2 = item.getDouble("return_on_investment")
+                )
+            )
+        }
+        return chartData
+    }
+
+    private fun getPieChartByGroupTagJson(rawJsonString:String): ChartData {
+        val chartData = ChartData(type = ChartDataType.PIE_CHART)
+
+        val jsonObject = JSONObject(rawJsonString)
+        val items = jsonObject.getJSONArray("Items")
+        for (i in 0 until(items.length())) {
+            val item = items.getJSONObject(i)
+            chartData.dataList.add(
+                ChartDataPair(
+                    tag = item.getString("group_name"),
+                    value = item.getInt("counter")
+                )
+            )
+        }
+        return chartData
+    }
+
+    private fun getBarChartByObjectTypeJson(rawJsonString:String): ChartData {
+        val chartData = ChartData(type = ChartDataType.BAR_CHART)
+
+        val jsonObject = JSONObject(rawJsonString)
+        val items = jsonObject.getJSONArray("Items")
+        for (i in 0 until(items.length())) {
+            val item = items.getJSONObject(i)
+            chartData.dataList.add(
+                ChartDataPair(
+                    tag = item.getString("type"),
+                    value = item.getInt("rent"),
+                    value2 = item.getDouble("return_on_investment")
+                )
+            )
+        }
+        return chartData
+    }
+
+    private fun getPieChartByObjectTypeJson(rawJsonString:String): ChartData {
+        val chartData = ChartData(type = ChartDataType.PIE_CHART)
+
+        val jsonObject = JSONObject(rawJsonString)
+        val items = jsonObject.getJSONArray("Items")
+        for (i in 0 until(items.length())) {
+            val item = items.getJSONObject(i)
+            chartData.dataList.add(
+                ChartDataPair(
+                    tag = item.getString("type"),
+                    value = item.getInt("counter")
+                )
+            )
+        }
+        return chartData
+    }
+
+    private fun getBarChartByAreaJson(rawJsonString:String): ChartData {
+        val chartData = ChartData(type = ChartDataType.BAR_CHART)
+
+        val jsonObject = JSONObject(rawJsonString)
+        val items = jsonObject.getJSONArray("Items")
+        for (i in 0 until(items.length())) {
+            val item = items.getJSONObject(i)
+            chartData.dataList.add(
+                ChartDataPair(
+                    tag = item.getString("area"),
+                    value = item.getInt("rent"),
+                    value2 = item.getDouble("return_on_investment")
+                )
+            )
+        }
+        return chartData
+    }
+
+    private fun getPieChartByAreaJson(rawJsonString:String): ChartData {
+        val chartData = ChartData(type = ChartDataType.PIE_CHART)
+
+        val jsonObject = JSONObject(rawJsonString)
+        val items = jsonObject.getJSONArray("Items")
+        for (i in 0 until(items.length())) {
+            val item = items.getJSONObject(i)
+            chartData.dataList.add(
+                ChartDataPair(
+                    tag = item.getString("area"),
+                    value = item.getInt("counter")
+                )
+            )
+        }
+        return chartData
+    }
+
+    private fun getEventInformationJson(rawJsonString:String): RepairOrder {
+        val repairOrder = RepairOrder()
+
+        val jsonObject = JSONObject(rawJsonString)
+        val item = jsonObject.getJSONArray("Items").getJSONObject(0)
+        val information = item.getJSONObject("information")
+        val dynamic_status = information.getJSONArray("dynamic_status")
+        val participant = item.getJSONArray("participant")
+        repairOrder.timestamp = item.getLong("timestmp")
+        repairOrder.statusString = item.getString("status")
+        repairOrder.event_id = item.getString("event_id")
+        repairOrder.object_id = item.getString("object_id")
+        repairOrder.initiate_id = item.getString("initiate_id")
+        repairOrder.typeString = item.getString("type")
+        repairOrder.repairDateTime = information.getString("date")
+        repairOrder.title = information.getString("description")
+
+        Thread {
+            repairOrder.estate = getPropertyByObjectId(repairOrder.object_id)
+        }.start()
+
+        for (j in 0 until(dynamic_status.length())) {
+            val dynamic_status_item = dynamic_status.getJSONObject(j)
+            val repairOrderPost = RepairOrderPost(
+                sender = User(
+                    id = dynamic_status_item.getString("sender_id"),
+                    name = dynamic_status_item.getString("sender_id")
+                ),
+                createDateTime = dynamic_status_item.getString("date"),
+                message = dynamic_status_item.getString("description")
+            )
+
+            val imageUrlListObject = dynamic_status_item.getJSONArray("image")
+            for (k in 0 until(imageUrlListObject.length())) {
+                repairOrderPost.imageStringList.add(imageUrlListObject.getString(k))
+            }
+            Thread {
+                repairOrderPost.imageStringList.forEach {
+                    repairOrderPost.imageList.add(
+                        GlobalVariables.imageHelper.convertUrlToImage(it)!!)
+                }
+            }.start()
+
+            repairOrder.postList.add(repairOrderPost)
+        }
+
+        for (j in 0 until(participant.length())) {
+            val participantItem = participant.getJSONObject(j)
+
+            when (participantItem.getString("auth")) {
+                "technician" -> {
+                    repairOrder.plumber_id = participantItem.getString("id")
+                }
+                "tenant" -> {
+                    repairOrder.tenant_id = participantItem.getString("id")
+                }
+                else -> {
+                }
+            }
+        }
+
+        return repairOrder
+    }
+
+    private fun createEventJson(rawJsonString:String): String {
+        val jsonObject = JSONObject(rawJsonString)
+        val item = jsonObject.getJSONObject("Items")
+        return item.getString("event_id")
+    }
 
     private fun getPropertyByObjectIdJson(rawJsonString:String): Estate {
         val jsonObject = JSONObject(rawJsonString)
@@ -43,9 +226,11 @@ class Api {
             contract = Contract(
                 rentAmount = information.getInt("purchase_price"),
                 tenant = User(
+                    id = item.getString("tenant_id"),
                     name = item.getString("tenant_id")
                 ),
                 landlord = User(
+                    id = item.getString("landlord_id"),
                     name = item.getString("landlord_id")
                 )
             ),
@@ -95,9 +280,11 @@ class Api {
                 contract = Contract(
                     rentAmount = information.getInt("purchase_price"),
                     tenant = User(
+                        id = item.getString("tenant_id"),
                         name = item.getString("tenant_id")
                     ),
                     landlord = User(
+                        id = item.getString("landlord_id"),
                         name = item.getString("landlord_id")
                     )
                 ),
@@ -236,7 +423,7 @@ class Api {
             val item = items.getJSONObject(i)
             val information = item.getJSONObject("information")
             val repairOrder = RepairOrder(
-                timestamp = item.getInt("timestmp"),
+                timestamp = item.getLong("timestmp"),
                 statusString = item.getString("status"),
                 event_id = item.getString("event_id"),
                 object_id = item.getString("object_id"),
@@ -250,6 +437,10 @@ class Api {
             for (j in 0 until(dynamic_status.length())) {
                 val dynamic_status_item = dynamic_status.getJSONObject(j)
                 val repairOrderPost = RepairOrderPost(
+                    sender = User(
+                        id = dynamic_status_item.getString("sender_id"),
+                        name = dynamic_status_item.getString("sender_id")
+                    ),
                     createDateTime = dynamic_status_item.getString("date"),
                     message = dynamic_status_item.getString("description")
                 )
@@ -323,6 +514,31 @@ class Api {
         return getPropertyByObjectIdJson(callApi(json, urlGetPropertyByObjectId))
     }
 
+    fun getBarChartByGroupTag(landlord_id:String): ChartData {
+        val json = "{\"landlord_id\":\"$landlord_id\"}"
+        return getBarChartByGroupTagJson(callApi(json, urlGetBarChartByGroupTag))
+    }
+    fun getPieChartByGroupTag(landlord_id:String): ChartData {
+        val json = "{\"landlord_id\":\"$landlord_id\"}"
+        return getPieChartByGroupTagJson(callApi(json, urlGetPieChartByGroupTag))
+    }
+    fun getBarChartByObjectType(landlord_id:String): ChartData {
+        val json = "{\"landlord_id\":\"$landlord_id\"}"
+        return getBarChartByObjectTypeJson(callApi(json, urlGetBarChartByObjectType))
+    }
+    fun getPieChartByObjectType(landlord_id:String): ChartData {
+        val json = "{\"landlord_id\":\"$landlord_id\"}"
+        return getPieChartByObjectTypeJson(callApi(json, urlGetPieChartByObjectType))
+    }
+    fun getBarChartByArea(landlord_id:String): ChartData {
+        val json = "{\"landlord_id\":\"$landlord_id\"}"
+        return getBarChartByAreaJson(callApi(json, urlGetBarChartByArea))
+    }
+    fun getPieChartByArea(landlord_id:String): ChartData {
+        val json = "{\"landlord_id\":\"$landlord_id\"}"
+        return getPieChartByAreaJson(callApi(json, urlGetPieChartByArea))
+    }
+
     enum class LandlordOpenPermissionAuth {
         TECHNICIAN, ACCOUNTANT, AGENT, TENANT
     }
@@ -362,17 +578,80 @@ class Api {
         return landlordGetEventInformationJson(callApi(json, urlLandlordGetEventInformation))
     }
 
-//    fun createEvent(initiate_id:String): Boolean{
-//        val initiate_id = GlobalVariables.user.id
-//        val system_id = GlobalVariables.user.system_id
-//        val timestmp = 0 // TODO
-//        val type = "maintain" // TODO
-//        val status = "nil"
-//
-//
-//        val json = "{\"initiate_id\": \"$initiate_id\"}"
-//        return getJsonMessage(callApi(json, urlCreateEvent)) == "No Error"
-//    }
+    fun createEvent(repairOrder: RepairOrder): String{
+        val initiate_id = GlobalVariables.user.id
+        val system_id = GlobalVariables.user.system_id
+        val timestmp = repairOrder.timestamp.toString()
+        val type = repairOrder.typeString
+        val status = repairOrder.statusString
+        val tenant = repairOrder.tenant
+        val technician = repairOrder.plumber
+        val description = repairOrder.title
+        val date = repairOrder.repairDateTime
+        val repairOrderPost = repairOrder.postList
+        val object_id = repairOrder.object_id
+
+        var json = "{\"initiate_id\": \"$initiate_id\", \"system_id\": \"$system_id\", " +
+                "\"timestmp\": $timestmp, \"type\": \"$type\", \"status\": \"$status\"," +
+                "\"object_id\" : \"$object_id\",\"participant\": ["
+        if (tenant.id.isNotEmpty() && tenant.id != "nil") {
+            val tenantId = tenant.id
+            json += "{\"id\": \"$tenantId\", \"auth\": \"tenant\"}"
+        }
+        if (tenant.id.isNotEmpty() && tenant.id != "nil" && technician.id.isNotEmpty() && technician.id != "nil") {
+            json += ","
+        }
+        if (technician.id.isNotEmpty() && technician.id != "nil") {
+            val technicianId = technician.id
+            json += "{\"id\": \"$technicianId\", \"auth\": \"technician\"}"
+        }
+        json += "],\"information\": {\"description\": \"$description\", " +
+                "\"date\": \"$date\", \"dynamic_status\": ["
+//        var isFirst = true
+//        repairOrderPost.forEach {
+//            if (isFirst) isFirst = false
+//            else json += ","
+//            val repairOrderPostDescription = it.message
+//            val repairOrderPostDateTime = it.createDateTime
+//            json += "{\"description\": \"$repairOrderPostDescription\"," +
+//                    "\"date\": \"$repairOrderPostDateTime\"," +
+//                    "\"image\": ["
+//            var isFirst2 = true
+//            it.imageList.forEachIndexed { index, bitmap ->
+//                if (isFirst2) isFirst2 = false
+//                else json += ","
+//                val imageBase64 = GlobalVariables.imageHelper.getString(bitmap)
+//                json += "\"$imageBase64\""
+//            }
+//            json += "]}"
+//        }
+        json += "]}}"
+        return createEventJson(callApi(json, urlCreateEvent))
+    }
+
+    fun updateEventInformation(id:String, title:String, repairOrderPost: RepairOrderPost): Boolean {
+        val sender_id = repairOrderPost.sender.id
+        val description = repairOrderPost.message
+        val date = repairOrderPost.createDateTime
+        var json = "{\"id\": \"$id\", \"description\": \"$title\"," +
+                " \"dynamic_status\":{\"sender_id\": \"$sender_id\", \"description\": \"$description\", " +
+                "\"date\": \"$date\", \"image\": ["
+
+        var isFirst = true
+        repairOrderPost.imageList.forEach {
+            if (isFirst) isFirst = false
+            else json += ","
+            json += "\""+GlobalVariables.imageHelper.getString(it)+"\""
+        }
+
+        json += "]}}"
+        return getJsonMessage(callApi(json, urlUpdateEventInformation)) == "No Error"
+    }
+
+    fun getEventInformation(event_id:String): RepairOrder {
+        val json = "{\"event_id\": \"$event_id\"}"
+        return getEventInformationJson(callApi(json, urlGetEventInformation))
+    }
 
     private fun getJsonMessage(rawJsonString:String) : String {
         val jsonObject = JSONObject(rawJsonString)
@@ -430,6 +709,7 @@ class Api {
                     }
                 })
             }
+
             Thread.sleep(500)
         }
 

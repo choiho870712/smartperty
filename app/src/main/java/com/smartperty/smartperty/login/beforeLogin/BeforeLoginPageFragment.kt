@@ -8,7 +8,10 @@ import android.view.ViewGroup
 import com.smartperty.smartperty.R
 import kotlinx.android.synthetic.main.fragment_before_login_page.view.*
 
-class BeforeLoginPageFragment(private val titleString:String, private val subTitleString:String) : Fragment() {
+class BeforeLoginPageFragment(
+    private val imageResourceId: Int,
+    private val titleString:String,
+    private val subTitleString:String) : Fragment() {
 
     private lateinit var root: View
 
@@ -19,6 +22,7 @@ class BeforeLoginPageFragment(private val titleString:String, private val subTit
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_before_login_page, container, false)
 
+        root.imageView.setImageResource(imageResourceId)
         root.textView_title.text = titleString
         root.textView_subTitle.text = subTitleString
 

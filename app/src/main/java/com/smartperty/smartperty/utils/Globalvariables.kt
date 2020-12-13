@@ -116,72 +116,12 @@ class GlobalVariables : Application() {
                 ChartDataPair("套房", 8)
             )
         )
-        var dataAnalysisByGroupBarChartDataSet = ChartData(
-            type = ChartDataType.BAR_CHART,
-            dataList = mutableListOf(
-                ChartDataPair("A", 4000, 1f),
-                ChartDataPair("B", 2000, 3f),
-                ChartDataPair("C", 8000, 7f),
-                ChartDataPair("D", 3000, 8f),
-                ChartDataPair("E", 5000, 6f),
-                ChartDataPair("其他", 10000, 5f)
-            )
-        )
-        var dataAnalysisByGroupPieChartDataSet = ChartData(
-            type = ChartDataType.PIE_CHART,
-            dataList = mutableListOf(
-                ChartDataPair("A", 4),
-                ChartDataPair("B", 2),
-                ChartDataPair("C", 8),
-                ChartDataPair("D", 3),
-                ChartDataPair("E", 5),
-                ChartDataPair("其他", 10)
-            )
-        )
-        var dataAnalysisByTypeBarChartDataSet = ChartData(
-            type = ChartDataType.BAR_CHART,
-            dataList = mutableListOf(
-                ChartDataPair("A", 4000, 1f),
-                ChartDataPair("B", 2000, 3f),
-                ChartDataPair("C", 8000, 7f),
-                ChartDataPair("D", 3000, 8f),
-                ChartDataPair("E", 5000, 6f),
-                ChartDataPair("其他", 10000, 5f)
-            )
-        )
-        var dataAnalysisByTypePieChartDataSet = ChartData(
-            type = ChartDataType.PIE_CHART,
-            dataList = mutableListOf(
-                ChartDataPair("A", 4),
-                ChartDataPair("B", 2),
-                ChartDataPair("C", 8),
-                ChartDataPair("D", 3),
-                ChartDataPair("E", 5),
-                ChartDataPair("其他", 10)
-            )
-        )
-        var dataAnalysisBySquareFtBarChartDataSet = ChartData(
-            type = ChartDataType.BAR_CHART,
-            dataList = mutableListOf(
-                ChartDataPair("A", 4000, 1f),
-                ChartDataPair("B", 2000, 3f),
-                ChartDataPair("C", 8000, 7f),
-                ChartDataPair("D", 3000, 8f),
-                ChartDataPair("E", 5000, 6f),
-                ChartDataPair("其他", 10000, 5f)
-            )
-        )
-        var dataAnalysisBySquareFtPieChartDataSet = ChartData(
-            type = ChartDataType.PIE_CHART,
-            dataList = mutableListOf(
-                ChartDataPair("A", 4),
-                ChartDataPair("B", 2),
-                ChartDataPair("C", 8),
-                ChartDataPair("D", 3),
-                ChartDataPair("E", 5),
-                ChartDataPair("其他", 10)
-            )
-        )
+        var dataAnalysisByGroupBarChartDataSet = ChartData()
+        var dataAnalysisByGroupPieChartDataSet = ChartData()
+        var dataAnalysisByTypeBarChartDataSet = ChartData()
+        var dataAnalysisByTypePieChartDataSet = ChartData()
+        var dataAnalysisBySquareFtBarChartDataSet = ChartData()
+        var dataAnalysisBySquareFtPieChartDataSet = ChartData()
 
         // finance
         var finance = Finance(
@@ -293,72 +233,12 @@ class GlobalVariables : Application() {
                     ChartDataPair("套房", 8)
                 )
             )
-            dataAnalysisByGroupBarChartDataSet = ChartData(
-                type = ChartDataType.BAR_CHART,
-                dataList = mutableListOf(
-                    ChartDataPair("A", 4000, 1f),
-                    ChartDataPair("B", 2000, 3f),
-                    ChartDataPair("C", 8000, 7f),
-                    ChartDataPair("D", 3000, 8f),
-                    ChartDataPair("E", 5000, 6f),
-                    ChartDataPair("其他", 10000, 5f)
-                )
-            )
-            dataAnalysisByGroupPieChartDataSet = ChartData(
-                type = ChartDataType.PIE_CHART,
-                dataList = mutableListOf(
-                    ChartDataPair("A", 4),
-                    ChartDataPair("B", 2),
-                    ChartDataPair("C", 8),
-                    ChartDataPair("D", 3),
-                    ChartDataPair("E", 5),
-                    ChartDataPair("其他", 10)
-                )
-            )
-            dataAnalysisByTypeBarChartDataSet = ChartData(
-                type = ChartDataType.BAR_CHART,
-                dataList = mutableListOf(
-                    ChartDataPair("A", 4000, 1f),
-                    ChartDataPair("B", 2000, 3f),
-                    ChartDataPair("C", 8000, 7f),
-                    ChartDataPair("D", 3000, 8f),
-                    ChartDataPair("E", 5000, 6f),
-                    ChartDataPair("其他", 10000, 5f)
-                )
-            )
-            dataAnalysisByTypePieChartDataSet = ChartData(
-                type = ChartDataType.PIE_CHART,
-                dataList = mutableListOf(
-                    ChartDataPair("A", 4),
-                    ChartDataPair("B", 2),
-                    ChartDataPair("C", 8),
-                    ChartDataPair("D", 3),
-                    ChartDataPair("E", 5),
-                    ChartDataPair("其他", 10)
-                )
-            )
-            dataAnalysisBySquareFtBarChartDataSet = ChartData(
-                type = ChartDataType.BAR_CHART,
-                dataList = mutableListOf(
-                    ChartDataPair("A", 4000, 1f),
-                    ChartDataPair("B", 2000, 3f),
-                    ChartDataPair("C", 8000, 7f),
-                    ChartDataPair("D", 3000, 8f),
-                    ChartDataPair("E", 5000, 6f),
-                    ChartDataPair("其他", 10000, 5f)
-                )
-            )
-            dataAnalysisBySquareFtPieChartDataSet = ChartData(
-                type = ChartDataType.PIE_CHART,
-                dataList = mutableListOf(
-                    ChartDataPair("A", 4),
-                    ChartDataPair("B", 2),
-                    ChartDataPair("C", 8),
-                    ChartDataPair("D", 3),
-                    ChartDataPair("E", 5),
-                    ChartDataPair("其他", 10)
-                )
-            )
+            dataAnalysisByGroupBarChartDataSet = ChartData()
+            dataAnalysisByGroupPieChartDataSet = ChartData()
+            dataAnalysisByTypeBarChartDataSet = ChartData()
+            dataAnalysisByTypePieChartDataSet = ChartData()
+            dataAnalysisBySquareFtBarChartDataSet = ChartData()
+            dataAnalysisBySquareFtPieChartDataSet = ChartData()
 
             // finance
             finance = Finance(

@@ -31,31 +31,72 @@ class LoginDataSource {
                         it.list = GlobalVariables.api.getPropertyByGroupTag(
                             it.title, GlobalVariables.user.id
                         )
+                        it.list.forEachIndexed { index, estate ->
+                            Thread {
+                                for ( i in 0 until(estate.repairListId.size))
+                                    estate.repairList.add(
+                                        GlobalVariables.api.getEventInformation(estate.repairListId[i]))
+                            }.start()
+                        }
                     }
-                }
-                GlobalVariables.repairList =
-                    GlobalVariables.api.landlordGetEventInformation(
-                        GlobalVariables.user.id
-                    )
-                GlobalVariables.user.tenantIdList.forEach {
-                    GlobalVariables.tenantList.add(
-                        GlobalVariables.api.getUserInformation(it)
-                    )
-                }
-                GlobalVariables.user.agentIdList.forEach {
-                    GlobalVariables.managerList.add(
-                        GlobalVariables.api.getUserInformation(it)
-                    )
-                }
-                GlobalVariables.user.accountantIdList.forEach {
-                    GlobalVariables.accountantList.add(
-                        GlobalVariables.api.getUserInformation(it)
-                    )
-                }
-                GlobalVariables.user.technicianIdList.forEach {
-                    GlobalVariables.plumberList.add(
-                        GlobalVariables.api.getUserInformation(it)
-                    )
+                    Thread {
+                        GlobalVariables.repairList =
+                            GlobalVariables.api.landlordGetEventInformation(
+                                GlobalVariables.user.id
+                            )
+                    }.start()
+                    Thread {
+                        GlobalVariables.user.tenantIdList.forEach {
+                            GlobalVariables.tenantList.add(
+                                GlobalVariables.api.getUserInformation(it)
+                            )
+                        }
+                    }.start()
+                    Thread {
+                        GlobalVariables.user.agentIdList.forEach {
+                            GlobalVariables.managerList.add(
+                                GlobalVariables.api.getUserInformation(it)
+                            )
+                        }
+                    }.start()
+                    Thread {
+                        GlobalVariables.user.accountantIdList.forEach {
+                            GlobalVariables.accountantList.add(
+                                GlobalVariables.api.getUserInformation(it)
+                            )
+                        }
+                    }.start()
+                    Thread {
+                        GlobalVariables.user.technicianIdList.forEach {
+                            GlobalVariables.plumberList.add(
+                                GlobalVariables.api.getUserInformation(it)
+                            )
+                        }
+                    }.start()
+                    Thread {
+                        GlobalVariables.dataAnalysisByGroupBarChartDataSet =
+                            GlobalVariables.api.getBarChartByGroupTag(GlobalVariables.user.id)
+                    }.start()
+                    Thread {
+                        GlobalVariables.dataAnalysisByGroupPieChartDataSet =
+                            GlobalVariables.api.getPieChartByGroupTag(GlobalVariables.user.id)
+                    }.start()
+                    Thread {
+                        GlobalVariables.dataAnalysisByTypeBarChartDataSet =
+                            GlobalVariables.api.getBarChartByObjectType(GlobalVariables.user.id)
+                    }.start()
+                    Thread {
+                        GlobalVariables.dataAnalysisByTypePieChartDataSet =
+                            GlobalVariables.api.getPieChartByObjectType(GlobalVariables.user.id)
+                    }.start()
+                    Thread {
+                        GlobalVariables.dataAnalysisBySquareFtBarChartDataSet =
+                            GlobalVariables.api.getBarChartByArea(GlobalVariables.user.id)
+                    }.start()
+                    Thread {
+                        GlobalVariables.dataAnalysisBySquareFtPieChartDataSet =
+                            GlobalVariables.api.getPieChartByArea(GlobalVariables.user.id)
+                    }.start()
                 }
                 Result.Success(user)
             } else {

@@ -39,7 +39,7 @@ class EstateDirectoryAdapter(private val activity: Activity,
             holder.image.setImageBitmap(myDataset[position].image)
         else
             holder.image.setImageDrawable(
-                activity.resources.getDrawable(R.drawable.ic_baseline_add_photo_alternate_24))
+                activity.resources.getDrawable(R.drawable.ic_empty_house))
 
         holder.cardView.setOnClickListener {
             GlobalVariables.estateList = myDataset[holder.index]

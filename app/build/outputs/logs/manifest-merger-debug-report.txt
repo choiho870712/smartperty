@@ -161,30 +161,30 @@ ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManif
 		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:34:13-52
 	android:name
 		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:33:13-58
-activity#com.smartperty.smartperty.tenant.home.attractionsNearby.MapsActivity
-ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:36:9-38:68
-	android:label
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:38:13-56
-	android:name
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:37:13-71
 activity#com.smartperty.smartperty.landlord.LandlordActivity
-ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:39:9-41:72
+ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:36:9-39:63
+	android:screenOrientation
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:38:13-49
 	android:label
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:41:13-60
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:39:13-60
 	android:name
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:40:13-54
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:37:13-54
 activity#com.smartperty.smartperty.tenant.TenantActivity
-ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:42:9-44:61
+ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:40:9-43:61
+	android:screenOrientation
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:42:13-49
 	android:label
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:44:13-58
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:43:13-58
 	android:name
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:43:13-50
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:41:13-50
 activity#com.smartperty.smartperty.login.LoginActivity
-ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:45:9-53:20
+ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:44:9-53:20
+	android:screenOrientation
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:46:13-49
 	android:label
 		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:47:13-45
 	android:name
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:46:13-48
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:45:13-48
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:48:13-52:29
 action#android.intent.action.MAIN

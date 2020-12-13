@@ -56,6 +56,13 @@ class AddPostFragment : Fragment() {
                         post.createDateTime = root.textView_date_time.text.toString()
                         post.sender = GlobalVariables.user
                         GlobalVariables.repairOrder.postList.add(post)
+                        Thread {
+                            GlobalVariables.api.updateEventInformation(
+                                GlobalVariables.repairOrder.event_id,
+                                GlobalVariables.repairOrder.title,
+                                post
+                            )
+                        }.start()
                         root.findNavController().navigateUp()
                     }
 

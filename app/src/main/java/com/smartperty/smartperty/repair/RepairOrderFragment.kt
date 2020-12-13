@@ -101,11 +101,18 @@ class RepairOrderFragment : Fragment() {
     }
 
     private fun setChooseTenantButton() {
-        root.button_choose_tenant.visibility = View.VISIBLE
-        root.button_choose_tenant.setOnClickListener {
-            root.findNavController().navigate(
-                R.id.action_repairOrderFragment_to_chooseTenantFragment
-            )
+        if (GlobalVariables.repairOrder.tenant.id.isNotEmpty() &&
+            GlobalVariables.repairOrder.tenant.id != "nil")
+        {
+            root.button_choose_tenant.visibility = View.VISIBLE
+            root.button_choose_tenant.setOnClickListener {
+                root.findNavController().navigate(
+                    R.id.action_repairOrderFragment_to_chooseTenantFragment
+                )
+            }
+        }
+        else {
+            root.button_choose_tenant.visibility = View.GONE
         }
     }
 

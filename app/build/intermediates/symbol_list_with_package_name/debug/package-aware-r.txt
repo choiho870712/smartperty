@@ -1691,10 +1691,16 @@ drawable ic_baseline_image_24
 drawable ic_baseline_notifications_24
 drawable ic_baseline_video_call_24
 drawable ic_baseline_wb_sunny_24
+drawable ic_before_login_image1
+drawable ic_before_login_image2
+drawable ic_before_login_image3
+drawable ic_before_login_image4
 drawable ic_chat_24dp
 drawable ic_contract_icon
 drawable ic_dashboard_black_24dp
+drawable ic_empty_house
 drawable ic_equipment_manual_icon
+drawable ic_head_icon
 drawable ic_home_24dp
 drawable ic_housing_rules_icon
 drawable ic_landlord_chat_icon
@@ -2124,7 +2130,6 @@ id image_object_item
 id image_object_list
 id image_repair_list
 id image_userIcon
-id image_userIcon_shopFragment
 id include_image_card
 id indicator
 id info

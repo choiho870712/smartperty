@@ -34,11 +34,10 @@ class PersonnelListAdapter(
     override fun getItemCount(): Int = myDataset.size
 
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
-        holder.index = position
         holder.name.text = myDataset[position].name
 
         holder.cardView.setOnClickListener {
-            GlobalVariables.personnel = myDataset[holder.index]
+            GlobalVariables.personnel = myDataset[position]
             parentView.findNavController().navigate(
                 R.id.action_personnelListFragment_to_personnelFragment
             )
@@ -72,7 +71,7 @@ class PersonnelListAdapter(
                     "刪除" -> {
                         builderInner.setTitle("確定刪除？")
                         builderInner.setPositiveButton("是") { dialog, which ->
-                            removeItem(holder.index)
+                            removeItem(position)
                             dialog.dismiss()
                         }
                         builderInner.setNegativeButton("否"
@@ -88,7 +87,6 @@ class PersonnelListAdapter(
 
     class CardHolder(card: View) : RecyclerView.ViewHolder(card) {
         val cardView: View = card
-        var index: Int = -1
         val name: TextView = card.text_personnel_list_name
         val controlButton: ImageButton = card.button_personnel_control
     }

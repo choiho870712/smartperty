@@ -162,7 +162,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageButton_repair_order_add_image"
         app:layout_constraintStart_toEndOf="@+id/imageButton_repair_order_add_image"
         app:layout_constraintTop_toTopOf="@+id/imageButton_repair_order_add_image"
-        app:srcCompat="@drawable/ic_baseline_video_call_24"
+        app:srcCompat="@drawable/add_video"
         android:visibility="invisible"/>
 
     <ImageButton
@@ -173,7 +173,7 @@
         android:background="@color/colorWhite"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toBottomOf="@+id/textView_repair_order_content"
-        app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24" />
+        app:srcCompat="@drawable/add_photo" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_image"

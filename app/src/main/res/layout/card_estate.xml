@@ -98,7 +98,7 @@ app:cardElevation="1dp">
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ironman" />
+        app:srcCompat="@drawable/empty_house" />
 
     <Button
         android:id="@+id/button_choose_tenant"

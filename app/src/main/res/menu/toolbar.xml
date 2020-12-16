@@ -17,13 +17,13 @@
 
     <item
         android:id="@+id/button_setup"
-        android:icon="@drawable/ic_setup_icon"
+        android:icon="@drawable/button_toolbar_setup"
         android:title="@string/toolbar_button_setup"
         app:showAsAction="always"/>
 
     <item
         android:id="@+id/button_edit"
-        android:icon="@drawable/ic_baseline_edit_24"
+        android:icon="@drawable/button_toolbar_edit"
         android:title="edit"
         app:showAsAction="always"/>
 

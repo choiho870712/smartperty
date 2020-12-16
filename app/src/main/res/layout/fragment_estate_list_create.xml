@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -123,11 +122,11 @@
     <EditText
         android:id="@+id/textView_object_item_floor"
         style="@style/edit_text_normal_black_16sp"
-        android:layout_height="wrap_content"
         android:layout_width="0dp"
-        android:singleLine="true"
-        android:inputType="numberDecimal"
+        android:layout_height="wrap_content"
         android:hint="6"
+        android:inputType="numberDecimal"
+        android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@+id/textView_object_item_square_ft"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintHorizontal_bias="0.5"
@@ -139,8 +138,8 @@
         style="@style/edit_text_normal_black_16sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:singleLine="true"
         android:hint="樓下B1平面式"
+        android:singleLine="true"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView18"
@@ -164,9 +163,9 @@
         style="@style/edit_text_normal_black_16sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:inputType="numberDecimal"
         android:hint="25000"
+        android:inputType="numberDecimal"
+        android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@+id/textView_object_item_rent_end_date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -178,9 +177,9 @@
         style="@style/edit_text_normal_black_16sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:inputType="phone"
         android:hint="0912345678"
+        android:inputType="phone"
+        android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@+id/textView_object_item_rent_amount_per_month"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -204,9 +203,9 @@
         style="@style/edit_text_normal_black_16sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:inputType="numberDecimal"
         android:hint="30"
+        android:inputType="numberDecimal"
+        android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@+id/textView_object_item_parking_sapce"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintHorizontal_bias="0.5"
@@ -230,6 +229,6 @@
         android:layout_height="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recycler_image"
-        app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24" />
+        app:srcCompat="@drawable/add_photo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

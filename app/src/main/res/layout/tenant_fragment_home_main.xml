@@ -23,7 +23,7 @@
 
         <ImageView
             style="@style/tenant_home_select_button_icon"
-            app:srcCompat="@drawable/ic_housing_rules_icon" />
+            app:srcCompat="@drawable/tenant_housing_rules" />
 
         <TextView
             style="@style/tenant_home_select_button_text"
@@ -43,7 +43,7 @@
 
         <ImageView
             style="@style/tenant_home_select_button_icon"
-            app:srcCompat="@drawable/ic_rent_and_utilities_icon" />
+            app:srcCompat="@drawable/tenant_utilities" />
 
         <TextView
             style="@style/tenant_home_select_button_text"
@@ -61,7 +61,7 @@
 
         <ImageView
             style="@style/tenant_home_select_button_icon"
-            app:srcCompat="@drawable/ic_equipment_manual_icon" />
+            app:srcCompat="@drawable/tenant_equipment_manual" />
 
         <TextView
             style="@style/tenant_home_select_button_text"
@@ -80,7 +80,7 @@
 
         <ImageView
             style="@style/tenant_home_select_button_icon"
-            app:srcCompat="@drawable/ic_contract_icon" />
+            app:srcCompat="@drawable/tenant_contract" />
 
         <TextView
             style="@style/tenant_home_select_button_text"
@@ -99,7 +99,7 @@
 
         <ImageView
             style="@style/tenant_home_select_button_icon"
-            app:srcCompat="@drawable/ic_nearby_attraction" />
+            app:srcCompat="@drawable/tenant_attraction" />
 
         <TextView
             style="@style/tenant_home_select_button_text"
@@ -118,7 +118,7 @@
 
         <ImageView
             style="@style/tenant_home_select_button_icon"
-            app:srcCompat="@drawable/ic_repair" />
+            app:srcCompat="@drawable/tenant_repair" />
 
         <TextView
             style="@style/tenant_home_select_button_text"
@@ -154,7 +154,7 @@
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/text_home_greet"
-                app:srcCompat="@drawable/ic_baseline_wb_sunny_24" />
+                app:srcCompat="@drawable/weather_rainny" />
 
             <TextView
                 android:id="@+id/text_home_greet"
@@ -198,7 +198,7 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_logo" />
+                app:srcCompat="@drawable/logo" />
 
             <ImageButton
                 android:id="@+id/button_tenant_setup"
@@ -209,7 +209,7 @@
                 android:background="@color/colorPrimaryLight"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_setup_icon" />
+                app:srcCompat="@drawable/button_toolbar_setup" />
 
             <SearchView
                 android:layout_width="0dp"

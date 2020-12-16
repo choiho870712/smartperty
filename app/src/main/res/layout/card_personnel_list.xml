@@ -30,7 +30,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:src="@drawable/ic_head_icon"
+            android:src="@drawable/empty_head"
             tools:ignore="VectorDrawableCompat"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_landlord_menu_icon" />
+            app:srcCompat="@drawable/button_nav_controll" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

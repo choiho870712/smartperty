@@ -4,17 +4,17 @@
 
     <item
         android:id="@+id/tenant_notification"
-        android:icon="@drawable/ic_landlord_notification_icon"
+        android:icon="@drawable/button_nav_notification"
         android:title="@string/tenant_title_notification" />
 
     <item
         android:id="@+id/tenant_home"
-        android:icon="@drawable/ic_landlord_home_icon"
+        android:icon="@drawable/button_nav_home"
         android:title="@string/tenant_title_home" />
 
     <item
         android:id="@+id/tenant_chat"
-        android:icon="@drawable/ic_landlord_chat_icon"
+        android:icon="@drawable/button_nav_chat"
         android:title="@string/tenant_title_chat" />
 
 </menu>

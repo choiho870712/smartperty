@@ -146,7 +146,7 @@ class AddPostFragment : Fragment() {
                 imageListAdapter.notifyDataSetChanged()
             }
 
-            imageContainer.setImageResource(R.drawable.ic_baseline_add_photo_alternate_24)
+            imageContainer.setImageResource(R.drawable.add_photo)
         }
     }
 }

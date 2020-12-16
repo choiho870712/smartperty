@@ -31,7 +31,7 @@ class ToolBarUtils {
     }
 
     fun setLogoVisibility(visible:Boolean) {
-        val logoId = if (visible) R.drawable.ic_logo else R.color.colorPrimary
+        val logoId = if (visible) R.drawable.logo else R.color.colorPrimary
         activity.runOnUiThread {
             toolbar.setLogo(logoId)
         }

@@ -70,29 +70,29 @@
 45-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:34:13-52
 46
 47        <activity
-47-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:36:9-38:68
-48            android:name="com.smartperty.smartperty.tenant.home.attractionsNearby.MapsActivity"
-48-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:37:13-71
-49            android:label="@string/title_activity_maps" />
-49-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:38:13-56
-50        <activity
-50-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:39:9-41:72
-51            android:name="com.smartperty.smartperty.landlord.LandlordActivity"
-51-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:40:13-54
-52            android:label="@string/title_activity_landlord" />
-52-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:41:13-60
-53        <activity
-53-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:42:9-44:61
-54            android:name="com.smartperty.smartperty.tenant.TenantActivity"
-54-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:43:13-50
-55            android:label="@string/title_activity_tenant" />
-55-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:44:13-58
-56        <activity
-56-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:45:9-53:20
-57            android:name="com.smartperty.smartperty.login.LoginActivity"
-57-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:46:13-48
-58            android:label="@string/app_name" >
-58-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:47:13-45
+47-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:36:9-39:63
+48            android:name="com.smartperty.smartperty.landlord.LandlordActivity"
+48-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:37:13-54
+49            android:label="@string/title_activity_landlord"
+49-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:39:13-60
+50            android:screenOrientation="portrait" />
+50-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:38:13-49
+51        <activity
+51-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:40:9-43:61
+52            android:name="com.smartperty.smartperty.tenant.TenantActivity"
+52-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:41:13-50
+53            android:label="@string/title_activity_tenant"
+53-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:43:13-58
+54            android:screenOrientation="portrait" />
+54-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:42:13-49
+55        <activity
+55-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:44:9-53:20
+56            android:name="com.smartperty.smartperty.login.LoginActivity"
+56-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:45:13-48
+57            android:label="@string/app_name"
+57-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:47:13-45
+58            android:screenOrientation="portrait" >
+58-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:46:13-49
 59            <intent-filter>
 59-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:48:13-52:29
 60                <action android:name="android.intent.action.MAIN" />

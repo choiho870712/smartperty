@@ -11,7 +11,7 @@
         app:layout_constraintBottom_toTopOf="@+id/imageView8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/card_object_folder"
-        app:srcCompat="@drawable/ic_menu_icon_object" />
+        app:srcCompat="@drawable/controll_property" />
 
     <ImageView
         style="@style/landlord_menu_icon"
@@ -19,7 +19,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/card_contract"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/card_contract"
-        app:srcCompat="@drawable/ic_menu_icon_contract" />
+        app:srcCompat="@drawable/controll_contract" />
 
     <ImageView
         style="@style/landlord_menu_icon"
@@ -27,7 +27,7 @@
         app:layout_constraintBottom_toTopOf="@+id/card_finance"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_contract"
-        app:srcCompat="@drawable/ic_menu_icon_data_analysis" />
+        app:srcCompat="@drawable/controll_analysis" />
 
     <ImageView
         style="@style/landlord_menu_icon"
@@ -35,7 +35,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/card_finance"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/card_finance"
-        app:srcCompat="@drawable/ic_menu_item_finance" />
+        app:srcCompat="@drawable/controll_finance" />
 
     <ImageView
         style="@style/landlord_menu_icon"
@@ -43,7 +43,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/card_repair"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/card_repair"
-        app:srcCompat="@drawable/ic_menu_icon_repair" />
+        app:srcCompat="@drawable/controll_repair" />
 
     <ImageView
         android:id="@+id/imageView21"
@@ -51,7 +51,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/card_personnel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/card_personnel"
-        app:srcCompat="@drawable/ic_menu_item_personnel" />
+        app:srcCompat="@drawable/controll_personnel" />
 
     <TextView
         android:id="@+id/card_object_folder"

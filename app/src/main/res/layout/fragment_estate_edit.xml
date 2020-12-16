@@ -13,7 +13,7 @@
         android:layout_height="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recycler_image"
-        app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24" />
+        app:srcCompat="@drawable/add_photo" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_image"

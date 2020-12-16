@@ -19,6 +19,7 @@ MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /root/.gradle/caches/
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/55abb7e948258522d575f8dc4ee0df62/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/4f2ba545a4331b28b7adb2460751a1ff/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.github.PhilJay:MPAndroidChart:v3.1.0] /root/.gradle/caches/transforms-2/files-2.1/836ae9e948553e937d6131fd376135ec/jetified-MPAndroidChart-v3.1.0/AndroidManifest.xml:2:1-20:12
+MERGED from [me.relex:circleindicator:2.1.4] /root/.gradle/caches/transforms-2/files-2.1/bed3f39d549a6be3d699a336930849cf/jetified-circleindicator-2.1.4/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/d2d9a9905fba49314b7b6e18ec91e140/legacy-support-v4-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/8b60fde4d77862462db8051e92db572c/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/71d05889cd3319b59e0a4fc26ad09558/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
@@ -160,30 +161,30 @@ ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManif
 		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:34:13-52
 	android:name
 		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:33:13-58
-activity#com.smartperty.smartperty.tenant.home.attractionsNearby.MapsActivity
-ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:36:9-38:68
-	android:label
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:38:13-56
-	android:name
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:37:13-71
 activity#com.smartperty.smartperty.landlord.LandlordActivity
-ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:39:9-41:72
+ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:36:9-39:63
+	android:screenOrientation
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:38:13-49
 	android:label
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:41:13-60
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:39:13-60
 	android:name
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:40:13-54
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:37:13-54
 activity#com.smartperty.smartperty.tenant.TenantActivity
-ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:42:9-44:61
+ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:40:9-43:61
+	android:screenOrientation
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:42:13-49
 	android:label
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:44:13-58
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:43:13-58
 	android:name
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:43:13-50
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:41:13-50
 activity#com.smartperty.smartperty.login.LoginActivity
-ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:45:9-53:20
+ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:44:9-53:20
+	android:screenOrientation
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:46:13-49
 	android:label
 		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:47:13-45
 	android:name
-		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:46:13-48
+		ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:45:13-48
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:48:13-52:29
 action#android.intent.action.MAIN
@@ -228,6 +229,8 @@ MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /root/.gradle/caches/
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/4f2ba545a4331b28b7adb2460751a1ff/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.github.PhilJay:MPAndroidChart:v3.1.0] /root/.gradle/caches/transforms-2/files-2.1/836ae9e948553e937d6131fd376135ec/jetified-MPAndroidChart-v3.1.0/AndroidManifest.xml:16:5-18:41
 MERGED from [com.github.PhilJay:MPAndroidChart:v3.1.0] /root/.gradle/caches/transforms-2/files-2.1/836ae9e948553e937d6131fd376135ec/jetified-MPAndroidChart-v3.1.0/AndroidManifest.xml:16:5-18:41
+MERGED from [me.relex:circleindicator:2.1.4] /root/.gradle/caches/transforms-2/files-2.1/bed3f39d549a6be3d699a336930849cf/jetified-circleindicator-2.1.4/AndroidManifest.xml:7:5-9:41
+MERGED from [me.relex:circleindicator:2.1.4] /root/.gradle/caches/transforms-2/files-2.1/bed3f39d549a6be3d699a336930849cf/jetified-circleindicator-2.1.4/AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/d2d9a9905fba49314b7b6e18ec91e140/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/d2d9a9905fba49314b7b6e18ec91e140/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/8b60fde4d77862462db8051e92db572c/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44

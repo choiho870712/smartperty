@@ -1,5 +1,6 @@
 package com.smartperty.smartperty.landlord.menu.`object`.estate
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,6 +19,7 @@ class EstateFragment : Fragment() {
 
     private lateinit var root: View
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,7 +43,11 @@ class EstateFragment : Fragment() {
             }
         }
 
-        root.textView_object_item_address.text = GlobalVariables.estate.address
+        root.textView_object_item_address.text =
+            GlobalVariables.estate.district +
+                    GlobalVariables.estate.road +
+                    GlobalVariables.estate.street +
+                    GlobalVariables.estate.address
         root.textView_object_item_floor.text = GlobalVariables.estate.floor.toString()
         root.textView_object_item_square_ft.text = GlobalVariables.estate.squareFt.toString()
         root.textView_object_item_parking_sapce.text = GlobalVariables.estate.parkingSpace

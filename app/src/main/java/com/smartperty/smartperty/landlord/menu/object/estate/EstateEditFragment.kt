@@ -193,7 +193,7 @@ class EstateEditFragment : Fragment(), DatePickerDialog.OnDateSetListener {
                 imageListAdapter.notifyDataSetChanged()
             }
 
-            root.image_object_item.setImageResource(R.drawable.ic_baseline_add_photo_alternate_24)
+            root.image_object_item.setImageResource(R.drawable.add_photo)
         }
     }
 }

@@ -131,8 +131,7 @@ class DataAnalysisPageFragment(
             entries.add(
                 PieEntry(
                     it.value.toFloat(),
-                    it.tag,
-                    resources.getDrawable(R.drawable.star)
+                    it.tag
                 )
             )
         }
@@ -256,12 +255,11 @@ class DataAnalysisPageFragment(
         val rightAxis: YAxis = barChart.axisRight
         rightAxis.typeface = Typeface.DEFAULT
         rightAxis.setDrawGridLines(false)
-        rightAxis.spaceTop = 35f
         rightAxis.axisMinimum = 0f // this replaces setStartAtZero(true)
-        rightAxis.granularity = 3f
+        rightAxis.granularity = 2f
         rightAxis.valueFormatter = object : ValueFormatter() {
             override fun getFormattedValue(value: Float): String {
-                return if (value >= 1) {
+                return if (value > 0) {
                     value.toInt().toString() + "%"
                 } else
                     ""
@@ -298,8 +296,25 @@ class DataAnalysisPageFragment(
             set2 = BarDataSet(values2, "投資報酬率")
             set2.color = Color.rgb(0, 0, 255)
             set2.axisDependency = barChart.axisRight.axisDependency
+            var maxNumber = 0.0
+            myBarChartDataSet.forEach {
+                if (it.value2 > maxNumber)
+                    maxNumber = it.value2
+            }
+            barChart.axisRight.axisMaximum = (maxNumber + 10).toFloat()
             val data = BarData(set1, set2)
-            data.setValueFormatter(LargeValueFormatter())
+            data.setValueFormatter(
+                object : ValueFormatter() {
+                    override fun getFormattedValue(value: Float): String {
+                        return if (value >= 0 && value < 1) {
+                            value.toString() + "%"
+                        } else if (value >= 1000)
+                            (value/1000).toInt().toString() + ",000台幣"
+                        else
+                            value.toInt().toString()
+                    }
+                }
+            )
             data.setValueTypeface(Typeface.DEFAULT)
             barChart.data = data
         }

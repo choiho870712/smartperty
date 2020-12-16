@@ -14,7 +14,6 @@
 
     <style name="AppTheme.Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="searchViewStyle">@style/AppTheme.SearchView</item>
-        <item name="homeAsUpIndicator">@drawable/ic_baseline_arrow_back_ios_24</item>
         <item name="android:editTextColor">@color/colorBlack</item>
         <item name="android:textColorHint">@color/colorSilver</item>
     </style>
@@ -22,7 +21,7 @@
     <style name="AppTheme.SearchView" parent="Widget.AppCompat.SearchView">
         <item name="searchIcon">@drawable/ic_search_blue_24dp</item>
         <item name="closeIcon">@drawable/ic_search_blue_24dp</item>
-        <item name="queryBackground">@drawable/radius_gray_text_box</item>
+        <item name="queryBackground">@drawable/style_radius_white_smoke</item>
         <item name="goIcon">@drawable/ic_search_blue_24dp</item>
         <item name="queryHint">搜尋</item>
     </style>
@@ -157,7 +156,7 @@
         <item name="android:textColor">@color/colorBlack</item>
         <item name="android:textSize">16sp</item>
         <item name="android:padding">4dp</item>
-        <item name="android:background">@drawable/square_text_box</item>
+        <item name="android:background">@drawable/style_hollow_white_smoke</item>
         <item name="android:gravity">top|left</item>
     </style>
 
@@ -165,18 +164,7 @@
         <item name="android:layout_width">80dp</item>
         <item name="android:layout_height">40dp</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:background">@drawable/radius_button</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="button_rectangle_primary" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:layout_width">80dp</item>
-        <item name="android:layout_height">40dp</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:background">@drawable/rectangle_button</item>
+        <item name="android:background">@drawable/style_radius_light_blue</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textSize">16sp</item>
@@ -187,7 +175,7 @@
         <item name="android:layout_width">80dp</item>
         <item name="android:layout_height">40dp</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:background">@drawable/rectangle_hollow_button</item>
+        <item name="android:background">@drawable/style_hollow_light_blue</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/colorLightBlue</item>
         <item name="android:textSize">16sp</item>

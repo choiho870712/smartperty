@@ -83,7 +83,7 @@
         android:background="@color/colorWhite"
         app:layout_constraintStart_toStartOf="@+id/guideline15"
         app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24" />
+        app:srcCompat="@drawable/add_photo" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_image"

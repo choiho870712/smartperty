@@ -171,8 +171,7 @@ class LandlordContractFragment : Fragment() {
         val values: ArrayList<Entry> = ArrayList()
         GlobalVariables.contractExpireLineChartDataSet.dataList.forEach {
             val month = it.tag.toInt()
-            values.add(Entry((month).toFloat(), it.value.toFloat(),
-                resources.getDrawable(R.drawable.star)))
+            values.add(Entry((month).toFloat(), it.value.toFloat()))
         }
         val set1: LineDataSet
         if (lineChart.getData() != null &&
@@ -290,8 +289,7 @@ class LandlordContractFragment : Fragment() {
             entries.add(
                 PieEntry(
                     it.value.toFloat(),
-                    it.tag,
-                    resources.getDrawable(R.drawable.star)
+                    it.tag
                 )
             )
         }
@@ -398,8 +396,7 @@ class LandlordContractFragment : Fragment() {
             entries.add(
                 PieEntry(
                     it.value.toFloat(),
-                    it.tag,
-                    resources.getDrawable(R.drawable.star)
+                    it.tag
                 )
             )
         }

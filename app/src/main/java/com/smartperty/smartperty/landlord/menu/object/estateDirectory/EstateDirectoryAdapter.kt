@@ -12,7 +12,6 @@ import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.EstateList
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.card_estate_directory.view.*
-import kotlinx.android.synthetic.main.fragment_estate_directory.view.*
 
 class EstateDirectoryAdapter(private val activity: Activity,
                              private val parentView: View,
@@ -39,7 +38,7 @@ class EstateDirectoryAdapter(private val activity: Activity,
             holder.image.setImageBitmap(myDataset[position].image)
         else
             holder.image.setImageDrawable(
-                activity.resources.getDrawable(R.drawable.ic_empty_house))
+                activity.resources.getDrawable(R.drawable.empty_house))
 
         holder.cardView.setOnClickListener {
             GlobalVariables.estateList = myDataset[holder.index]

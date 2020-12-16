@@ -226,12 +226,12 @@ class LandlordHomeFragment : Fragment() {
         val values: ArrayList<Entry> = ArrayList()
         for (i in 0 until count) {
             val `val` = (Math.random() * range).roundToInt().toFloat()
-            values.add(Entry(i.toFloat(), `val`, getResources().getDrawable(R.drawable.star)))
+            values.add(Entry(i.toFloat(), `val`))
         }
         val values2: ArrayList<Entry> = ArrayList()
         for (i in 0 until count) {
             val `val` = (Math.random() * range).roundToInt().toFloat()
-            values2.add(Entry(i.toFloat(), `val`, getResources().getDrawable(R.drawable.star)))
+            values2.add(Entry(i.toFloat(), `val`))
         }
         val set1: LineDataSet
         val set2: LineDataSet

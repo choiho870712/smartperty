@@ -16,8 +16,10 @@
             style="@style/text_normal_black_20sp"
             android:layout_width="0dp"
             android:layout_marginStart="16dp"
-            android:text="大樓A"
+            android:text="text_object_folder_title"
+            android:singleLine="true"
             app:layout_constraintBottom_toTopOf="@+id/text_object_folder_square_ft"
+            app:layout_constraintEnd_toStartOf="@+id/text_object_folder_rent_rate3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,7 +38,7 @@
             style="@style/text_normal_black_14sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="坪"
+            android:text="@string/squareFtUnit"
             app:layout_constraintBottom_toBottomOf="@+id/text_object_folder_square_ft"
             app:layout_constraintStart_toEndOf="@+id/text_object_folder_square_ft"
             app:layout_constraintTop_toTopOf="@+id/text_object_folder_square_ft" />
@@ -57,7 +59,7 @@
             style="@style/text_normal_black_14sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="戶"
+            android:text="@string/propertyCountUnit"
             app:layout_constraintBottom_toBottomOf="@+id/text_object_folder_square_ft"
             app:layout_constraintStart_toEndOf="@+id/text_object_folder_item_number"
             app:layout_constraintTop_toTopOf="@+id/text_object_folder_square_ft" />
@@ -67,7 +69,7 @@
             style="@style/text_normal_black_14sp"
             android:layout_width="0dp"
             android:layout_marginEnd="8dp"
-            android:text="%"
+            android:text="@string/rentRateUnit"
             app:layout_constraintBottom_toBottomOf="@+id/text_object_folder_rent_rate3"
             app:layout_constraintEnd_toStartOf="@+id/card_image"
             app:layout_constraintTop_toTopOf="@+id/text_object_folder_rent_rate3" />
@@ -87,7 +89,7 @@
             style="@style/text_normal_black_14sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="出租率"
+            android:text="@string/rentRate"
             app:layout_constraintEnd_toStartOf="@+id/text_object_folder_rent_rate"
             app:layout_constraintTop_toTopOf="@+id/text_object_folder_title" />
 
@@ -110,6 +112,7 @@
                     android:id="@+id/image_object_folder"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:contentDescription="@string/houseImageDescription"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

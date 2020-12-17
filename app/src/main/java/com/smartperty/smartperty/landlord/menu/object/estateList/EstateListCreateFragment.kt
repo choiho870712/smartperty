@@ -47,34 +47,51 @@ class EstateListCreateFragment : Fragment() {
                     if (root.textView_object_item_floor.text.isNotEmpty())
                         floor = root.textView_object_item_floor.text.toString().toInt()
 
-                    var squareFt = 0
+                    var squareFt = 0.0
                     if (root.textView_object_item_square_ft.text.isNotEmpty())
-                        squareFt = root.textView_object_item_square_ft.text.toString().toInt()
+                        squareFt = root.textView_object_item_square_ft.text.toString().toDouble()
 
                     var rentAmount = 0
                     if (root.textView_object_item_rent_amount_per_month.text.isNotEmpty())
                         rentAmount = root.textView_object_item_rent_amount_per_month.text.toString().toInt()
 
+
                     val item = Estate(
+                        groupName = GlobalVariables.estateList.title,
                         title = root.textView_object_item_title.text.toString(),
-                        address = root.textView_object_item_address.text.toString(),
                         floor = floor,
                         squareFt = squareFt,
                         parkingSpace = root.textView_object_item_parking_sapce.text.toString(),
                         content = root.textView_object_item_content.text.toString(),
+                        district = "", // TODO
+                        street = "", // TODO
+                        road = "", // TODO
+                        address = root.textView_object_item_address.text.toString(),
+                        type = "", // TODO
                         contract = Contract(
+                            landlord = GlobalVariables.user,
                             rentAmount = rentAmount,
                             rentEndDate = root.textView_object_item_rent_end_date.text.toString(),
-                            tenant = User(
-                                name = root.textView_object_item_tenant_name.text.toString(),
-                                cellPhone = root.textView_object_item_phone.text.toString()
-                            )
+                            purchasePrice = 10000
                         )
                     )
 
                     item.imageList.addAll(imageList)
                     GlobalVariables.estateList.list.add(item)
                     GlobalVariables.estateListAdapter!!.notifyDataSetChanged()
+
+                    Thread{
+                        GlobalVariables.api.createProperty(item)
+                    }.start()
+
+                    // TODO wait for object_id
+//                    item.imageList.forEach {
+//                        GlobalVariables.api.uploadPropertyImage(
+//                            GlobalVariables.user.id,
+//                            GlobalVariables
+//                        )
+//                    }
+
                     root.findNavController().navigateUp()
 
                     true

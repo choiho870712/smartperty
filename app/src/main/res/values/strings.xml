@@ -186,4 +186,13 @@
 九、如果您有任何關於本產品隱私權政策的問題或疑慮，可以透過電子郵件 support@smartperty.com 與我們聯繫。\n
 
     </string>
+    <string name="moneyUnit">$</string>
+    <string name="squareFtUnit">坪</string>
+    <string name="selectButton">選擇</string>
+    <string name="houseImageDescription">house image</string>
+    <string name="propertyCountUnit">戶</string>
+    <string name="rentRate">出租率</string>
+    <string name="rentRateUnit">%</string>
+    <string name="notificationTag">notification tag</string>
+    <string name="personnel_controll_button">personnel controll button</string>
 </resources>

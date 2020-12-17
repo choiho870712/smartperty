@@ -31,6 +31,8 @@ class Api {
     private val urlGetPieChartByObjectType = urlDirectory + "reportmanagement/getpiechartbyobjecttype"
     private val urlGetBarChartByArea = urlDirectory + "reportmanagement/getbarchartbyarea"
     private val urlGetPieChartByArea = urlDirectory + "reportmanagement/getpiechartbyarea"
+    private val urlCreateProperty = urlDirectory + "propertymanagement/createproperty"
+    private val urlUploadPropertyImage = urlDirectory + "propertymanagement/uploadpropertyimage"
 
     private fun getBarChartByGroupTagJson(rawJsonString:String): ChartData {
         val chartData = ChartData(type = ChartDataType.BAR_CHART)
@@ -217,7 +219,7 @@ class Api {
         val estate = Estate(
             objectId = item.getString("object_id"),
             contractId = item.getString("current_contract_id"),
-            squareFt = information.getString("area").toInt(),
+            squareFt = information.getString("area").toDouble(),
             address = information.getString("address"),
             road = information.getString("road"),
             street = information.getString("street"),
@@ -266,33 +268,56 @@ class Api {
             val item = items.getJSONObject(i)
             val eventHistoryIdList = item.getJSONArray("event_history")
             val contractHistoryIdList = item.getJSONArray("contract_history")
-            val information = item.getJSONObject("information")
-            val imageList = information.getJSONArray("image")
+            val imageList = item.getJSONArray("image")
+            val attractionList = item.getJSONArray("attraction")
+            val roomList = item.getJSONArray("equipment")
             val estate = Estate(
                 objectId = item.getString("object_id"),
                 contractId = item.getString("current_contract_id"),
-                squareFt = information.getString("area").toInt(),
-                address = information.getString("address"),
-                road = information.getString("road"),
-                street = information.getString("street"),
-                title = information.getString("object_name"),
-                district = information.getString("district"),
+                squareFt = item.getString("area").toDouble(),
+                address = item.getString("full_address"),
+                road = item.getString("road"),
+                street = item.getString("street"),
+                title = item.getString("object_name"),
+                district = item.getString("region"),
                 contract = Contract(
-                    rentAmount = information.getInt("purchase_price"),
+                    purchasePrice = item.getInt("purchase_price"),
+                    rentAmount = item.getInt("rent"),
                     tenant = User(
-                        id = item.getString("tenant_id"),
-                        name = item.getString("tenant_id")
+                        id = item.getString("tenant_id")
                     ),
                     landlord = User(
-                        id = item.getString("landlord_id"),
-                        name = item.getString("landlord_id")
+                        id = item.getString("landlord_id")
                     )
                 ),
-                parkingSpace = information.getString("parking_space"),
-                content = information.getString("description"),
-                floor = information.getInt("floor"),
-                type = information.getString("type")
+                parkingSpace = item.getString("parking_space"),
+                content = item.getString("description"),
+                floor = item.getInt("floor"),
+                type = item.getString("type"),
+                rules = item.getString("rules"),
+                groupName = item.getString("group_name"),
+                systemId = item.getString("system_id")
             )
+
+            for (j in 0 until(attractionList.length()))
+                estate.attractionList.add(attractionList.getString(j))
+
+            for (j in 0 until(roomList.length())) {
+                val room = roomList.getJSONObject(j)
+                val myRoom = Room(name = room.getString("name"))
+                val equipment = room.getJSONObject("infoamtion")
+                val myEquipment = Equipment(
+                    name = equipment.getString("name"),
+                    count = equipment.getInt("count"),
+                    imageUrl = equipment.getJSONArray("image").getString(0)
+                )
+                myRoom.equipmentList.add(myEquipment)
+                Thread {
+                    if (myEquipment.imageUrl.isNotEmpty() && myEquipment.imageUrl != "nil")
+                        myEquipment.image =
+                            GlobalVariables.imageHelper.convertUrlToImage(myEquipment.imageUrl)
+                }.start()
+            }
 
             for (j in 0 until(imageList.length()))
                 estate.imageUrlList.add(imageList.getString(j))
@@ -476,9 +501,10 @@ class Api {
             }
 
             if (repairOrder.object_id.length > 3) {
-                Thread {
-                    repairOrder.estate = getPropertyByObjectId(repairOrder.object_id)
-                }.start()
+                // TODO wait for debug
+//                Thread {
+//                    repairOrder.estate = getPropertyByObjectId(repairOrder.object_id)
+//                }.start()
             }
             repairList.add(repairOrder)
         }
@@ -651,6 +677,44 @@ class Api {
     fun getEventInformation(event_id:String): RepairOrder {
         val json = "{\"event_id\": \"$event_id\"}"
         return getEventInformationJson(callApi(json, urlGetEventInformation))
+    }
+
+    fun createProperty(estate: Estate): Boolean {
+        if (estate.contract.landlord == null)
+            return false
+
+        val landlord_id = estate.contract.landlord!!.id
+        val system_id = estate.contract.landlord!!.system_id
+        val group_name = estate.groupName
+        val object_name = estate.title
+        val description = estate.content
+        val region = estate.district
+        val street = estate.street
+        val road = estate.road
+        val full_address = estate.address
+        val floor = estate.floor
+        val area = estate.squareFt
+        val rent = estate.contract.rentAmount
+        val parking_space = estate.parkingSpace
+        val type = estate.type
+        val purchase_price = estate.contract.purchasePrice
+
+        val json = "{\"landlord_id\": \"$landlord_id\", \"system_id\": \"$system_id\", " +
+                "\"group_name\": \"$group_name\", \"object_name\": \"$object_name\", " +
+                "\"description\": \"$description\", \"region\": \"$region\", " +
+                "\"street\": \"$street\", \"road\": \"$road\", " +
+                "\"full_address\": \"$full_address\", \"floor\": $floor," +
+                "\"area\": \"$area\", \"rent\": $rent," +
+                "\"parking_space\": \"$parking_space\", \"type\": \"$type\"," +
+                "\"purchase_price\": $purchase_price}"
+        return getJsonMessage(callApi(json, urlCreateProperty)) == "No Error"
+    }
+
+    fun uploadPropertyImage(landlord_id: String, object_id: String, image: Bitmap): Boolean {
+        val imageString = GlobalVariables.imageHelper.getString(image)
+        val json = "{\"landlord_id\": \"$landlord_id\", \"object_id\": \"$object_id\", " +
+                "\"image\":[\"$imageString\"]}"
+        return getJsonMessage(callApi(json, urlUploadPropertyImage)) == "No Error"
     }
 
     private fun getJsonMessage(rawJsonString:String) : String {

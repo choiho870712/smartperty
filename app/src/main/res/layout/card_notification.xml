@@ -18,10 +18,11 @@
             android:id="@+id/imageView_notification_color"
             android:layout_width="20dp"
             android:layout_height="match_parent"
+            android:contentDescription="@string/notificationTag"
+            android:src="@drawable/fade_red"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/text_message"
-            android:src="@drawable/fade_red"/>
+            app:layout_constraintTop_toTopOf="@+id/text_message" />
 
         <TextView
             android:id="@+id/text_message"

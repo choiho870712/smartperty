@@ -122,7 +122,7 @@ class TenantActivity : AppCompatActivity() {
             title = "",
             address = "桃園市大園區致祥一街105號12樓",
             floor = 30,
-            squareFt = 50,
+            squareFt = 50.0,
             parkingSpace = "none",
             content = "",
             imageList = mutableListOf(),

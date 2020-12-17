@@ -48,7 +48,7 @@ class EstateEditFragment : Fragment(), DatePickerDialog.OnDateSetListener {
                     GlobalVariables.estate.title = root.textView_object_item_title.text.toString()
                     GlobalVariables.estate.address = root.textView_object_item_address.text.toString()
                     GlobalVariables.estate.floor = root.textView_object_item_floor.text.toString().toInt()
-                    GlobalVariables.estate.squareFt = root.textView_object_item_square_ft.text.toString().toInt()
+                    GlobalVariables.estate.squareFt = root.textView_object_item_square_ft.text.toString().toDouble()
                     GlobalVariables.estate.parkingSpace = root.textView_object_item_parking_sapce.text.toString()
                     GlobalVariables.estate.content = root.textView_object_item_content.text.toString()
 

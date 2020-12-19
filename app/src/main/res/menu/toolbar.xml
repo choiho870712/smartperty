@@ -31,4 +31,9 @@
         android:id="@+id/button_submit"
         android:title="送出"
         app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/button_cancel"
+        android:title="取消"
+        app:showAsAction="always"/>
 </menu>

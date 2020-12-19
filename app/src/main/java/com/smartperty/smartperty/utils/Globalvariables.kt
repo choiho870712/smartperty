@@ -9,8 +9,8 @@ import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.smartperty.smartperty.data.*
-import com.smartperty.smartperty.landlord.menu.`object`.estateDirectory.EstateDirectoryAdapter
-import com.smartperty.smartperty.landlord.menu.`object`.estateList.EstateListAdapter
+import com.smartperty.smartperty.landlord.menu.estate.EstateDirectoryAdapter
+import com.smartperty.smartperty.landlord.menu.estate.EstateListAdapter
 import com.smartperty.smartperty.repair.EstateAdapter
 import com.smartperty.smartperty.repair.RepairListAdapter
 import org.threeten.bp.LocalDateTime

@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="44dp"
-        android:text="電話號碼"
+        android:text="@string/phone_number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,6 +26,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="44dp"
         android:hint="必填"
+        android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView71"
         app:layout_constraintTop_toTopOf="@+id/textView71" />

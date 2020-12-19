@@ -33,6 +33,7 @@ class Api {
     private val urlGetPieChartByArea = urlDirectory + "reportmanagement/getpiechartbyarea"
     private val urlCreateProperty = urlDirectory + "propertymanagement/createproperty"
     private val urlUploadPropertyImage = urlDirectory + "propertymanagement/uploadpropertyimage"
+    private val urlUploadPropertyEquipment = urlDirectory + "propertymanagement/uploadpropertyequipment"
 
     private fun getBarChartByGroupTagJson(rawJsonString:String): ChartData {
         val chartData = ChartData(type = ChartDataType.BAR_CHART)
@@ -209,6 +210,12 @@ class Api {
         return item.getString("event_id")
     }
 
+    private fun createObjectJson(rawJsonString:String): String {
+        val jsonObject = JSONObject(rawJsonString)
+        val item = jsonObject.getJSONObject("Items")
+        return item.getString("object_id")
+    }
+
     private fun getPropertyByObjectIdJson(rawJsonString:String): Estate {
         val jsonObject = JSONObject(rawJsonString)
         val item = jsonObject.getJSONObject("Items")
@@ -302,22 +309,28 @@ class Api {
             for (j in 0 until(attractionList.length()))
                 estate.attractionList.add(attractionList.getString(j))
 
+            val myRoomList = mutableListOf<Room>()
             for (j in 0 until(roomList.length())) {
                 val room = roomList.getJSONObject(j)
                 val myRoom = Room(name = room.getString("name"))
-                val equipment = room.getJSONObject("infoamtion")
-                val myEquipment = Equipment(
-                    name = equipment.getString("name"),
-                    count = equipment.getInt("count"),
-                    imageUrl = equipment.getJSONArray("image").getString(0)
-                )
-                myRoom.equipmentList.add(myEquipment)
-                Thread {
-                    if (myEquipment.imageUrl.isNotEmpty() && myEquipment.imageUrl != "nil")
-                        myEquipment.image =
-                            GlobalVariables.imageHelper.convertUrlToImage(myEquipment.imageUrl)
-                }.start()
+                val equipmentList = room.getJSONArray("infoamtion")
+                for (k in 0 until(equipmentList.length())) {
+                    val equipment = equipmentList.getJSONObject(k)
+                    val myEquipment = Equipment(
+                        name = equipment.getString("name"),
+                        count = equipment.getInt("count"),
+                        imageUrl = equipment.getJSONArray("image").getString(0)
+                    )
+                    myRoom.equipmentList.add(myEquipment)
+                    Thread {
+                        if (myEquipment.imageUrl.isNotEmpty() && myEquipment.imageUrl != "nil")
+                            myEquipment.image =
+                                GlobalVariables.imageHelper.convertUrlToImage(myEquipment.imageUrl)
+                    }.start()
+                }
+                myRoomList.add(myRoom)
             }
+            estate.roomList = myRoomList
 
             for (j in 0 until(imageList.length()))
                 estate.imageUrlList.add(imageList.getString(j))
@@ -679,10 +692,7 @@ class Api {
         return getEventInformationJson(callApi(json, urlGetEventInformation))
     }
 
-    fun createProperty(estate: Estate): Boolean {
-        if (estate.contract.landlord == null)
-            return false
-
+    fun createProperty(estate: Estate): String {
         val landlord_id = estate.contract.landlord!!.id
         val system_id = estate.contract.landlord!!.system_id
         val group_name = estate.groupName
@@ -707,7 +717,7 @@ class Api {
                 "\"area\": \"$area\", \"rent\": $rent," +
                 "\"parking_space\": \"$parking_space\", \"type\": \"$type\"," +
                 "\"purchase_price\": $purchase_price}"
-        return getJsonMessage(callApi(json, urlCreateProperty)) == "No Error"
+        return createObjectJson(callApi(json, urlCreateProperty))
     }
 
     fun uploadPropertyImage(landlord_id: String, object_id: String, image: Bitmap): Boolean {
@@ -715,6 +725,39 @@ class Api {
         val json = "{\"landlord_id\": \"$landlord_id\", \"object_id\": \"$object_id\", " +
                 "\"image\":[\"$imageString\"]}"
         return getJsonMessage(callApi(json, urlUploadPropertyImage)) == "No Error"
+    }
+
+    fun uploadPropertyEquipment(landlord_id: String, object_id: String, roomList: MutableList<Room>): Boolean {
+        var json = "{\"landlord_id\": \"$landlord_id\", \"object_id\": \"$object_id\", " +
+                "\"equipment\": ["
+        roomList.forEachIndexed { index, room ->
+            val roomName = room.name
+
+            if (index > 0)
+                json += ","
+
+            var isFirst = true
+            val equipmentList = room.equipmentList
+            json += "{\"title\" : \"$roomName\", \"information\" : ["
+            equipmentList.forEach {
+                val equipmentName = it.name
+                val equipmentCount = it.count.toString()
+
+                if (isFirst) isFirst = false
+                else json += ","
+
+                json += "{\"name\" : \"$equipmentName\", \"count\" : $equipmentCount, " +
+                        "\"image\" : ["
+                if (it.image != null) {
+                    val imageString = GlobalVariables.imageHelper.getString(it.image!!)
+                    json += "\"$imageString\""
+                }
+                json += "]}"
+            }
+            json += "]}"
+        }
+        json += "]}"
+        return getJsonMessage(callApi(json, urlUploadPropertyEquipment)) == "No Error"
     }
 
     private fun getJsonMessage(rawJsonString:String) : String {

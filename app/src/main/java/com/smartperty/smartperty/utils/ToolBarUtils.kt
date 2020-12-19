@@ -78,4 +78,12 @@ class ToolBarUtils {
             button.isVisible = visible
         }
     }
+
+    fun setCancelButtonVisibility(visible: Boolean) {
+        val button = toolbar.menu.findItem(R.id.button_cancel)
+        activity.runOnUiThread {
+            button.isVisible = visible
+        }
+    }
+
 }

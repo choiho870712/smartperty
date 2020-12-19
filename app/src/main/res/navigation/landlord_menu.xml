@@ -31,23 +31,28 @@
     </fragment>
     <fragment
         android:id="@+id/estateFragment"
-        android:name="com.smartperty.smartperty.landlord.menu.object.estate.EstateFragment"
+        android:name="com.smartperty.smartperty.landlord.menu.estate.EstateFragment"
         android:label="@string/landlord_title_object_item"
         tools:layout="@layout/fragment_estate" >
-        <action
-            android:id="@+id/action_landlordObjectFragment_to_landlordObjectItemEditFragment"
-            app:destination="@id/etateEditFragment"
-            app:popUpTo="@id/estateFragment" />
         <action
             android:id="@+id/action_estateFragment_to_repairOrderFragment"
             app:destination="@id/repairOrderFragment" />
         <action
             android:id="@+id/action_estateFragment_to_landlordPersonnelItemFragment"
             app:destination="@id/landlordPersonnelItemFragment" />
+        <action
+            android:id="@+id/action_estateFragment_to_tenantAttractionsNearbyFragment2"
+            app:destination="@id/tenantAttractionsNearbyFragment2" />
+        <action
+            android:id="@+id/action_estateFragment_to_tenantEquipmentManualFragment2"
+            app:destination="@id/tenantEquipmentManualFragment2" />
+        <action
+            android:id="@+id/action_estateFragment_to_tenantHosingRulesFragment2"
+            app:destination="@id/tenantHosingRulesFragment2" />
     </fragment>
     <fragment
         android:id="@+id/estateDirectoryFragment"
-        android:name="com.smartperty.smartperty.landlord.menu.object.estateDirectory.EstateDirectoryFragment"
+        android:name="com.smartperty.smartperty.landlord.menu.estate.EstateDirectoryFragment"
         android:label="@string/landlord_title_object_folder"
         tools:layout="@layout/fragment_estate_directory">
         <action
@@ -59,15 +64,12 @@
     </fragment>
     <fragment
         android:id="@+id/estateListFragment"
-        android:name="com.smartperty.smartperty.landlord.menu.object.estateList.EstateListFragment"
+        android:name="com.smartperty.smartperty.landlord.menu.estate.EstateListFragment"
         android:label="@string/landlord_title_object_list"
         tools:layout="@layout/fragment_estate_list">
         <action
             android:id="@+id/action_landlordObjectListFragment_to_landlordObjectItemFragment"
             app:destination="@id/estateFragment" />
-        <action
-            android:id="@+id/action_landlordObjectListFragment_to_landlordObjectListAddFragment"
-            app:destination="@id/estateCreateFragment" />
     </fragment>
     <fragment
         android:id="@+id/landlordContractFragment"
@@ -109,19 +111,9 @@
         tools:layout="@layout/fragment_data_analysis" />
     <fragment
         android:id="@+id/estateDirectoryCreateFragment"
-        android:name="com.smartperty.smartperty.landlord.menu.object.estateDirectory.EstateDirectroyCreateFragment"
+        android:name="com.smartperty.smartperty.landlord.menu.estate.EstateDirectroyCreateFragment"
         android:label="新增物件"
         tools:layout="@layout/fragment_estate_directory_create" />
-    <fragment
-        android:id="@+id/estateCreateFragment"
-        android:name="com.smartperty.smartperty.landlord.menu.object.estateList.EstateListCreateFragment"
-        android:label="新增單位"
-        tools:layout="@layout/fragment_estate_list_create"/>
-    <fragment
-        android:id="@+id/etateEditFragment"
-        android:name="com.smartperty.smartperty.landlord.menu.object.estate.EstateEditFragment"
-        android:label="編輯"
-        tools:layout="@layout/fragment_estate_edit"/>
     <fragment
         android:id="@+id/landlordPersonnelItemFragment"
         android:name="com.smartperty.smartperty.landlord.menu.personnel.PersonnelFragment"
@@ -180,5 +172,29 @@
         android:name="com.smartperty.smartperty.landlord.menu.personnel.PersonnelAddFragment"
         android:label="新增人員"
         tools:layout="@layout/fragment_personnel_add" />
+    <fragment
+        android:id="@+id/tenantAttractionsNearbyFragment2"
+        android:name="com.smartperty.smartperty.tenant.home.attractionsNearby.TenantAttractionsNearbyFragment"
+        android:label="週邊景點"
+        tools:layout="@layout/tenant_fragment_attractions_nearby" />
+    <fragment
+        android:id="@+id/tenantEquipmentManualFragment2"
+        android:name="com.smartperty.smartperty.tenant.home.equipmentManual.TenantEquipmentManualFragment"
+        android:label="設備手冊"
+        tools:layout="@layout/tenant_fragment_equipment_manual" >
+        <action
+            android:id="@+id/action_tenantEquipmentManualFragment2_to_equipmentAddFragment"
+            app:destination="@id/equipmentAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tenantHosingRulesFragment2"
+        android:name="com.smartperty.smartperty.tenant.home.hosingRules.TenantHosingRulesFragment"
+        android:label="住屋守則"
+        tools:layout="@layout/tenant_fragment_housing_rules" />
+    <fragment
+        android:id="@+id/equipmentAddFragment"
+        android:name="com.smartperty.smartperty.tenant.home.equipmentManual.EquipmentAddFragment"
+        android:label="新增家具"
+        tools:layout="@layout/fragment_equipment_add" />
 
 </navigation>

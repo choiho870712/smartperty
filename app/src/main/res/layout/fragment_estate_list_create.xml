@@ -24,7 +24,7 @@
     <TextView
         android:id="@+id/textView18"
         style="@style/text_normal_gray_16sp"
-        android:text="地址"
+        android:text="@string/address_title"
         app:layout_constraintBottom_toTopOf="@+id/textView20"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_object_item" />
@@ -35,14 +35,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="title"
+        android:text="@string/title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView23"
         style="@style/text_normal_gray_16sp"
-        android:text="房客"
+        android:text="@string/tenant_title"
         app:layout_constraintBottom_toTopOf="@+id/textView25"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="@+id/textView_object_item_address" />
@@ -50,14 +50,14 @@
     <TextView
         android:id="@+id/textView24"
         style="@style/text_normal_gray_16sp"
-        android:text="租期"
+        android:text="@string/rent_allotted_time_title"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
     <TextView
         android:id="@+id/textView26"
         style="@style/text_normal_gray_16sp"
-        android:text="租金"
+        android:text="@string/rentAmount"
         app:layout_constraintBottom_toTopOf="@+id/textView24"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/textView25" />
@@ -65,7 +65,7 @@
     <TextView
         android:id="@+id/textView25"
         style="@style/text_normal_gray_16sp"
-        android:text="電話"
+        android:text="@string/phone"
         app:layout_constraintBottom_toTopOf="@+id/textView26"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
@@ -73,7 +73,7 @@
     <TextView
         android:id="@+id/textView20"
         style="@style/text_normal_gray_16sp"
-        android:text="樓層"
+        android:text="@string/floor_title"
         app:layout_constraintBottom_toTopOf="@+id/textView21"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
@@ -81,7 +81,7 @@
     <TextView
         android:id="@+id/textView21"
         style="@style/text_normal_gray_16sp"
-        android:text="面積"
+        android:text="@string/square_ft_title"
         app:layout_constraintBottom_toTopOf="@+id/textView22"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
@@ -89,7 +89,7 @@
     <TextView
         android:id="@+id/textView22"
         style="@style/text_normal_gray_16sp"
-        android:text="車位"
+        android:text="@string/parking_space_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
@@ -100,7 +100,7 @@
         android:layout_height="wrap_content"
         android:hint="桃園中壢大仁5街123"
         android:singleLine="true"
-        app:layout_constraintBottom_toTopOf="@+id/textView_object_item_floor"
+        app:layout_constraintBottom_toTopOf="@+id/textView_object_item_phone"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView18"
@@ -120,7 +120,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView19" />
 
     <EditText
-        android:id="@+id/textView_object_item_floor"
+        android:id="@+id/textView_object_item_phone"
         style="@style/edit_text_normal_black_16sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -210,7 +210,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/textView_object_item_floor" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_object_item_phone" />
 
     <EditText
         android:id="@+id/textView_object_item_content"
@@ -227,6 +227,7 @@
         android:id="@+id/image_object_item"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:contentDescription="@string/add_image_description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recycler_image"
         app:srcCompat="@drawable/add_photo" />

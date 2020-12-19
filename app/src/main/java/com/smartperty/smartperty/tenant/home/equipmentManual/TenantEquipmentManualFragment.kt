@@ -6,20 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.smartperty.smartperty.R
-import com.smartperty.smartperty.tenant.home.equipmentManual.data.TenantEquipmentManual
-import com.smartperty.smartperty.utils.GlobalVariables.Companion.toolBarUtils
+import com.smartperty.smartperty.data.Equipment
+import com.smartperty.smartperty.data.Room
+import com.smartperty.smartperty.data.UserType
+import com.smartperty.smartperty.utils.GlobalVariables
+import kotlinx.android.synthetic.main.activity_landlord.*
 import kotlinx.android.synthetic.main.tenant_fragment_equipment_manual.view.*
 
-
-/**
- * A simple [Fragment] subclass.
- */
 class TenantEquipmentManualFragment : Fragment() {
 
     lateinit var root: View
-//    private lateinit var equipmentManualViewModel: EquipmentManualViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,17 +27,49 @@ class TenantEquipmentManualFragment : Fragment() {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.tenant_fragment_equipment_manual, container, false)
 
-        toolBarUtils.removeAllButtonAndLogo()
+        GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
 
-        val equipmentManual = TenantEquipmentManual()
-        equipmentManual.loadData()
+        if (GlobalVariables.user.auth == UserType.LANDLORD) {
+            GlobalVariables.toolBarUtils.setAddButtonVisibility(true)
+            GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
+                when(it.itemId) {
+                    R.id.button_add -> {
+                        // setup dialog builder
+                        val builder = android.app.AlertDialog.Builder(requireActivity())
+                        builder.setTitle("確定要新增嗎？")
 
-        val equipmentAdapter = TenantEquipmentAdapter(requireActivity(), root, equipmentManual.getItemList())
+                        builder.setPositiveButton("是") { _, _ ->
+                            root.findNavController().navigate(
+                                R.id.action_tenantEquipmentManualFragment2_to_equipmentAddFragment
+                            )
+                        }
+
+                        // create dialog and show it
+                        requireActivity().runOnUiThread{
+                            val dialog = builder.create()
+                            dialog.show()
+                        }
+
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }
+
+
+        val equipmentManual = GlobalVariables.estate.roomList
+
+        val itemList = mutableListOf<Equipment>()
+        equipmentManual.forEach{
+            itemList.addAll(itemList.size, it.equipmentList)
+        }
+        val equipmentAdapter = TenantEquipmentAdapter(requireActivity(), root, itemList)
 
         val sections = ArrayList<TenantEquipmentSectionedAdapter.Section>()
         var count = 0
-        equipmentManual.manual.forEach {
-            sections.add(TenantEquipmentSectionedAdapter.Section(count, it.room))
+        equipmentManual.forEach {
+            sections.add(TenantEquipmentSectionedAdapter.Section(count, it.name))
             count += it.equipmentList.size
         }
 

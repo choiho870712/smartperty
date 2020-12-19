@@ -5,289 +5,342 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
-
-    <TextView
-        android:id="@+id/textView18"
-        style="@style/text_normal_gray_16sp"
-        android:text="地址"
-        app:layout_constraintBottom_toTopOf="@+id/textView20"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recycler_image" />
-
-    <TextView
-        android:id="@+id/textView23"
-        style="@style/text_normal_gray_16sp"
-        android:text="房客"
-        app:layout_constraintBottom_toTopOf="@+id/textView25"
-        app:layout_constraintStart_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toBottomOf="@+id/recycler_image" />
-
-    <TextView
-        android:id="@+id/textView24"
-        style="@style/text_normal_gray_16sp"
-        android:text="租期"
-        app:layout_constraintStart_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toBottomOf="@+id/textView26" />
-
-    <TextView
-        android:id="@+id/textView26"
-        style="@style/text_normal_gray_16sp"
-        android:text="租金"
-        app:layout_constraintBottom_toTopOf="@+id/textView24"
-        app:layout_constraintStart_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
-
-    <TextView
-        android:id="@+id/textView25"
-        style="@style/text_normal_gray_16sp"
-        android:text="電話"
-        app:layout_constraintBottom_toTopOf="@+id/textView26"
-        app:layout_constraintStart_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
-
-    <TextView
-        android:id="@+id/textView20"
-        style="@style/text_normal_gray_16sp"
-        android:text="樓層"
-        app:layout_constraintBottom_toTopOf="@+id/textView21"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
-
-    <TextView
-        android:id="@+id/textView21"
-        style="@style/text_normal_gray_16sp"
-        android:text="面積"
-        app:layout_constraintBottom_toTopOf="@+id/textView22"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
-
-    <TextView
-        android:id="@+id/textView22"
-        style="@style/text_normal_gray_16sp"
-        android:text="車位"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
-
-    <TextView
-        android:id="@+id/textView_object_item_address"
-        style="@style/text_normal_black_16sp"
-        android:layout_width="0dp"
-        android:singleLine="true"
-        android:text="桃園中壢大仁5街123"
-        app:layout_constraintBottom_toTopOf="@+id/textView_object_item_floor"
-        app:layout_constraintEnd_toStartOf="@+id/guideline8"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/recycler_image" />
-
-    <TextView
-        android:id="@+id/textView_object_item_floor"
-        style="@style/text_normal_black_16sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:text="6樓"
-        app:layout_constraintBottom_toTopOf="@+id/textView_object_item_square_ft"
-        app:layout_constraintEnd_toStartOf="@+id/guideline8"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/textView_object_item_address" />
-
-    <TextView
-        android:id="@+id/textView_object_item_parking_sapce"
-        style="@style/text_normal_black_16sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:text="樓下B1平面式"
-        app:layout_constraintEnd_toStartOf="@+id/guideline8"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/textView_object_item_square_ft" />
-
-    <TextView
-        android:id="@+id/textView_object_item_tenant_name"
-        style="@style/button_radius_primary"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="4dp"
-        android:singleLine="true"
-        android:text="Jason"
-        app:layout_constraintBottom_toBottomOf="@+id/textView23"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView23"
-        app:layout_constraintTop_toTopOf="@+id/textView23" />
-
-    <TextView
-        android:id="@+id/textView_object_item_rent_amount_per_month"
-        style="@style/text_normal_black_16sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:text="25000元/月"
-        app:layout_constraintBottom_toTopOf="@+id/textView_object_item_rent_end_date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView23"
-        app:layout_constraintTop_toBottomOf="@+id/textView_object_item_phone" />
-
-    <TextView
-        android:id="@+id/textView_object_item_phone"
-        style="@style/text_normal_black_16sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:text="0912345678"
-        app:layout_constraintBottom_toTopOf="@+id/textView_object_item_rent_amount_per_month"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView23"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
-
-    <TextView
-        android:id="@+id/textView_object_item_rent_end_date"
-        style="@style/text_normal_black_16sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:text="2020年12月11日"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView23"
-        app:layout_constraintTop_toBottomOf="@+id/textView_object_item_rent_amount_per_month" />
-
-    <TextView
-        android:id="@+id/textView_object_item_square_ft"
-        style="@style/text_normal_black_16sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:text="30坪"
-        app:layout_constraintBottom_toTopOf="@+id/textView_object_item_parking_sapce"
-        app:layout_constraintEnd_toStartOf="@+id/guideline8"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/textView_object_item_floor" />
-
-    <TextView
-        android:id="@+id/textView36"
-        style="@style/text_normal_black_16sp"
-        android:layout_width="0dp"
-        android:background="@color/colorWhiteSmoke"
-        android:text="維修紀錄"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
-    <TextView
-        android:id="@+id/textView62"
-        style="@style/text_normal_black_16sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@color/colorWhiteSmoke"
-        android:text="租金資訊"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_object_item_content" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_repair"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView36" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView62">
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_image"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_estate_title" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
         <TextView
-            android:id="@+id/text_repair_title"
+            android:id="@+id/textView18"
+            style="@style/text_normal_gray_16sp"
+            android:text="@string/address_title"
+            app:layout_constraintBottom_toTopOf="@+id/textView20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_add_image_button" />
+
+        <TextView
+            android:id="@+id/textView23"
+            style="@style/text_normal_gray_16sp"
+            android:text="@string/tenant_title"
+            app:layout_constraintBottom_toBottomOf="@+id/textView18"
+            app:layout_constraintStart_toStartOf="@+id/guideline8"
+            app:layout_constraintTop_toTopOf="@+id/textView18" />
+
+        <TextView
+            android:id="@+id/textView79"
+            style="@style/text_normal_gray_16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone"
+            app:layout_constraintStart_toStartOf="@+id/guideline8"
+            app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+        <TextView
+            android:id="@+id/textView20"
+            style="@style/text_normal_gray_16sp"
+            android:text="@string/floor_title"
+            app:layout_constraintBottom_toTopOf="@+id/textView21"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+        <TextView
+            android:id="@+id/textView21"
+            style="@style/text_normal_gray_16sp"
+            android:text="@string/square_ft_title"
+            app:layout_constraintBottom_toTopOf="@+id/textView22"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+        <TextView
+            android:id="@+id/textView22"
+            style="@style/text_normal_gray_16sp"
+            android:text="@string/parking_space_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+        <TextView
+            android:id="@+id/textView78"
+            style="@style/text_normal_gray_16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="說明"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+        <EditText
+            android:id="@+id/textView_object_item_address"
             style="@style/text_normal_black_16sp"
             android:layout_width="0dp"
-            android:layout_marginStart="16dp"
-            android:text="租金"
-            app:layout_constraintBottom_toTopOf="@+id/text_repair_status"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_empty"
+            android:inputType="none"
+            android:singleLine="true"
+            android:text="桃園中壢大仁5街123"
+            app:layout_constraintBottom_toBottomOf="@+id/textView18"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textView18"
+            app:layout_constraintTop_toTopOf="@+id/textView18"
+            app:layout_constraintVertical_bias="1.0" />
 
-        <TextView
-            android:id="@+id/text_repair_status"
-            style="@style/text_normal_black_14sp"
+        <EditText
+            android:id="@+id/textView_estate_title"
+            style="@style/text_normal_black_16sp"
             android:layout_width="0dp"
-            android:layout_marginStart="16dp"
-            android:text="未付款"
-            app:layout_constraintBottom_toTopOf="@+id/text_repair_date"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_repair_title" />
-
-        <TextView
-            android:id="@+id/text_repair_spend"
-            style="@style/text_normal_black_14sp"
-            android:layout_width="0dp"
-            android:layout_marginEnd="16dp"
-            android:text="$15000"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_empty"
+            android:inputType="none"
+            android:singleLine="true"
+            android:text="桃園中壢大仁5街123"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_repair_status" />
-
-        <TextView
-            android:id="@+id/textView63"
-            style="@style/text_normal_black_14sp"
-            android:layout_width="0dp"
-            android:layout_marginStart="16dp"
-            android:text="到期日:"
-            app:layout_constraintBottom_toBottomOf="@+id/text_repair_date"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/text_repair_date" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
+
+        <EditText
+            android:id="@+id/textView_object_item_phone"
+            style="@style/text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_empty"
+            android:inputType="none"
+            android:singleLine="true"
+            app:layout_constraintBottom_toBottomOf="@+id/textView79"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView79"
+            app:layout_constraintTop_toBottomOf="@+id/textView23"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/textView_object_item_floor"
+            style="@style/text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_empty"
+            android:inputType="none"
+            android:singleLine="true"
+            android:text="6樓"
+            app:layout_constraintBottom_toTopOf="@+id/textView_object_item_square_ft"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView18"
+            app:layout_constraintTop_toBottomOf="@+id/textView_object_item_address" />
+
+        <EditText
+            android:id="@+id/textView_object_item_parking_sapce"
+            style="@style/text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_empty"
+            android:inputType="none"
+            android:singleLine="true"
+            android:text="樓下B1平面式"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView18"
+            app:layout_constraintTop_toBottomOf="@+id/textView_object_item_square_ft" />
+
+        <Button
+            android:id="@+id/textView_object_item_tenant_name"
+            style="@style/button_rectangle_primary_hollow"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="4dp"
+            android:text="Jason"
+            app:layout_constraintBottom_toBottomOf="@+id/textView23"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textView23"
+            app:layout_constraintTop_toTopOf="@+id/textView23"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/button_set_equipment"
+            style="@style/button_radius_primary"
+            android:layout_width="96dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:singleLine="true"
+            android:text="設備手冊"
+            app:layout_constraintEnd_toStartOf="@+id/button_set_attraction"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button_set_housing_rules"
+            app:layout_constraintTop_toBottomOf="@+id/textView_object_item_content" />
+
+        <Button
+            android:id="@+id/button_set_attraction"
+            style="@style/button_radius_primary"
+            android:layout_width="96dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:singleLine="true"
+            android:text="週邊景點"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button_set_equipment"
+            app:layout_constraintTop_toBottomOf="@+id/textView_object_item_content" />
+
+        <Button
+            android:id="@+id/button_set_housing_rules"
+            style="@style/button_radius_primary"
+            android:layout_width="96dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:singleLine="true"
+            android:text="住屋守則"
+            app:layout_constraintEnd_toStartOf="@+id/button_set_equipment"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_object_item_content" />
+
+        <EditText
+            android:id="@+id/textView_object_item_square_ft"
+            style="@style/text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_empty"
+            android:inputType="none"
+            android:singleLine="true"
+            android:text="30坪"
+            app:layout_constraintBottom_toTopOf="@+id/textView_object_item_parking_sapce"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView18"
+            app:layout_constraintTop_toBottomOf="@+id/textView_object_item_phone" />
 
         <TextView
-            android:id="@+id/text_repair_date"
-            style="@style/text_normal_black_14sp"
+            android:id="@+id/textView36"
+            style="@style/text_normal_black_16sp"
             android:layout_width="0dp"
-            android:text="2020/11/30"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView63"
-            app:layout_constraintTop_toBottomOf="@+id/text_repair_status" />
+            android:background="@color/colorWhiteSmoke"
+            android:text="@string/repairInformationTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+        <TextView
+            android:id="@+id/textView62"
+            style="@style/text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorWhiteSmoke"
+            android:text="@string/rentInformationTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_set_equipment" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_repair"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView36" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView62">
+
+            <TextView
+                android:id="@+id/text_repair_title"
+                style="@style/text_normal_black_16sp"
+                android:layout_width="0dp"
+                android:layout_marginStart="16dp"
+                android:text="@string/rentAmount"
+                app:layout_constraintBottom_toTopOf="@+id/text_repair_status"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_repair_status"
+                style="@style/text_normal_black_14sp"
+                android:layout_width="0dp"
+                android:layout_marginStart="16dp"
+                android:text="未付款"
+                app:layout_constraintBottom_toTopOf="@+id/text_repair_date"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_repair_title" />
+
+            <TextView
+                android:id="@+id/text_repair_spend"
+                style="@style/text_normal_black_14sp"
+                android:layout_width="0dp"
+                android:layout_marginEnd="16dp"
+                android:text="$15000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_repair_status" />
+
+            <TextView
+                android:id="@+id/textView63"
+                style="@style/text_normal_black_14sp"
+                android:layout_width="0dp"
+                android:layout_marginStart="16dp"
+                android:text="@string/due_date"
+                app:layout_constraintBottom_toBottomOf="@+id/text_repair_date"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/text_repair_date" />
+
+            <TextView
+                android:id="@+id/text_repair_date"
+                style="@style/text_normal_black_14sp"
+                android:layout_width="0dp"
+                android:text="2020/11/30"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView63"
+                app:layout_constraintTop_toBottomOf="@+id/text_repair_status" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/textView_object_item_content"
+            style="@style/text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_empty"
+            android:inputType="none"
+            android:text="冬暖夏涼\n四季沒蚊子\n每個都說好。週邊景點多，步行三分鐘到捷運站，夜市商圈通通都有"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textView78"
+            app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+        <ImageView
+            android:id="@+id/imageView_add_image_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_image"
+            app:srcCompat="@drawable/add_photo"
+            tools:visibility="gone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/textView_object_item_content"
-        style="@style/text_normal_black_16sp"
-        android:text="冬暖夏涼\n四季沒蚊子\n每個都說好。週邊景點多，步行三分鐘到捷運站，夜市商圈通通都有"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

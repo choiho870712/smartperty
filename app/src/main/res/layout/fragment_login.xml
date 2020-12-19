@@ -26,8 +26,8 @@
             style="@style/edit_text_normal_black_16sp"
             android:layout_width="match_parent"
             android:layout_height="32dp"
-
             android:text="jason9071"
+            android:autofillHints=""
             android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
             android:selectAllOnFocus="true"
@@ -58,7 +58,8 @@
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:selectAllOnFocus="true" />
+            android:selectAllOnFocus="true"
+            android:autofillHints="" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,7 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="還不是會員？請"
+        android:text="@string/contact_us_description"
         app:layout_constraintEnd_toStartOf="@+id/textView_contact_us"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -100,7 +101,7 @@
         style="@style/text_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="聯繫我們"
+        android:text="@string/contact_us"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/forget_password2"
@@ -127,6 +128,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="64dp"
+        android:contentDescription="@string/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -135,7 +137,7 @@
     <TextView
         android:id="@+id/text_login_about_us"
         style="@style/text_normal_black_12sp"
-        android:text="繼續使用 Smart Perty，既表示"
+        android:text="@string/policy_description"
         app:layout_constraintBottom_toTopOf="@+id/text_login_policy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -146,7 +148,7 @@
         style="@style/text_normal_black_10sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="全方位輕鬆管理您的物業"
+        android:text="@string/slogan"
         app:layout_constraintBottom_toBottomOf="@+id/image_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -154,7 +156,7 @@
     <TextView
         android:id="@+id/text_login_policy"
         style="@style/text_normal_black_12sp_no_padding"
-        android:text="您已同意"
+        android:text="@string/policy_description_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/text_login_about_us_entry"
         app:layout_constraintHorizontal_bias="0.5"
@@ -166,7 +168,7 @@
         style="@style/text_normal_black_12sp_no_padding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="與"
+        android:text="@string/and"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/text_login_policy_entry"
         app:layout_constraintHorizontal_bias="0.5"
@@ -177,7 +179,7 @@
         style="@style/text_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="使用條款"
+        android:text="@string/about_as"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/text_login_policy4"
         app:layout_constraintHorizontal_bias="0.5"
@@ -188,7 +190,7 @@
         style="@style/text_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="隱私政策"
+        android:text="@string/privacy_policy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

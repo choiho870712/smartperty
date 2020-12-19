@@ -66,7 +66,7 @@
         style="@style/text_normal_black_16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="姓名"
+        android:text="@string/name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
@@ -75,7 +75,7 @@
         style="@style/text_normal_black_16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="帳號"
+        android:text="@string/prompt_email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_personnel_email" />
 
@@ -84,7 +84,7 @@
         style="@style/text_normal_black_16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="密碼"
+        android:text="@string/prompt_password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_personnel_account" />
 
@@ -93,7 +93,7 @@
         style="@style/text_normal_black_16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="電話號碼"
+        android:text="@string/phone_number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_personnel_name" />
 
@@ -102,7 +102,7 @@
         style="@style/text_normal_black_16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="電郵信箱"
+        android:text="@string/email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_personnel_phone" />
 
@@ -110,6 +110,7 @@
         android:id="@+id/imageView4"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:contentDescription="@string/head_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

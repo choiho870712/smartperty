@@ -243,6 +243,7 @@ com/smartperty/smartperty/data/ChartData.class
 com/smartperty/smartperty/data/ChartDataPair.class
 com/smartperty/smartperty/data/ChartDataType.class
 com/smartperty/smartperty/data/Contract.class
+com/smartperty/smartperty/data/Equipment.class
 com/smartperty/smartperty/data/Estate.class
 com/smartperty/smartperty/data/EstateList.class
 com/smartperty/smartperty/data/Finance.class
@@ -255,6 +256,7 @@ com/smartperty/smartperty/data/RepairOrder.class
 com/smartperty/smartperty/data/RepairOrderPost.class
 com/smartperty/smartperty/data/RepairType$Companion.class
 com/smartperty/smartperty/data/RepairType.class
+com/smartperty/smartperty/data/Room.class
 com/smartperty/smartperty/data/User.class
 com/smartperty/smartperty/data/UserType$Companion.class
 com/smartperty/smartperty/data/UserType.class
@@ -266,9 +268,9 @@ com/smartperty/smartperty/utils/Api$callApi$2.class
 com/smartperty/smartperty/utils/Api$getEventInformationJson$1.class
 com/smartperty/smartperty/utils/Api$getEventInformationJson$2.class
 com/smartperty/smartperty/utils/Api$getObjectByGroupTagJson$1.class
+com/smartperty/smartperty/utils/Api$getObjectByGroupTagJson$2.class
 com/smartperty/smartperty/utils/Api$getPropertyByObjectIdJson$1.class
 com/smartperty/smartperty/utils/Api$landlordGetEventInformationJson$1.class
-com/smartperty/smartperty/utils/Api$landlordGetEventInformationJson$2.class
 com/smartperty/smartperty/utils/Api.class
 com/smartperty/smartperty/utils/DBHelper.class
 com/smartperty/smartperty/utils/GlobalVariables$Companion.class

@@ -9,14 +9,16 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.smartperty.smartperty.R
-import com.smartperty.smartperty.tenant.home.equipmentManual.data.TenantEquipmentItem
+import com.smartperty.smartperty.data.Equipment
+import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.tenant_card_equipment.view.*
 import kotlinx.android.synthetic.main.tenant_card_image_page.view.*
 import kotlinx.android.synthetic.main.tenant_fragment_equipment_manual.view.*
+import kotlinx.coroutines.GlobalScope
 
 class TenantEquipmentAdapter(private val activity: Activity,
                              private val parentView: View,
-                             private val myDataset: MutableList<TenantEquipmentItem>)
+                             private val myDataset: MutableList<Equipment>)
     : RecyclerView.Adapter<TenantEquipmentAdapter.CardHolder>() {
 
     lateinit var imageCard: View
@@ -32,11 +34,13 @@ class TenantEquipmentAdapter(private val activity: Activity,
     override fun getItemCount(): Int = myDataset.size
 
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
-        holder.title.text = myDataset[position].equipment
-        holder.amount.text = myDataset[position].amount.toString()
+        holder.title.text = myDataset[position].name
+        holder.amount.text = myDataset[position].count.toString()
+
+        holder.image.setImageBitmap(myDataset[position].image)
 
         holder.image.setOnClickListener {
-            imageCard.image_card.setImageDrawable(holder.image.drawable)
+            imageCard.image_card.setImageBitmap(myDataset[position].image)
             imageCard.visibility = View.VISIBLE
         }
 
@@ -44,28 +48,10 @@ class TenantEquipmentAdapter(private val activity: Activity,
             imageCard.visibility = View.GONE
         }
 
-//        Thread {
-//            val image = BitmapFactory.decodeStream(URL(myDataset[position].imageUrl).
-//            openConnection().getInputStream())
-//
-//            activity.runOnUiThread {
-//                holder.image.setImageBitmap(image)
-//
-//                holder.image.setOnClickListener {
-//                    imageCard.image_card.setImageBitmap(image)
-//                    imageCard.visibility = View.VISIBLE
-//                }
-//
-//                imageCard.image_card.setOnClickListener {
-//                    imageCard.visibility = View.GONE
-//                }
-//            }
-//        }.start()
-
-        holder.cardView.setOnClickListener {
-            parentView.findNavController().navigate(
-                R.id.action_tenantEquipmentManualFragment_to_tenantEquipmentManualPdfFragment)
-        }
+//        holder.cardView.setOnClickListener {
+//            parentView.findNavController().navigate(
+//                R.id.action_tenantEquipmentManualFragment_to_tenantEquipmentManualPdfFragment)
+//        }
     }
 
     class CardHolder(card: View) : RecyclerView.ViewHolder(card) {

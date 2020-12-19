@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".landlord.menu.object.estateList.EstateListFragment">
+    tools:context=".landlord.menu.estate.EstateListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_object_list"

@@ -43,8 +43,14 @@ class EquipmentAddFragment : Fragment() {
                     builder.setTitle("確定要送出嗎？")
 
                     builder.setPositiveButton("是") { _, _ ->
+                        val equipment = Equipment(
+                            name = root.textView_equipment_name.text.toString(),
+                            count = root.textView_equipment_count.text.toString().toInt(),
+                            image = root.imageView_equipment.drawable.toBitmap()
+                        )
+
                         val roomList = GlobalVariables.estate.roomList
-                        var room = roomList.find {
+                        var room = roomList.firstOrNull {
                             it.name == root.textView_room_name.text.toString()
                         }
                         if (room == null) {
@@ -53,17 +59,25 @@ class EquipmentAddFragment : Fragment() {
                             )
                             GlobalVariables.estate.roomList.add(room)
                         }
-                        val equipment = Equipment(
-                            name = root.textView_equipment_name.text.toString(),
-                            count = root.textView_equipment_count.text.toString().toInt(),
-                            image = root.imageView_equipment.drawable.toBitmap()
-                        )
                         room.equipmentList.add(equipment)
+
+                        val updateRoomList = mutableListOf<Room>()
+                        var updateRoom = updateRoomList.firstOrNull {
+                            it.name == room.name
+                        }
+                        if (updateRoom == null) {
+                            updateRoom = Room(
+                                name = root.textView_room_name.text.toString()
+                            )
+                            updateRoomList.add(updateRoom)
+                        }
+                        updateRoom.equipmentList.add(equipment)
+
                         Thread {
                             GlobalVariables.api.uploadPropertyEquipment(
                                 GlobalVariables.user.id,
                                 GlobalVariables.estate.objectId,
-                                GlobalVariables.estate.roomList
+                                updateRoomList
                             )
                         }.start()
                         root.findNavController().navigateUp()

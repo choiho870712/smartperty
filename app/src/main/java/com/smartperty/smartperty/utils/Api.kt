@@ -157,10 +157,6 @@ class Api {
         repairOrder.repairDateTime = information.getString("date")
         repairOrder.title = information.getString("description")
 
-        Thread {
-            repairOrder.estate = getPropertyByObjectId(repairOrder.object_id)
-        }.start()
-
         for (j in 0 until(dynamic_status.length())) {
             val dynamic_status_item = dynamic_status.getJSONObject(j)
             val repairOrderPost = RepairOrderPost(
@@ -275,21 +271,22 @@ class Api {
             val item = items.getJSONObject(i)
             val eventHistoryIdList = item.getJSONArray("event_history")
             val contractHistoryIdList = item.getJSONArray("contract_history")
-            val imageList = item.getJSONArray("image")
-            val attractionList = item.getJSONArray("attraction")
-            val roomList = item.getJSONArray("equipment")
+            val information = item.getJSONObject("information")
+            val imageList = information.getJSONArray("image")
+            val attractionList = information.getJSONArray("attraction")
+            val roomList = information.getJSONArray("equipment")
             val estate = Estate(
                 objectId = item.getString("object_id"),
                 contractId = item.getString("current_contract_id"),
-                squareFt = item.getString("area").toDouble(),
-                address = item.getString("full_address"),
-                road = item.getString("road"),
-                street = item.getString("street"),
-                title = item.getString("object_name"),
-                district = item.getString("region"),
+                squareFt = information.getString("area").toDouble(),
+                address = information.getString("full_address"),
+                road = information.getString("road"),
+                street = information.getString("street"),
+                title = information.getString("object_name"),
+                district = information.getString("region"),
                 contract = Contract(
-                    purchasePrice = item.getInt("purchase_price"),
-                    rentAmount = item.getInt("rent"),
+                    purchasePrice = information.getInt("purchase_price"),
+                    rentAmount = information.getInt("rent"),
                     tenant = User(
                         id = item.getString("tenant_id")
                     ),
@@ -297,11 +294,11 @@ class Api {
                         id = item.getString("landlord_id")
                     )
                 ),
-                parkingSpace = item.getString("parking_space"),
-                content = item.getString("description"),
-                floor = item.getInt("floor"),
-                type = item.getString("type"),
-                rules = item.getString("rules"),
+                parkingSpace = information.getString("parking_space"),
+                content = information.getString("description"),
+                floor = information.getInt("floor"),
+                type = information.getString("type"),
+                rules = information.getString("rules"),
                 groupName = item.getString("group_name"),
                 systemId = item.getString("system_id")
             )
@@ -514,10 +511,9 @@ class Api {
             }
 
             if (repairOrder.object_id.length > 3) {
-                // TODO wait for debug
-//                Thread {
-//                    repairOrder.estate = getPropertyByObjectId(repairOrder.object_id)
-//                }.start()
+                Thread {
+                    repairOrder.estate = getPropertyByObjectId(repairOrder.object_id)
+                }.start()
             }
             repairList.add(repairOrder)
         }
@@ -550,32 +546,47 @@ class Api {
 
     fun getPropertyByObjectId(object_id:String): Estate {
         val json = "{\"object_id\":\"$object_id\"}"
-        return getPropertyByObjectIdJson(callApi(json, urlGetPropertyByObjectId))
+        return try {
+            getPropertyByObjectIdJson(callApi(json, urlGetPropertyByObjectId))
+        } catch (e:Exception) { Estate() }
     }
 
     fun getBarChartByGroupTag(landlord_id:String): ChartData {
         val json = "{\"landlord_id\":\"$landlord_id\"}"
-        return getBarChartByGroupTagJson(callApi(json, urlGetBarChartByGroupTag))
+        return try {
+            getBarChartByGroupTagJson(callApi(json, urlGetBarChartByGroupTag))
+        }
+        catch (e:Exception){ ChartData() }
     }
     fun getPieChartByGroupTag(landlord_id:String): ChartData {
         val json = "{\"landlord_id\":\"$landlord_id\"}"
-        return getPieChartByGroupTagJson(callApi(json, urlGetPieChartByGroupTag))
+        return try {
+            getPieChartByGroupTagJson(callApi(json, urlGetPieChartByGroupTag))
+        } catch (e:Exception){ ChartData() }
     }
     fun getBarChartByObjectType(landlord_id:String): ChartData {
         val json = "{\"landlord_id\":\"$landlord_id\"}"
-        return getBarChartByObjectTypeJson(callApi(json, urlGetBarChartByObjectType))
+        return try {
+            getBarChartByObjectTypeJson(callApi(json, urlGetBarChartByObjectType))
+        } catch (e:Exception){ ChartData() }
     }
     fun getPieChartByObjectType(landlord_id:String): ChartData {
         val json = "{\"landlord_id\":\"$landlord_id\"}"
-        return getPieChartByObjectTypeJson(callApi(json, urlGetPieChartByObjectType))
+        return try {
+            getPieChartByObjectTypeJson(callApi(json, urlGetPieChartByObjectType))
+        } catch (e:Exception){ ChartData() }
     }
     fun getBarChartByArea(landlord_id:String): ChartData {
         val json = "{\"landlord_id\":\"$landlord_id\"}"
-        return getBarChartByAreaJson(callApi(json, urlGetBarChartByArea))
+        return try {
+            getBarChartByAreaJson(callApi(json, urlGetBarChartByArea))
+        } catch (e:Exception){ ChartData() }
     }
     fun getPieChartByArea(landlord_id:String): ChartData {
         val json = "{\"landlord_id\":\"$landlord_id\"}"
-        return getPieChartByAreaJson(callApi(json, urlGetPieChartByArea))
+        return try {
+            getPieChartByAreaJson(callApi(json, urlGetPieChartByArea))
+        } catch (e:Exception){ ChartData() }
     }
 
     enum class LandlordOpenPermissionAuth {
@@ -783,19 +794,19 @@ class Api {
             .post(RequestBody.create(jsonType, json))
             .build()
 
-        var responseStrng = ""
+        var responseString = ""
         var needToCallAgain = false
         var isSuccess = false
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(request: Request, e: IOException) {
-                responseStrng = e.message!!
+                responseString = e.message!!
                 needToCallAgain = true
             }
 
             @Throws(IOException::class)
             override fun onResponse(response: Response) {
-                responseStrng = response.body().string()
+                responseString = response.body().string()
                 isSuccess = true
             }
         })
@@ -805,13 +816,13 @@ class Api {
                 needToCallAgain = false
                 client.newCall(request).enqueue(object : Callback {
                     override fun onFailure(request: Request, e: IOException) {
-                        responseStrng = e.message!!
+                        responseString = e.message!!
                         needToCallAgain = true
                     }
 
                     @Throws(IOException::class)
                     override fun onResponse(response: Response) {
-                        responseStrng = response.body().string()
+                        responseString = response.body().string()
                         isSuccess = true
                     }
                 })
@@ -820,7 +831,7 @@ class Api {
             Thread.sleep(500)
         }
 
-        return responseStrng
+        return responseString
     }
 
 

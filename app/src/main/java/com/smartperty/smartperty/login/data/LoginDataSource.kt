@@ -33,9 +33,12 @@ class LoginDataSource {
                         )
                         it.list.forEachIndexed { index, estate ->
                             Thread {
-                                for ( i in 0 until(estate.repairListId.size))
-                                    estate.repairList.add(
-                                        GlobalVariables.api.getEventInformation(estate.repairListId[i]))
+                                for ( i in 0 until(estate.repairListId.size)) {
+                                    val repairOrder =
+                                        GlobalVariables.api.getEventInformation(estate.repairListId[i])
+                                    repairOrder.estate = estate
+                                    estate.repairList.add(repairOrder)
+                                }
                             }.start()
                         }
                     }
@@ -73,30 +76,30 @@ class LoginDataSource {
                             )
                         }
                     }.start()
-//                    Thread {
-//                        GlobalVariables.dataAnalysisByGroupBarChartDataSet =
-//                            GlobalVariables.api.getBarChartByGroupTag(GlobalVariables.user.id)
-//                    }.start()
-//                    Thread {
-//                        GlobalVariables.dataAnalysisByGroupPieChartDataSet =
-//                            GlobalVariables.api.getPieChartByGroupTag(GlobalVariables.user.id)
-//                    }.start()
-//                    Thread {
-//                        GlobalVariables.dataAnalysisByTypeBarChartDataSet =
-//                            GlobalVariables.api.getBarChartByObjectType(GlobalVariables.user.id)
-//                    }.start()
-//                    Thread {
-//                        GlobalVariables.dataAnalysisByTypePieChartDataSet =
-//                            GlobalVariables.api.getPieChartByObjectType(GlobalVariables.user.id)
-//                    }.start()
-//                    Thread {
-//                        GlobalVariables.dataAnalysisBySquareFtBarChartDataSet =
-//                            GlobalVariables.api.getBarChartByArea(GlobalVariables.user.id)
-//                    }.start()
-//                    Thread {
-//                        GlobalVariables.dataAnalysisBySquareFtPieChartDataSet =
-//                            GlobalVariables.api.getPieChartByArea(GlobalVariables.user.id)
-//                    }.start()
+                    Thread {
+                        GlobalVariables.dataAnalysisByGroupBarChartDataSet =
+                            GlobalVariables.api.getBarChartByGroupTag(GlobalVariables.user.id)
+                    }.start()
+                    Thread {
+                        GlobalVariables.dataAnalysisByGroupPieChartDataSet =
+                            GlobalVariables.api.getPieChartByGroupTag(GlobalVariables.user.id)
+                    }.start()
+                    Thread {
+                        GlobalVariables.dataAnalysisByTypeBarChartDataSet =
+                            GlobalVariables.api.getBarChartByObjectType(GlobalVariables.user.id)
+                    }.start()
+                    Thread {
+                        GlobalVariables.dataAnalysisByTypePieChartDataSet =
+                            GlobalVariables.api.getPieChartByObjectType(GlobalVariables.user.id)
+                    }.start()
+                    Thread {
+                        GlobalVariables.dataAnalysisBySquareFtBarChartDataSet =
+                            GlobalVariables.api.getBarChartByArea(GlobalVariables.user.id)
+                    }.start()
+                    Thread {
+                        GlobalVariables.dataAnalysisBySquareFtPieChartDataSet =
+                            GlobalVariables.api.getPieChartByArea(GlobalVariables.user.id)
+                    }.start()
                 }
                 Result.Success(user)
             } else {

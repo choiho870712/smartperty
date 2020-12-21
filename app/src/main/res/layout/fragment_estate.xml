@@ -215,6 +215,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_object_item_content" />
 
+        <Button
+            android:id="@+id/button_set_housing_rules2"
+            style="@style/button_radius_primary"
+            android:layout_width="96dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:singleLine="true"
+            android:text="瀏覽合約"
+            app:layout_constraintBottom_toBottomOf="@+id/text_repair_title5"
+            app:layout_constraintStart_toStartOf="@+id/guideline8"
+            app:layout_constraintTop_toTopOf="@+id/text_repair_title5" />
+
         <EditText
             android:id="@+id/textView_object_item_square_ft"
             style="@style/text_normal_black_16sp"
@@ -234,12 +246,13 @@
             android:id="@+id/textView36"
             style="@style/text_normal_black_16sp"
             android:layout_width="0dp"
+            android:layout_marginTop="8dp"
             android:background="@color/colorWhiteSmoke"
             android:text="@string/repairInformationTitle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/text_repair_title5" />
 
         <TextView
             android:id="@+id/textView62"
@@ -261,63 +274,6 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView36" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView62">
-
-            <TextView
-                android:id="@+id/text_repair_title"
-                style="@style/text_normal_black_16sp"
-                android:layout_width="0dp"
-                android:layout_marginStart="16dp"
-                android:text="@string/rentAmount"
-                app:layout_constraintBottom_toTopOf="@+id/text_repair_status"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/text_repair_status"
-                style="@style/text_normal_black_14sp"
-                android:layout_width="0dp"
-                android:layout_marginStart="16dp"
-                android:text="未付款"
-                app:layout_constraintBottom_toTopOf="@+id/text_repair_date"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_repair_title" />
-
-            <TextView
-                android:id="@+id/text_repair_spend"
-                style="@style/text_normal_black_14sp"
-                android:layout_width="0dp"
-                android:layout_marginEnd="16dp"
-                android:text="$15000"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_repair_status" />
-
-            <TextView
-                android:id="@+id/textView63"
-                style="@style/text_normal_black_14sp"
-                android:layout_width="0dp"
-                android:layout_marginStart="16dp"
-                android:text="@string/due_date"
-                app:layout_constraintBottom_toBottomOf="@+id/text_repair_date"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/text_repair_date" />
-
-            <TextView
-                android:id="@+id/text_repair_date"
-                style="@style/text_normal_black_14sp"
-                android:layout_width="0dp"
-                android:text="2020/11/30"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView63"
-                app:layout_constraintTop_toBottomOf="@+id/text_repair_status" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <EditText
             android:id="@+id/textView_object_item_content"
@@ -341,6 +297,154 @@
             app:layout_constraintTop_toBottomOf="@+id/recycler_image"
             app:srcCompat="@drawable/add_photo"
             tools:visibility="gone" />
+
+        <TextView
+            android:id="@+id/text_repair_title"
+            style="@style/text_normal_gray_16sp"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/rentAmount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView62" />
+
+        <TextView
+            android:id="@+id/text_repair_title9"
+            style="@style/text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/rentAmount"
+            app:layout_constraintBottom_toBottomOf="@+id/text_repair_title"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintStart_toEndOf="@+id/text_repair_title"
+            app:layout_constraintTop_toBottomOf="@+id/textView62" />
+
+        <TextView
+            android:id="@+id/text_repair_title13"
+            style="@style/text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="租期"
+            app:layout_constraintBottom_toBottomOf="@+id/text_repair_title8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/text_repair_title8"
+            app:layout_constraintTop_toBottomOf="@+id/text_repair_title6" />
+
+        <TextView
+            android:id="@+id/text_repair_title15"
+            style="@style/text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="押金"
+            app:layout_constraintBottom_toBottomOf="@+id/text_repair_title6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/text_repair_title6"
+            app:layout_constraintTop_toTopOf="@+id/text_repair_title6" />
+
+        <TextView
+            android:id="@+id/text_repair_title14"
+            style="@style/text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="狀態"
+            app:layout_constraintBottom_toTopOf="@+id/text_repair_title6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/text_repair_title7"
+            app:layout_constraintTop_toBottomOf="@+id/textView62" />
+
+        <TextView
+            android:id="@+id/text_repair_title10"
+            style="@style/text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="繳交方式"
+            app:layout_constraintBottom_toTopOf="@+id/text_repair_title5"
+            app:layout_constraintEnd_toEndOf="@+id/text_repair_title9"
+            app:layout_constraintStart_toEndOf="@+id/text_repair_title4"
+            app:layout_constraintTop_toTopOf="@+id/text_repair_title4" />
+
+        <TextView
+            android:id="@+id/text_repair_title12"
+            style="@style/text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="繳交週期"
+            app:layout_constraintBottom_toBottomOf="@+id/text_repair_title5"
+            app:layout_constraintEnd_toEndOf="@+id/text_repair_title9"
+            app:layout_constraintStart_toEndOf="@+id/text_repair_title5"
+            app:layout_constraintTop_toTopOf="@+id/text_repair_title5" />
+
+        <TextView
+            android:id="@+id/text_repair_title11"
+            style="@style/text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="繳交日"
+            app:layout_constraintBottom_toBottomOf="@+id/text_repair_title3"
+            app:layout_constraintEnd_toEndOf="@+id/text_repair_title9"
+            app:layout_constraintStart_toEndOf="@+id/text_repair_title3"
+            app:layout_constraintTop_toTopOf="@+id/text_repair_title3" />
+
+        <TextView
+            android:id="@+id/text_repair_title6"
+            style="@style/text_normal_gray_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="押金"
+            app:layout_constraintBottom_toBottomOf="@+id/text_repair_title3"
+            app:layout_constraintStart_toStartOf="@+id/text_repair_title7"
+            app:layout_constraintTop_toTopOf="@+id/text_repair_title3" />
+
+        <TextView
+            android:id="@+id/text_repair_title8"
+            style="@style/text_normal_gray_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="租期"
+            app:layout_constraintBottom_toBottomOf="@+id/text_repair_title4"
+            app:layout_constraintStart_toStartOf="@+id/text_repair_title7"
+            app:layout_constraintTop_toBottomOf="@+id/text_repair_title3" />
+
+        <TextView
+            android:id="@+id/text_repair_title7"
+            style="@style/text_normal_gray_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="狀態"
+            app:layout_constraintBottom_toBottomOf="@+id/text_repair_title"
+            app:layout_constraintStart_toStartOf="@+id/guideline8"
+            app:layout_constraintTop_toTopOf="@+id/text_repair_title" />
+
+        <TextView
+            android:id="@+id/text_repair_title3"
+            style="@style/text_normal_gray_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="繳交日"
+            app:layout_constraintStart_toStartOf="@+id/text_repair_title"
+            app:layout_constraintTop_toBottomOf="@+id/text_repair_title" />
+
+        <TextView
+            android:id="@+id/text_repair_title5"
+            style="@style/text_normal_gray_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="繳交週期"
+            app:layout_constraintStart_toStartOf="@+id/text_repair_title"
+            app:layout_constraintTop_toBottomOf="@+id/text_repair_title4" />
+
+        <TextView
+            android:id="@+id/text_repair_title4"
+            style="@style/text_normal_gray_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="繳交方式"
+            app:layout_constraintStart_toStartOf="@+id/text_repair_title"
+            app:layout_constraintTop_toBottomOf="@+id/text_repair_title3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

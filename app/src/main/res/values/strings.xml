@@ -208,7 +208,7 @@
     <string name="distribute">分佈</string>
     <string name="due_date">到期日:</string>
     <string name="rentAmount">租金</string>
-    <string name="rentInformationTitle">租金資訊</string>
+    <string name="rentInformationTitle">租金明細</string>
     <string name="repairInformationTitle">維修紀錄</string>
     <string name="parking_space_title">車位</string>
     <string name="square_ft_title">面積</string>

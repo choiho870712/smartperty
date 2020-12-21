@@ -1,5 +1,6 @@
 package com.smartperty.smartperty.repair
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
@@ -27,9 +28,19 @@ class RepairListAdapter(private val activity: Activity,
 
     override fun getItemCount(): Int = myDataset.size
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
         holder.index = position
-        holder.address.text = myDataset[position].estate?.address ?: ""
+        if (myDataset[position].estate != null) {
+            holder.address.text =
+                myDataset[position].estate!!.district +
+                myDataset[position].estate!!.road +
+                myDataset[position].estate!!.street +
+                myDataset[position].estate!!.address
+        }
+        else {
+            holder.address.text = "nil"
+        }
         holder.title.text = myDataset[position].title
 //        holder.status.text = RepairStatus.getStringByStatus(myDataset[position].status)
         holder.status.text = myDataset[position].statusString

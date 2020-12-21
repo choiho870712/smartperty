@@ -1935,6 +1935,7 @@ id button_select_room
 id button_set_attraction
 id button_set_equipment
 id button_set_housing_rules
+id button_set_housing_rules2
 id button_setup
 id button_start_login
 id button_submit
@@ -1983,7 +1984,6 @@ id clip_horizontal
 id clip_vertical
 id collapseActionView
 id confirm_button
-id constraintLayout
 id contactUsFragment
 id container
 id content
@@ -2427,7 +2427,6 @@ id textView6
 id textView60
 id textView61
 id textView62
-id textView63
 id textView64
 id textView65
 id textView66
@@ -2562,6 +2561,19 @@ id text_repair_list_title
 id text_repair_spend
 id text_repair_status
 id text_repair_title
+id text_repair_title10
+id text_repair_title11
+id text_repair_title12
+id text_repair_title13
+id text_repair_title14
+id text_repair_title15
+id text_repair_title3
+id text_repair_title4
+id text_repair_title5
+id text_repair_title6
+id text_repair_title7
+id text_repair_title8
+id text_repair_title9
 id text_sectioned_title_equipment
 id text_sectioned_title_menu
 id text_tenantName

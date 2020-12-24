@@ -126,7 +126,7 @@
         tools:layout="@layout/fragment_repair_order" >
         <action
             android:id="@+id/action_repairOrderFragment_to_chooseTenantFragment"
-            app:destination="@id/chooseTenantFragment" />
+            app:destination="@id/choosePropertyFragment" />
         <action
             android:id="@+id/action_repairOrderFragment_to_choosePlumberFragment"
             app:destination="@id/choosePlumberFragment" />
@@ -141,15 +141,15 @@
         tools:layout="@layout/fragment_repair_order_create" >
         <action
             android:id="@+id/action_repairOrderCreateFragment_to_chooseTenantFragment"
-            app:destination="@id/chooseTenantFragment" />
+            app:destination="@id/choosePropertyFragment" />
     </fragment>
     <fragment
-        android:id="@+id/chooseTenantFragment"
-        android:name="com.smartperty.smartperty.repair.ChooseTenantFragment"
+        android:id="@+id/choosePropertyFragment"
+        android:name="com.smartperty.smartperty.repair.ChoosePropertyFragment"
         android:label="選擇住戶"
-        tools:layout="@layout/fragment_choose_tenant" >
+        tools:layout="@layout/fragment_choose_property" >
         <action
-            android:id="@+id/action_chooseTenantFragment_to_landlordObjectFragment"
+            android:id="@+id/action_choosePropertyFragment_to_landlordObjectFragment"
             app:destination="@id/estateFragment" />
     </fragment>
     <fragment
@@ -171,7 +171,11 @@
         android:id="@+id/personnelAddFragment"
         android:name="com.smartperty.smartperty.landlord.menu.personnel.PersonnelAddFragment"
         android:label="新增人員"
-        tools:layout="@layout/fragment_personnel_add" />
+        tools:layout="@layout/fragment_personnel_add" >
+        <action
+            android:id="@+id/action_personnelAddFragment_to_choosePropertyFragment"
+            app:destination="@id/choosePropertyFragment" />
+    </fragment>
     <fragment
         android:id="@+id/tenantAttractionsNearbyFragment2"
         android:name="com.smartperty.smartperty.tenant.home.attractionsNearby.TenantAttractionsNearbyFragment"

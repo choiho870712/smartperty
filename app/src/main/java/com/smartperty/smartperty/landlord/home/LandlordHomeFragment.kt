@@ -46,7 +46,7 @@ class LandlordHomeFragment : Fragment() {
         root = inflater.inflate(R.layout.landlord_fragment_home_main, container, false)
 
         GlobalVariables.toolBarUtils.setVisibility(false)
-        root.text_home_greet_name.text = GlobalVariables.user.name
+        root.text_home_greet_name.text = GlobalVariables.loginUser.name
 
         root.scroll_view.requestFocus()
 

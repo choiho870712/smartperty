@@ -12,15 +12,12 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.core.graphics.drawable.toBitmap
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.Equipment
 import com.smartperty.smartperty.data.Room
-import com.smartperty.smartperty.repair.ImageListAdapter
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.activity_landlord.*
 import kotlinx.android.synthetic.main.fragment_equipment_add.view.*
-import kotlinx.android.synthetic.main.fragment_estate.view.*
 
 class EquipmentAddFragment : Fragment() {
 
@@ -75,7 +72,7 @@ class EquipmentAddFragment : Fragment() {
 
                         Thread {
                             GlobalVariables.api.uploadPropertyEquipment(
-                                GlobalVariables.user.id,
+                                GlobalVariables.loginUser.id,
                                 GlobalVariables.estate.objectId,
                                 updateRoomList
                             )

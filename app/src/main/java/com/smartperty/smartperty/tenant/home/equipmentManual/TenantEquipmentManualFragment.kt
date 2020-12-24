@@ -10,8 +10,6 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.Equipment
-import com.smartperty.smartperty.data.Room
-import com.smartperty.smartperty.data.UserType
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.activity_landlord.*
 import kotlinx.android.synthetic.main.tenant_fragment_equipment_manual.view.*
@@ -29,7 +27,7 @@ class TenantEquipmentManualFragment : Fragment() {
 
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
 
-        if (GlobalVariables.user.auth == UserType.LANDLORD) {
+        if (GlobalVariables.loginUser.auth == "landlord") {
             GlobalVariables.toolBarUtils.setAddButtonVisibility(true)
             GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
                 when(it.itemId) {

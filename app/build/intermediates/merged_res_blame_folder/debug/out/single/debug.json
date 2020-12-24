@@ -116,6 +116,10 @@
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/custom_marker_view.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_choose_property.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_choose_property.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
     },
@@ -130,10 +134,6 @@
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_indicator_unselected.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/indicator_unselected.xml"
-    },
-    {
-        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_choose_tenant.xml.flat",
-        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_choose_tenant.xml"
     },
     {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_before_login_3.xml.flat",

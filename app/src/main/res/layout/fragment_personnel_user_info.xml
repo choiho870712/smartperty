@@ -16,10 +16,11 @@
         android:layout_height="150dp"
         android:layout_marginTop="32dp"
         android:src="@drawable/empty_head"
-        tools:ignore="VectorDrawableCompat"
+        app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="VectorDrawableCompat" />
 
     <TextView
         android:id="@+id/textView_first_name"
@@ -79,7 +80,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_email" />
 
     <TextView
-        android:id="@+id/textView83"
+        android:id="@+id/textView_income"
         style="@style/edit_text_normal_black_16sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -88,6 +89,19 @@
         app:layout_constraintEnd_toEndOf="@+id/textView_first_name"
         app:layout_constraintStart_toStartOf="@+id/textView_first_name"
         app:layout_constraintTop_toBottomOf="@+id/textView_phone" />
+
+    <TextView
+        android:id="@+id/textView_industry"
+        style="@style/edit_text_normal_black_16sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="64dp"
+        android:hint="個人產業類別"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView_first_name"
+        app:layout_constraintStart_toStartOf="@+id/textView_first_name"
+        app:layout_constraintTop_toBottomOf="@+id/textView_income" />
 
     <Button
         style="@style/button_rectangle_primary_hollow"
@@ -99,27 +113,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_userIcon" />
-
-    <TextView
-        android:id="@+id/textView85"
-        style="@style/text_normal_black_16sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="64dp"
-        android:text="個人產業類別"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView_first_name"
-        app:layout_constraintTop_toBottomOf="@+id/textView83" />
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView85"
-        app:layout_constraintStart_toEndOf="@+id/textView85"
-        app:layout_constraintTop_toTopOf="@+id/textView85" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

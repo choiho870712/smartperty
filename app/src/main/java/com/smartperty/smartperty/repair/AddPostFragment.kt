@@ -54,12 +54,13 @@ class AddPostFragment : Fragment() {
                     builder.setPositiveButton("是") { _, _ ->
                         post.message = root.textView_message.text.toString()
                         post.createDateTime = root.textView_date_time.text.toString()
-                        post.sender = GlobalVariables.user
+                        post.sender = GlobalVariables.loginUser
                         GlobalVariables.repairOrder.postList.add(post)
                         Thread {
                             GlobalVariables.api.updateEventInformation(
+                                GlobalVariables.repairOrder.landlord!!.id,
                                 GlobalVariables.repairOrder.event_id,
-                                GlobalVariables.repairOrder.title,
+                                GlobalVariables.repairOrder.description,
                                 post
                             )
                         }.start()

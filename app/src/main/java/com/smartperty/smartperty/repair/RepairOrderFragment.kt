@@ -1,7 +1,6 @@
 package com.smartperty.smartperty.repair
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -54,7 +53,7 @@ class RepairOrderFragment : Fragment() {
                 builderInner.setTitle("確定修改狀態？")
                 builderInner.setPositiveButton("是") { dialog, which ->
                     root.textView_repair_order_status.text = strName
-                    GlobalVariables.repairOrder.statusString = strName!!
+                    GlobalVariables.repairOrder.status = strName!!
                     dialog.dismiss()
                 }
                 builderInner.setNegativeButton("否"
@@ -73,19 +72,25 @@ class RepairOrderFragment : Fragment() {
 
     private fun writeInfoToView() {
         val repairOrder = GlobalVariables.repairOrder
-        root.textView_repair_order_company.text = repairOrder.plumber.company
-        root.textView_repair_order_plumber_name.text = repairOrder.plumber.name
-        root.textView_repair_order_plumber_cell_phone.text = repairOrder.plumber.cellPhone
+        val plumber = repairOrder.getTechnician()
+        if (plumber != null) {
+            root.textView_repair_order_company.text = plumber.company
+            root.textView_repair_order_plumber_name.text = plumber.name
+            root.textView_repair_order_plumber_cell_phone.text = plumber.cellPhone
+        }
 
-        root.textView_repair_order_tenant_address.text = repairOrder.estate?.address ?: ""
-        root.textView_repair_order_creator_name.text = repairOrder.creator.name
-        root.textView_repair_order_creator_cell_phone.text = repairOrder.creator.cellPhone
+        root.textView_repair_order_tenant_address.text = repairOrder.estate?.fullAddress ?: ""
 
-        root.textView_repair_order_title.text = repairOrder.title
-        root.textView_repair_order_repair_date_time.text = repairOrder.repairDateTime
+        if (repairOrder.creator != null) {
+            root.textView_repair_order_creator_name.text = repairOrder.creator!!.name
+            root.textView_repair_order_creator_cell_phone.text = repairOrder.creator!!.cellPhone
+        }
+
+        root.textView_repair_order_title.text = repairOrder.description
+        root.textView_repair_order_repair_date_time.text = repairOrder.date
 
 //        root.textView_repair_order_status.text = RepairStatus.getStringByStatus(repairOrder.status)
-        root.textView_repair_order_status.text = repairOrder.statusString
+        root.textView_repair_order_status.text = repairOrder.status
     }
 
     private fun createPostList() {
@@ -101,8 +106,7 @@ class RepairOrderFragment : Fragment() {
     }
 
     private fun setChooseTenantButton() {
-        if (GlobalVariables.repairOrder.tenant.id.isNotEmpty() &&
-            GlobalVariables.repairOrder.tenant.id != "nil")
+        if (GlobalVariables.repairOrder.getTenant() != null)
         {
             root.button_choose_tenant.visibility = View.VISIBLE
             root.button_choose_tenant.setOnClickListener {

@@ -1,6 +1,5 @@
 package com.smartperty.smartperty.tenant.home.hosingRules
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.InputType
 import androidx.fragment.app.Fragment
@@ -9,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.smartperty.smartperty.R
-import com.smartperty.smartperty.data.UserType
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.activity_landlord.*
 import kotlinx.android.synthetic.main.tenant_fragment_housing_rules.view.*
@@ -28,7 +26,7 @@ class TenantHosingRulesFragment : Fragment() {
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
         fillInformation()
 
-        if (GlobalVariables.user.auth == UserType.LANDLORD) {
+        if (GlobalVariables.loginUser.auth == "landlord") {
             GlobalVariables.toolBarUtils.setEditButtonVisibility(true)
             GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
                 when(it.itemId) {

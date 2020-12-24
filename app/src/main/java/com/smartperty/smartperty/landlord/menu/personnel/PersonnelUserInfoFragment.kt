@@ -12,7 +12,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.navigation.findNavController
 import com.smartperty.smartperty.R
-import com.smartperty.smartperty.data.UserType
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.activity_tenant.*
 import kotlinx.android.synthetic.main.fragment_personnel_add.view.spinner
@@ -31,6 +30,14 @@ class PersonnelUserInfoFragment : Fragment() {
 
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
         GlobalVariables.toolBarUtils.setSubmitButtonVisibility(true)
+
+        root.image_userIcon.setImageBitmap(GlobalVariables.personnel.icon)
+        root.textView_last_name.setText(GlobalVariables.personnel.name)
+        root.textView_gender.setText(GlobalVariables.personnel.sex)
+        root.textView_email.setText(GlobalVariables.personnel.email)
+        root.textView_phone.setText(GlobalVariables.personnel.cellPhone)
+        root.textView_income.setText(GlobalVariables.personnel.annual_income)
+        root.textView_industry.setText(GlobalVariables.personnel.industry)
 
         GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
@@ -56,7 +63,7 @@ class PersonnelUserInfoFragment : Fragment() {
             }
         }
 
-        createSpinner()
+        //createSpinner()
 
         root.button_select_image.setOnClickListener {
             pickImageFromGallery()
@@ -71,7 +78,7 @@ class PersonnelUserInfoFragment : Fragment() {
             // An item was selected. You can retrieve the selected item using
             // parent.getItemAtPosition(pos)
 
-            GlobalVariables.personnel.auth = UserType.getByValue(pos+1)!!
+            GlobalVariables.personnel.auth = "landlord"
         }
 
         override fun onNothingSelected(parent: AdapterView<*>) {

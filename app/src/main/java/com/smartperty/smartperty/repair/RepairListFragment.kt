@@ -8,11 +8,9 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.smartperty.smartperty.R
-import com.smartperty.smartperty.data.UserType
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.activity_landlord.*
 import kotlinx.android.synthetic.main.fragment_recycler.view.*
-import kotlinx.android.synthetic.main.fragment_repair_order_create.view.*
 
 class RepairListFragment : Fragment() {
 

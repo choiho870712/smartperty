@@ -38,8 +38,8 @@ class EstateDirectroyCreateFragment : Fragment() {
 
                     Thread {
                         GlobalVariables.api.createPropertyGroupTag(
-                            GlobalVariables.user.id,
-                            GlobalVariables.user.system_id,
+                            GlobalVariables.loginUser.id,
+                            GlobalVariables.loginUser.system_id,
                             root.text_object_folder_title.text.toString(),
                             image
                         )

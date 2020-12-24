@@ -8,10 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import androidx.navigation.findNavController
 import com.smartperty.smartperty.R
+import com.smartperty.smartperty.data.Estate
 import com.smartperty.smartperty.data.User
-import com.smartperty.smartperty.data.UserType
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.activity_tenant.*
 import kotlinx.android.synthetic.main.fragment_personnel_add.view.*
@@ -21,6 +22,17 @@ class PersonnelAddFragment : Fragment() {
 
     private lateinit var root: View
 
+    companion object {
+        private lateinit var buttonSelectProperty: Button
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        GlobalVariables.estate = Estate()
+        GlobalVariables.personnel = User()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,12 +40,10 @@ class PersonnelAddFragment : Fragment() {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_personnel_add, container, false)
 
+        buttonSelectProperty = root.button_select_property
+
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
         GlobalVariables.toolBarUtils.setSubmitButtonVisibility(true)
-
-        GlobalVariables.personnel = User(
-            auth = UserType.TENANT
-        )
 
         GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
@@ -43,24 +53,14 @@ class PersonnelAddFragment : Fragment() {
                     builder.setTitle("是否新增人員？")
 
                     builder.setPositiveButton("是") { _, _ ->
-                        GlobalVariables.personnel.cellPhone = root.textView_phone.text.toString()
-                        when (GlobalVariables.personnel.auth) {
-                            UserType.TENANT -> {
-                                GlobalVariables.tenantList.add(GlobalVariables.personnel)
-                            }
-                            UserType.TECHNICIAN -> {
-                                GlobalVariables.plumberList.add(GlobalVariables.personnel)
-                            }
-                            UserType.ACCOUNTANT -> {
-                                GlobalVariables.accountantList.add(GlobalVariables.personnel)
-                            }
-                            UserType.AGENT -> {
-                                GlobalVariables.managerList.add(GlobalVariables.personnel)
-                            }
-                            else -> {
 
-                            }
-                        }
+                        Thread {
+                            GlobalVariables.api.createAccount(
+                                auth = GlobalVariables.personnel.auth,
+                                object_id = GlobalVariables.estate.objectId
+                            )
+                        }.start()
+
                         root.findNavController().navigateUp()
                     }
 
@@ -78,6 +78,15 @@ class PersonnelAddFragment : Fragment() {
 
         createSpinner()
 
+        if (GlobalVariables.estate.objectId.isNotEmpty())
+            root.button_select_property.text = GlobalVariables.estate.getAddress()
+
+        buttonSelectProperty.setOnClickListener {
+            root.findNavController().navigate(
+                R.id.action_personnelAddFragment_to_choosePropertyFragment
+            )
+        }
+
         return root
     }
 
@@ -86,8 +95,15 @@ class PersonnelAddFragment : Fragment() {
         override fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {
             // An item was selected. You can retrieve the selected item using
             // parent.getItemAtPosition(pos)
+            val authArray = mutableListOf("tenant", "technician", "accountant", "agent")
+            GlobalVariables.personnel.auth = authArray[pos]
 
-            GlobalVariables.personnel.auth = UserType.getByValue(pos+1)!!
+            if (pos > 0) {
+                buttonSelectProperty.visibility = View.GONE
+            }
+            else {
+                buttonSelectProperty.visibility = View.VISIBLE
+            }
         }
 
         override fun onNothingSelected(parent: AdapterView<*>) {

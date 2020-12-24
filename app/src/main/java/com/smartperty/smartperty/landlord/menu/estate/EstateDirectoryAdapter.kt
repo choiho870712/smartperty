@@ -41,7 +41,7 @@ class EstateDirectoryAdapter(private val activity: Activity,
                 activity.resources.getDrawable(R.drawable.empty_house))
 
         holder.cardView.setOnClickListener {
-            GlobalVariables.estateList = myDataset[holder.index]
+            GlobalVariables.estateFolder = myDataset[holder.index]
             parentView.findNavController().navigate(
                 R.id.action_landlordObjectFolderFragment_to_landlordObjectListFragment)
         }

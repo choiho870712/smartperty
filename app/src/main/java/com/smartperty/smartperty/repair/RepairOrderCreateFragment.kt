@@ -21,6 +21,7 @@ import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.*
 import com.smartperty.smartperty.tools.TimeUtil
 import com.smartperty.smartperty.utils.GlobalVariables
+import com.smartperty.smartperty.utils.Utils
 import kotlinx.android.synthetic.main.activity_tenant.*
 import kotlinx.android.synthetic.main.fragment_repair_order_create.view.*
 import java.util.*
@@ -34,7 +35,11 @@ class RepairOrderCreateFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        initRepairOrder()
+        GlobalVariables.repairOrder = RepairOrder(
+            creator = GlobalVariables.loginUser,
+            type = "maintain",
+            status = "nil"
+        )
     }
 
     @SuppressLint("ResourceType")
@@ -91,7 +96,8 @@ class RepairOrderCreateFragment : Fragment() {
             // An item was selected. You can retrieve the selected item using
             // parent.getItemAtPosition(pos)
 
-            GlobalVariables.repairOrder.type = RepairType.getByValue(pos)!!
+            // TODO change type
+            GlobalVariables.repairOrder.type = "maintain"
         }
 
         override fun onNothingSelected(parent: AdapterView<*>) {
@@ -113,63 +119,30 @@ class RepairOrderCreateFragment : Fragment() {
     }
 
     private fun writeInfoToView() {
-        root.textView_repair_order_writer.text = GlobalVariables.user.name
-        root.textView_repair_order_phone.text = GlobalVariables.user.homePhone
-        root.textView_repair_order_cell_phone.text = GlobalVariables.user.cellPhone
-        root.textView_repair_order_email.text = GlobalVariables.user.email
-        root.textView_repair_order_address.text = GlobalVariables.estate.address
-    }
-
-    private fun initRepairOrder() {
-        GlobalVariables.repairOrder = RepairOrder(
-            creator = GlobalVariables.user,
-            type = RepairType.EQUIPMENT
-        )
+        if (GlobalVariables.repairOrder.creator != null) {
+            root.textView_repair_order_writer.text = GlobalVariables.repairOrder.creator!!.name
+            root.textView_repair_order_phone.text = GlobalVariables.repairOrder.creator!!.homePhone
+            root.textView_repair_order_cell_phone.text = GlobalVariables.repairOrder.creator!!.cellPhone
+            root.textView_repair_order_email.text = GlobalVariables.repairOrder.creator!!.email
+        }
+        if (GlobalVariables.repairOrder.estate != null)
+            root.textView_repair_order_address.text = GlobalVariables.repairOrder.estate!!.getAddress()
     }
 
     private fun submitOrder() {
-        GlobalVariables.repairOrder.initiate_id = GlobalVariables.user.id
         GlobalVariables.repairOrder.timestamp = TimeUtil.getCurrentUnixTimeStamp()
-        GlobalVariables.repairOrder.typeString = "maintain"
-        GlobalVariables.repairOrder.statusString = "nil"
-
-        if (GlobalVariables.repairOrder.estate != null) {
-            if (GlobalVariables.repairOrder.estate!!.contract.tenant != null) {
-                GlobalVariables.repairOrder.tenant = GlobalVariables.repairOrder.estate!!.contract.tenant!!
-                GlobalVariables.repairOrder.tenant_id = GlobalVariables.repairOrder.estate!!.contract.tenant!!.id
-            }
-            GlobalVariables.repairOrder.object_id = GlobalVariables.repairOrder.estate!!.objectId
-        }
-        if (GlobalVariables.repairOrder.plumber.id.isNotEmpty()) {
-            GlobalVariables.repairOrder.plumber_id = GlobalVariables.repairOrder.plumber.id
-        }
-
-        GlobalVariables.repairOrder.title = root.textView_repair_order_title.text.toString()
-        GlobalVariables.repairOrder.repairDateTime = TimeUtil.StampToDate(
+        if (GlobalVariables.repairOrder.estate != null)
+            GlobalVariables.repairOrder.landlord = GlobalVariables.repairOrder.estate!!.landlord
+        GlobalVariables.repairOrder.description = root.textView_repair_order_title.text.toString()
+        GlobalVariables.repairOrder.date = TimeUtil.StampToDate(
             GlobalVariables.repairOrder.timestamp, Locale.TAIWAN
-        )
-
-        GlobalVariables.repairOrder.postList.add(
-            RepairOrderPost(
-                sender = GlobalVariables.user,
-                message = root.textView_repair_order_content.text.toString(),
-                createDateTime = TimeUtil.getCurrentDateTime(),
-                imageList = imageList
-            )
         )
 
         GlobalVariables.repairList.add(GlobalVariables.repairOrder)
         GlobalVariables.repairListAdapter!!.notifyDataSetChanged()
 
         Thread {
-            GlobalVariables.repairOrder.event_id =
-                GlobalVariables.api.createEvent(GlobalVariables.repairOrder)
-
-            GlobalVariables.api.updateEventInformation(
-                GlobalVariables.repairOrder.event_id,
-                GlobalVariables.repairOrder.title,
-                GlobalVariables.repairOrder.postList[0]
-            )
+            Utils.createRepairOrder(GlobalVariables.repairOrder)
         }.start()
     }
 

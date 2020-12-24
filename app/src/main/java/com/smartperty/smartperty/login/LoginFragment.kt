@@ -17,7 +17,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.smartperty.smartperty.R
-import com.smartperty.smartperty.data.UserType
 import com.smartperty.smartperty.landlord.LandlordActivity
 import com.smartperty.smartperty.tenant.TenantActivity
 import com.smartperty.smartperty.utils.GlobalVariables
@@ -154,11 +153,11 @@ class LoginFragment : Fragment() {
             Toast.LENGTH_LONG
         ).show()
 
-        if (GlobalVariables.user.auth == UserType.LANDLORD) {
+        if (GlobalVariables.loginUser.auth == "landlord") {
             requireActivity().intent = Intent(requireActivity(), LandlordActivity().javaClass)
             startActivity(requireActivity().intent)
         }
-        else if (GlobalVariables.user.auth == UserType.TENANT) {
+        else if (GlobalVariables.loginUser.auth == "tenant") {
             requireActivity().intent = Intent(requireActivity(), TenantActivity().javaClass)
             startActivity(requireActivity().intent)
         }

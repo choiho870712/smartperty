@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.login.LoginActivity
-import com.smartperty.smartperty.tenant.TenantActivity
 import com.smartperty.smartperty.utils.GlobalVariables
 import com.smartperty.smartperty.utils.GlobalVariables.Companion.toolBarUtils
 import kotlinx.android.synthetic.main.fragment_setup.view.*
@@ -29,6 +28,7 @@ class SetupFragment : Fragment() {
         toolBarUtils.removeAllButtonAndLogo()
 
         root.button_tenant_setup_person_info.setOnClickListener {
+            GlobalVariables.personnel = GlobalVariables.loginUser
             root.findNavController().navigate(
                 R.id.action_setupFragment_to_personnelUserInfoFragment
             )

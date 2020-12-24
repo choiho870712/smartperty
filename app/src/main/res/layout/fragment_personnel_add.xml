@@ -8,48 +8,15 @@
 
 
     <TextView
-        android:id="@+id/textView71"
-        style="@style/text_normal_black_16sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="44dp"
-        android:text="@string/phone_number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/textView_phone"
-        style="@style/edit_text_normal_black_16sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="44dp"
-        android:hint="必填"
-        android:inputType="phone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView71"
-        app:layout_constraintTop_toTopOf="@+id/textView71" />
-
-    <TextView
         android:id="@+id/textView73"
         style="@style/text_normal_black_16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:text="身份類別"
-        app:layout_constraintStart_toStartOf="@+id/textView71"
-        app:layout_constraintTop_toBottomOf="@+id/textView71" />
-
-    <TextView
-        android:id="@+id/textView77"
-        style="@style/text_normal_black_16sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="目前權限"
-        app:layout_constraintStart_toStartOf="@+id/textView71"
-        app:layout_constraintTop_toBottomOf="@+id/textView73" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -59,4 +26,17 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView73"
         app:layout_constraintStart_toEndOf="@+id/textView73"
         app:layout_constraintTop_toTopOf="@+id/textView73" />
+
+    <Button
+        android:id="@+id/button_select_property"
+        style="@style/button_rectangle_primary_hollow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:text="選擇物件"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView73" />
 </androidx.constraintlayout.widget.ConstraintLayout>

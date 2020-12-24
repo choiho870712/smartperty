@@ -15,11 +15,10 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.smartperty.smartperty.R
-import com.smartperty.smartperty.data.Contract
-import com.smartperty.smartperty.data.UserType
 import com.smartperty.smartperty.repair.ImageListAdapter
 import com.smartperty.smartperty.repair.RepairListAdapter
 import com.smartperty.smartperty.utils.GlobalVariables
+import com.smartperty.smartperty.utils.Utils
 import kotlinx.android.synthetic.main.activity_landlord.*
 import kotlinx.android.synthetic.main.fragment_estate.view.*
 import kotlinx.android.synthetic.main.fragment_estate.view.recycler_image
@@ -45,11 +44,11 @@ class EstateFragment : Fragment() {
         root = inflater.inflate(R.layout.fragment_estate, container, false)
 
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
-        GlobalVariables.toolBarUtils.setTitle(GlobalVariables.estate.title)
+        GlobalVariables.toolBarUtils.setTitle(GlobalVariables.estate.objectName)
 
         fillInformation()
 
-        if (GlobalVariables.user.auth == UserType.LANDLORD) {
+        if (GlobalVariables.loginUser.auth == "landlord") {
             GlobalVariables.toolBarUtils.setEditButtonVisibility(true)
             GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
                 when(it.itemId) {
@@ -126,9 +125,9 @@ class EstateFragment : Fragment() {
             )
         }
 
-        if (GlobalVariables.estate.contract.tenant != null)
+        if (GlobalVariables.estate.tenant != null)
         root.textView_object_item_tenant_name.setOnClickListener {
-            GlobalVariables.personnel = GlobalVariables.estate.contract.tenant!!
+            GlobalVariables.personnel = GlobalVariables.estate.tenant!!
             root.findNavController().navigate(
                 R.id.action_estateFragment_to_landlordPersonnelItemFragment
             )
@@ -159,24 +158,24 @@ class EstateFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun fillInformation() {
         root.textView_object_item_address.setText(
-            GlobalVariables.estate.district +
+            GlobalVariables.estate.region +
                     GlobalVariables.estate.road +
                     GlobalVariables.estate.street +
-                    GlobalVariables.estate.address
+                    GlobalVariables.estate.fullAddress
         )
         root.textView_object_item_floor.setText(
             GlobalVariables.estate.floor.toString())
         root.textView_object_item_square_ft.setText(
-            GlobalVariables.estate.squareFt.toString())
+            GlobalVariables.estate.area.toString())
         root.textView_object_item_parking_sapce.setText(
             GlobalVariables.estate.parkingSpace)
         root.textView_object_item_tenant_name.setText(
-            GlobalVariables.estate.contract.tenant?.name ?: "")
+            GlobalVariables.estate.tenant?.name ?: "")
         root.textView_object_item_content.setText(
-            GlobalVariables.estate.content)
-        if (GlobalVariables.estate.contract.tenant != null)
+            GlobalVariables.estate.description)
+        if (GlobalVariables.estate.tenant != null)
         root.textView_object_item_phone.setText(
-            GlobalVariables.estate.contract.tenant!!.cellPhone)
+            GlobalVariables.estate.tenant!!.cellPhone)
 
         imageList.clear()
         imageList.addAll(GlobalVariables.estate.imageList)
@@ -208,11 +207,11 @@ class EstateFragment : Fragment() {
             else
                 GlobalVariables.toolBarUtils.setTitle("新增物件")
             root.textView_estate_title.setText(
-                GlobalVariables.estate.title)
+                GlobalVariables.estate.objectName)
             root.textView_estate_title.visibility = View.VISIBLE
         }
         else {
-            GlobalVariables.toolBarUtils.setTitle(GlobalVariables.estate.title)
+            GlobalVariables.toolBarUtils.setTitle(GlobalVariables.estate.objectName)
             root.textView_estate_title.visibility = View.GONE
         }
 
@@ -248,35 +247,23 @@ class EstateFragment : Fragment() {
     }
 
     private fun storeInformation() {
-        GlobalVariables.estate.address = root.textView_object_item_address.text.toString()
+        GlobalVariables.estate.fullAddress = root.textView_object_item_address.text.toString()
         GlobalVariables.estate.floor = root.textView_object_item_floor.text.toString().toInt()
-        GlobalVariables.estate.squareFt = root.textView_object_item_square_ft.text.toString().toDouble()
+        GlobalVariables.estate.area = root.textView_object_item_square_ft.text.toString().toDouble()
         GlobalVariables.estate.parkingSpace = root.textView_object_item_parking_sapce.text.toString()
-        GlobalVariables.estate.content = root.textView_object_item_content.text.toString()
-        GlobalVariables.estate.title = root.textView_estate_title.text.toString()
+        GlobalVariables.estate.description = root.textView_object_item_content.text.toString()
+        GlobalVariables.estate.objectName = root.textView_estate_title.text.toString()
 
         GlobalVariables.estate.imageList.clear()
         GlobalVariables.estate.imageList.addAll(imageList)
 
         if (GlobalVariables.estate.objectId.isEmpty()) {
             GlobalVariables.estate.objectId = "nil"
-            GlobalVariables.estate.groupName = GlobalVariables.estateList.title
-            GlobalVariables.estate.contract = Contract(
-                landlord = GlobalVariables.user
-            )
-            GlobalVariables.estateList.list.add(GlobalVariables.estate)
+            GlobalVariables.estate.groupName = GlobalVariables.estateFolder.title
+            GlobalVariables.estate.landlord = GlobalVariables.loginUser
+            GlobalVariables.estateFolder.list.add(GlobalVariables.estate)
 
-            val item = GlobalVariables.estate
-            Thread{
-                item.objectId = GlobalVariables.api.createProperty(item)
-                item.imageList.forEach {
-                    GlobalVariables.api.uploadPropertyImage(
-                        GlobalVariables.user.id,
-                        item.objectId,
-                        it
-                    )
-                }
-            }.start()
+            Utils.createEstate(GlobalVariables.estate)
         }
     }
 

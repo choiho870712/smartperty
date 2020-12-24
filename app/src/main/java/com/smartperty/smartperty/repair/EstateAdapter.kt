@@ -30,25 +30,24 @@ class EstateAdapter(private val activity: Activity,
 
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
         holder.index = position
-        holder.title.text = myDataset[position].title
-        holder.address.text = myDataset[position].address
-        holder.tenantName.text = myDataset[position].contract.tenant?.name ?: ""
-        holder.rentAmount.text = myDataset[position].contract.rentAmount.toString()
-        holder.squareFt.text = myDataset[position].squareFt.toString()
+        holder.title.text = myDataset[position].objectName
+        holder.address.text = myDataset[position].fullAddress
+        holder.tenantName.text = myDataset[position].tenant?.name ?: ""
+        holder.rentAmount.text = myDataset[position].rent.toString()
+        holder.squareFt.text = myDataset[position].area.toString()
 
         if (myDataset[position].imageList.isNotEmpty())
             holder.image.setImageBitmap(myDataset[position].imageList[0])
 
         holder.cardView.setOnClickListener {
-            GlobalVariables.estate = myDataset[holder.index]
             parentView.findNavController().navigate(
-                R.id.action_chooseTenantFragment_to_landlordObjectFragment
+                R.id.action_choosePropertyFragment_to_landlordObjectFragment
             )
         }
 
         holder.buttonSubmit.setOnClickListener {
             GlobalVariables.estate = myDataset[holder.index]
-            GlobalVariables.repairOrder.estate = myDataset[holder.index]
+            GlobalVariables.repairOrder.estate = GlobalVariables.estate
             parentView.findNavController().navigateUp()
         }
     }

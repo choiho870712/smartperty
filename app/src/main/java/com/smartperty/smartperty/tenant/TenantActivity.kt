@@ -100,40 +100,6 @@ class TenantActivity : AppCompatActivity() {
         GlobalVariables.toolBarUtils = ToolBarUtils()
         GlobalVariables.dbHelper = DBHelper(this)
 
-        // TODO call api : get user info
-        GlobalVariables.user = User(
-                name = "Tenant",
-                homePhone = "03-2870018",
-                cellPhone = "0976256290",
-                email = "choiho870712@gmail.com",
-                address = "桃園市大園區致祥一街105號12樓",
-                company = "聶星行銷科技有限公司",
-                auth = UserType.TENANT
-        )
-        GlobalVariables.landlord = User(
-            name = "Landlord",
-            homePhone = "03-1234567",
-            cellPhone = "0912345678",
-            email = "landlord@gmail.com",
-            address = "桃園市大園區埔心里22鄰96之38號",
-            company = "中原土木系"
-        )
-        GlobalVariables.estate = Estate(
-            title = "",
-            address = "桃園市大園區致祥一街105號12樓",
-            floor = 30,
-            squareFt = 50.0,
-            parkingSpace = "none",
-            content = "",
-            imageList = mutableListOf(),
-            repairList = mutableListOf(),
-            contract = Contract(
-                rentAmount = 10000,
-                rentPerMonthNumber = 1,
-                rentEndDate = "12/10"
-            )
-        )
-
         AndroidThreeTen.init(GlobalVariables.activity)
     }
 }

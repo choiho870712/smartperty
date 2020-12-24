@@ -43,8 +43,10 @@ class ChoosePlumberFragment : Fragment() {
                             root.textView_choose_plumber_date.text +
                             " " +
                             root.textView_choose_plumber_time.text
-                        GlobalVariables.repairOrder.repairDateTime = dateTimeString
-                        GlobalVariables.repairOrder.plumber = GlobalVariables.plumber
+                        GlobalVariables.repairOrder.date = dateTimeString
+                        GlobalVariables.repairOrder.participant.add(
+                            GlobalVariables.plumber
+                        )
                         root.findNavController().navigateUp()
                     }
 

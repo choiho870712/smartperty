@@ -26,12 +26,12 @@ class EstateListFragment : Fragment() {
 
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
         GlobalVariables.toolBarUtils.setAddButtonVisibility(true)
-        GlobalVariables.toolBarUtils.setTitle(GlobalVariables.estateList.title)
+        GlobalVariables.toolBarUtils.setTitle(GlobalVariables.estateFolder.title)
 
         GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.button_add -> {
-                    GlobalVariables.estate = Estate(title = "物件名稱")
+                    GlobalVariables.estate = Estate(objectName = "new")
                     root.findNavController().navigate(
                     R.id.action_landlordObjectListFragment_to_landlordObjectItemFragment)
 
@@ -41,17 +41,17 @@ class EstateListFragment : Fragment() {
             }
         }
 
-        GlobalVariables.estateListLayoutManager = LinearLayoutManager(activity)
-        GlobalVariables.estateListAdapter =
-            EstateListAdapter(
+        GlobalVariables.estateFolderLayoutManager = LinearLayoutManager(activity)
+        GlobalVariables.estateFolderAdapter =
+            EstateFolderAdapter(
                 requireActivity(), root,
-                GlobalVariables.estateList.list
+                GlobalVariables.estateFolder.list
             )
 
         root.recycler_object_list.apply {
             setHasFixedSize(true)
-            layoutManager = GlobalVariables.estateListLayoutManager
-            adapter = GlobalVariables.estateListAdapter
+            layoutManager = GlobalVariables.estateFolderLayoutManager
+            adapter = GlobalVariables.estateFolderAdapter
         }
 
         return root

@@ -33,17 +33,17 @@ class RepairListAdapter(private val activity: Activity,
         holder.index = position
         if (myDataset[position].estate != null) {
             holder.address.text =
-                myDataset[position].estate!!.district +
+                myDataset[position].estate!!.region +
                 myDataset[position].estate!!.road +
                 myDataset[position].estate!!.street +
-                myDataset[position].estate!!.address
+                myDataset[position].estate!!.fullAddress
         }
         else {
             holder.address.text = "nil"
         }
-        holder.title.text = myDataset[position].title
+        holder.title.text = myDataset[position].description
 //        holder.status.text = RepairStatus.getStringByStatus(myDataset[position].status)
-        holder.status.text = myDataset[position].statusString
+        holder.status.text = myDataset[position].status
 
         if (myDataset[position].postList.isNotEmpty()) {
             holder.date.text = myDataset[position].postList[0].createDateTime

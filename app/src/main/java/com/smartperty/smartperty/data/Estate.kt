@@ -6,8 +6,7 @@ import com.smartperty.smartperty.utils.GlobalVariables
 data class Equipment(
     var name: String = "",
     var count: Int = 0,
-    var image: Bitmap? = null,
-    var imageUrl: String = ""
+    var image: Bitmap? = null
 )
 
 data class Room(
@@ -16,38 +15,43 @@ data class Room(
 )
 
 data class Estate (
-    var title: String = "",
-    var address: String = "",
-    var floor: Int = 0,
-    var squareFt: Double = 0.0,
-    var parkingSpace: String = "",
-    var content: String = "",
-    var contract: Contract = Contract(),
-    var imageList: MutableList<Bitmap> = mutableListOf(),
-    var imageUrlList: MutableList<String> = mutableListOf(),
-    var repairList: MutableList<RepairOrder> = mutableListOf(),
-    var contractId: String = "",
-    var contractHistoryIdList: MutableList<String> = mutableListOf(),
     var objectId: String = "",
-    var repairListId: MutableList<String> = mutableListOf(),
-    var road: String = "",
-    var street: String = "",
-    var district: String = "",
-    var type: String = "",
+
+    var landlord: User? = null,
+    var tenant: User? = null,
+    var contract: Contract? = null,
+
     var groupName: String = "",
+    var objectName: String = "",
+    var description: String = "",
+    var region: String = "",
+    var street: String = "",
+    var road: String = "",
+    var fullAddress: String = "",
+    var floor: Int = 0,
+    var area: Double = 0.0,
+    var rent: Int = 0,
+    var parkingSpace: String = "",
+    var type: String = "",
+    var purchasePrice: Int = 0,
     var rules: String = "",
-    var systemId: String = "",
+
+    var roomList: MutableList<Room> = mutableListOf(),
     var attractionList: MutableList<String> = mutableListOf(),
-    var roomList: MutableList<Room> = mutableListOf()
+    var imageList: MutableList<Bitmap> = mutableListOf(),
+    var repairList: MutableList<RepairOrder> = mutableListOf(),
+    var contractHistoryList: MutableList<Contract> = mutableListOf()
 ) {
-    init {
-        repairList.forEach {
-            it.estate = this
-        }
+    fun compareId(id: String): Boolean {
+        return id == this.objectId
     }
 
     fun isRented(): Boolean {
-        return contract.isEstablished()
+        return contract != null
+    }
+
+    fun getAddress(): String {
+        return this.region + this.road + this.street + this.fullAddress
     }
 
     override fun toString(): String {
@@ -61,18 +65,10 @@ data class EstateList(
     var imageUrl: String = "",
     var list: MutableList<Estate> = mutableListOf()
 ) {
-    init {
-        list.forEach {
-            it.contract.estate = it
-            it.contract.landlord = GlobalVariables.landlord
-        }
-    }
-
-
     fun calculateSquareFt(): Double {
         var totalSquareFt = 0.0
         list.forEach {
-            totalSquareFt += it.squareFt
+            totalSquareFt += it.area
         }
         return totalSquareFt
     }

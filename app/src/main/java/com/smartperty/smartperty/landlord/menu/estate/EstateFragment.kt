@@ -148,6 +148,11 @@ class EstateFragment : Fragment() {
                 R.id.action_estateFragment_to_tenantHosingRulesFragment2
             )
         }
+        root.button_create_contract.setOnClickListener {
+            root.findNavController().navigate(
+                R.id.action_estateFragment_to_contractCreateFragment
+            )
+        }
         root.imageView_add_image_button.setOnClickListener {
             pickImageFromGallery()
         }
@@ -272,6 +277,7 @@ class EstateFragment : Fragment() {
         root.button_set_attraction.isEnabled = enable
         root.button_set_equipment.isEnabled = enable
         root.button_set_housing_rules.isEnabled = enable
+        root.button_create_contract.isEnabled = enable
     }
 
 

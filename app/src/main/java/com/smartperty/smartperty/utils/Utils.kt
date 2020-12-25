@@ -9,8 +9,7 @@ object Utils {
     fun addUserToUserList(user: User) {
         val updateTarget = searchUserFromUserList(user.id)
         if (updateTarget != null) {
-            GlobalVariables.userList.remove(updateTarget)
-            GlobalVariables.userList.add(user)
+            updateTarget.update(user)
         }
         else
             GlobalVariables.userList.add(user)
@@ -48,8 +47,7 @@ object Utils {
     fun addEstateToEstateList(estate: Estate) {
         val updateTarget = searchEstateFromEstateList(estate.objectId)
         if (updateTarget != null) {
-            GlobalVariables.estateList.remove(updateTarget)
-            GlobalVariables.estateList.add(estate)
+            updateTarget.update(estate)
         }
         else
             GlobalVariables.estateList.add(estate)
@@ -101,8 +99,7 @@ object Utils {
     fun addRepairOrderToRepairList(repairOrder: RepairOrder) {
         val updateTarget = searchRepairOrderFromRepairList(repairOrder.event_id)
         if (updateTarget != null) {
-            GlobalVariables.repairList.remove(updateTarget)
-            GlobalVariables.repairList.add(repairOrder)
+            updateTarget.update(repairOrder)
         }
         else
             GlobalVariables.repairList.add(repairOrder)
@@ -146,6 +143,44 @@ object Utils {
             addRepairOrderToRepairList(repairOrder)
             if (repairOrder.estate != null)
                 repairOrder.estate!!.repairList.add(repairOrder)
+        }.start()
+    }
+
+    fun createAccount(auth: String, objectId: String) {
+        Thread {
+            val userId = GlobalVariables.api.createAccount(auth,objectId)
+            val user = getUser(userId)
+            val targetList =
+                when (user!!.auth) {
+                    "tenant"-> {
+                        GlobalVariables.loginUser.tenantList
+                    }
+                    "agent"->{
+                        GlobalVariables.loginUser.agentList
+                    }
+                    "accountant"->{
+                        GlobalVariables.loginUser.accountantList
+                    }
+                    "technician"->{
+                        GlobalVariables.loginUser.technicianList
+                    }
+                    else-> {
+                        mutableListOf()
+                    }
+                }
+
+            val targetUser = targetList.find {
+                it.id == user.id
+            }
+            if (targetUser != null)
+                targetUser.update(user)
+            else
+                targetList.add(user)
+
+            if (objectId.isNotEmpty()) {
+                val estate = getEstate(objectId)
+                estate!!.tenant = user
+            }
         }.start()
     }
 }

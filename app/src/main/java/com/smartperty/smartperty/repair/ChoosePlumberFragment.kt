@@ -66,7 +66,7 @@ class ChoosePlumberFragment : Fragment() {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             adapter = PlumberAdapter(requireActivity(), root,
-                GlobalVariables.plumberList)
+                GlobalVariables.loginUser.technicianList)
         }
 
         root.textView_choose_plumber_name.text = GlobalVariables.plumber.name

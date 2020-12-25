@@ -216,7 +216,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView_object_item_content" />
 
         <Button
-            android:id="@+id/button_set_housing_rules2"
+            android:id="@+id/button_create_contract"
             style="@style/button_radius_primary"
             android:layout_width="96dp"
             android:layout_height="32dp"

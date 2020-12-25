@@ -14,6 +14,7 @@ import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.Estate
 import com.smartperty.smartperty.data.User
 import com.smartperty.smartperty.utils.GlobalVariables
+import com.smartperty.smartperty.utils.Utils
 import kotlinx.android.synthetic.main.activity_tenant.*
 import kotlinx.android.synthetic.main.fragment_personnel_add.view.*
 import kotlinx.android.synthetic.main.fragment_repair_order_create.view.spinner
@@ -54,12 +55,8 @@ class PersonnelAddFragment : Fragment() {
 
                     builder.setPositiveButton("是") { _, _ ->
 
-                        Thread {
-                            GlobalVariables.api.createAccount(
-                                auth = GlobalVariables.personnel.auth,
-                                object_id = GlobalVariables.estate.objectId
-                            )
-                        }.start()
+                        Utils.createAccount(
+                            GlobalVariables.personnel.auth,GlobalVariables.estate.objectId)
 
                         root.findNavController().navigateUp()
                     }

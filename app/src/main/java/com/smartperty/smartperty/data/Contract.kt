@@ -1,6 +1,7 @@
 package com.smartperty.smartperty.data
 
 data class Contract(
+    var contractId: String = "nil",
     var estate: Estate? = null,
     var landlord: User? = null,
     var tenant: User? = null,
@@ -11,5 +12,7 @@ data class Contract(
     var endDate: Long = 0,
     var timeLeft: Int = 0,
     var currency: String = "",
-    var deposit: Int = 0
+    var deposit: Int = 0,
+    var pdfUrl: MutableList<String> = mutableListOf(),
+    var jpgUrl: MutableList<String> = mutableListOf()
 )

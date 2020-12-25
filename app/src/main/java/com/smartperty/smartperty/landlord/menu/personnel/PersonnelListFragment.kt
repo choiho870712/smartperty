@@ -48,13 +48,13 @@ class PersonnelListFragment : Fragment() {
             }
         }
 
-        root.textView_tenant_count.text = GlobalVariables.tenantList.size.toString()
-        root.textView_accountant_count.text = GlobalVariables.accountantList.size.toString()
-        root.textView_manager_count.text = GlobalVariables.managerList.size.toString()
-        root.textView_plumber_count.text = GlobalVariables.plumberList.size.toString()
+        root.textView_tenant_count.text = GlobalVariables.loginUser.tenantList.size.toString()
+        root.textView_accountant_count.text = GlobalVariables.loginUser.accountantList.size.toString()
+        root.textView_manager_count.text = GlobalVariables.loginUser.agentList.size.toString()
+        root.textView_plumber_count.text = GlobalVariables.loginUser.technicianList.size.toString()
 
         val tenantAdapter =
-            PersonnelListAdapter(requireActivity(), root, GlobalVariables.tenantList)
+            PersonnelListAdapter(requireActivity(), root, GlobalVariables.loginUser.tenantList)
         root.recycler_personnel_tenant.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(activity)
@@ -63,7 +63,7 @@ class PersonnelListFragment : Fragment() {
         //enableSwipeToDeleteAndUndo(tenantAdapter, root.recycler_personnel_tenant)
 
         val managerAdapter =
-            PersonnelListAdapter(requireActivity(), root, GlobalVariables.managerList)
+            PersonnelListAdapter(requireActivity(), root, GlobalVariables.loginUser.agentList)
         root.recycler_personnel_manager.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(activity)
@@ -73,7 +73,7 @@ class PersonnelListFragment : Fragment() {
 
 
         val accountantAdapter =
-            PersonnelListAdapter(requireActivity(), root, GlobalVariables.accountantList)
+            PersonnelListAdapter(requireActivity(), root, GlobalVariables.loginUser.accountantList)
         root.recycler_personnel_accountant.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(activity)
@@ -82,7 +82,7 @@ class PersonnelListFragment : Fragment() {
         //enableSwipeToDeleteAndUndo(accountantAdapter, root.recycler_personnel_accountant)
 
         val plumberAdapter =
-            PersonnelListAdapter(requireActivity(), root, GlobalVariables.plumberList)
+            PersonnelListAdapter(requireActivity(), root, GlobalVariables.loginUser.technicianList)
         root.recycler_personnel_plumber.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(activity)

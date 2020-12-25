@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".landlord.menu.contract.ContractCreateFragment">
+
+    <TextView
+        android:id="@+id/textView63"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="物件"
+        app:layout_constraintBottom_toTopOf="@+id/textView71"
+        app:layout_constraintEnd_toStartOf="@+id/guideline21"
+        app:layout_constraintStart_toStartOf="@+id/textView71"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView71"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="房東"
+        app:layout_constraintBottom_toTopOf="@+id/textView77"
+        app:layout_constraintEnd_toEndOf="@+id/textView63"
+        app:layout_constraintTop_toBottomOf="@+id/textView63" />
+
+    <TextView
+        android:id="@+id/textView77"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="房客"
+        app:layout_constraintBottom_toTopOf="@+id/textView83"
+        app:layout_constraintEnd_toEndOf="@+id/textView71"
+        app:layout_constraintTop_toBottomOf="@+id/textView71" />
+
+    <TextView
+        android:id="@+id/textView83"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="繳交方式"
+        app:layout_constraintBottom_toTopOf="@+id/textView85"
+        app:layout_constraintEnd_toEndOf="@+id/textView77"
+        app:layout_constraintTop_toBottomOf="@+id/textView77" />
+
+    <TextView
+        android:id="@+id/textView85"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="開始日期"
+        app:layout_constraintBottom_toTopOf="@+id/textView87"
+        app:layout_constraintEnd_toEndOf="@+id/textView83"
+        app:layout_constraintTop_toBottomOf="@+id/textView83" />
+
+    <TextView
+        android:id="@+id/textView87"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="結束日期"
+        app:layout_constraintBottom_toTopOf="@+id/textView88"
+        app:layout_constraintEnd_toEndOf="@+id/textView85"
+        app:layout_constraintTop_toBottomOf="@+id/textView85" />
+
+    <TextView
+        android:id="@+id/textView88"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="選擇幣值"
+        app:layout_constraintBottom_toTopOf="@+id/textView89"
+        app:layout_constraintEnd_toEndOf="@+id/textView87"
+        app:layout_constraintTop_toBottomOf="@+id/textView87" />
+
+    <TextView
+        android:id="@+id/textView89"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="租金"
+        app:layout_constraintBottom_toTopOf="@+id/textView90"
+        app:layout_constraintEnd_toEndOf="@+id/textView88"
+        app:layout_constraintTop_toBottomOf="@+id/textView88" />
+
+    <TextView
+        android:id="@+id/textView90"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="押金"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView89"
+        app:layout_constraintTop_toBottomOf="@+id/textView89" />
+
+    <Button
+        style="@style/button_rectangle_primary_hollow"
+        android:id="@+id/button_create_contract_select_property"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="選擇"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView63"
+        app:layout_constraintEnd_toEndOf="@+id/button_create_contract_select_landlord"
+        app:layout_constraintStart_toStartOf="@+id/button_create_contract_select_landlord" />
+
+    <Button
+        style="@style/button_rectangle_primary_hollow"
+        android:id="@+id/button_create_contract_select_landlord"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="選擇"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView71"
+        app:layout_constraintEnd_toEndOf="@+id/button_create_contract_select_tenant"
+        app:layout_constraintStart_toStartOf="@+id/button_create_contract_select_tenant" />
+
+    <Button
+        style="@style/button_rectangle_primary_hollow"
+        android:id="@+id/button_create_contract_select_tenant"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="選擇"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView77"
+        app:layout_constraintEnd_toEndOf="@+id/button_create_contract_select_pay_method"
+        app:layout_constraintStart_toStartOf="@+id/button_create_contract_select_pay_method" />
+
+    <Button
+        style="@style/button_rectangle_primary_hollow"
+        android:id="@+id/button_create_contract_select_pay_method"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="選擇"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView83"
+        app:layout_constraintEnd_toEndOf="@+id/button_create_contract_select_start_date"
+        app:layout_constraintStart_toStartOf="@+id/button_create_contract_select_start_date" />
+
+    <Button
+        style="@style/button_rectangle_primary_hollow"
+        android:id="@+id/button_create_contract_select_start_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="選擇"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView85"
+        app:layout_constraintEnd_toEndOf="@+id/button_create_contract_select_end_date"
+        app:layout_constraintStart_toStartOf="@+id/button_create_contract_select_end_date" />
+
+    <Button
+        style="@style/button_rectangle_primary_hollow"
+        android:id="@+id/button_create_contract_select_end_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="選擇"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView87"
+        app:layout_constraintEnd_toEndOf="@+id/button_create_contract_select_currency"
+        app:layout_constraintStart_toStartOf="@+id/button_create_contract_select_currency" />
+
+    <Button
+        style="@style/button_rectangle_primary_hollow"
+        android:id="@+id/button_create_contract_select_currency"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="選擇"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView88"
+        app:layout_constraintEnd_toEndOf="@+id/edit_create_contract_rent"
+        app:layout_constraintStart_toStartOf="@+id/edit_create_contract_rent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <EditText
+        style="@style/edit_text_normal_black_16sp"
+        android:id="@+id/edit_create_contract_rent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView89"
+        app:layout_constraintEnd_toEndOf="@+id/edit_create_contract_deposit"
+        app:layout_constraintStart_toStartOf="@+id/edit_create_contract_deposit" />
+
+    <EditText
+        style="@style/edit_text_normal_black_16sp"
+        android:id="@+id/edit_create_contract_deposit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView90"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline21" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

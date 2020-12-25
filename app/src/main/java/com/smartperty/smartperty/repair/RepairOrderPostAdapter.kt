@@ -29,7 +29,7 @@ class RepairOrderPostAdapter(private val activity: Activity,
 
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
         holder.index = position
-        holder.sender.text = myDataset[position].sender.name
+        holder.sender.text = myDataset[position].sender!!.name
         holder.message.text = myDataset[position].message
         holder.date.text = myDataset[position].createDateTime
         holder.imageListAdapter = ImageListAdapter(activity, parentView,

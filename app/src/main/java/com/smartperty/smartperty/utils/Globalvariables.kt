@@ -39,6 +39,7 @@ class GlobalVariables : Application() {
         var estateFolder = EstateList()
         var estate = Estate()
         var repairOrder = RepairOrder()
+        var contract = Contract()
 
         // adapter and manager
         var estateDirectoryAdapter:EstateDirectoryAdapter? = null
@@ -57,10 +58,6 @@ class GlobalVariables : Application() {
         var tenant = User()
         var plumber = User()
         var personnel = User()
-        var managerList = mutableListOf<User>()
-        var accountantList = mutableListOf<User>()
-        var plumberList = mutableListOf<User>()
-        var tenantList = mutableListOf<User>()
 
         // notification
         var notificationList = mutableListOf<Notification>(

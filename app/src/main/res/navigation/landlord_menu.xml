@@ -49,6 +49,9 @@
         <action
             android:id="@+id/action_estateFragment_to_tenantHosingRulesFragment2"
             app:destination="@id/tenantHosingRulesFragment2" />
+        <action
+            android:id="@+id/action_estateFragment_to_contractCreateFragment"
+            app:destination="@id/contractCreateFragment" />
     </fragment>
     <fragment
         android:id="@+id/estateDirectoryFragment"
@@ -200,5 +203,10 @@
         android:name="com.smartperty.smartperty.tenant.home.equipmentManual.EquipmentAddFragment"
         android:label="新增家具"
         tools:layout="@layout/fragment_equipment_add" />
+    <fragment
+        android:id="@+id/contractCreateFragment"
+        android:name="com.smartperty.smartperty.landlord.menu.contract.ContractCreateFragment"
+        android:label="fragment_contract_create"
+        tools:layout="@layout/fragment_contract_create" />
 
 </navigation>

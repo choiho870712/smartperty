@@ -87,6 +87,7 @@ class RepairOrderFragment : Fragment() {
         }
 
         root.textView_repair_order_title.text = repairOrder.description
+
         root.textView_repair_order_repair_date_time.text = repairOrder.date
 
 //        root.textView_repair_order_status.text = RepairStatus.getStringByStatus(repairOrder.status)

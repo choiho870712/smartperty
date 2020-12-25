@@ -15,7 +15,7 @@ data class Room(
 )
 
 data class Estate (
-    var objectId: String = "",
+    var objectId: String = "nil",
 
     var landlord: User? = null,
     var tenant: User? = null,
@@ -52,6 +52,35 @@ data class Estate (
 
     fun getAddress(): String {
         return this.region + this.road + this.street + this.fullAddress
+    }
+
+    fun update(updateInfo: Estate) {
+        objectId = updateInfo.objectId
+
+        landlord = updateInfo.landlord
+        tenant = updateInfo.tenant
+        contract = updateInfo.contract
+
+        groupName = updateInfo.groupName
+        objectName = updateInfo.objectName
+        description = updateInfo.description
+        region = updateInfo.region
+        street = updateInfo.street
+        road = updateInfo.road
+        fullAddress = updateInfo.fullAddress
+        floor = updateInfo.floor
+        area = updateInfo.area
+        rent = updateInfo.rent
+        parkingSpace = updateInfo.parkingSpace
+        type = updateInfo.type
+        purchasePrice = updateInfo.purchasePrice
+        rules = updateInfo.rules
+
+        roomList = updateInfo.roomList
+        attractionList = updateInfo.attractionList
+        imageList = updateInfo.imageList
+        repairList = updateInfo.repairList
+        contractHistoryList = updateInfo.contractHistoryList
     }
 
     override fun toString(): String {

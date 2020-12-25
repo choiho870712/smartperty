@@ -46,10 +46,27 @@ data class RepairOrder(
             it.auth == "tenant"
         }
     }
+
+    fun update(updateInfo: RepairOrder) {
+        event_id = updateInfo.event_id
+
+        creator = updateInfo.creator
+        landlord = updateInfo.landlord
+        estate = updateInfo.estate
+
+        timestamp = updateInfo.timestamp
+        status = updateInfo.status
+        type = updateInfo.type
+        description = updateInfo.description
+        date = updateInfo.date
+
+        participant = updateInfo.participant
+        postList = updateInfo.postList
+    }
 }
 
 data class RepairOrderPost(
-    var sender: User = User(),
+    var sender: User? = null,
     var message: String = "message",
     var createDateTime: String = "createDateTime",
     var imageList: MutableList<Bitmap> = mutableListOf()

@@ -89,7 +89,7 @@ data class Estate (
 }
 
 data class EstateList(
-    var title: String = "title",
+    var title: String = "",
     var image: Bitmap? = null,
     var imageUrl: String = "",
     var list: MutableList<Estate> = mutableListOf()

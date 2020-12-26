@@ -1,6 +1,7 @@
 package com.smartperty.smartperty.utils
 
 import android.graphics.Bitmap
+import com.smartperty.smartperty.data.Contract
 import com.smartperty.smartperty.data.Estate
 import com.smartperty.smartperty.data.RepairOrder
 import com.smartperty.smartperty.data.User
@@ -183,4 +184,43 @@ object Utils {
             }
         }.start()
     }
+
+    fun addContractToContractList(contract: Contract) {
+        val updateTarget = searchContractFromContractList(contract.contractId)
+        if (updateTarget != null) {
+            updateTarget.update(contract)
+        }
+        else
+            GlobalVariables.contractList.add(contract)
+    }
+
+    fun searchContractFromContractList(contractId: String): Contract? {
+        GlobalVariables.contractList.forEach {
+            if (it.compareId(contractId))
+                return it
+        }
+
+        return null
+    }
+
+    fun getContract(landlordId: String, contractId: String): Contract? {
+        if (contractId == "nil")
+            return null
+
+        var contract = searchContractFromContractList(contractId)
+        if (contract == null) {
+            contract = GlobalVariables.api.getContractByContractId(landlordId, contractId)
+            addContractToContractList(contract)
+        }
+
+        return contract
+    }
+
+    fun createContract(contract:Contract) {
+        Thread{
+            GlobalVariables.api.createContract(contract)
+            addContractToContractList(contract)
+        }.start()
+    }
+
 }

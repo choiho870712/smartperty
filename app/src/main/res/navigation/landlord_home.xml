@@ -10,6 +10,11 @@
         android:id="@+id/landlordMenuFragment"
         android:name="com.smartperty.smartperty.landlord.home.LandlordHomeFragment"
         android:label="@string/landlord_title_home"
-        tools:layout="@layout/landlord_fragment_home_main" />
+        tools:layout="@layout/landlord_fragment_home_main" >
+        <action
+            android:id="@+id/action_landlordMenuFragment_to_landlord_menu2"
+            app:destination="@id/landlord_menu" />
+    </fragment>
+    <include app:graph="@navigation/landlord_menu" />
 
 </navigation>

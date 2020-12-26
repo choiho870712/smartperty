@@ -33,6 +33,7 @@ class GlobalVariables : Application() {
         var userList = mutableListOf<User>()
         var estateList = mutableListOf<Estate>()
         var repairList = mutableListOf<RepairOrder>()
+        var contractList = mutableListOf<Contract>()
 
         // pointer
         var estateDirectory = loginUser.estateDirectory

@@ -23,40 +23,6 @@ class LoginDataSource {
                 )
                 if (GlobalVariables.loginUser.auth == "landlord") {
                     Utils.getEstateDirectoryByGroupTag()
-//                    Thread {
-//                        GlobalVariables.repairList =
-//                            GlobalVariables.api.landlordGetEventInformation(
-//                                GlobalVariables.user.id
-//                            )
-//                    }.start()
-//                    Thread {
-//                        GlobalVariables.user.tenantIdList.forEach {
-//                            GlobalVariables.tenantList.add(
-//                                GlobalVariables.api.getUserInformation(it)
-//                            )
-//                        }
-//                    }.start()
-//                    Thread {
-//                        GlobalVariables.user.agentIdList.forEach {
-//                            GlobalVariables.managerList.add(
-//                                GlobalVariables.api.getUserInformation(it)
-//                            )
-//                        }
-//                    }.start()
-//                    Thread {
-//                        GlobalVariables.user.accountantIdList.forEach {
-//                            GlobalVariables.accountantList.add(
-//                                GlobalVariables.api.getUserInformation(it)
-//                            )
-//                        }
-//                    }.start()
-//                    Thread {
-//                        GlobalVariables.user.technicianIdList.forEach {
-//                            GlobalVariables.plumberList.add(
-//                                GlobalVariables.api.getUserInformation(it)
-//                            )
-//                        }
-//                    }.start()
                     Thread {
                         GlobalVariables.dataAnalysisByGroupBarChartDataSet =
                             GlobalVariables.api.getBarChartByGroupTag(GlobalVariables.loginUser.id)

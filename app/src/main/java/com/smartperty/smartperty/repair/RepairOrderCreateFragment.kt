@@ -134,7 +134,7 @@ class RepairOrderCreateFragment : Fragment() {
         if (GlobalVariables.repairOrder.estate != null)
             GlobalVariables.repairOrder.landlord = GlobalVariables.repairOrder.estate!!.landlord
         GlobalVariables.repairOrder.description = root.textView_repair_order_title.text.toString()
-        GlobalVariables.repairOrder.date = TimeUtil.StampToDate(
+        GlobalVariables.repairOrder.date = TimeUtil.StampToDateTime(
             GlobalVariables.repairOrder.timestamp, Locale.TAIWAN
         )
 

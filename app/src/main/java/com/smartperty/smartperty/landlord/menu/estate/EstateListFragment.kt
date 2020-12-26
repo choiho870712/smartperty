@@ -25,19 +25,20 @@ class EstateListFragment : Fragment() {
         root = inflater.inflate(R.layout.fragment_estate_list, container, false)
 
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
-        GlobalVariables.toolBarUtils.setAddButtonVisibility(true)
         GlobalVariables.toolBarUtils.setTitle(GlobalVariables.estateFolder.title)
 
-        GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
-            when(it.itemId) {
-                R.id.button_add -> {
-                    GlobalVariables.estate = Estate(objectName = "new")
-                    root.findNavController().navigate(
-                    R.id.action_landlordObjectListFragment_to_landlordObjectItemFragment)
+        if (GlobalVariables.estateFolder.title.isNotEmpty()) {
+            GlobalVariables.toolBarUtils.setAddButtonVisibility(true)
+            GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
+                when(it.itemId) {
+                    R.id.button_add -> {
+                        root.findNavController().navigate(
+                            R.id.action_estateListFragment_to_estateCreateFragment)
 
-                    true
+                        true
+                    }
+                    else -> false
                 }
-                else -> false
             }
         }
 

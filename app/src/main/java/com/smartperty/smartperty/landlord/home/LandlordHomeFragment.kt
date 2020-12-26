@@ -2,12 +2,14 @@ package com.smartperty.smartperty.landlord.home
 
 import android.app.Activity
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Legend
@@ -22,6 +24,8 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.chartUtil.MyMarkerView
+import com.smartperty.smartperty.data.Estate
+import com.smartperty.smartperty.data.EstateList
 import com.smartperty.smartperty.landlord.home.data.LandlordExpiringContract
 import com.smartperty.smartperty.landlord.home.data.LandlordExpiringRent
 import com.smartperty.smartperty.utils.GlobalVariables
@@ -37,6 +41,14 @@ class LandlordHomeFragment : Fragment() {
 
     private lateinit var root:View
     private lateinit var chart: LineChart
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+
+        if (hidden) {
+            GlobalVariables.toolBarUtils.setVisibility(true)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -103,6 +115,33 @@ class LandlordHomeFragment : Fragment() {
 
         root.card_landlord_home_notification.setOnClickListener {
             GlobalVariables.activity.bottom_nav.selectedItemId = R.id.landlord_notification
+        }
+
+        val isRentedEstateList = EstateList()
+        val isNotRentedEstateList = EstateList()
+        GlobalVariables.estateList.forEach {
+            if (it.isRented()) {
+                isRentedEstateList.list.add(it)
+            }
+            else {
+                isNotRentedEstateList.list.add(it)
+            }
+        }
+
+        root.button_is_rented.text =
+            root.button_is_rented.text.toString() + isRentedEstateList.list.size.toString()
+        root.button_is_rented.setOnClickListener {
+            GlobalVariables.estateFolder = isRentedEstateList
+            val uri = Uri.parse("android-app://com.smartperty.smartperty/estateListFragment")
+            root.findNavController().navigate(uri)
+        }
+
+        root.button_is_not_rented.text =
+            root.button_is_not_rented.text.toString() + isNotRentedEstateList.list.size.toString()
+        root.button_is_not_rented.setOnClickListener {
+            GlobalVariables.estateFolder = isNotRentedEstateList
+            val uri = Uri.parse("android-app://com.smartperty.smartperty/estateListFragment")
+            root.findNavController().navigate(uri)
         }
 
         return root

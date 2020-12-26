@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.PieChart
@@ -30,6 +31,8 @@ import com.github.mikephil.charting.utils.MPPointF
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.chartUtil.MyMarkerView
 import com.smartperty.smartperty.data.ChartDataPair
+import com.smartperty.smartperty.data.EstateList
+import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.fragment_data_analysis_page.view.*
 
 class DataAnalysisPageFragment(
@@ -38,9 +41,8 @@ class DataAnalysisPageFragment(
     private val myPieChartDataSet: MutableList<ChartDataPair>
 ) : Fragment() {
 
-    private lateinit var root:View
-
     companion object {
+        private lateinit var root:View
         lateinit var pieChart: PieChart
         lateinit var barChart: BarChart
     }
@@ -69,6 +71,11 @@ class DataAnalysisPageFragment(
                 "VAL SELECTED",
                 "Value: " + e.y.toString() + ", index: " + h.x
                     .toString() + ", DataSet index: " + h.dataSetIndex
+            )
+
+            GlobalVariables.estateFolder = EstateList()
+            root.findNavController().navigate(
+                R.id.action_landlordDataAnalysisFragment_to_estateListFragment
             )
         }
 

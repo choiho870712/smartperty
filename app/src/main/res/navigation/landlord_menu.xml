@@ -69,10 +69,15 @@
         android:id="@+id/estateListFragment"
         android:name="com.smartperty.smartperty.landlord.menu.estate.EstateListFragment"
         android:label="@string/landlord_title_object_list"
-        tools:layout="@layout/fragment_estate_list">
+        tools:layout="@layout/fragment_estate_list"
+        >
+        <deepLink app:uri="android-app://com.smartperty.smartperty/estateListFragment" />
         <action
             android:id="@+id/action_landlordObjectListFragment_to_landlordObjectItemFragment"
             app:destination="@id/estateFragment" />
+        <action
+            android:id="@+id/action_estateListFragment_to_estateCreateFragment"
+            app:destination="@id/estateCreateFragment" />
     </fragment>
     <fragment
         android:id="@+id/landlordContractFragment"
@@ -111,7 +116,11 @@
         android:id="@+id/landlordDataAnalysisFragment"
         android:name="com.smartperty.smartperty.landlord.menu.dataAnalysis.DataAnalysisFragment"
         android:label="@string/landlord_title_data_analysis"
-        tools:layout="@layout/fragment_data_analysis" />
+        tools:layout="@layout/fragment_data_analysis" >
+        <action
+            android:id="@+id/action_landlordDataAnalysisFragment_to_estateListFragment"
+            app:destination="@id/estateListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/estateDirectoryCreateFragment"
         android:name="com.smartperty.smartperty.landlord.menu.estate.EstateDirectroyCreateFragment"
@@ -208,5 +217,16 @@
         android:name="com.smartperty.smartperty.landlord.menu.contract.ContractCreateFragment"
         android:label="fragment_contract_create"
         tools:layout="@layout/fragment_contract_create" />
+    <fragment
+        android:id="@+id/estateCreateFragment"
+        android:name="com.smartperty.smartperty.landlord.menu.estate.EstateCreateFragment"
+        android:label="fragment_estate_create"
+        tools:layout="@layout/fragment_estate_create" >
+        <action
+            android:id="@+id/action_estateCreateFragment_to_estateFragment"
+            app:destination="@id/estateFragment"
+            app:popUpTo="@id/estateCreateFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>

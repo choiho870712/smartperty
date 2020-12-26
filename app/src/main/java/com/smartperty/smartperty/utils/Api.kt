@@ -2,6 +2,7 @@ package com.smartperty.smartperty.utils
 
 import android.graphics.Bitmap
 import com.smartperty.smartperty.data.*
+import com.smartperty.smartperty.tools.TimeUtil
 import com.squareup.okhttp.*
 import org.json.JSONObject
 import java.io.IOException
@@ -19,6 +20,7 @@ class Api {
 
 
     private val urlCreateContract = urlDirectory + "contractmanagement/createcontract"
+    private val urlGetContractByContractId = urlDirectory + "contractmanagement/getcontractbycontractid"
     private val urlCreateAccountByLandlord = urlDirectory + "accountmanagement/createaccountbylandlord"
     private val urlCreateProperty = urlDirectory + "propertymanagement/createproperty"
     private val urlGetObjectByGroupTag = urlDirectory + "propertymanagement/getpropertybygrouptag"
@@ -48,15 +50,14 @@ class Api {
         val rent = contract.rent.toString()
         val deposit = contract.deposit.toString()
         val start_date = contract.startDate.toString()
-        val next_date = contract.nextDate.toString()
         val end_date = contract.endDate.toString()
         val time_left = contract.timeLeft.toString()
         val payment_method = contract.payment_method
 
         val json = "{\"object_id\": \"$object_id\", \"tenant_id\": \"$tenant_id\"," +
                 "\"landlord_id\": \"$landlord_id\", \"currency\": \"$currency\"," +
-                "\"rent\": $rent, \"deposit\": $deposit, \"start_date\": $start_date" +
-                "\"next_date\": $next_date, \"end_date\": $end_date, \"time_left\": $time_left," +
+                "\"rent\": $rent, \"deposit\": $deposit, \"start_date\": $start_date," +
+                "\"next_date\": 0, \"end_date\": $end_date, \"time_left\": $time_left," +
                 "\"payment_method\": \"$payment_method\"}"
 
         val rawJsonString = callApi(json, urlCreateContract)
@@ -68,6 +69,48 @@ class Api {
         catch(e: Exception) {
             "nil"
         }
+    }
+
+    fun getContractByContractId(landlordId: String, contractId: String): Contract {
+        val json = "{\"landlord_id\": \"$landlordId\", \"contractId\": \"$contractId\"}"
+        val rawJsonString = callApi(json, urlGetContractByContractId)
+        val jsonObject = JSONObject(rawJsonString)
+        val item = jsonObject.getJSONObject("Items")
+
+        val date = item.getJSONObject("date")
+        val payment = item.getJSONObject("payment")
+        val tenant_id = item.getString("tenant_id")
+        val pdf_or_jpg_url = item.getJSONArray("pdf_or_jpg_url")
+        val landlord_id = item.getString("landlord_id")
+        val contract_id = item.getString("contract_id")
+        val object_id = item.getString("object_id")
+
+        val end_date = date.getLong("end_date")
+        val time_left = date.getInt("time_left")
+        val start_date = date.getLong("start_date")
+        val next_date = date.getLong("next_date")
+
+        val deposit = payment.getInt("deposit")
+        val currency = payment.getString("currency")
+        val rent = payment.getInt("rent")
+        val payment_method = payment.getString("payment_method")
+
+        // TODO get PDF or JPG
+
+        return Contract(
+            contractId = contract_id,
+            estate = Utils.getEstate(object_id),
+            landlord = Utils.getUser(landlord_id),
+            tenant = Utils.getUser(tenant_id),
+            rent = rent,
+            payment_method = payment_method,
+            startDate = start_date,
+            nextDate = next_date,
+            endDate = end_date,
+            timeLeft = time_left,
+            currency = currency,
+            deposit = deposit
+        )
     }
 
     fun createAccount(auth: String, object_id: String = "") : String {
@@ -120,9 +163,10 @@ class Api {
             estate.objectId =
                 jsonObject.getJSONObject("Items").getString("object_id")
             estate.imageList.forEach {
-                Thread {
-                    uploadPropertyImage(estate.landlord!!.id, estate.objectId, it)
-                }.start()
+//                Thread {
+//                    uploadPropertyImage(estate.landlord!!.id, estate.objectId, it)
+//                }.start()
+                uploadPropertyImage(estate.landlord!!.id, estate.objectId, it)
             }
         }
         catch(e:Exception){
@@ -216,8 +260,10 @@ class Api {
         }
         estate.roomList = myRoomList
 
-        // TODO get contract
-//            val current_contract_id = item.getString("current_contract_id")
+        val current_contract_id = item.getString("current_contract_id")
+        Thread {
+            estate.contract = Utils.getContract(landlord_id, current_contract_id)
+        }.start()
 
         // TODO get attraction list
 //            val attractionList = information.getJSONArray("attraction")

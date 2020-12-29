@@ -86,4 +86,11 @@ class ToolBarUtils {
         }
     }
 
+    fun setNextButtonVisibility(visible: Boolean) {
+        val button = toolbar.menu.findItem(R.id.button_next)
+        activity.runOnUiThread {
+            button.isVisible = visible
+        }
+    }
+
 }

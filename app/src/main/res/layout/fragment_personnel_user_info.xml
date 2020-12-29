@@ -6,114 +6,135 @@
     android:layout_height="match_parent"
     tools:context=".landlord.menu.personnel.PersonnelUserInfoFragment">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/image_userIcon"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/empty_head"
-        app:layout_constraintDimensionRatio="w,1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="VectorDrawableCompat" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_userIcon"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/empty_head"
+            app:layout_constraintDimensionRatio="w,1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="VectorDrawableCompat" />
 
-    <TextView
-        android:id="@+id/textView_first_name"
-        style="@style/edit_text_normal_black_16sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:hint="姓氏"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_select_image" />
+        <EditText
+            android:id="@+id/textView_name"
+            style="@style/edit_text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="名字"
+            app:layout_constraintEnd_toEndOf="@+id/textView100"
+            app:layout_constraintStart_toStartOf="@+id/textView100"
+            app:layout_constraintTop_toBottomOf="@+id/textView100" />
 
-    <TextView
-        android:id="@+id/textView_last_name"
-        style="@style/edit_text_normal_black_16sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="名字"
-        app:layout_constraintEnd_toEndOf="@+id/textView_first_name"
-        app:layout_constraintStart_toStartOf="@+id/textView_first_name"
-        app:layout_constraintTop_toBottomOf="@+id/textView_first_name" />
+        <EditText
+            android:id="@+id/textView_gender"
+            style="@style/edit_text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="性別"
+            app:layout_constraintEnd_toEndOf="@+id/textView_name"
+            app:layout_constraintStart_toStartOf="@+id/textView_name"
+            app:layout_constraintTop_toBottomOf="@+id/textView_name" />
 
-    <TextView
-        android:id="@+id/textView_gender"
-        style="@style/edit_text_normal_black_16sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="性別"
-        app:layout_constraintEnd_toEndOf="@+id/textView_first_name"
-        app:layout_constraintStart_toStartOf="@+id/textView_first_name"
-        app:layout_constraintTop_toBottomOf="@+id/textView_last_name" />
+        <EditText
+            android:id="@+id/textView_email"
+            style="@style/edit_text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="電郵信箱"
+            app:layout_constraintEnd_toEndOf="@+id/textView_gender"
+            app:layout_constraintStart_toStartOf="@+id/textView_gender"
+            app:layout_constraintTop_toBottomOf="@+id/textView_gender" />
 
-    <TextView
-        android:id="@+id/textView_email"
-        style="@style/edit_text_normal_black_16sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="電郵信箱"
-        app:layout_constraintEnd_toEndOf="@+id/textView_first_name"
-        app:layout_constraintStart_toStartOf="@+id/textView_first_name"
-        app:layout_constraintTop_toBottomOf="@+id/textView_gender" />
+        <EditText
+            android:id="@+id/textView_phone"
+            style="@style/edit_text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="電話號碼"
+            app:layout_constraintEnd_toEndOf="@+id/textView_email"
+            app:layout_constraintStart_toStartOf="@+id/textView_email"
+            app:layout_constraintTop_toBottomOf="@+id/textView_email" />
 
-    <TextView
-        android:id="@+id/textView_phone"
-        style="@style/edit_text_normal_black_16sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="電話號碼"
-        app:layout_constraintEnd_toEndOf="@+id/textView_first_name"
-        app:layout_constraintStart_toStartOf="@+id/textView_first_name"
-        app:layout_constraintTop_toBottomOf="@+id/textView_email" />
+        <EditText
+            android:id="@+id/textView_income"
+            style="@style/edit_text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="年收入"
+            app:layout_constraintEnd_toEndOf="@+id/textView101"
+            app:layout_constraintStart_toStartOf="@+id/textView101"
+            app:layout_constraintTop_toBottomOf="@+id/textView101" />
 
-    <TextView
-        android:id="@+id/textView_income"
-        style="@style/edit_text_normal_black_16sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="年收入"
-        app:layout_constraintEnd_toEndOf="@+id/textView_first_name"
-        app:layout_constraintStart_toStartOf="@+id/textView_first_name"
-        app:layout_constraintTop_toBottomOf="@+id/textView_phone" />
+        <Button
+            android:id="@+id/button_select_industry"
+            style="@style/button_rectangle_primary_hollow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="32dp"
+            android:hint="點擊選擇"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView102"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView102" />
 
-    <TextView
-        android:id="@+id/textView_industry"
-        style="@style/edit_text_normal_black_16sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="64dp"
-        android:hint="個人產業類別"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView_first_name"
-        app:layout_constraintStart_toStartOf="@+id/textView_first_name"
-        app:layout_constraintTop_toBottomOf="@+id/textView_income" />
+        <Button
+            android:id="@+id/button_select_image"
+            style="@style/button_rectangle_primary_hollow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="選擇照片"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_userIcon" />
 
-    <Button
-        style="@style/button_rectangle_primary_hollow"
-        android:id="@+id/button_select_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="選擇照片"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_userIcon" />
+        <TextView
+            android:id="@+id/textView100"
+            style="@style/text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:text="個人資訊"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_select_image" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textView101"
+            style="@style/text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="額外資訊"
+            app:layout_constraintEnd_toEndOf="@+id/textView_phone"
+            app:layout_constraintStart_toStartOf="@+id/textView_phone"
+            app:layout_constraintTop_toBottomOf="@+id/textView_phone" />
+
+        <TextView
+            android:id="@+id/textView102"
+            style="@style/text_normal_black_16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="64dp"
+            android:text="產業類別"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_income" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.smartperty.smartperty.R
+import com.smartperty.smartperty.data.User
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.fragment_repair_order.view.*
 
@@ -54,6 +55,23 @@ class RepairOrderFragment : Fragment() {
                 builderInner.setPositiveButton("是") { dialog, which ->
                     root.textView_repair_order_status.text = strName
                     GlobalVariables.repairOrder.status = strName!!
+                    Thread {
+                        GlobalVariables.api.changeEventStatus(
+                            GlobalVariables.repairOrder.landlord!!.id,
+                            GlobalVariables.repairOrder.event_id,
+                            GlobalVariables.repairOrder.status
+                        )
+
+                        val userList = mutableListOf<User>()
+                        userList.addAll(GlobalVariables.repairOrder.participant)
+                        if (GlobalVariables.repairOrder.landlord != null)
+                            userList.add(GlobalVariables.repairOrder.landlord!!)
+
+                        Thread {
+                            GlobalVariables.api.createMessage(
+                                userList, "已修改狀態", "Event")
+                        }.start()
+                    }.start()
                     dialog.dismiss()
                 }
                 builderInner.setNegativeButton("否"

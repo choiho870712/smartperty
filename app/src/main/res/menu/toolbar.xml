@@ -36,4 +36,9 @@
         android:id="@+id/button_cancel"
         android:title="取消"
         app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/button_next"
+        android:title="下一步"
+        app:showAsAction="always"/>
 </menu>

@@ -40,10 +40,10 @@
           "mSourcePosition": {
             "mStartLine": 73,
             "mStartColumn": 8,
-            "mStartOffset": 3706,
+            "mStartOffset": 3700,
             "mEndLine": 73,
             "mEndColumn": 89,
-            "mEndOffset": 3787
+            "mEndOffset": 3781
           }
         },
         "isAutoVerify": false

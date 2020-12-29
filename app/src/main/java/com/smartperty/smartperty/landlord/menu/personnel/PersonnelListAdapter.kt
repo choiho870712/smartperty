@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -35,11 +36,14 @@ class PersonnelListAdapter(
 
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
         holder.name.text = myDataset[position].name
+        if (myDataset[position].icon != null)
+            holder.image.setImageBitmap(myDataset[position].icon)
 
         holder.cardView.setOnClickListener {
             GlobalVariables.personnel = myDataset[position]
+            GlobalVariables.personnelUserInfoUsage = "read"
             parentView.findNavController().navigate(
-                R.id.action_personnelListFragment_to_personnelFragment
+                R.id.action_landlordPersonnelListFragment_to_personnelUserInfoFragment2
             )
         }
 
@@ -89,6 +93,7 @@ class PersonnelListAdapter(
         val cardView: View = card
         val name: TextView = card.text_personnel_list_name
         val controlButton: ImageButton = card.button_personnel_control
+        val image:ImageView = card.image_icon
     }
 
     fun removeItem(position: Int) {

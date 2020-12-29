@@ -62,24 +62,6 @@ class ContractCreateFragment : Fragment() {
                     builder.setTitle("是否送出合約？")
 
                     builder.setPositiveButton("是") { _, _ ->
-                        GlobalVariables.contract.payment_method =
-                            when (root.button_create_contract_select_pay_method.text.toString()) {
-                                "月繳" -> {
-                                    "monthly"
-                                }
-                                "季繳" -> {
-                                    "monthly"
-                                }
-                                "半年繳" -> {
-                                    "monthly"
-                                }
-                                "年繳" -> {
-                                    "monthly"
-                                }
-                                else -> {
-                                    "monthly"
-                                }
-                            }
                         GlobalVariables.contract.startDate =
                             TimeUtil.DateToStamp(
                                 root.button_create_contract_select_start_date.text.toString(),
@@ -96,8 +78,6 @@ class ContractCreateFragment : Fragment() {
                             root.edit_create_contract_deposit.text.toString().toInt()
                         GlobalVariables.contract.currency =
                             root.button_create_contract_select_currency.text.toString()
-                        GlobalVariables.contract.timeLeft =
-                            root.edit_create_contract_pay_times.text.toString().toInt()
 
                         Utils.createContract(GlobalVariables.contract)
 
@@ -141,7 +121,7 @@ class ContractCreateFragment : Fragment() {
             val payTimes = it.toString().toInt()
             val endDate =
                 when(GlobalVariables.contract.payment_method) {
-                    "monthly" -> {
+                    "Permonth" -> {
                         val endMonth = (startMonth + payTimes-1)%12 + 1
                         val endYear = (startMonth + payTimes-1)/12 + startYear
                         "$endYear/$endMonth/$startDay"
@@ -172,6 +152,24 @@ class ContractCreateFragment : Fragment() {
             builderSingle.setAdapter(arrayAdapter) { _, which ->
                 val strName = arrayAdapter.getItem(which)
                 root.button_create_contract_select_pay_method.text = strName
+                GlobalVariables.contract.payment_method =
+                    when (root.button_create_contract_select_pay_method.text.toString()) {
+                        "月繳" -> {
+                            "Permonth"
+                        }
+                        "季繳" -> {
+                            "Perseason"
+                        }
+                        "半年繳" -> {
+                            "Perhalfyear"
+                        }
+                        "年繳" -> {
+                            "Peryear"
+                        }
+                        else -> {
+                            "monthly"
+                        }
+                    }
             }
             builderSingle.show()
         }

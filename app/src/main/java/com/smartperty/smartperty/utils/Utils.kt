@@ -147,12 +147,11 @@ object Utils {
         }.start()
     }
 
-    fun createAccount(auth: String, objectId: String) {
+    fun createAccount(user: User, objectId: String) {
         Thread {
-            val userId = GlobalVariables.api.createAccount(auth,objectId)
-            val user = getUser(userId)
+            GlobalVariables.api.createAccount(user,objectId)
             val targetList =
-                when (user!!.auth) {
+                when (user.auth) {
                     "tenant"-> {
                         GlobalVariables.loginUser.tenantList
                     }
@@ -170,15 +169,9 @@ object Utils {
                     }
                 }
 
-            val targetUser = targetList.find {
-                it.id == user.id
-            }
-            if (targetUser != null)
-                targetUser.update(user)
-            else
-                targetList.add(user)
+            targetList.add(user)
 
-            if (objectId.isNotEmpty()) {
+            if (objectId != "nil") {
                 val estate = getEstate(objectId)
                 estate!!.tenant = user
             }
@@ -208,10 +201,10 @@ object Utils {
             return null
 
         var contract = searchContractFromContractList(contractId)
-        if (contract == null) {
-            contract = GlobalVariables.api.getContractByContractId(landlordId, contractId)
-            addContractToContractList(contract)
-        }
+//        if (contract == null) {
+//            contract = GlobalVariables.api.getContractByContractId(landlordId, contractId)
+//            addContractToContractList(contract)
+//        }
 
         return contract
     }

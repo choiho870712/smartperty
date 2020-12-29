@@ -1830,7 +1830,7 @@ id action_divider
 id action_estateCreateFragment_to_estateFragment
 id action_estateDirectoryFragment_to_estateDirectoryCreateFragment
 id action_estateFragment_to_contractCreateFragment
-id action_estateFragment_to_landlordPersonnelItemFragment
+id action_estateFragment_to_personnelUserInfoFragment2
 id action_estateFragment_to_repairOrderFragment
 id action_estateFragment_to_tenantAttractionsNearbyFragment2
 id action_estateFragment_to_tenantEquipmentManualFragment2
@@ -1849,6 +1849,7 @@ id action_landlordMenuFragment_to_repairFragment
 id action_landlordObjectFolderFragment_to_landlordObjectListFragment
 id action_landlordObjectListFragment_to_landlordObjectItemFragment
 id action_landlordPersonnelListFragment_to_personnelAddFragment
+id action_landlordPersonnelListFragment_to_personnelUserInfoFragment2
 id action_loginFragment_to_aboutUsFragment
 id action_loginFragment_to_contactUsFragment
 id action_loginFragment_to_forgetPasswordFragment
@@ -1859,7 +1860,7 @@ id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
 id action_personnelAddFragment_to_choosePropertyFragment
-id action_personnelListFragment_to_personnelFragment
+id action_personnelAddFragment_to_personnelUserInfoFragment2
 id action_repairListFragment_to_repairOrderCreateFragment
 id action_repairListFragment_to_repairOrderFragment
 id action_repairOrderCreateFragment_to_chooseTenantFragment
@@ -1943,8 +1944,10 @@ id button_home_repair
 id button_is_not_rented
 id button_is_rented
 id button_landlord_test
+id button_next
 id button_personnel_control
 id button_select_image
+id button_select_industry
 id button_select_property
 id button_select_room
 id button_set_attraction
@@ -2149,6 +2152,7 @@ id image_card
 id image_card_object_item
 id image_equipment
 id image_home_weather
+id image_icon
 id image_logo
 id image_object_folder
 id image_object_folder_add
@@ -2168,7 +2172,6 @@ id labeled
 id landlordContractFragment
 id landlordDataAnalysisFragment
 id landlordMenuFragment
-id landlordPersonnelItemFragment
 id landlordPersonnelListFragment
 id landlord_chat
 id landlord_group
@@ -2258,6 +2261,7 @@ id peekHeight
 id percent
 id personnelAddFragment
 id personnelUserInfoFragment
+id personnelUserInfoFragment2
 id pieChart
 id pieChart1
 id pieChart2
@@ -2401,6 +2405,9 @@ id textSpacerNoTitle
 id textStart
 id textView
 id textView10
+id textView100
+id textView101
+id textView102
 id textView11
 id textView12
 id textView13
@@ -2514,13 +2521,11 @@ id textView_equipment_count
 id textView_equipment_name
 id textView_estate_title
 id textView_finance_total
-id textView_first_name
 id textView_gender
 id textView_income
-id textView_industry
-id textView_last_name
 id textView_manager_count
 id textView_message
+id textView_name
 id textView_object_item_address
 id textView_object_item_content
 id textView_object_item_floor
@@ -2593,6 +2598,11 @@ id text_object_folder_rent_rate3
 id text_object_folder_rent_rate_111
 id text_object_folder_square_ft
 id text_object_folder_title
+id text_object_item_deposit
+id text_object_item_next_date
+id text_object_item_payment_method
+id text_object_item_rent
+id text_object_item_time_left
 id text_object_list_address
 id text_object_list_information
 id text_object_list_information4
@@ -2609,19 +2619,12 @@ id text_repair_list_title
 id text_repair_spend
 id text_repair_status
 id text_repair_title
-id text_repair_title10
-id text_repair_title11
-id text_repair_title12
-id text_repair_title13
 id text_repair_title14
-id text_repair_title15
 id text_repair_title3
-id text_repair_title4
 id text_repair_title5
 id text_repair_title6
 id text_repair_title7
 id text_repair_title8
-id text_repair_title9
 id text_sectioned_title_equipment
 id text_sectioned_title_menu
 id text_tenantName

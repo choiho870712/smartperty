@@ -30,15 +30,17 @@ import com.github.mikephil.charting.utils.ColorTemplate
 import com.github.mikephil.charting.utils.MPPointF
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.chartUtil.MyMarkerView
+import com.smartperty.smartperty.data.ChartData
 import com.smartperty.smartperty.data.ChartDataPair
+import com.smartperty.smartperty.data.Estate
 import com.smartperty.smartperty.data.EstateList
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.fragment_data_analysis_page.view.*
 
 class DataAnalysisPageFragment(
     val title: String,
-    val myBarChartDataSet: MutableList<ChartDataPair>,
-    private val myPieChartDataSet: MutableList<ChartDataPair>
+    val myBarChartDataSet: ChartData,
+    private val myPieChartDataSet: ChartData
 ) : Fragment() {
 
     companion object {
@@ -63,7 +65,7 @@ class DataAnalysisPageFragment(
         return root
     }
 
-    class PieChartActivity() : OnChartValueSelectedListener {
+    class PieChartActivity(private val myPieChartDataSet:ChartData) : OnChartValueSelectedListener {
 
         override fun onValueSelected(e: Entry?, h: Highlight) {
             if (e == null) return
@@ -73,7 +75,7 @@ class DataAnalysisPageFragment(
                     .toString() + ", DataSet index: " + h.dataSetIndex
             )
 
-            GlobalVariables.estateFolder = EstateList()
+            GlobalVariables.estateFolder = myPieChartDataSet.dataList[h.x.toInt()].estateList
             root.findNavController().navigate(
                 R.id.action_landlordDataAnalysisFragment_to_estateListFragment
             )
@@ -108,7 +110,7 @@ class DataAnalysisPageFragment(
         // chart.setDrawUnitsInChart(true);
 
         // add a selection listener
-        pieChart.setOnChartValueSelectedListener(PieChartActivity())
+        pieChart.setOnChartValueSelectedListener(PieChartActivity(myPieChartDataSet))
         pieChart.animateY(1400, Easing.EaseInOutQuad)
         // chart.spin(2000, 0, 360);
         val l = pieChart.legend
@@ -134,7 +136,7 @@ class DataAnalysisPageFragment(
 
         // NOTE: The order of the entries when being added to the entries array determines their position around the center of
         // the chart.
-        myPieChartDataSet.forEach {
+        myPieChartDataSet.dataList.forEach {
             entries.add(
                 PieEntry(
                     it.value.toFloat(),
@@ -235,11 +237,11 @@ class DataAnalysisPageFragment(
         xAxis.granularity = 1f
         xAxis.setCenterAxisLabels(true)
         xAxis.axisMinimum = 0f
-        xAxis.axisMaximum = myBarChartDataSet.size.toFloat()
+        xAxis.axisMaximum = myBarChartDataSet.dataList.size.toFloat()
         xAxis.valueFormatter = object : ValueFormatter() {
             override fun getFormattedValue(value: Float): String {
-                return if (myBarChartDataSet.size > value.toInt() && value.toInt() >= 0)
-                    myBarChartDataSet[value.toInt()].tag
+                return if (myBarChartDataSet.dataList.size > value.toInt() && value.toInt() >= 0)
+                    myBarChartDataSet.dataList[value.toInt()].tag
                 else
                     value.toInt().toString()
             }
@@ -284,7 +286,7 @@ class DataAnalysisPageFragment(
 
         val values1: ArrayList<BarEntry> = ArrayList()
         val values2: ArrayList<BarEntry> = ArrayList()
-        myBarChartDataSet.forEachIndexed { index, chartDataPair ->
+        myBarChartDataSet.dataList.forEachIndexed { index, chartDataPair ->
             values1.add(BarEntry(index.toFloat(), chartDataPair.value.toFloat()))
             values2.add(BarEntry(index.toFloat(), chartDataPair.value2.toFloat()))
         }
@@ -304,7 +306,7 @@ class DataAnalysisPageFragment(
             set2.color = Color.rgb(0, 0, 255)
             set2.axisDependency = barChart.axisRight.axisDependency
             var maxNumber = 0.0
-            myBarChartDataSet.forEach {
+            myBarChartDataSet.dataList.forEach {
                 if (it.value2 > maxNumber)
                     maxNumber = it.value2
             }

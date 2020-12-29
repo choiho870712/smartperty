@@ -6,7 +6,7 @@ import com.smartperty.smartperty.R
 import com.smartperty.smartperty.utils.GlobalVariables
 
 enum class NotificationType{
-    CONTRACT, RENT, AGENT, REPAIR, SYSTEM, UNKNOWN
+    CONTRACT, RENT, AGENT, EVENT, SYSTEM, UNKNOWN
 }
 
 data class Notification(
@@ -26,7 +26,7 @@ data class Notification(
             NotificationType.AGENT -> {
                 GlobalVariables.activity.resources.getDrawable(R.drawable.fade_blue)
             }
-            NotificationType.REPAIR -> {
+            NotificationType.EVENT -> {
                 GlobalVariables.activity.resources.getDrawable(R.drawable.fade_black)
             }
             NotificationType.SYSTEM -> {

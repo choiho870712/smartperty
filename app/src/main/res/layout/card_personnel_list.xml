@@ -21,11 +21,11 @@
             android:singleLine="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button_personnel_control"
-            app:layout_constraintStart_toEndOf="@+id/image_object_folder_add"
+            app:layout_constraintStart_toEndOf="@+id/image_icon"
             app:layout_constraintTop_toTopOf="parent" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/image_object_folder_add"
+            android:id="@+id/image_icon"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="16dp"

@@ -33,16 +33,16 @@ class DataAnalysisFragment : Fragment() {
 
 
         viewPagerAdapter.addFragment(DataAnalysisPageFragment("組別",
-            GlobalVariables.dataAnalysisByGroupBarChartDataSet.dataList,
-            GlobalVariables.dataAnalysisByGroupPieChartDataSet.dataList
+            GlobalVariables.dataAnalysisByGroupBarChartDataSet,
+            GlobalVariables.dataAnalysisByGroupPieChartDataSet
         ), "組別")
         viewPagerAdapter.addFragment(DataAnalysisPageFragment("類型",
-            GlobalVariables.dataAnalysisByTypeBarChartDataSet.dataList,
-            GlobalVariables.dataAnalysisByTypePieChartDataSet.dataList
+            GlobalVariables.dataAnalysisByTypeBarChartDataSet,
+            GlobalVariables.dataAnalysisByTypePieChartDataSet
         ), "類型")
         viewPagerAdapter.addFragment(DataAnalysisPageFragment("坪數",
-            GlobalVariables.dataAnalysisBySquareFtBarChartDataSet.dataList,
-            GlobalVariables.dataAnalysisBySquareFtPieChartDataSet.dataList
+            GlobalVariables.dataAnalysisBySquareFtBarChartDataSet,
+            GlobalVariables.dataAnalysisBySquareFtPieChartDataSet
         ), "坪數")
         viewPager.adapter = viewPagerAdapter
 

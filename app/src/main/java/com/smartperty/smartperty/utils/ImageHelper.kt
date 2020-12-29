@@ -43,8 +43,12 @@ class ImageHelper {
     }
 
     fun convertString64ToImage(base64String: String): Bitmap {
-        val decodedString = Base64.decode(base64String, Base64.DEFAULT)
-        return BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+        return try {
+            val decodedString = Base64.decode(base64String, Base64.DEFAULT)
+            BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+        } catch (e: Exception) {
+            Bitmap.createBitmap(200, 200, Bitmap.Config.ARGB_8888)
+        }
     }
 
     fun getString(bm: Bitmap): String? {
@@ -69,7 +73,7 @@ class ImageHelper {
             return image
         }
         catch (e: Exception) {
-            return Bitmap.createBitmap(200, 200, Bitmap.Config.ARGB_8888)
+            return convertString64ToImage(urlString)
         }
     }
 }

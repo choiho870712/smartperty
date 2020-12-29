@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.repair.ImageListAdapter
 import com.smartperty.smartperty.repair.RepairListAdapter
+import com.smartperty.smartperty.tools.TimeUtil
 import com.smartperty.smartperty.utils.GlobalVariables
 import com.smartperty.smartperty.utils.Utils
 import kotlinx.android.synthetic.main.activity_landlord.*
@@ -28,6 +29,7 @@ import kotlinx.android.synthetic.main.fragment_estate.view.textView_object_item_
 import kotlinx.android.synthetic.main.fragment_estate.view.textView_object_item_phone
 import kotlinx.android.synthetic.main.fragment_estate.view.textView_object_item_square_ft
 import kotlinx.android.synthetic.main.fragment_estate.view.textView_object_item_tenant_name
+import java.util.*
 
 class EstateFragment : Fragment() {
 
@@ -128,8 +130,9 @@ class EstateFragment : Fragment() {
         if (GlobalVariables.estate.tenant != null)
         root.textView_object_item_tenant_name.setOnClickListener {
             GlobalVariables.personnel = GlobalVariables.estate.tenant!!
+            GlobalVariables.personnelUserInfoUsage = "read"
             root.findNavController().navigate(
-                R.id.action_estateFragment_to_landlordPersonnelItemFragment
+                R.id.action_estateFragment_to_personnelUserInfoFragment2
             )
         }
 
@@ -184,6 +187,19 @@ class EstateFragment : Fragment() {
 
         imageList.clear()
         imageList.addAll(GlobalVariables.estate.imageList)
+
+        if (GlobalVariables.estate.contract != null) {
+            root.text_object_item_rent.setText(
+                GlobalVariables.estate.contract!!.rent.toString())
+            root.text_object_item_deposit.setText(
+                GlobalVariables.estate.contract!!.deposit.toString())
+            root.text_object_item_next_date.setText(
+                TimeUtil.StampToDate(GlobalVariables.estate.contract!!.nextDate, Locale.TAIWAN))
+            root.text_object_item_payment_method.setText(
+                GlobalVariables.estate.contract!!.payment_method)
+            root.text_object_item_time_left.setText(
+                GlobalVariables.estate.contract!!.timeLeft.toString())
+        }
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")

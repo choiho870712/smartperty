@@ -1,6 +1,7 @@
 package com.smartperty.smartperty.utils
 
 import android.graphics.Bitmap
+import android.util.Log
 import com.smartperty.smartperty.data.*
 import com.smartperty.smartperty.tools.TimeUtil
 import com.squareup.okhttp.*
@@ -41,6 +42,28 @@ class Api {
     private val urlUserLogin = urlDirectory + "accountmanagement/userlogin"
     private val urlUpdateUserInformation = urlDirectory + "accountmanagement/updateuserinformation"
     private val urlGetUserInformation = urlDirectory + "accountmanagement/getuserinformation"
+    private val urlChangeEventStatus = urlDirectory + "eventmanagement/changeeventstatus"
+    private val urlCreateMessage = urlDirectory + "messagemanagement/createmessage"
+
+    fun createMessage(userList: MutableList<User>, content: String, type: String ): Boolean {
+        var json = "{\"information\":{\"content\": \"$content\"}, \"type\": \"$type\", " +
+                "\"users_id\":["
+        var isFirst = true
+        userList.forEach {
+            if (isFirst) isFirst = false
+            else json += ","
+            val userId = it.id
+            json += "\"$userId\""
+        }
+        json += "]}"
+        return getJsonMessage(callApi(json, urlChangeEventStatus)) == "No Error"
+    }
+
+    fun changeEventStatus(landlord_id: String, event_id: String, status_to_changed: String): Boolean {
+        val json = "{\"landlord_id\": \"$landlord_id\", \"event_id\": \"$event_id\"" +
+                ", \"status_to_changed\": \"$status_to_changed\"}"
+        return getJsonMessage(callApi(json, urlCreateMessage)) == "No Error"
+    }
 
     fun createContract(contract: Contract) {
         val object_id = contract.estate!!.objectId
@@ -51,14 +74,12 @@ class Api {
         val deposit = contract.deposit.toString()
         val start_date = contract.startDate.toString()
         val end_date = contract.endDate.toString()
-        val time_left = contract.timeLeft.toString()
         val payment_method = contract.payment_method
 
         val json = "{\"object_id\": \"$object_id\", \"tenant_id\": \"$tenant_id\"," +
                 "\"landlord_id\": \"$landlord_id\", \"currency\": \"$currency\"," +
                 "\"rent\": $rent, \"deposit\": $deposit, \"start_date\": $start_date," +
-                "\"next_date\": 0, \"end_date\": $end_date, \"time_left\": $time_left," +
-                "\"payment_method\": \"$payment_method\"}"
+                "\"end_date\": $end_date, \"payment_method\": \"$payment_method\"}"
 
         val rawJsonString = callApi(json, urlCreateContract)
         val jsonObject = JSONObject(rawJsonString)
@@ -113,12 +134,27 @@ class Api {
         )
     }
 
-    fun createAccount(auth: String, object_id: String = "") : String {
+    fun createAccount(user: User, object_id: String = "") : String {
         val root_id = GlobalVariables.loginUser.id
+        val auth = user.auth
+        val name = user.name
+        val sex = user.sex
+        val mail = user.email
+        val phone = user.cellPhone
+        val annual_income = user.annual_income
+        val industry = user.industry
+        val iconString =
+            if (user.icon == null)
+                "nil"
+            else
+                GlobalVariables.imageHelper.getString(user.icon!!)
         var json = "{\"auth\": \"$auth\", \"root_id\": \"$root_id\""
         if (auth == "tenant") {
             json += ", \"object_id\": \"$object_id\""
         }
+        json += ", \"information\" : {\"name\":\"$name\", \"sex\":\"$sex\", \"mail\":\"$mail\"," +
+                "\"phone\":\"$phone\", \"annual_income\":\"$annual_income\", " +
+                "\"industry\":\"$industry\",\"icon\":\"$iconString\"}"
         json += "}"
 
         val rawJsonString = callApi(json, urlCreateAccountByLandlord)
@@ -551,12 +587,19 @@ class Api {
         val items = jsonObject.getJSONArray("Items")
         for (i in 0 until(items.length())) {
             val item = items.getJSONObject(i)
-            chartData.dataList.add(
-                ChartDataPair(
-                    tag = item.getString("group_name"),
-                    value = item.getInt("counter")
-                )
+            val dataPair = ChartDataPair(
+                tag = item.getString("group_name"),
+                value = item.getInt("counter")
             )
+            val objectList = item.getJSONArray("object_id_list")
+            for (j in 0 until(objectList.length())) {
+                val objectId = objectList.getString(j)
+                Thread {
+                    dataPair.estateList.list.add(Utils.getEstate(objectId)!!)
+                }.start()
+            }
+
+            chartData.dataList.add(dataPair)
         }
         return chartData
     }
@@ -586,12 +629,19 @@ class Api {
         val items = jsonObject.getJSONArray("Items")
         for (i in 0 until(items.length())) {
             val item = items.getJSONObject(i)
-            chartData.dataList.add(
-                ChartDataPair(
-                    tag = item.getString("type"),
-                    value = item.getInt("counter")
-                )
+            val dataPair = ChartDataPair(
+                tag = item.getString("type"),
+                value = item.getInt("counter")
             )
+            val objectList = item.getJSONArray("object_id_list")
+            for (j in 0 until(objectList.length())) {
+                val objectId = objectList.getString(j)
+                Thread {
+                    dataPair.estateList.list.add(Utils.getEstate(objectId)!!)
+                }.start()
+            }
+
+            chartData.dataList.add(dataPair)
         }
         return chartData
     }
@@ -621,12 +671,19 @@ class Api {
         val items = jsonObject.getJSONArray("Items")
         for (i in 0 until(items.length())) {
             val item = items.getJSONObject(i)
-            chartData.dataList.add(
-                ChartDataPair(
-                    tag = item.getString("area"),
-                    value = item.getInt("counter")
-                )
+            val dataPair = ChartDataPair(
+                tag = item.getString("area"),
+                value = item.getInt("counter")
             )
+            val objectList = item.getJSONArray("object_id_list")
+            for (j in 0 until(objectList.length())) {
+                val objectId = objectList.getString(j)
+                Thread {
+                    dataPair.estateList.list.add(Utils.getEstate(objectId)!!)
+                }.start()
+            }
+
+            chartData.dataList.add(dataPair)
         }
         return chartData
     }

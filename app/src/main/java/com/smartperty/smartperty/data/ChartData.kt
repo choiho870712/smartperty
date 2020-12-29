@@ -13,5 +13,6 @@ data class ChartData(
 data class ChartDataPair(
     var tag:String = "",
     var value: Int = 0,
-    var value2: Double = 0.0
+    var value2: Double = 0.0,
+    var estateList: EstateList = EstateList()
 )

@@ -44,21 +44,43 @@ class PersonnelAddFragment : Fragment() {
         buttonSelectProperty = root.button_select_property
 
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
-        GlobalVariables.toolBarUtils.setSubmitButtonVisibility(true)
+        GlobalVariables.toolBarUtils.setNextButtonVisibility(true)
 
         GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
-                R.id.button_submit -> {
+//                R.id.button_submit -> {
+//                    // setup dialog builder
+//                    val builder = android.app.AlertDialog.Builder(requireActivity())
+//                    builder.setTitle("是否新增人員？")
+//
+//                    builder.setPositiveButton("是") { _, _ ->
+//
+//                        Utils.createAccount(
+//                            GlobalVariables.personnel,GlobalVariables.estate.objectId)
+//
+//                        root.findNavController().navigate(
+//                            R.id.action_personnelAddFragment_to_personnelUserInfoFragment2
+//                        )
+//                    }
+//
+//                    // create dialog and show it
+//                    requireActivity().runOnUiThread{
+//                        val dialog = builder.create()
+//                        dialog.show()
+//                    }
+//
+//                    true
+//                }
+                R.id.button_next -> {
                     // setup dialog builder
                     val builder = android.app.AlertDialog.Builder(requireActivity())
                     builder.setTitle("是否新增人員？")
 
                     builder.setPositiveButton("是") { _, _ ->
-
-                        Utils.createAccount(
-                            GlobalVariables.personnel.auth,GlobalVariables.estate.objectId)
-
-                        root.findNavController().navigateUp()
+                        GlobalVariables.personnelUserInfoUsage = "create"
+                        root.findNavController().navigate(
+                            R.id.action_personnelAddFragment_to_personnelUserInfoFragment2
+                        )
                     }
 
                     // create dialog and show it
@@ -75,7 +97,7 @@ class PersonnelAddFragment : Fragment() {
 
         createSpinner()
 
-        if (GlobalVariables.estate.objectId.isNotEmpty())
+        if (GlobalVariables.estate.objectId != "nil")
             root.button_select_property.text = GlobalVariables.estate.getAddress()
 
         buttonSelectProperty.setOnClickListener {

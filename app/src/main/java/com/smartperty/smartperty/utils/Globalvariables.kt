@@ -7,7 +7,6 @@ import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.smartperty.smartperty.data.*
 import com.smartperty.smartperty.landlord.menu.estate.EstateDirectoryAdapter
 import com.smartperty.smartperty.landlord.menu.estate.EstateFolderAdapter
@@ -52,6 +51,8 @@ class GlobalVariables : Application() {
         lateinit var estateLayoutManager: LinearLayoutManager
         lateinit var repairListLayoutManager: LinearLayoutManager
 
+        // switch
+        var personnelUserInfoUsage: String = "read" // create update read
 
 
         // account
@@ -80,7 +81,7 @@ class GlobalVariables : Application() {
             Notification(
                 message = "維修類型",
                 date = "2020/12/01",
-                type = NotificationType.REPAIR
+                type = NotificationType.EVENT
             ),
             Notification(
                 message = "系統類型",

@@ -20,6 +20,8 @@ MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /root/.gradl
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/4f2ba545a4331b28b7adb2460751a1ff/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.github.PhilJay:MPAndroidChart:v3.1.0] /root/.gradle/caches/transforms-2/files-2.1/836ae9e948553e937d6131fd376135ec/jetified-MPAndroidChart-v3.1.0/AndroidManifest.xml:2:1-20:12
 MERGED from [me.relex:circleindicator:2.1.4] /root/.gradle/caches/transforms-2/files-2.1/bed3f39d549a6be3d699a336930849cf/jetified-circleindicator-2.1.4/AndroidManifest.xml:2:1-11:12
+MERGED from [com.github.barteksc:android-pdf-viewer:2.8.2] /root/.gradle/caches/transforms-2/files-2.1/11bc3db66f343c273e67269050236180/jetified-android-pdf-viewer-2.8.2/AndroidManifest.xml:2:1-11:12
+MERGED from [com.github.barteksc:pdfium-android:1.7.1] /root/.gradle/caches/transforms-2/files-2.1/875b78db74c7d4445a243cf1a2433d55/jetified-pdfium-android-1.7.1/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/d2d9a9905fba49314b7b6e18ec91e140/legacy-support-v4-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/8b60fde4d77862462db8051e92db572c/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/71d05889cd3319b59e0a4fc26ad09558/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
@@ -73,6 +75,7 @@ MERGED from [io.reactivex.rxjava2:rxandroid:2.1.1] /root/.gradle/caches/transfor
 MERGED from [de.hdodenhof:circleimageview:3.1.0] /root/.gradle/caches/transforms-2/files-2.1/f8bd862c361c9a7fe21d3d99ee615cad/jetified-circleimageview-3.1.0/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.multidex:multidex:2.0.0] /root/.gradle/caches/transforms-2/files-2.1/fe74efb327f600742d884072c6cb54b9/multidex-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.4] /root/.gradle/caches/transforms-2/files-2.1/04e13705b1d0c896b468b9705bec52d5/jetified-threetenabp-1.2.4/AndroidManifest.xml:2:1-9:12
+MERGED from [com.mindorks.android:prdownloader:0.6.0] /root/.gradle/caches/transforms-2/files-2.1/fb51d91b092fa614479e12918e774d4b/jetified-prdownloader-0.6.0/AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/baa17257aefd75970d3ac2c84146bf83/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:17:1-24:12
 INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:2:1-56:12
 INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:2:1-56:12
@@ -231,6 +234,10 @@ MERGED from [com.github.PhilJay:MPAndroidChart:v3.1.0] /root/.gradle/caches/tran
 MERGED from [com.github.PhilJay:MPAndroidChart:v3.1.0] /root/.gradle/caches/transforms-2/files-2.1/836ae9e948553e937d6131fd376135ec/jetified-MPAndroidChart-v3.1.0/AndroidManifest.xml:16:5-18:41
 MERGED from [me.relex:circleindicator:2.1.4] /root/.gradle/caches/transforms-2/files-2.1/bed3f39d549a6be3d699a336930849cf/jetified-circleindicator-2.1.4/AndroidManifest.xml:7:5-9:41
 MERGED from [me.relex:circleindicator:2.1.4] /root/.gradle/caches/transforms-2/files-2.1/bed3f39d549a6be3d699a336930849cf/jetified-circleindicator-2.1.4/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.barteksc:android-pdf-viewer:2.8.2] /root/.gradle/caches/transforms-2/files-2.1/11bc3db66f343c273e67269050236180/jetified-android-pdf-viewer-2.8.2/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.barteksc:android-pdf-viewer:2.8.2] /root/.gradle/caches/transforms-2/files-2.1/11bc3db66f343c273e67269050236180/jetified-android-pdf-viewer-2.8.2/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.barteksc:pdfium-android:1.7.1] /root/.gradle/caches/transforms-2/files-2.1/875b78db74c7d4445a243cf1a2433d55/jetified-pdfium-android-1.7.1/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.barteksc:pdfium-android:1.7.1] /root/.gradle/caches/transforms-2/files-2.1/875b78db74c7d4445a243cf1a2433d55/jetified-pdfium-android-1.7.1/AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/d2d9a9905fba49314b7b6e18ec91e140/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/d2d9a9905fba49314b7b6e18ec91e140/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/8b60fde4d77862462db8051e92db572c/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
@@ -337,6 +344,8 @@ MERGED from [androidx.multidex:multidex:2.0.0] /root/.gradle/caches/transforms-2
 MERGED from [androidx.multidex:multidex:2.0.0] /root/.gradle/caches/transforms-2/files-2.1/fe74efb327f600742d884072c6cb54b9/multidex-2.0.0/AndroidManifest.xml:20:5-43
 MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.4] /root/.gradle/caches/transforms-2/files-2.1/04e13705b1d0c896b468b9705bec52d5/jetified-threetenabp-1.2.4/AndroidManifest.xml:5:5-44
 MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.4] /root/.gradle/caches/transforms-2/files-2.1/04e13705b1d0c896b468b9705bec52d5/jetified-threetenabp-1.2.4/AndroidManifest.xml:5:5-44
+MERGED from [com.mindorks.android:prdownloader:0.6.0] /root/.gradle/caches/transforms-2/files-2.1/fb51d91b092fa614479e12918e774d4b/jetified-prdownloader-0.6.0/AndroidManifest.xml:22:5-24:41
+MERGED from [com.mindorks.android:prdownloader:0.6.0] /root/.gradle/caches/transforms-2/files-2.1/fb51d91b092fa614479e12918e774d4b/jetified-prdownloader-0.6.0/AndroidManifest.xml:22:5-24:41
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/baa17257aefd75970d3ac2c84146bf83/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /root/.gradle/caches/transforms-2/files-2.1/baa17257aefd75970d3ac2c84146bf83/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
 INJECTED from /home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml

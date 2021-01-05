@@ -752,6 +752,10 @@ attr rippleColor
 attr round
 attr roundPercent
 attr saturation
+attr sb_handlerColor
+attr sb_horizontal
+attr sb_indicatorColor
+attr sb_indicatorTextColor
 attr scopeUris
 attr scrimAnimationDuration
 attr scrimBackground
@@ -1012,6 +1016,7 @@ color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
 color background_material_light
+color before_login_1_background
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark
@@ -1028,10 +1033,12 @@ color checkbox_themeable_attribute_color
 color colorAccent
 color colorBlack
 color colorDimGray
+color colorGreen
 color colorLightBlue
 color colorPrimary
 color colorPrimaryDark
 color colorPrimaryLight
+color colorRed
 color colorSilver
 color colorWhite
 color colorWhiteSmoke
@@ -1643,7 +1650,6 @@ drawable add_photo
 drawable add_video
 drawable avd_hide_password
 drawable avd_show_password
-drawable before_login_1
 drawable before_login_2
 drawable before_login_3
 drawable before_login_4
@@ -1687,6 +1693,10 @@ drawable controll_finance
 drawable controll_personnel
 drawable controll_property
 drawable controll_repair
+drawable default_scroll_handle_bottom
+drawable default_scroll_handle_left
+drawable default_scroll_handle_right
+drawable default_scroll_handle_top
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
 drawable design_ic_visibility
@@ -1745,8 +1755,11 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable style_empty
+drawable style_hollow_green
 drawable style_hollow_light_blue
+drawable style_hollow_red
 drawable style_hollow_white_smoke
+drawable style_radius_black
 drawable style_radius_light_blue
 drawable style_radius_white_smoke
 drawable tenant_attraction
@@ -1830,6 +1843,9 @@ id action_divider
 id action_estateCreateFragment_to_estateFragment
 id action_estateDirectoryFragment_to_estateDirectoryCreateFragment
 id action_estateFragment_to_contractCreateFragment
+id action_estateFragment_to_contractPdfShowFragment
+id action_estateFragment_to_contractUploadFragment
+id action_estateFragment_to_personnelAddFragment
 id action_estateFragment_to_personnelUserInfoFragment2
 id action_estateFragment_to_repairOrderFragment
 id action_estateFragment_to_tenantAttractionsNearbyFragment2
@@ -1926,6 +1942,9 @@ id button_cancel
 id button_choose_plumber
 id button_choose_tenant
 id button_clear_tenant_contract_signature
+id button_contract_upload_select_image
+id button_contract_upload_select_pdf
+id button_contract_upload_submit
 id button_create_contract
 id button_create_contract_select_currency
 id button_create_contract_select_pay_method
@@ -1953,7 +1972,6 @@ id button_select_room
 id button_set_attraction
 id button_set_equipment
 id button_set_housing_rules
-id button_set_housing_rules3
 id button_setup
 id button_start_login
 id button_submit
@@ -1967,6 +1985,8 @@ id button_tenant_setup_person_info
 id button_tenant_setup_privacy
 id button_tenant_setup_score
 id button_tenant_test
+id button_upload_contract
+id button_view_contract_pdf
 id cache_measures
 id cancel_action
 id cancel_button
@@ -2007,6 +2027,8 @@ id container
 id content
 id contentPanel
 id contractCreateFragment
+id contractPdfShowFragment
+id contractUploadFragment
 id coordinator
 id cos
 id custom
@@ -2145,9 +2167,11 @@ id imageView4
 id imageView8
 id imageView_add_image_button
 id imageView_card
+id imageView_contract_upload_select_image
 id imageView_equipment
 id imageView_large
 id imageView_notification_color
+id imageView_show_contract
 id image_card
 id image_card_object_item
 id image_equipment
@@ -2257,6 +2281,7 @@ id password
 id password_toggle
 id path
 id pathRelative
+id pdfView
 id peekHeight
 id percent
 id personnelAddFragment
@@ -2270,6 +2295,7 @@ id position
 id postLayout
 id privacyFragment
 id privacyFragment2
+id progressBar
 id progress_circular
 id progress_horizontal
 id radio
@@ -2534,6 +2560,7 @@ id textView_object_item_phone
 id textView_object_item_rent_amount_per_month
 id textView_object_item_rent_end_date
 id textView_object_item_square_ft
+id textView_object_item_square_ft2
 id textView_object_item_tenant_name
 id textView_object_item_title
 id textView_personnel_account
@@ -2568,6 +2595,7 @@ id textView_title
 id textWatcher
 id text_address
 id text_amount
+id text_contract_upload_text
 id text_date
 id text_equipment
 id text_expireTime
@@ -2603,6 +2631,7 @@ id text_object_item_next_date
 id text_object_item_payment_method
 id text_object_item_rent
 id text_object_item_time_left
+id text_object_item_time_left2
 id text_object_list_address
 id text_object_list_information
 id text_object_list_information4
@@ -2613,6 +2642,8 @@ id text_object_list_title
 id text_personnel_list_name
 id text_repair_date
 id text_repair_list_address
+id text_repair_list_cost
+id text_repair_list_cost2
 id text_repair_list_date
 id text_repair_list_status
 id text_repair_list_title
@@ -2620,6 +2651,7 @@ id text_repair_spend
 id text_repair_status
 id text_repair_title
 id text_repair_title14
+id text_repair_title2
 id text_repair_title3
 id text_repair_title5
 id text_repair_title6
@@ -2747,6 +2779,7 @@ layout card_notification
 layout card_personnel_list
 layout card_plumber
 layout card_repair_list
+layout card_repair_list2
 layout card_repair_order_post
 layout custom_dialog
 layout custom_marker_view
@@ -2772,6 +2805,11 @@ layout fragment_choose_plumber
 layout fragment_choose_property
 layout fragment_contact_us
 layout fragment_contract_create
+layout fragment_contract_show
+layout fragment_contract_upload
+layout fragment_contract_upload_image
+layout fragment_contract_upload_pdf
+layout fragment_contract_upload_text
 layout fragment_data_analysis
 layout fragment_data_analysis_page
 layout fragment_equipment_add
@@ -2886,6 +2924,9 @@ layout text_view_without_line_height
 menu landlord_bottom_nav
 menu tenant_bottom_nav
 menu toolbar
+mipmap before_login_1
+mipmap before_login_1_foreground
+mipmap before_login_1_round
 mipmap ic_launcher
 mipmap ic_launcher_round
 navigation landlord_chat
@@ -3808,6 +3849,7 @@ style Widget_MaterialComponents_Toolbar_PrimarySurface
 style Widget_MaterialComponents_Toolbar_Surface
 style Widget_MaterialComponents_Tooltip
 style Widget_Support_CoordinatorLayout
+style button_radius_black
 style button_radius_primary
 style button_rectangle_primary_hollow
 style card_80dp
@@ -3940,6 +3982,7 @@ styleable RangeSlider values
 styleable RecycleListView paddingBottomNoButtons paddingTopNoTitle
 styleable RecyclerView android_orientation android_clipToPadding android_descendantFocusability fastScrollEnabled fastScrollHorizontalThumbDrawable fastScrollHorizontalTrackDrawable fastScrollVerticalThumbDrawable fastScrollVerticalTrackDrawable layoutManager reverseLayout spanCount stackFromEnd
 styleable ScrimInsetsFrameLayout insetForeground
+styleable ScrollBar sb_handlerColor sb_horizontal sb_indicatorColor sb_indicatorTextColor
 styleable ScrollingViewBehavior_Layout behavior_overlapTop
 styleable SearchView android_focusable android_maxWidth android_inputType android_imeOptions closeIcon commitIcon defaultQueryHint goIcon iconifiedByDefault layout queryBackground queryHint searchHintIcon searchIcon submitBackground suggestionRowLayout voiceIcon
 styleable ShapeAppearance cornerFamily cornerFamilyBottomLeft cornerFamilyBottomRight cornerFamilyTopLeft cornerFamilyTopRight cornerSize cornerSizeBottomLeft cornerSizeBottomRight cornerSizeTopLeft cornerSizeTopRight

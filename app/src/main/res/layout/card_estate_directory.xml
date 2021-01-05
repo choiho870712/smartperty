@@ -13,13 +13,13 @@
 
         <TextView
             android:id="@+id/text_object_folder_title"
-            style="@style/text_normal_black_20sp"
+            style="@style/text_normal_black_16sp"
             android:layout_width="0dp"
             android:layout_marginStart="16dp"
-            android:text="text_object_folder_title"
             android:singleLine="true"
+            android:text="text_object_folder_title"
             app:layout_constraintBottom_toTopOf="@+id/text_object_folder_square_ft"
-            app:layout_constraintEnd_toStartOf="@+id/text_object_folder_rent_rate3"
+            app:layout_constraintEnd_toStartOf="@+id/card_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -91,13 +91,14 @@
             android:layout_height="wrap_content"
             android:text="@string/rentRate"
             app:layout_constraintEnd_toStartOf="@+id/text_object_folder_rent_rate"
-            app:layout_constraintTop_toTopOf="@+id/text_object_folder_title" />
+            app:layout_constraintTop_toTopOf="@+id/text_object_folder_square_ft" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_image"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:layout_margin="8dp"
+            android:layout_marginEnd="8dp"
             app:cardCornerRadius="10dp"
             app:cardElevation="2dp"
             app:layout_constraintBottom_toBottomOf="parent"

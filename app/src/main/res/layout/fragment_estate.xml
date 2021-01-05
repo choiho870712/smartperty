@@ -28,10 +28,9 @@
         <TextView
             android:id="@+id/textView18"
             style="@style/text_normal_gray_16sp"
-            android:text="@string/address_title"
-            app:layout_constraintBottom_toTopOf="@+id/textView20"
+            android:text="@string/square_ft_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView_add_image_button" />
+            app:layout_constraintTop_toBottomOf="@+id/recycler_image" />
 
         <TextView
             android:id="@+id/textView23"
@@ -47,6 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/phone"
+            app:layout_constraintBottom_toBottomOf="@+id/textView20"
             app:layout_constraintStart_toStartOf="@+id/guideline8"
             app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
@@ -61,7 +61,7 @@
         <TextView
             android:id="@+id/textView21"
             style="@style/text_normal_gray_16sp"
-            android:text="@string/square_ft_title"
+            android:text="@string/address_title"
             app:layout_constraintBottom_toTopOf="@+id/textView22"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView20" />
@@ -91,12 +91,11 @@
             android:inputType="none"
             android:singleLine="true"
             android:text="桃園中壢大仁5街123"
-            app:layout_constraintBottom_toBottomOf="@+id/textView18"
-            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintBottom_toBottomOf="@+id/textView21"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/textView18"
-            app:layout_constraintTop_toTopOf="@+id/textView18"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintStart_toEndOf="@+id/textView21"
+            app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
         <EditText
             android:id="@+id/textView_estate_title"
@@ -135,11 +134,11 @@
             android:inputType="none"
             android:singleLine="true"
             android:text="6樓"
-            app:layout_constraintBottom_toTopOf="@+id/textView_object_item_square_ft"
+            app:layout_constraintBottom_toBottomOf="@+id/textView20"
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/textView18"
-            app:layout_constraintTop_toBottomOf="@+id/textView_object_item_address" />
+            app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
         <EditText
             android:id="@+id/textView_object_item_parking_sapce"
@@ -150,10 +149,11 @@
             android:inputType="none"
             android:singleLine="true"
             android:text="樓下B1平面式"
-            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintBottom_toBottomOf="@+id/textView22"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/textView18"
-            app:layout_constraintTop_toBottomOf="@+id/textView_object_item_square_ft" />
+            app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
         <Button
             android:id="@+id/textView_object_item_tenant_name"
@@ -227,13 +227,24 @@
             app:layout_constraintTop_toTopOf="@+id/textView62" />
 
         <Button
-            android:id="@+id/button_set_housing_rules3"
+            android:id="@+id/button_view_contract_pdf"
             style="@style/button_radius_primary"
             android:layout_width="96dp"
             android:layout_height="32dp"
             android:layout_marginStart="16dp"
             android:singleLine="true"
             android:text="瀏覽合約"
+            app:layout_constraintStart_toStartOf="@+id/guideline8"
+            app:layout_constraintTop_toBottomOf="@+id/text_object_item_time_left" />
+
+        <Button
+            android:id="@+id/button_upload_contract"
+            style="@style/button_radius_black"
+            android:layout_width="96dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="16dp"
+            android:singleLine="true"
+            android:text="上傳合約"
             app:layout_constraintStart_toStartOf="@+id/guideline8"
             app:layout_constraintTop_toBottomOf="@+id/text_object_item_time_left" />
 
@@ -245,12 +256,23 @@
             android:background="@drawable/style_empty"
             android:inputType="none"
             android:singleLine="true"
-            android:text="30坪"
-            app:layout_constraintBottom_toTopOf="@+id/textView_object_item_parking_sapce"
-            app:layout_constraintEnd_toStartOf="@+id/guideline8"
-            app:layout_constraintHorizontal_bias="0.5"
+            android:text="30"
+            app:layout_constraintBottom_toBottomOf="@+id/textView18"
             app:layout_constraintStart_toEndOf="@+id/textView18"
-            app:layout_constraintTop_toBottomOf="@+id/textView_object_item_phone" />
+            app:layout_constraintTop_toTopOf="@+id/textView18" />
+
+        <EditText
+            android:id="@+id/textView_object_item_square_ft2"
+            style="@style/text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_empty"
+            android:inputType="none"
+            android:singleLine="true"
+            android:text="坪"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_object_item_square_ft"
+            app:layout_constraintStart_toEndOf="@+id/textView_object_item_square_ft"
+            app:layout_constraintTop_toTopOf="@+id/textView_object_item_square_ft" />
 
         <TextView
             android:id="@+id/textView36"
@@ -258,10 +280,11 @@
             android:layout_width="0dp"
             android:background="@color/colorWhiteSmoke"
             android:text="@string/repairInformationTitle"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_set_housing_rules3" />
+            app:layout_constraintTop_toBottomOf="@+id/text_repair_title5" />
 
         <TextView
             android:id="@+id/textView62"
@@ -271,6 +294,7 @@
             android:layout_marginTop="16dp"
             android:background="@color/colorWhiteSmoke"
             android:text="@string/rentInformationTitle"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button_set_equipment" />
@@ -335,10 +359,21 @@
             style="@style/text_normal_black_16sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="租期"
+            android:text="租期結束"
             app:layout_constraintBottom_toBottomOf="@+id/text_repair_title8"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/text_object_item_deposit"
             app:layout_constraintStart_toEndOf="@+id/text_repair_title8"
+            app:layout_constraintTop_toBottomOf="@+id/text_repair_title6" />
+
+        <TextView
+            android:id="@+id/text_object_item_time_left2"
+            style="@style/text_normal_black_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="租期開始"
+            app:layout_constraintBottom_toBottomOf="@+id/text_repair_title8"
+            app:layout_constraintEnd_toEndOf="@+id/text_object_item_next_date"
+            app:layout_constraintStart_toEndOf="@+id/text_repair_title2"
             app:layout_constraintTop_toBottomOf="@+id/text_repair_title6" />
 
         <TextView
@@ -348,9 +383,11 @@
             android:layout_height="wrap_content"
             android:text="押金"
             app:layout_constraintBottom_toBottomOf="@+id/text_repair_title6"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/text_repair_title14"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/text_repair_title6"
-            app:layout_constraintTop_toTopOf="@+id/text_repair_title6" />
+            app:layout_constraintTop_toTopOf="@+id/text_repair_title6"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/text_repair_title14"
@@ -358,6 +395,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:text="?"
             app:layout_constraintBottom_toTopOf="@+id/text_repair_title6"
             app:layout_constraintEnd_toEndOf="parent"
@@ -401,7 +439,7 @@
             style="@style/text_normal_gray_16sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="租期"
+            android:text="租期結束"
             app:layout_constraintStart_toStartOf="@+id/text_repair_title7"
             app:layout_constraintTop_toBottomOf="@+id/text_repair_title3" />
 
@@ -431,6 +469,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="繳交週期"
+            app:layout_constraintStart_toStartOf="@+id/text_repair_title"
+            app:layout_constraintTop_toBottomOf="@+id/text_repair_title2" />
+
+        <TextView
+            android:id="@+id/text_repair_title2"
+            style="@style/text_normal_gray_16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="租期開始"
             app:layout_constraintStart_toStartOf="@+id/text_repair_title"
             app:layout_constraintTop_toBottomOf="@+id/text_repair_title3" />
 

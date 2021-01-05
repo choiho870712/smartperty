@@ -52,6 +52,15 @@
         <action
             android:id="@+id/action_estateFragment_to_personnelUserInfoFragment2"
             app:destination="@id/personnelUserInfoFragment2" />
+        <action
+            android:id="@+id/action_estateFragment_to_contractPdfShowFragment"
+            app:destination="@id/contractPdfShowFragment" />
+        <action
+            android:id="@+id/action_estateFragment_to_contractUploadFragment"
+            app:destination="@id/contractUploadFragment" />
+        <action
+            android:id="@+id/action_estateFragment_to_personnelAddFragment"
+            app:destination="@id/personnelAddFragment" />
     </fragment>
     <fragment
         android:id="@+id/estateDirectoryFragment"
@@ -233,5 +242,15 @@
         android:name="com.smartperty.smartperty.landlord.menu.personnel.PersonnelUserInfoFragment"
         android:label="fragment_personnel_user_info"
         tools:layout="@layout/fragment_personnel_user_info" />
+    <fragment
+        android:id="@+id/contractPdfShowFragment"
+        android:name="com.smartperty.smartperty.tenant.home.contract.ContractShowFragment"
+        android:label="瀏覽合約"
+        tools:layout="@layout/fragment_contract_show" />
+    <fragment
+        android:id="@+id/contractUploadFragment"
+        android:name="com.smartperty.smartperty.tenant.home.contract.ContractUploadFragment"
+        android:label="上傳合約"
+        tools:layout="@layout/fragment_contract_upload" />
 
 </navigation>

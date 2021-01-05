@@ -22,7 +22,33 @@
   {
     "name": "landlord_menu",
     "navigationXmlIds": [],
-    "deepLinks": []
+    "deepLinks": [
+      {
+        "schemes": [
+          "android-app"
+        ],
+        "host": "com.smartperty.smartperty",
+        "port": -1,
+        "path": "/estateListFragment",
+        "sourceFilePosition": {
+          "mSourceFile": {
+            "mSourceFile": {
+              "path": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/navigation/landlord_menu.xml"
+            },
+            "mDescription": "landlord_menu"
+          },
+          "mSourcePosition": {
+            "mStartLine": 82,
+            "mStartColumn": 8,
+            "mStartOffset": 4160,
+            "mEndLine": 82,
+            "mEndColumn": 89,
+            "mEndOffset": 4241
+          }
+        },
+        "isAutoVerify": false
+      }
+    ]
   },
   {
     "name": "landlord_notification",
@@ -31,7 +57,9 @@
   },
   {
     "name": "landlord_home",
-    "navigationXmlIds": [],
+    "navigationXmlIds": [
+      "landlord_menu"
+    ],
     "deepLinks": []
   },
   {

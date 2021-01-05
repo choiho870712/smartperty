@@ -15,6 +15,7 @@ data class RepairOrder(
     var type: String = "",
     var description: String = "",
     var date: String = "",
+    var cost: Int = 0,
 
     var participant: MutableList<User> = mutableListOf(),
     var postList: MutableList<RepairOrderPost> = mutableListOf()

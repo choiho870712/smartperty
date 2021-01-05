@@ -1,5 +1,7 @@
 package com.smartperty.smartperty.data
 
+import android.graphics.Bitmap
+
 data class Contract(
     var contractId: String = "nil",
     var estate: Estate? = null,
@@ -14,7 +16,10 @@ data class Contract(
     var currency: String = "",
     var deposit: Int = 0,
     var pdfUrl: MutableList<String> = mutableListOf(),
-    var jpgUrl: MutableList<String> = mutableListOf()
+    var jpgUrl: MutableList<String> = mutableListOf(),
+
+    var pdfString: String = "",
+    var jpgBitmap: Bitmap? = null
 ) {
     fun compareId(id: String): Boolean {
         return id == this.contractId

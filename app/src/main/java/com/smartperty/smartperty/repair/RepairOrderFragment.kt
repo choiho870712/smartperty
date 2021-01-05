@@ -55,6 +55,8 @@ class RepairOrderFragment : Fragment() {
                 builderInner.setPositiveButton("是") { dialog, which ->
                     root.textView_repair_order_status.text = strName
                     GlobalVariables.repairOrder.status = strName!!
+                    setStatusButtonColor()
+
                     Thread {
                         GlobalVariables.api.changeEventStatus(
                             GlobalVariables.repairOrder.landlord!!.id,
@@ -105,11 +107,61 @@ class RepairOrderFragment : Fragment() {
         }
 
         root.textView_repair_order_title.text = repairOrder.description
-
         root.textView_repair_order_repair_date_time.text = repairOrder.date
-
-//        root.textView_repair_order_status.text = RepairStatus.getStringByStatus(repairOrder.status)
         root.textView_repair_order_status.text = repairOrder.status
+
+        setStatusButtonColor()
+    }
+
+    private fun setStatusButtonColor() {
+        val myDrawable = when(GlobalVariables.repairOrder.status) {
+            "選擇狀態" -> {
+                R.drawable.style_hollow_red
+            }
+            "已接案" -> {
+                R.drawable.style_hollow_light_blue
+            }
+            "已指派" -> {
+                R.drawable.style_hollow_light_blue
+            }
+            "處理中" -> {
+                R.drawable.style_hollow_light_blue
+            }
+            "已結案" -> {
+                R.drawable.style_hollow_green
+            }
+            else -> {
+                R.drawable.style_hollow_red
+            }
+        }
+
+        root.textView_repair_order_status.background =
+            requireActivity().resources.getDrawable(myDrawable)
+
+        val myTextColor = when(GlobalVariables.repairOrder.status) {
+            "選擇狀態" -> {
+                R.color.colorRed
+            }
+            "已接案" -> {
+                R.color.colorLightBlue
+            }
+            "已指派" -> {
+                R.color.colorLightBlue
+            }
+            "處理中" -> {
+                R.color.colorLightBlue
+            }
+            "已結案" -> {
+                R.color.colorGreen
+            }
+            else -> {
+                R.color.colorRed
+            }
+        }
+
+        root.textView_repair_order_status.setTextColor(
+            requireActivity().resources.getColor(myTextColor)
+        )
     }
 
     private fun createPostList() {

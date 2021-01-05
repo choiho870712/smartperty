@@ -19,7 +19,8 @@ data class Estate (
 
     var landlord: User? = null,
     var tenant: User? = null,
-    var contract: Contract? = null,
+//    var contract: Contract? = null,
+    var contract: Contract? = Contract(),
 
     var groupName: String = "",
     var objectName: String = "",

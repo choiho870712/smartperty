@@ -1,26 +1,50 @@
 package com.smartperty.smartperty.utils
 
 import android.graphics.Bitmap
+import android.util.Log
 import com.smartperty.smartperty.data.Contract
 import com.smartperty.smartperty.data.Estate
 import com.smartperty.smartperty.data.RepairOrder
 import com.smartperty.smartperty.data.User
 
 object Utils {
+    var isModifyingUserList = false
+    var isModifyingRepairList = false
+
     fun addUserToUserList(user: User) {
-        val updateTarget = searchUserFromUserList(user.id)
-        if (updateTarget != null) {
-            updateTarget.update(user)
-        }
-        else
-            GlobalVariables.userList.add(user)
+        Thread {
+            val updateTarget = searchUserFromUserList(user.id)
+            while (isModifyingUserList)
+                Thread.sleep(500)
+
+            isModifyingUserList = true
+
+            if (updateTarget != null)
+                updateTarget.update(user)
+            else
+                GlobalVariables.userList.add(user)
+
+            isModifyingUserList = false
+
+        }.start()
     }
 
     fun searchUserFromUserList(userId: String): User? {
-        GlobalVariables.userList.forEach {
-            if (it.compareId(userId))
-                return it
+        while (isModifyingUserList)
+            Thread.sleep(500)
+
+        isModifyingUserList = true
+
+        val iterator = GlobalVariables.userList.iterator()
+        while(iterator.hasNext()) {
+            val user = iterator.next()
+            if (user.compareId(userId)) {
+                isModifyingUserList = false
+                return user
+            }
         }
+
+        isModifyingUserList = false
 
         return null
     }
@@ -98,19 +122,45 @@ object Utils {
     }
 
     fun addRepairOrderToRepairList(repairOrder: RepairOrder) {
-        val updateTarget = searchRepairOrderFromRepairList(repairOrder.event_id)
-        if (updateTarget != null) {
-            updateTarget.update(repairOrder)
-        }
-        else
-            GlobalVariables.repairList.add(repairOrder)
+        Thread {
+            val updateTarget = searchRepairOrderFromRepairList(repairOrder.event_id)
+
+            while (isModifyingRepairList)
+                Thread.sleep(500)
+
+            isModifyingRepairList = true
+
+            if (updateTarget != null) {
+                updateTarget.update(repairOrder)
+            }
+            else
+                GlobalVariables.repairList.add(repairOrder)
+
+            isModifyingRepairList = false
+        }.start()
     }
 
     fun searchRepairOrderFromRepairList(repairOrderId: String): RepairOrder? {
+        while (isModifyingRepairList)
+            Thread.sleep(500)
+
+        isModifyingRepairList = true
+
+        val iterator = GlobalVariables.repairList.iterator()
+        while(iterator.hasNext()) {
+            val repairOrder = iterator.next()
+            if (repairOrder.compareId(repairOrderId)) {
+                isModifyingRepairList = false
+                return repairOrder
+            }
+        }
+
         GlobalVariables.repairList.forEach {
             if (it.compareId(repairOrderId))
                 return it
         }
+
+        isModifyingRepairList = false
 
         return null
     }
@@ -197,16 +247,18 @@ object Utils {
     }
 
     fun getContract(landlordId: String, contractId: String): Contract? {
-        if (contractId == "nil")
-            return null
+        return Contract()
 
-        var contract = searchContractFromContractList(contractId)
-//        if (contract == null) {
-//            contract = GlobalVariables.api.getContractByContractId(landlordId, contractId)
-//            addContractToContractList(contract)
-//        }
-
-        return contract
+//        if (contractId == "nil")
+//            return null
+//
+//        var contract = searchContractFromContractList(contractId)
+////        if (contract == null) {
+////            contract = GlobalVariables.api.getContractByContractId(landlordId, contractId)
+////            addContractToContractList(contract)
+////        }
+//
+//        return contract
     }
 
     fun createContract(contract:Contract) {

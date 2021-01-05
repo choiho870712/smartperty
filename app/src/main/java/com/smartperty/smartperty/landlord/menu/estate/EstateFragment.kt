@@ -5,17 +5,22 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.text.InputType
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.graphics.drawable.toBitmap
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.smartperty.smartperty.R
+import com.smartperty.smartperty.data.Contract
+import com.smartperty.smartperty.data.User
 import com.smartperty.smartperty.repair.ImageListAdapter
+import com.smartperty.smartperty.repair.RepairList2Adapter
 import com.smartperty.smartperty.repair.RepairListAdapter
 import com.smartperty.smartperty.tools.TimeUtil
 import com.smartperty.smartperty.utils.GlobalVariables
@@ -109,6 +114,27 @@ class EstateFragment : Fragment() {
                 setEditable(false)
                 setButtonEnable(true)
             }
+
+            if (GlobalVariables.estate.tenant != null) {
+                root.textView_object_item_tenant_name.setOnClickListener {
+                    GlobalVariables.personnel = GlobalVariables.estate.tenant!!
+                    GlobalVariables.personnelUserInfoUsage = "read"
+                    root.findNavController().navigate(
+                        R.id.action_estateFragment_to_personnelUserInfoFragment2
+                    )
+                }
+            }
+            else {
+                root.textView_object_item_tenant_name.text = "新增房客"
+                root.textView_object_item_tenant_name.setOnClickListener {
+                    GlobalVariables.personnel = User()
+                    GlobalVariables.personnel.auth = "tenant"
+                    GlobalVariables.personnelUserInfoUsage = "create"
+                    root.findNavController().navigate(
+                        R.id.action_estateFragment_to_personnelUserInfoFragment2
+                    )
+                }
+            }
         }
 
         imageListAdapter = ImageListAdapter(requireActivity(), root, imageList)
@@ -121,18 +147,9 @@ class EstateFragment : Fragment() {
         root.recycler_repair.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, true )
-            adapter = RepairListAdapter(
+            adapter = RepairList2Adapter(
                 requireActivity(), root,
                 GlobalVariables.estate.repairList
-            )
-        }
-
-        if (GlobalVariables.estate.tenant != null)
-        root.textView_object_item_tenant_name.setOnClickListener {
-            GlobalVariables.personnel = GlobalVariables.estate.tenant!!
-            GlobalVariables.personnelUserInfoUsage = "read"
-            root.findNavController().navigate(
-                R.id.action_estateFragment_to_personnelUserInfoFragment2
             )
         }
 
@@ -158,6 +175,29 @@ class EstateFragment : Fragment() {
         }
         root.imageView_add_image_button.setOnClickListener {
             pickImageFromGallery()
+        }
+
+        root.button_view_contract_pdf.visibility = View.GONE
+        root.button_upload_contract.visibility = View.GONE
+
+        if (GlobalVariables.estate.contract != null) {
+            if (GlobalVariables.estate.contract!!.pdfString.isEmpty() &&
+                GlobalVariables.estate.contract!!.jpgBitmap == null) {
+                root.button_upload_contract.visibility = View.VISIBLE
+                root.button_upload_contract.setOnClickListener {
+                    root.findNavController().navigate(
+                        R.id.action_estateFragment_to_contractUploadFragment
+                    )
+                }
+            }
+            else {
+                root.button_view_contract_pdf.visibility = View.VISIBLE
+                root.button_view_contract_pdf.setOnClickListener {
+                    root.findNavController().navigate(
+                        R.id.action_estateFragment_to_contractPdfShowFragment
+                    )
+                }
+            }
         }
 
         return root

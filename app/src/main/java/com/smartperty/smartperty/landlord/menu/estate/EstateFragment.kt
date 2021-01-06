@@ -56,64 +56,66 @@ class EstateFragment : Fragment() {
         fillInformation()
 
         if (GlobalVariables.loginUser.auth == "landlord") {
-            GlobalVariables.toolBarUtils.setEditButtonVisibility(true)
-            GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
-                when(it.itemId) {
-                    R.id.button_edit -> {
-                        setEditable(true)
-                        setButtonEnable(false)
-                        true
-                    }
-                    R.id.button_cancel -> {
-                        if (GlobalVariables.estate.objectId.isNotEmpty()) {
-                            fillInformation()
-                            setEditable(false)
-                            setButtonEnable(true)
-                        }
-                        else {
-                            root.findNavController().navigateUp()
-                        }
-                        true
-                    }
-                    R.id.button_submit -> {
-                        // setup dialog builder
-                        val builder = android.app.AlertDialog.Builder(requireActivity())
-                        builder.setTitle("確定要送出嗎？")
-
-                        builder.setPositiveButton("是") { _, _ ->
-                            storeInformation()
-                            fillInformation()
-                            setEditable(false)
-                            setButtonEnable(true)
-                        }
-                        builder.setNegativeButton("否") { _, _ ->
-                            if (GlobalVariables.estate.objectId.isNotEmpty()) {
-                                fillInformation()
-                                setEditable(false)
-                                setButtonEnable(true)
-                            }
-                        }
-
-                        // create dialog and show it
-                        requireActivity().runOnUiThread{
-                            val dialog = builder.create()
-                            dialog.show()
-                        }
-
-                        true
-                    }
-                    else -> false
-                }
-            }
-
-            if (GlobalVariables.estate.objectId.isEmpty()) {
-                setEditable(true)
-                setButtonEnable(false)
-            }
-            else {
-                setEditable(false)
-                setButtonEnable(true)
-            }
+            //GlobalVariables.toolBarUtils.setEditButtonVisibility(true)
+//            GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
+//                when(it.itemId) {
+//                    R.id.button_edit -> {
+//                        setEditable(true)
+//                        setButtonEnable(false)
+//                        true
+//                    }
+//                    R.id.button_cancel -> {
+//                        if (GlobalVariables.estate.objectId.isNotEmpty()) {
+//                            fillInformation()
+//                            setEditable(false)
+//                            setButtonEnable(true)
+//                        }
+//                        else {
+//                            root.findNavController().navigateUp()
+//                        }
+//                        true
+//                    }
+//                    R.id.button_submit -> {
+//                        // setup dialog builder
+//                        val builder = android.app.AlertDialog.Builder(requireActivity())
+//                        builder.setTitle("確定要送出嗎？")
+//
+//                        builder.setPositiveButton("是") { _, _ ->
+//                            storeInformation()
+//                            fillInformation()
+//                            setEditable(false)
+//                            setButtonEnable(true)
+//                        }
+//                        builder.setNegativeButton("否") { _, _ ->
+//                            if (GlobalVariables.estate.objectId.isNotEmpty()) {
+//                                fillInformation()
+//                                setEditable(false)
+//                                setButtonEnable(true)
+//                            }
+//                        }
+//
+//                        // create dialog and show it
+//                        requireActivity().runOnUiThread{
+//                            val dialog = builder.create()
+//                            dialog.show()
+//                        }
+//
+//                        true
+//                    }
+//                    else -> false
+//                }
+//            }
+//
+//            if (GlobalVariables.estate.objectId.isEmpty()) {
+//                setEditable(true)
+//                setButtonEnable(false)
+//            }
+//            else {
+//                setEditable(false)
+//                setButtonEnable(true)
+//            }
+            setEditable(false)
+            setButtonEnable(true)
 
             if (GlobalVariables.estate.tenant != null) {
                 root.textView_object_item_tenant_name.setOnClickListener {
@@ -168,17 +170,13 @@ class EstateFragment : Fragment() {
                 R.id.action_estateFragment_to_tenantHosingRulesFragment2
             )
         }
-        root.button_create_contract.setOnClickListener {
-            root.findNavController().navigate(
-                R.id.action_estateFragment_to_contractCreateFragment
-            )
-        }
         root.imageView_add_image_button.setOnClickListener {
             pickImageFromGallery()
         }
 
         root.button_view_contract_pdf.visibility = View.GONE
         root.button_upload_contract.visibility = View.GONE
+        root.button_create_contract.visibility = View.GONE
 
         if (GlobalVariables.estate.contract != null) {
             if (GlobalVariables.estate.contract!!.pdfString.isEmpty() &&
@@ -197,6 +195,14 @@ class EstateFragment : Fragment() {
                         R.id.action_estateFragment_to_contractPdfShowFragment
                     )
                 }
+            }
+        }
+        else {
+            root.button_create_contract.visibility = View.VISIBLE
+            root.button_create_contract.setOnClickListener {
+                root.findNavController().navigate(
+                    R.id.action_estateFragment_to_contractCreateFragment
+                )
             }
         }
 

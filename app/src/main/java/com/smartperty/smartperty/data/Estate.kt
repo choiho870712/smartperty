@@ -34,7 +34,7 @@ data class Estate (
     var rent: Int = 0,
     var parkingSpace: String = "",
     var type: String = "",
-    var purchasePrice: Int = 0,
+    var purchasePrice: Long = 0,
     var rules: String = "",
 
     var roomList: MutableList<Room> = mutableListOf(),

@@ -23,7 +23,9 @@ import com.smartperty.smartperty.tools.TimeUtil
 import com.smartperty.smartperty.utils.GlobalVariables
 import com.smartperty.smartperty.utils.Utils
 import kotlinx.android.synthetic.main.activity_tenant.*
+import kotlinx.android.synthetic.main.fragment_repair_add_post.view.*
 import kotlinx.android.synthetic.main.fragment_repair_order_create.view.*
+import kotlinx.android.synthetic.main.fragment_repair_order_create.view.recyclerView_image
 import java.util.*
 
 class RepairOrderCreateFragment : Fragment() {
@@ -134,16 +136,22 @@ class RepairOrderCreateFragment : Fragment() {
         if (GlobalVariables.repairOrder.estate != null)
             GlobalVariables.repairOrder.landlord = GlobalVariables.repairOrder.estate!!.landlord
         GlobalVariables.repairOrder.description = root.textView_repair_order_title.text.toString()
-        GlobalVariables.repairOrder.date = TimeUtil.StampToDateTime(
-            GlobalVariables.repairOrder.timestamp, Locale.TAIWAN
-        )
+        GlobalVariables.repairOrder.date = TimeUtil.getCurrentDateTime()
 
         GlobalVariables.repairList.add(GlobalVariables.repairOrder)
         GlobalVariables.repairListAdapter!!.notifyDataSetChanged()
 
+        val post = RepairOrderPost()
+        post.sender = GlobalVariables.loginUser
+        post.message = GlobalVariables.repairOrder.description
+        post.createDateTime = TimeUtil.getCurrentDateTime()
+        post.imageList = imageList
+        GlobalVariables.repairOrder.postList.add(post)
+
         Thread {
             Utils.createRepairOrder(GlobalVariables.repairOrder)
         }.start()
+
     }
 
     private fun setPickImageButton() {

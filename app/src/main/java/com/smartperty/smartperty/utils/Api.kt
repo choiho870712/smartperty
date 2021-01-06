@@ -96,42 +96,47 @@ class Api {
         val json = "{\"landlord_id\": \"$landlordId\", \"contractId\": \"$contractId\"}"
         val rawJsonString = callApi(json, urlGetContractByContractId)
         val jsonObject = JSONObject(rawJsonString)
-        val item = jsonObject.getJSONObject("Items")
+        try {
+            val item = jsonObject.getJSONObject("Items")
 
-        val date = item.getJSONObject("date")
-        val payment = item.getJSONObject("payment")
-        val tenant_id = item.getString("tenant_id")
-        val pdf_or_jpg_url = item.getJSONArray("pdf_or_jpg_url")
-        val landlord_id = item.getString("landlord_id")
-        val contract_id = item.getString("contract_id")
-        val object_id = item.getString("object_id")
+            val date = item.getJSONObject("date")
+            val payment = item.getJSONObject("payment")
+            val tenant_id = item.getString("tenant_id")
+            val pdf_or_jpg_url = item.getJSONArray("pdf_or_jpg_url")
+            val landlord_id = item.getString("landlord_id")
+            val contract_id = item.getString("contract_id")
+            val object_id = item.getString("object_id")
 
-        val end_date = date.getLong("end_date")
-        val time_left = date.getInt("time_left")
-        val start_date = date.getLong("start_date")
-        val next_date = date.getLong("next_date")
+            val end_date = date.getLong("end_date")
+            val time_left = date.getInt("time_left")
+            val start_date = date.getLong("start_date")
+            val next_date = date.getLong("next_date")
 
-        val deposit = payment.getInt("deposit")
-        val currency = payment.getString("currency")
-        val rent = payment.getInt("rent")
-        val payment_method = payment.getString("payment_method")
+            val deposit = payment.getInt("deposit")
+            val currency = payment.getString("currency")
+            val rent = payment.getInt("rent")
+            val payment_method = payment.getString("payment_method")
 
-        // TODO get PDF or JPG
+            // TODO get PDF or JPG
 
-        return Contract(
-            contractId = contract_id,
-            estate = Utils.getEstate(object_id),
-            landlord = Utils.getUser(landlord_id),
-            tenant = Utils.getUser(tenant_id),
-            rent = rent,
-            payment_method = payment_method,
-            startDate = start_date,
-            nextDate = next_date,
-            endDate = end_date,
-            timeLeft = time_left,
-            currency = currency,
-            deposit = deposit
-        )
+            return Contract(
+                contractId = contract_id,
+                estate = Utils.getEstate(object_id),
+                landlord = Utils.getUser(landlord_id),
+                tenant = Utils.getUser(tenant_id),
+                rent = rent,
+                payment_method = payment_method,
+                startDate = start_date,
+                nextDate = next_date,
+                endDate = end_date,
+                timeLeft = time_left,
+                currency = currency,
+                deposit = deposit
+            )
+        }
+        catch (e:Exception) {
+            return Contract()
+        }
     }
 
     fun createAccount(user: User, object_id: String = "") : String {
@@ -242,7 +247,7 @@ class Api {
             fullAddress = information.getString("full_address"),
             objectName = information.getString("object_name"),
             parkingSpace = information.getString("parking_space"),
-            purchasePrice = information.getInt("purchase_price"),
+            purchasePrice = information.getLong("purchase_price"),
             region = information.getString("region"),
             rent = information.getInt("rent"),
             road = information.getString("road"),

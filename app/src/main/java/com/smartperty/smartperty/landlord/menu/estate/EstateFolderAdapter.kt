@@ -33,7 +33,7 @@ class EstateFolderAdapter(private val activity: Activity,
         holder.title.text = myDataset[position].objectName
         holder.address.text = myDataset[position].fullAddress
         holder.tenantName.text = myDataset[position].tenant?.name ?: ""
-        holder.rentAmount.text = myDataset[position].rent.toString()
+        holder.rentAmount.text = myDataset[position].purchasePrice.toString()
         holder.squareFt.text = myDataset[position].area.toString()
 
         holder.selectButton.visibility = View.GONE

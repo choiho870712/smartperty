@@ -90,7 +90,7 @@ class EstateCreateFragment : Fragment() {
                             GlobalVariables.estate.description =
                                 root.edit_create_property_description.text.toString()
                             GlobalVariables.estate.purchasePrice =
-                                root.edit_create_property_purchase_price.text.toString().toInt()
+                                root.edit_create_property_purchase_price.text.toString().toLong()
 
                             GlobalVariables.estate.imageList.clear()
                             GlobalVariables.estate.imageList.addAll(imageList)

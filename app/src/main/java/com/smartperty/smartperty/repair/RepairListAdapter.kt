@@ -42,11 +42,10 @@ class RepairListAdapter(private val activity: Activity,
             holder.address.text = "nil"
         }
         holder.title.text = myDataset[position].description
-//        holder.status.text = RepairStatus.getStringByStatus(myDataset[position].status)
         holder.status.text = myDataset[position].status
+        holder.date.text = myDataset[position].date
 
         if (myDataset[position].postList.isNotEmpty()) {
-            holder.date.text = myDataset[position].postList[0].createDateTime
             if (myDataset[position].postList[0].imageList.isNotEmpty())
                 holder.image.setImageBitmap(myDataset[position].postList[0].imageList[0])
             else

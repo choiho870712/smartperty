@@ -1,6 +1,8 @@
 package com.smartperty.smartperty.tools
 
+import android.annotation.SuppressLint
 import org.threeten.bp.Instant
+import org.threeten.bp.LocalDateTime
 import org.threeten.bp.ZoneOffset
 import org.threeten.bp.format.DateTimeFormatter
 import java.text.SimpleDateFormat
@@ -9,15 +11,24 @@ import java.util.*
 object TimeUtil {
 
     //2018-03-22 19:02:12
+//    private fun _getCurrentDateTime(): String {
+//        return DateTimeFormatter
+//            .ofPattern("yyyy/MM/dd HH:mm")
+//            .withZone(ZoneOffset.UTC)
+//            .format(Instant.now())
+//    }
+
+    @SuppressLint("SimpleDateFormat")
     fun getCurrentDateTime(): String {
-        return DateTimeFormatter
-            .ofPattern("yyyy/MM/dd HH:mm")
-            .withZone(ZoneOffset.UTC)
-            .format(Instant.now())
+        val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+        val formatter = SimpleDateFormat("yyyy/MM/dd HH:mm")
+        return formatter.format(parser.parse(LocalDateTime.now().toString())!!)
     }
 
+    @SuppressLint("SimpleDateFormat")
     fun getCurrentUnixTimeStamp(): Long {
-        return DateTimeToStamp(getCurrentDateTime(), Locale.TAIWAN)
+        val simpleDateFormat = SimpleDateFormat("yyyy/MM/dd HH:mm")
+        return simpleDateFormat.parse(getCurrentDateTime()).time / 1000
     }
 
     @JvmStatic

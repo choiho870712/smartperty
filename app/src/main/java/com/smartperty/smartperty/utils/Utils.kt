@@ -116,6 +116,7 @@ object Utils {
 
     fun createEstate(estate:Estate) {
         Thread{
+            GlobalVariables.estateFolder.list.add(estate)
             GlobalVariables.api.createProperty(estate)
             addEstateToEstateList(estate)
         }.start()
@@ -194,6 +195,13 @@ object Utils {
             addRepairOrderToRepairList(repairOrder)
             if (repairOrder.estate != null)
                 repairOrder.estate!!.repairList.add(repairOrder)
+
+            GlobalVariables.api.updateEventInformation(
+                GlobalVariables.repairOrder.landlord!!.id,
+                GlobalVariables.repairOrder.event_id,
+                GlobalVariables.repairOrder.description,
+                GlobalVariables.repairOrder.postList[0]
+            )
         }.start()
     }
 
@@ -247,18 +255,16 @@ object Utils {
     }
 
     fun getContract(landlordId: String, contractId: String): Contract? {
-        return Contract()
+        if (contractId == "nil")
+            return null
 
-//        if (contractId == "nil")
-//            return null
-//
-//        var contract = searchContractFromContractList(contractId)
-////        if (contract == null) {
-////            contract = GlobalVariables.api.getContractByContractId(landlordId, contractId)
-////            addContractToContractList(contract)
-////        }
-//
-//        return contract
+        var contract = searchContractFromContractList(contractId)
+        if (contract == null) {
+            contract = GlobalVariables.api.getContractByContractId(landlordId, contractId)
+            addContractToContractList(contract)
+        }
+
+        return contract
     }
 
     fun createContract(contract:Contract) {

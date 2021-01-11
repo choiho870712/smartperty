@@ -40,15 +40,15 @@ class EstateAdapter(private val activity: Activity,
             holder.image.setImageBitmap(myDataset[position].imageList[0])
 
         holder.cardView.setOnClickListener {
-            parentView.findNavController().navigate(
-                R.id.action_choosePropertyFragment_to_landlordObjectFragment
-            )
-        }
-
-        holder.buttonSubmit.setOnClickListener {
             GlobalVariables.estate = myDataset[holder.index]
             GlobalVariables.repairOrder.estate = GlobalVariables.estate
             parentView.findNavController().navigateUp()
+        }
+
+        holder.buttonSubmit.setOnClickListener {
+            parentView.findNavController().navigate(
+                R.id.action_choosePropertyFragment_to_landlordObjectFragment
+            )
         }
     }
 

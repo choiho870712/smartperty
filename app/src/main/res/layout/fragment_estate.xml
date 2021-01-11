@@ -30,7 +30,7 @@
             style="@style/text_normal_gray_16sp"
             android:text="@string/square_ft_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_image" />
+            app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
         <TextView
             android:id="@+id/textView23"
@@ -54,7 +54,6 @@
             android:id="@+id/textView20"
             style="@style/text_normal_gray_16sp"
             android:text="@string/floor_title"
-            app:layout_constraintBottom_toTopOf="@+id/textView21"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
@@ -62,16 +61,15 @@
             android:id="@+id/textView21"
             style="@style/text_normal_gray_16sp"
             android:text="@string/address_title"
-            app:layout_constraintBottom_toTopOf="@+id/textView22"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView20" />
+            app:layout_constraintTop_toBottomOf="@+id/recycler_image" />
 
         <TextView
             android:id="@+id/textView22"
             style="@style/text_normal_gray_16sp"
             android:text="@string/parking_space_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+            app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
         <TextView
             android:id="@+id/textView78"
@@ -90,11 +88,11 @@
             android:background="@drawable/style_empty"
             android:inputType="none"
             android:singleLine="true"
-            app:layout_constraintBottom_toBottomOf="@+id/textView21"
+            app:layout_constraintBottom_toTopOf="@+id/textView18"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/textView21"
-            app:layout_constraintTop_toBottomOf="@+id/textView20" />
+            app:layout_constraintTop_toTopOf="@+id/textView21" />
 
         <EditText
             android:id="@+id/textView_estate_title"
@@ -150,7 +148,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/textView18"
-            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+            app:layout_constraintTop_toTopOf="@+id/textView22" />
 
         <Button
             android:id="@+id/textView_object_item_tenant_name"
@@ -219,7 +217,7 @@
             android:layout_height="32dp"
             android:layout_marginEnd="16dp"
             android:singleLine="true"
-            android:text="建立新合約"
+            android:text="新增"
             app:layout_constraintEnd_toEndOf="@+id/textView62"
             app:layout_constraintTop_toTopOf="@+id/textView62" />
 
@@ -232,7 +230,7 @@
             android:singleLine="true"
             android:text="瀏覽合約"
             app:layout_constraintStart_toStartOf="@+id/guideline8"
-            app:layout_constraintTop_toBottomOf="@+id/text_object_item_time_left" />
+            app:layout_constraintTop_toBottomOf="@+id/text_object_item_end_date" />
 
         <Button
             android:id="@+id/button_upload_contract"
@@ -243,7 +241,7 @@
             android:singleLine="true"
             android:text="上傳合約"
             app:layout_constraintStart_toStartOf="@+id/guideline8"
-            app:layout_constraintTop_toBottomOf="@+id/text_object_item_time_left" />
+            app:layout_constraintTop_toBottomOf="@+id/text_object_item_end_date" />
 
         <EditText
             android:id="@+id/textView_object_item_square_ft"
@@ -341,29 +339,28 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/text_repair_title"
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintStart_toEndOf="@+id/text_repair_title"
             app:layout_constraintTop_toBottomOf="@+id/textView62" />
 
         <TextView
-            android:id="@+id/text_object_item_time_left"
+            android:id="@+id/text_object_item_end_date"
             style="@style/text_normal_black_16sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/text_repair_title8"
-            app:layout_constraintEnd_toEndOf="@+id/text_object_item_deposit"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/text_repair_title8"
             app:layout_constraintTop_toBottomOf="@+id/text_repair_title6" />
 
         <TextView
-            android:id="@+id/text_object_item_time_left2"
+            android:id="@+id/text_object_item_start_date"
             style="@style/text_normal_black_16sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/text_repair_title8"
-            app:layout_constraintEnd_toEndOf="@+id/text_object_item_next_date"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintStart_toEndOf="@+id/text_repair_title2"
             app:layout_constraintTop_toBottomOf="@+id/text_repair_title6" />
 
@@ -373,7 +370,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/text_repair_title6"
-            app:layout_constraintEnd_toEndOf="@+id/text_repair_title14"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/text_repair_title6"
             app:layout_constraintTop_toTopOf="@+id/text_repair_title6"
@@ -385,7 +382,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toTopOf="@+id/text_repair_title6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/text_repair_title7"
@@ -397,7 +393,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/text_repair_title5"
-            app:layout_constraintEnd_toEndOf="@+id/text_object_item_rent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintStart_toEndOf="@+id/text_repair_title5"
             app:layout_constraintTop_toTopOf="@+id/text_repair_title5" />
 
@@ -407,7 +403,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/text_repair_title3"
-            app:layout_constraintEnd_toEndOf="@+id/text_object_item_rent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintStart_toEndOf="@+id/text_repair_title3"
             app:layout_constraintTop_toTopOf="@+id/text_repair_title3" />
 

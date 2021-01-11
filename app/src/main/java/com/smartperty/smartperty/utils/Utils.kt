@@ -1,4 +1,4 @@
-package com.smartperty.smartperty.utils
+    package com.smartperty.smartperty.utils
 
 import android.graphics.Bitmap
 import android.util.Log
@@ -10,12 +10,14 @@ import com.smartperty.smartperty.data.User
 object Utils {
     var isModifyingUserList = false
     var isModifyingRepairList = false
+    var isModifyingEstate = false
 
     fun addUserToUserList(user: User) {
         Thread {
             val updateTarget = searchUserFromUserList(user.id)
-            while (isModifyingUserList)
-                Thread.sleep(500)
+
+//            while (isModifyingUserList)
+//                Thread.sleep(500)
 
             isModifyingUserList = true
 
@@ -30,6 +32,7 @@ object Utils {
     }
 
     fun searchUserFromUserList(userId: String): User? {
+
         while (isModifyingUserList)
             Thread.sleep(500)
 
@@ -56,6 +59,7 @@ object Utils {
         var user = searchUserFromUserList(userId)
         if (user == null) {
             user = GlobalVariables.api.getUserInformation(userId)
+            Log.d(">>>>>>>>>>>>>", userId + ":" + user.name)
             addUserToUserList(user)
         }
 
@@ -70,19 +74,33 @@ object Utils {
     }
 
     fun addEstateToEstateList(estate: Estate) {
-        val updateTarget = searchEstateFromEstateList(estate.objectId)
-        if (updateTarget != null) {
-            updateTarget.update(estate)
-        }
-        else
-            GlobalVariables.estateList.add(estate)
+        Thread {
+            val updateTarget = searchEstateFromEstateList(estate.objectId)
+
+            isModifyingEstate = true
+
+            if (updateTarget != null) {
+                updateTarget.update(estate)
+            }
+            else
+                GlobalVariables.estateList.add(estate)
+
+            isModifyingEstate = false
+        }.start()
     }
 
     fun searchEstateFromEstateList(objectId: String): Estate? {
+        while (isModifyingEstate)
+            Thread.sleep(500)
+
+        isModifyingEstate = true
+
         GlobalVariables.estateList.forEach {
             if (it.compareId(objectId))
                 return it
         }
+
+        isModifyingEstate = false
 
         return null
     }
@@ -126,8 +144,8 @@ object Utils {
         Thread {
             val updateTarget = searchRepairOrderFromRepairList(repairOrder.event_id)
 
-            while (isModifyingRepairList)
-                Thread.sleep(500)
+//            while (isModifyingRepairList)
+//                Thread.sleep(500)
 
             isModifyingRepairList = true
 
@@ -236,6 +254,12 @@ object Utils {
         }.start()
     }
 
+    fun updateAccount(user: User) {
+        Thread {
+            GlobalVariables.api.updateUserInformation(user)
+        }.start()
+    }
+
     fun addContractToContractList(contract: Contract) {
         val updateTarget = searchContractFromContractList(contract.contractId)
         if (updateTarget != null) {
@@ -269,6 +293,7 @@ object Utils {
 
     fun createContract(contract:Contract) {
         Thread{
+            contract.estate!!.contract = contract
             GlobalVariables.api.createContract(contract)
             addContractToContractList(contract)
         }.start()

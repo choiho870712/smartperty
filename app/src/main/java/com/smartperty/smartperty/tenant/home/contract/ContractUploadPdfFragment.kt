@@ -32,6 +32,14 @@ class ContractUploadPdfFragment : Fragment() {
 
         root.button_contract_upload_submit.setOnClickListener {
             GlobalVariables.estate.contract!!.pdfString = base64String
+            Thread {
+                GlobalVariables.api.uploadContractDocument(
+                    GlobalVariables.estate.contract!!.landlord!!.id,
+                    GlobalVariables.estate.contract!!.contractId,
+                    "PDF",
+                    GlobalVariables.estate.contract!!.pdfString
+                )
+            }.start()
             root.findNavController().navigateUp()
         }
 
@@ -58,7 +66,13 @@ class ContractUploadPdfFragment : Fragment() {
         if (requestCode == PDF_SELECTION_CODE && resultCode == Activity.RESULT_OK && data != null) {
 
             val bytes = requireContext().contentResolver.openInputStream(data.data!!)!!.readBytes()
-            base64String = Base64.encodeToString(bytes, Base64.DEFAULT)
+            val _base64String = Base64.encodeToString(bytes, Base64.DEFAULT)
+
+            base64String = ""
+            for (char in _base64String) {
+                if (char != '\n')
+                    base64String += char
+            }
 
             root.pdfView.fromBytes(Base64.decode(base64String, Base64.DEFAULT))
                 .defaultPage(0)

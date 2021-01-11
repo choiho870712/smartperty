@@ -50,6 +50,14 @@ class TenantHosingRulesFragment : Fragment() {
                             root.text_housing_rules.inputType = InputType.TYPE_NULL
                             root.text_housing_rules.background =
                                 resources.getDrawable(R.drawable.style_empty)
+
+                            Thread {
+                                GlobalVariables.api.uploadPropertyRules(
+                                    GlobalVariables.loginUser.id,
+                                    GlobalVariables.estate.objectId,
+                                    GlobalVariables.estate.rules
+                                )
+                            }.start()
                         }
                         builder.setNegativeButton("否") { _, _ ->
                             fillInformation()

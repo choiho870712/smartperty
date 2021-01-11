@@ -5,27 +5,23 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Bundle
 import android.text.InputType
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.graphics.drawable.toBitmap
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.smartperty.smartperty.R
-import com.smartperty.smartperty.data.Contract
 import com.smartperty.smartperty.data.User
 import com.smartperty.smartperty.repair.ImageListAdapter
 import com.smartperty.smartperty.repair.RepairList2Adapter
-import com.smartperty.smartperty.repair.RepairListAdapter
 import com.smartperty.smartperty.tools.TimeUtil
 import com.smartperty.smartperty.utils.GlobalVariables
 import com.smartperty.smartperty.utils.Utils
-import kotlinx.android.synthetic.main.activity_landlord.*
+import kotlinx.android.synthetic.main.fragment_contract_create.view.*
 import kotlinx.android.synthetic.main.fragment_estate.view.*
 import kotlinx.android.synthetic.main.fragment_estate.view.recycler_image
 import kotlinx.android.synthetic.main.fragment_estate.view.textView_object_item_address
@@ -180,7 +176,7 @@ class EstateFragment : Fragment() {
 
         if (GlobalVariables.estate.contract != null) {
             if (GlobalVariables.estate.contract!!.pdfString.isEmpty() &&
-                GlobalVariables.estate.contract!!.jpgBitmap == null) {
+                GlobalVariables.estate.contract!!.jpgBitmapList.isEmpty()) {
                 root.button_upload_contract.visibility = View.VISIBLE
                 root.button_upload_contract.setOnClickListener {
                     root.findNavController().navigate(
@@ -241,16 +237,37 @@ class EstateFragment : Fragment() {
                 GlobalVariables.estate.contract!!.deposit.toString())
             root.text_object_item_next_date.setText(
                 TimeUtil.StampToDate(GlobalVariables.estate.contract!!.nextDate, Locale.TAIWAN))
-            root.text_object_item_payment_method.setText(
-                GlobalVariables.estate.contract!!.payment_method)
-            root.text_object_item_time_left.setText(
-                GlobalVariables.estate.contract!!.timeLeft.toString())
+            root.text_object_item_start_date.setText(
+                TimeUtil.StampToDate(GlobalVariables.estate.contract!!.startDate, Locale.TAIWAN))
+            root.text_object_item_end_date.setText(
+                TimeUtil.StampToDate(GlobalVariables.estate.contract!!.endDate, Locale.TAIWAN))
+
+            val paymentMethod =
+                when (GlobalVariables.estate.contract!!.payment_method) {
+                    "Permonth" -> {
+                        "月繳"
+                    }
+                    "Perseason" -> {
+                        "季繳"
+                    }
+                    "Perhalfyear" -> {
+                        "半年繳"
+                    }
+                    "Peryear" -> {
+                        "年繳"
+                    }
+                    else -> {
+                        "nil"
+                    }
+                }
+
+            root.text_object_item_payment_method.setText(paymentMethod)
         }
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun setEditable(editable: Boolean) {
-        GlobalVariables.toolBarUtils.setEditButtonVisibility(!editable)
+        //GlobalVariables.toolBarUtils.setEditButtonVisibility(!editable)
         GlobalVariables.toolBarUtils.setCancelButtonVisibility(editable)
         GlobalVariables.toolBarUtils.setSubmitButtonVisibility(editable)
 

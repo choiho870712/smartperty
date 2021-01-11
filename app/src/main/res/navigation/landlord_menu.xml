@@ -176,8 +176,8 @@
     <fragment
         android:id="@+id/addMessageFragment"
         android:name="com.smartperty.smartperty.repair.AddPostFragment"
-        android:label="新增訊息"
-        tools:layout="@layout/fragment_repair_add_post"/>
+        android:label="新增動態"
+        tools:layout="@layout/fragment_repair_add_post" />
     <fragment
         android:id="@+id/financeFragment"
         android:name="com.smartperty.smartperty.landlord.menu.finance.FinanceFragment"

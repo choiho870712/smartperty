@@ -10,9 +10,9 @@ enum class NotificationType{
 }
 
 data class Notification(
-    var message: String = "",
+    var message: String = "nil",
     var type: NotificationType = NotificationType.UNKNOWN,
-    var date: String = ""
+    var date: String = "nil"
 ) {
     @SuppressLint("ResourceType")
     fun getDrawable(): Drawable  {

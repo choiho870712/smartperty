@@ -41,6 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:text="text_repair_list_cost"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/text_repair_list_date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/text_repair_list_date" />
@@ -51,6 +52,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/moneyUnit"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/text_repair_list_date"
             app:layout_constraintEnd_toStartOf="@+id/text_repair_list_cost"
             app:layout_constraintTop_toTopOf="@+id/text_repair_list_date"

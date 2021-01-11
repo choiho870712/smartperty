@@ -47,6 +47,9 @@ class LoginDataSource {
                         GlobalVariables.dataAnalysisBySquareFtPieChartDataSet =
                             GlobalVariables.api.getPieChartByArea(GlobalVariables.loginUser.id)
                     }.start()
+                    Thread {
+                        GlobalVariables.api.getMessage()
+                    }.start()
                 }
                 Result.Success(user)
             } else {

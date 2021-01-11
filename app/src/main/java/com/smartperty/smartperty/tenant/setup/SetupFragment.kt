@@ -12,6 +12,7 @@ import com.smartperty.smartperty.R
 import com.smartperty.smartperty.login.LoginActivity
 import com.smartperty.smartperty.utils.GlobalVariables
 import com.smartperty.smartperty.utils.GlobalVariables.Companion.toolBarUtils
+import kotlinx.android.synthetic.main.fragment_setup.*
 import kotlinx.android.synthetic.main.fragment_setup.view.*
 
 class SetupFragment : Fragment() {
@@ -27,8 +28,13 @@ class SetupFragment : Fragment() {
 
         toolBarUtils.removeAllButtonAndLogo()
 
+        root.textView_username.text = GlobalVariables.loginUser.name
+        if (GlobalVariables.loginUser.icon!= null)
+            root.image_userIcon.setImageBitmap(GlobalVariables.loginUser.icon)
+
         root.button_tenant_setup_person_info.setOnClickListener {
             GlobalVariables.personnel = GlobalVariables.loginUser
+            GlobalVariables.personnelUserInfoUsage = "update"
             root.findNavController().navigate(
                 R.id.action_setupFragment_to_personnelUserInfoFragment
             )

@@ -132,6 +132,8 @@ class LandlordHomeFragment : Fragment() {
             root.button_is_rented.text.toString() + isRentedEstateList.list.size.toString()
         root.button_is_rented.setOnClickListener {
             GlobalVariables.estateFolder = isRentedEstateList
+            isRentedEstateList.title = "已出租"
+
             val uri = Uri.parse("android-app://com.smartperty.smartperty/estateListFragment")
             root.findNavController().navigate(uri)
         }
@@ -140,6 +142,7 @@ class LandlordHomeFragment : Fragment() {
             root.button_is_not_rented.text.toString() + isNotRentedEstateList.list.size.toString()
         root.button_is_not_rented.setOnClickListener {
             GlobalVariables.estateFolder = isNotRentedEstateList
+            isNotRentedEstateList.title = "未出租"
             val uri = Uri.parse("android-app://com.smartperty.smartperty/estateListFragment")
             root.findNavController().navigate(uri)
         }

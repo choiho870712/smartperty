@@ -127,14 +127,14 @@ app:cardElevation="1dp">
         android:id="@+id/button_choose_tenant"
         style="@style/button_rectangle_primary_hollow"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/selectButton"
         app:layout_constraintBottom_toTopOf="@+id/text_object_list_rent"
         app:layout_constraintEnd_toStartOf="@+id/card_image"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="查看資訊"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

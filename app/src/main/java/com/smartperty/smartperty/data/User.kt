@@ -3,8 +3,8 @@ package com.smartperty.smartperty.data
 import android.graphics.Bitmap
 
 data class User(
-    var id: String = "",
-    var permissions: String = "",
+    var id: String = "nil",
+    var permissions: String = "nil",
 
     var accountantList: MutableList<User> = mutableListOf(),
     var agentList: MutableList<User> = mutableListOf(),
@@ -14,21 +14,22 @@ data class User(
     var contractList: MutableList<Contract> = mutableListOf(),
     var repairList: MutableList<RepairOrder> = mutableListOf(),
     var estateDirectory: MutableList<EstateList> = mutableListOf(),
-    var system_id: String = "",
-    var name: String = "",
-    var homePhone: String = "",
-    var cellPhone: String = "",
-    var email: String = "",
-    var address: String = "",
-    var company: String = "",
-    var auth: String = "",
+    var system_id: String = "nil",
+    var name: String = "nil",
+    var homePhone: String = "nil",
+    var cellPhone: String = "nil",
+    var email: String = "nil",
+    var address: String = "nil",
+    var company: String = "nil",
+    var auth: String = "nil",
     var icon: Bitmap? = null,
-    var iconString: String = "",
-    var account: String = "",
-    var password: String = "",
-    var sex: String = "",
-    var annual_income: String = "",
-    var industry: String = ""
+    var iconString: String = "nil",
+    var account: String = "nil",
+    var password: String = "nil",
+    var sex: String = "nil",
+    var annual_income: String = "nil",
+    var industry: String = "nil",
+    var profession: String = "nil"
 ) {
     fun compareId(userId: String): Boolean {
         return userId == this.id

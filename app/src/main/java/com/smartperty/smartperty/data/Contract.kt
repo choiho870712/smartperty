@@ -13,13 +13,13 @@ data class Contract(
     var nextDate: Long = 0,
     var endDate: Long = 0,
     var timeLeft: Int = 0,
-    var currency: String = "",
+    var currency: String = "nil",
     var deposit: Int = 0,
     var pdfUrl: MutableList<String> = mutableListOf(),
     var jpgUrl: MutableList<String> = mutableListOf(),
 
     var pdfString: String = "",
-    var jpgBitmap: Bitmap? = null
+    var jpgBitmapList: MutableList<Bitmap> = mutableListOf()
 ) {
     fun compareId(id: String): Boolean {
         return id == this.contractId

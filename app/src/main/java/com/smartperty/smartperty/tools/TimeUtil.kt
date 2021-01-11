@@ -54,7 +54,7 @@ object TimeUtil {
 
         val simpleDateFormat = SimpleDateFormat("yyyy/MM/dd", locale)
 
-        return simpleDateFormat.format(Date(time))
+        return simpleDateFormat.format(Date(time*1000))
     }
 
     @JvmStatic
@@ -62,7 +62,7 @@ object TimeUtil {
         val simpleDateFormat = SimpleDateFormat("yyyy/MM/dd", locale)
 
         /// 輸出為毫秒為單位
-        return simpleDateFormat.parse(date).time / 1000
+        return simpleDateFormat.parse(date).time/1000
     }
 }
 

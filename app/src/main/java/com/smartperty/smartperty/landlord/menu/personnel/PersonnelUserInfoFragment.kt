@@ -1,6 +1,7 @@
 package com.smartperty.smartperty.landlord.menu.personnel
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -33,7 +34,7 @@ class PersonnelUserInfoFragment : Fragment() {
         root = inflater.inflate(R.layout.fragment_personnel_user_info, container, false)
 
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
-        GlobalVariables.toolBarUtils.setTitle(GlobalVariables.personnel.name)
+        GlobalVariables.toolBarUtils.setTitle("編輯個人資訊")
 
         if (GlobalVariables.personnelUserInfoUsage != "read") {
             GlobalVariables.toolBarUtils.setSubmitButtonVisibility(true)
@@ -50,19 +51,22 @@ class PersonnelUserInfoFragment : Fragment() {
                             if (imageBuffer != null)
                                 GlobalVariables.personnel.icon = imageBuffer
                             GlobalVariables.personnel.name = root.textView_name.text.toString()
-                            GlobalVariables.personnel.sex = root.textView_gender.text.toString()
                             GlobalVariables.personnel.email = root.textView_email.text.toString()
                             GlobalVariables.personnel.cellPhone = root.textView_phone.text.toString()
-                            GlobalVariables.personnel.annual_income = root.textView_income.text.toString()
-                            GlobalVariables.personnel.industry = "nil"
+                            GlobalVariables.personnel.sex = root.button_select_sex.text.toString()
+                            GlobalVariables.personnel.annual_income = root.button_select_income.text.toString()
+                            GlobalVariables.personnel.industry = root.button_select_industry.text.toString()
+                            GlobalVariables.personnel.profession = root.button_select_profession.text.toString()
+
 
                             when(GlobalVariables.personnelUserInfoUsage) {
                                 "create" -> {
+                                    GlobalVariables.estate.tenant = GlobalVariables.personnel
                                     Utils.createAccount(
                                         GlobalVariables.personnel,GlobalVariables.estate.objectId)
                                 }
                                 "update" -> {
-
+                                    Utils.updateAccount(GlobalVariables.personnel)
                                 }
                                 else -> {
 
@@ -89,12 +93,12 @@ class PersonnelUserInfoFragment : Fragment() {
         if (GlobalVariables.personnel.icon != null)
             root.image_userIcon.setImageBitmap(GlobalVariables.personnel.icon)
         root.textView_name.setText(GlobalVariables.personnel.name)
-        root.textView_gender.setText(GlobalVariables.personnel.sex)
         root.textView_email.setText(GlobalVariables.personnel.email)
         root.textView_phone.setText(GlobalVariables.personnel.cellPhone)
-        root.textView_income.setText(GlobalVariables.personnel.annual_income)
-        if (GlobalVariables.personnel.industry.isNotEmpty())
-            root.button_select_industry.setText(GlobalVariables.personnel.industry)
+        root.button_select_profession.setText(GlobalVariables.personnel.profession)
+        root.button_select_sex.setText(GlobalVariables.personnel.sex)
+        root.button_select_industry.setText(GlobalVariables.personnel.industry)
+        root.button_select_income.setText(GlobalVariables.personnel.annual_income)
 
         //createSpinner()
 
@@ -103,7 +107,107 @@ class PersonnelUserInfoFragment : Fragment() {
         }
 
         root.button_select_industry.setOnClickListener {
+            val builderSingle: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+            val arrayAdapter = ArrayAdapter<String>(
+                requireContext(),
+                android.R.layout.select_dialog_singlechoice
+            )
 
+            arrayAdapter.add("批發/零售/服務")
+            arrayAdapter.add("製造/營造業")
+            arrayAdapter.add("金融保險/租賃")
+            arrayAdapter.add("政府機構/公營事業")
+            arrayAdapter.add("軍警消")
+            arrayAdapter.add("教育機構")
+            arrayAdapter.add("醫療機構")
+            arrayAdapter.add("運輸/倉儲")
+            arrayAdapter.add("汽車買賣/直傳銷")
+            arrayAdapter.add("律師/會計/記帳/公證/代書/估價服務")
+            arrayAdapter.add("珠寶銀樓業/拍賣行/不動產相關行業")
+            arrayAdapter.add("汽柴油批發零售業")
+            arrayAdapter.add("汽柴油批發零售業")
+            arrayAdapter.add("國防工業")
+            arrayAdapter.add("殺傷性武器工具機製造業")
+            arrayAdapter.add("財團或社團法人/公會/宗教")
+            arrayAdapter.add("當舖、地下金融、虛擬貨幣、博弈業、八大行業")
+            arrayAdapter.add("第三方/電子支付機構、金流公司")
+            arrayAdapter.add("其他")
+
+            builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
+            builderSingle.setAdapter(arrayAdapter) { _, which ->
+                val strName = arrayAdapter.getItem(which)
+                root.button_select_industry.text = strName
+            }
+            builderSingle.show()
+        }
+
+        root.button_select_sex.setOnClickListener {
+            val builderSingle: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+            val arrayAdapter = ArrayAdapter<String>(
+                requireContext(),
+                android.R.layout.select_dialog_singlechoice
+            )
+
+            arrayAdapter.add("男")
+            arrayAdapter.add("女")
+
+            builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
+            builderSingle.setAdapter(arrayAdapter) { _, which ->
+                val strName = arrayAdapter.getItem(which)
+                root.button_select_sex.text = strName
+            }
+            builderSingle.show()
+        }
+
+        root.button_select_income.setOnClickListener {
+            val builderSingle: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+            val arrayAdapter = ArrayAdapter<String>(
+                requireContext(),
+                android.R.layout.select_dialog_singlechoice
+            )
+
+            arrayAdapter.add("NT100,000以下")
+            arrayAdapter.add("NT100,001~200,000")
+            arrayAdapter.add("NT200,001~400,000")
+            arrayAdapter.add("NT400,001~600,000")
+            arrayAdapter.add("NT600,001~1,000,000")
+            arrayAdapter.add("NT1,000,001~1,200,000")
+            arrayAdapter.add("NT1,200,001~1,500,000")
+            arrayAdapter.add("NT1,500,000以上")
+
+            builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
+            builderSingle.setAdapter(arrayAdapter) { _, which ->
+                val strName = arrayAdapter.getItem(which)
+                root.button_select_income.text = strName
+            }
+            builderSingle.show()
+        }
+
+        root.button_select_profession.setOnClickListener {
+            val builderSingle: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+            val arrayAdapter = ArrayAdapter<String>(
+                requireContext(),
+                android.R.layout.select_dialog_singlechoice
+            )
+
+            arrayAdapter.add("一般職員")
+            arrayAdapter.add("中高階主管")
+            arrayAdapter.add("獎佣金制人員")
+            arrayAdapter.add("獎佣金制主管")
+            arrayAdapter.add("勞力服務者")
+            arrayAdapter.add("專業人員/四師")
+            arrayAdapter.add("企業主/家族企業")
+            arrayAdapter.add("學生")
+            arrayAdapter.add("約聘僱人員")
+            arrayAdapter.add("退休/家管")
+            arrayAdapter.add("其他")
+
+            builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
+            builderSingle.setAdapter(arrayAdapter) { _, which ->
+                val strName = arrayAdapter.getItem(which)
+                root.button_select_profession.text = strName
+            }
+            builderSingle.show()
         }
 
         return root

@@ -2,6 +2,7 @@ package com.smartperty.smartperty.utils
 
 import android.graphics.Bitmap
 import android.util.Log
+import com.google.gson.JsonObject
 import com.smartperty.smartperty.data.*
 import com.smartperty.smartperty.tools.TimeUtil
 import com.squareup.okhttp.*
@@ -44,6 +45,106 @@ class Api {
     private val urlGetUserInformation = urlDirectory + "accountmanagement/getuserinformation"
     private val urlChangeEventStatus = urlDirectory + "eventmanagement/changeeventstatus"
     private val urlCreateMessage = urlDirectory + "messagemanagement/createmessage"
+    private val urlGetMessage = urlDirectory + "messagemanagement/getmessage"
+    private val urlUploadPropertyRules = urlDirectory + "propertymanagement/uploadpropertyrules"
+    private val urlUploadContractDocument = urlDirectory + "contractmanagement/uploadcontractdocument"
+
+    fun uploadContractDocumentJpg(landlord_id:String, contract_id:String, type:String,
+                                  bitmapList: MutableList<Bitmap>) : Boolean {
+        var json = "{\"landlord_id\": \"$landlord_id\", \"contract_id\": \"$contract_id\"" +
+                ", \"type\": \"$type\", \"document\": ["
+
+        var isFirst = true
+        bitmapList.forEach {
+            if (isFirst)
+                isFirst = false
+            else {
+                json += ","
+            }
+
+            val imageString = GlobalVariables.imageHelper.getString(it)
+            json += "\"$imageString\""
+        }
+
+        json += "]}"
+        return getJsonMessage(callApi(json, urlUploadContractDocument)) == "No Error"
+    }
+
+    fun uploadContractDocument(landlord_id:String, contract_id:String, type:String, document:String) : Boolean {
+        val json = "{\"landlord_id\": \"$landlord_id\", \"contract_id\": \"$contract_id\"" +
+                ", \"type\": \"$type\", \"document\": \"$document\"}"
+        return getJsonMessage(callApi(json, urlUploadContractDocument)) == "No Error"
+    }
+
+    // TODO get message
+    fun getMessage(): Boolean {
+        val user_id = GlobalVariables.loginUser.id
+        val json = "{\"user_id\": \"$user_id\"}"
+        val rawJsonString = callApi(json, urlGetMessage)
+        val jsonObject = JSONObject(rawJsonString)
+        try {
+//            {
+//                "Message": "No Error",
+//                "Items": [
+//                {
+//                    "user_id": "hugo123",
+//                    "timestmp": 1610274140.0,
+//                    "information":
+//                    {
+//                        "content": "\u5df2\u4fee\u6539\u72c0\u614b"
+//                    },
+//                    "type": "Event",
+//                    "expiration_time": 1610288540.0
+//                },
+//                {
+//                    "user_id": "hugo123",
+//                    "timestmp": 1610274894.0,
+//                    "information":
+//                    {
+//                        "content": "\u5df2\u4fee\u6539\u72c0\u614b"
+//                    },
+//                    "type": "Event",
+//                    "expiration_time": 1610289294.0
+//                }
+//                ]
+//            }
+
+            val item = jsonObject.getJSONObject("Items")
+        }
+        catch (e:Exception) {
+
+        }
+
+        return getJsonMessage(rawJsonString) == "No Error"
+    }
+
+    fun updateUserInformation(user: User): Boolean {
+        val id = user.id
+        val system_id = user.system_id
+        val name = user.name
+        val sex = user.sex
+        val mail = user.email
+        val phone = user.cellPhone
+        val annual_income = user.annual_income
+        val industry = user.industry
+        val profession = user.profession
+        val icon =
+            if (user.icon != null)
+                GlobalVariables.imageHelper.getString(user.icon!!)
+            else
+                "nil"
+        val json = "{\"id\": \"$id\", \"system_id\": \"$system_id\", \"name\": \"$name\", " +
+                "\"sex\": \"$sex\", \"mail\": \"$mail\", \"phone\": \"$phone\", " +
+                "\"annual_income\": \"$annual_income\", \"industry\": \"$industry\", " +
+                "\"profession\": \"$profession\", \"icon\": \"$icon\"}"
+        return getJsonMessage(callApi(json, urlUpdateUserInformation)) == "No Error"
+    }
+
+    fun uploadPropertyRules(landlord_id: String, object_id: String, rules: String): Boolean {
+        val json = "{\"landlord_id\": \"$landlord_id\", \"object_id\": \"$object_id\"," +
+                " \"rules\": \"$rules\"}"
+        return getJsonMessage(callApi(json, urlUploadPropertyRules)) == "No Error"
+    }
 
     fun createMessage(userList: MutableList<User>, content: String, type: String ): Boolean {
         var json = "{\"information\":{\"content\": \"$content\"}, \"type\": \"$type\", " +
@@ -56,13 +157,13 @@ class Api {
             json += "\"$userId\""
         }
         json += "]}"
-        return getJsonMessage(callApi(json, urlChangeEventStatus)) == "No Error"
+        return getJsonMessage(callApi(json, urlCreateMessage)) == "No Error"
     }
 
     fun changeEventStatus(landlord_id: String, event_id: String, status_to_changed: String): Boolean {
         val json = "{\"landlord_id\": \"$landlord_id\", \"event_id\": \"$event_id\"" +
                 ", \"status_to_changed\": \"$status_to_changed\"}"
-        return getJsonMessage(callApi(json, urlCreateMessage)) == "No Error"
+        return getJsonMessage(callApi(json, urlChangeEventStatus)) == "No Error"
     }
 
     fun createContract(contract: Contract) {
@@ -93,53 +194,88 @@ class Api {
     }
 
     fun getContractByContractId(landlordId: String, contractId: String): Contract {
-        val json = "{\"landlord_id\": \"$landlordId\", \"contractId\": \"$contractId\"}"
+        val json = "{\"landlord_id\": \"$landlordId\", \"contract_id\": \"$contractId\"}"
         val rawJsonString = callApi(json, urlGetContractByContractId)
+
+        var iii = 0
+        if (contractId == "10411710311149505116087769911609900896035450216099306602725928") {
+            iii += 1
+            iii += 2
+        }
+
         val jsonObject = JSONObject(rawJsonString)
+        val item = jsonObject.getJSONObject("Items")
+        val tenant_id = item.getString("tenant_id")
+        val landlord_id = item.getString("landlord_id")
+        val contract_id = item.getString("contract_id")
+        val object_id = item.getString("object_id")
+
+        val date = item.getJSONObject("date")
+        val end_date = date.getLong("end_date")
+        val start_date = date.getLong("start_date")
+
+        val payment = item.getJSONObject("payment")
+
+        val deposit = payment.getInt("deposit")
+        val currency = payment.getString("currency")
+        val rent = payment.getInt("rent")
+        val payment_method = payment.getString("payment_method")
+
+        val contract = Contract(
+            contractId = contract_id,
+            rent = rent,
+            payment_method = payment_method,
+            startDate = start_date,
+            endDate = end_date,
+            currency = currency,
+            deposit = deposit
+        )
+
+        Thread {
+            if (object_id.isNotEmpty() && object_id != "nil")
+                contract.estate = Utils.getEstate(object_id)
+        }.start()
+        Thread {
+            if (landlord_id.isNotEmpty() && landlord_id != "nil")
+                contract.landlord = Utils.getUser(landlord_id)
+        }.start()
+        Thread {
+            if (tenant_id.isNotEmpty() && tenant_id != "nil")
+                contract.tenant = Utils.getUser(tenant_id)
+        }.start()
+
         try {
-            val item = jsonObject.getJSONObject("Items")
-
-            val date = item.getJSONObject("date")
-            val payment = item.getJSONObject("payment")
-            val tenant_id = item.getString("tenant_id")
-            val pdf_or_jpg_url = item.getJSONArray("pdf_or_jpg_url")
-            val landlord_id = item.getString("landlord_id")
-            val contract_id = item.getString("contract_id")
-            val object_id = item.getString("object_id")
-
-            val end_date = date.getLong("end_date")
-            val time_left = date.getInt("time_left")
-            val start_date = date.getLong("start_date")
-            val next_date = date.getLong("next_date")
-
-            val deposit = payment.getInt("deposit")
-            val currency = payment.getString("currency")
-            val rent = payment.getInt("rent")
-            val payment_method = payment.getString("payment_method")
-
-            // TODO get PDF or JPG
-
-            return Contract(
-                contractId = contract_id,
-                estate = Utils.getEstate(object_id),
-                landlord = Utils.getUser(landlord_id),
-                tenant = Utils.getUser(tenant_id),
-                rent = rent,
-                payment_method = payment_method,
-                startDate = start_date,
-                nextDate = next_date,
-                endDate = end_date,
-                timeLeft = time_left,
-                currency = currency,
-                deposit = deposit
-            )
+            val backup = item.getJSONObject("backup")
+            val backupType = backup.getString("type")
+            val document = backup.getString("document")
+            if (backupType == "PDF")
+                contract.pdfString = document
         }
         catch (e:Exception) {
-            return Contract()
         }
+
+        try {
+            val backup = item.getJSONObject("backup")
+            val backupType = backup.getString("type")
+            val document = backup.getJSONArray("document")
+            if (backupType == "JPG") {
+                for (i in 0 until(document.length())) {
+                    val imageString = document.getString(i)
+                    contract.jpgBitmapList.add(
+                        GlobalVariables.imageHelper.convertUrlToImage(imageString)!!
+                    )
+                }
+            }
+        }
+        catch (e:Exception) {
+        }
+
+        // TODO get rent record''
+
+        return contract
     }
 
-    fun createAccount(user: User, object_id: String = "") : String {
+    fun createAccount(user: User, object_id: String = "") {
         val root_id = GlobalVariables.loginUser.id
         val auth = user.auth
         val name = user.name
@@ -148,6 +284,7 @@ class Api {
         val phone = user.cellPhone
         val annual_income = user.annual_income
         val industry = user.industry
+        val profession = user.profession
         val iconString =
             if (user.icon == null)
                 "nil"
@@ -159,16 +296,16 @@ class Api {
         }
         json += ", \"information\" : {\"name\":\"$name\", \"sex\":\"$sex\", \"mail\":\"$mail\"," +
                 "\"phone\":\"$phone\", \"annual_income\":\"$annual_income\", " +
-                "\"industry\":\"$industry\",\"icon\":\"$iconString\"}"
+                "\"industry\":\"$industry\", \"profession\":\"$profession\",\"icon\":\"$iconString\"}"
         json += "}"
 
         val rawJsonString = callApi(json, urlCreateAccountByLandlord)
         val jsonObject = JSONObject(rawJsonString)
         return try {
-            jsonObject.getJSONObject("Items").getString("user_id")
+            user.id = jsonObject.getJSONObject("Items").getString("user_id")
         }
         catch(e: Exception) {
-            "nil"
+
         }
     }
 
@@ -705,7 +842,7 @@ class Api {
     }
 
     fun userLogin(id:String, pw:String) : Boolean{
-        val json = "{\"id\": \"$id\", \"pw\": \"$pw\"}"
+        val json = "{\"platform\":\"Android\", \"id\": \"$id\", \"pw\": \"$pw\"}"
         return getJsonMessage(callApi(json, urlUserLogin)) == "No Error"
     }
 
@@ -739,14 +876,17 @@ class Api {
     private fun getUserInformationJson(rawJsonString:String): User {
         val user = User()
         val jsonObject = JSONObject(rawJsonString)
-        if (!jsonObject.has("Items")) {
-            return user
-        }
         val items = jsonObject.getJSONObject("Items")
         user.auth = items.getString("auth")
         user.permissions = items.getString("permissions")
         user.system_id = items.getString("system_id")
         user.id = items.getString("id")
+
+        var iii = 0
+        if (user.id != "hugo123") {
+            iii += 1
+            iii += 2
+        }
 
         val information = items.getJSONObject("information")
         user.name = information.getString("name")
@@ -755,6 +895,7 @@ class Api {
         user.sex = information.getString("sex")
         user.annual_income = information.getString("annual_income")
         user.industry = information.getString("industry")
+        user.profession = information.getString("profession")
         user.iconString = information.getString("icon")
         if (user.iconString != "nil") {
             user.icon = GlobalVariables.imageHelper.convertUrlToImage(

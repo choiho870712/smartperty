@@ -54,7 +54,25 @@ class RepairOrderFragment : Fragment() {
                 builderInner.setTitle("確定修改狀態？")
                 builderInner.setPositiveButton("是") { dialog, which ->
                     root.textView_repair_order_status.text = strName
-                    GlobalVariables.repairOrder.status = strName!!
+
+                    GlobalVariables.repairOrder.status =
+                        when (strName) {
+                            "已接案" -> {
+                                "Received"
+                            }
+                            "已指派" -> {
+                                "Assigned"
+                            }
+                            "處理中" -> {
+                                "Processing"
+                            }
+                            "已結案" -> {
+                                "Closed"
+                            }
+                            else -> {
+                                "nil"
+                            }
+                        }
                     setStatusButtonColor()
 
                     Thread {
@@ -108,26 +126,22 @@ class RepairOrderFragment : Fragment() {
 
         root.textView_repair_order_title.text = repairOrder.description
         root.textView_repair_order_repair_date_time.text = repairOrder.date
-        root.textView_repair_order_status.text = repairOrder.status
 
         setStatusButtonColor()
     }
 
     private fun setStatusButtonColor() {
         val myDrawable = when(GlobalVariables.repairOrder.status) {
-            "選擇狀態" -> {
-                R.drawable.style_hollow_red
-            }
-            "已接案" -> {
+            "Received" -> {
                 R.drawable.style_hollow_light_blue
             }
-            "已指派" -> {
+            "Assigned" -> {
                 R.drawable.style_hollow_light_blue
             }
-            "處理中" -> {
+            "Processing" -> {
                 R.drawable.style_hollow_light_blue
             }
-            "已結案" -> {
+            "Closed" -> {
                 R.drawable.style_hollow_green
             }
             else -> {
@@ -139,25 +153,42 @@ class RepairOrderFragment : Fragment() {
             requireActivity().resources.getDrawable(myDrawable)
 
         val myTextColor = when(GlobalVariables.repairOrder.status) {
-            "選擇狀態" -> {
-                R.color.colorRed
-            }
-            "已接案" -> {
+            "Received" -> {
                 R.color.colorLightBlue
             }
-            "已指派" -> {
+            "Assigned" -> {
                 R.color.colorLightBlue
             }
-            "處理中" -> {
+            "Processing" -> {
                 R.color.colorLightBlue
             }
-            "已結案" -> {
+            "Closed" -> {
                 R.color.colorGreen
             }
             else -> {
                 R.color.colorRed
             }
         }
+
+        val myText = when(GlobalVariables.repairOrder.status) {
+            "Received" -> {
+                "已接案"
+            }
+            "Assigned" -> {
+                "已指派"
+            }
+            "Processing" -> {
+                "處理中"
+            }
+            "Closed" -> {
+                "已結案"
+            }
+            else -> {
+                "選擇狀態"
+            }
+        }
+
+        root.textView_repair_order_status.text = myText
 
         root.textView_repair_order_status.setTextColor(
             requireActivity().resources.getColor(myTextColor)

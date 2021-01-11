@@ -40,7 +40,7 @@ class RepairOrderCreateFragment : Fragment() {
         GlobalVariables.repairOrder = RepairOrder(
             creator = GlobalVariables.loginUser,
             type = "maintain",
-            status = "選擇狀態"
+            status = "nil"
         )
     }
 

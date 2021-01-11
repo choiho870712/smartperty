@@ -1966,9 +1966,12 @@ id button_landlord_test
 id button_next
 id button_personnel_control
 id button_select_image
+id button_select_income
 id button_select_industry
+id button_select_profession
 id button_select_property
 id button_select_room
+id button_select_sex
 id button_set_attraction
 id button_set_equipment
 id button_set_housing_rules
@@ -2171,7 +2174,6 @@ id imageView_contract_upload_select_image
 id imageView_equipment
 id imageView_large
 id imageView_notification_color
-id imageView_show_contract
 id image_card
 id image_card_object_item
 id image_equipment
@@ -2434,9 +2436,11 @@ id textView10
 id textView100
 id textView101
 id textView102
+id textView103
+id textView104
+id textView105
 id textView11
 id textView12
-id textView13
 id textView14
 id textView15
 id textView16
@@ -2547,8 +2551,6 @@ id textView_equipment_count
 id textView_equipment_name
 id textView_estate_title
 id textView_finance_total
-id textView_gender
-id textView_income
 id textView_manager_count
 id textView_message
 id textView_name
@@ -2592,6 +2594,7 @@ id textView_room_name
 id textView_subTitle
 id textView_tenant_count
 id textView_title
+id textView_username
 id textWatcher
 id text_address
 id text_amount
@@ -2627,11 +2630,11 @@ id text_object_folder_rent_rate_111
 id text_object_folder_square_ft
 id text_object_folder_title
 id text_object_item_deposit
+id text_object_item_end_date
 id text_object_item_next_date
 id text_object_item_payment_method
 id text_object_item_rent
-id text_object_item_time_left
-id text_object_item_time_left2
+id text_object_item_start_date
 id text_object_list_address
 id text_object_list_information
 id text_object_list_information4
@@ -2775,6 +2778,7 @@ layout card_estate_directory
 layout card_estate_image
 layout card_finance_item
 layout card_image
+layout card_image2
 layout card_notification
 layout card_personnel_list
 layout card_plumber

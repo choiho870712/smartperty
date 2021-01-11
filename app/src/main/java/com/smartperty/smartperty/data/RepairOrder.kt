@@ -4,17 +4,17 @@ import android.graphics.Bitmap
 import com.smartperty.smartperty.utils.GlobalVariables
 
 data class RepairOrder(
-    var event_id: String = "",
+    var event_id: String = "nil",
 
     var creator: User? = null,
     var landlord: User? = null,
     var estate: Estate? = null,
 
     var timestamp: Long = 0,
-    var status: String = "",
-    var type: String = "",
-    var description: String = "",
-    var date: String = "",
+    var status: String = "nil",
+    var type: String = "nil",
+    var description: String = "nil",
+    var date: String = "nil",
     var cost: Int = 0,
 
     var participant: MutableList<User> = mutableListOf(),

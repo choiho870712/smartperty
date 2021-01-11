@@ -13,6 +13,7 @@ import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.RepairOrder
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.card_repair_list.view.*
+import kotlinx.android.synthetic.main.fragment_repair_order.view.*
 
 class RepairListAdapter(private val activity: Activity,
                         private val parentView: View,
@@ -42,8 +43,27 @@ class RepairListAdapter(private val activity: Activity,
             holder.address.text = "nil"
         }
         holder.title.text = myDataset[position].description
-        holder.status.text = myDataset[position].status
         holder.date.text = myDataset[position].date
+
+        val myText = when(myDataset[position].status) {
+            "Received" -> {
+                "已接案"
+            }
+            "Assigned" -> {
+                "已指派"
+            }
+            "Processing" -> {
+                "處理中"
+            }
+            "Closed" -> {
+                "已結案"
+            }
+            else -> {
+                "選擇狀態"
+            }
+        }
+
+        holder.status.text = myText
 
         if (myDataset[position].postList.isNotEmpty()) {
             if (myDataset[position].postList[0].imageList.isNotEmpty())

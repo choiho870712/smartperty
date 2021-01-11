@@ -17,6 +17,7 @@ import com.smartperty.smartperty.utils.GlobalVariables
 import com.smartperty.smartperty.utils.Utils
 import kotlinx.android.synthetic.main.activity_tenant.*
 import kotlinx.android.synthetic.main.fragment_contract_create.view.*
+import java.lang.Exception
 import java.util.*
 
 class ContractCreateFragment : Fragment() {
@@ -29,7 +30,11 @@ class ContractCreateFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        GlobalVariables.contract = Contract()
+        GlobalVariables.contract = Contract(
+            estate = GlobalVariables.estate,
+            tenant = GlobalVariables.estate.tenant,
+            landlord = GlobalVariables.estate.landlord
+        )
     }
 
     override fun onCreateView(
@@ -79,6 +84,7 @@ class ContractCreateFragment : Fragment() {
                         GlobalVariables.contract.currency =
                             root.button_create_contract_select_currency.text.toString()
 
+                        GlobalVariables.estate.contract = GlobalVariables.contract
                         Utils.createContract(GlobalVariables.contract)
 
                         root.findNavController().navigateUp()
@@ -109,6 +115,7 @@ class ContractCreateFragment : Fragment() {
                 startMonth = m2
                 startDay = d
                 root.button_create_contract_select_start_date.text = dateString
+                calculateEndDate()
             },
             year, month, day
         )
@@ -118,19 +125,7 @@ class ContractCreateFragment : Fragment() {
         }
 
         root.edit_create_contract_pay_times.addTextChangedListener {
-            val payTimes = it.toString().toInt()
-            val endDate =
-                when(GlobalVariables.contract.payment_method) {
-                    "Permonth" -> {
-                        val endMonth = (startMonth + payTimes-1)%12 + 1
-                        val endYear = (startMonth + payTimes-1)/12 + startYear
-                        "$endYear/$endMonth/$startDay"
-                    }
-                    else -> {
-                        ""
-                    }
-                }
-            root.textView_create_contract_endDate.text = endDate
+            calculateEndDate()
         }
 
         root.button_create_contract_select_currency.text = "TWD"
@@ -167,9 +162,11 @@ class ContractCreateFragment : Fragment() {
                             "Peryear"
                         }
                         else -> {
-                            "monthly"
+                            "nil"
                         }
                     }
+
+                calculateEndDate()
             }
             builderSingle.show()
         }
@@ -177,4 +174,24 @@ class ContractCreateFragment : Fragment() {
         return root
     }
 
+    fun calculateEndDate() {
+        try {
+            val payTimes = root.edit_create_contract_pay_times.text.toString().toInt()
+            val endDate =
+                when(GlobalVariables.contract.payment_method) {
+                    "Permonth" -> {
+                        val endMonth = (startMonth + payTimes-1)%12 + 1
+                        val endYear = (startMonth + payTimes-1)/12 + startYear
+                        "$endYear/$endMonth/$startDay"
+                    }
+                    else -> {
+                        ""
+                    }
+                }
+            root.textView_create_contract_endDate.text = endDate
+        }
+        catch (e:Exception) {
+
+        }
+    }
 }

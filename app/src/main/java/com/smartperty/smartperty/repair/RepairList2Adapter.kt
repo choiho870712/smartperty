@@ -31,9 +31,27 @@ class RepairList2Adapter(private val activity: Activity,
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
         holder.index = position
         holder.title.text = myDataset[position].description
-        holder.status.text = myDataset[position].status
         holder.date.text = myDataset[position].date
         holder.cost.text = myDataset[position].cost.toString()
+
+        val myText = when(myDataset[position].status) {
+            "Received" -> {
+                "已接案"
+            }
+            "Assigned" -> {
+                "已指派"
+            }
+            "Processing" -> {
+                "處理中"
+            }
+            "Closed" -> {
+                "已結案"
+            }
+            else -> {
+                "選擇狀態"
+            }
+        }
+        holder.status.text = myText
 
         holder.cardView.setOnClickListener {
             GlobalVariables.repairOrder = myDataset[holder.index]

@@ -4,7 +4,7 @@ import android.graphics.Bitmap
 import com.smartperty.smartperty.utils.GlobalVariables
 
 data class Equipment(
-    var name: String = "",
+    var name: String = "nil",
     var count: Int = 0,
     var image: Bitmap? = null
 )
@@ -19,8 +19,7 @@ data class Estate (
 
     var landlord: User? = null,
     var tenant: User? = null,
-//    var contract: Contract? = null,
-    var contract: Contract? = Contract(),
+    var contract: Contract? = null,
 
     var groupName: String = "",
     var objectName: String = "",

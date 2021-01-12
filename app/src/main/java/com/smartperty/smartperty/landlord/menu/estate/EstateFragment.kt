@@ -176,6 +176,7 @@ class EstateFragment : Fragment() {
 
         if (GlobalVariables.estate.contract != null) {
             if (GlobalVariables.estate.contract!!.pdfString.isEmpty() &&
+                GlobalVariables.estate.contract!!.textString.isEmpty() &&
                 GlobalVariables.estate.contract!!.jpgBitmapList.isEmpty()) {
                 root.button_upload_contract.visibility = View.VISIBLE
                 root.button_upload_contract.setOnClickListener {
@@ -193,7 +194,7 @@ class EstateFragment : Fragment() {
                 }
             }
         }
-        else {
+        else if (GlobalVariables.estate.tenant != null) {
             root.button_create_contract.visibility = View.VISIBLE
             root.button_create_contract.setOnClickListener {
                 root.findNavController().navigate(
@@ -332,7 +333,7 @@ class EstateFragment : Fragment() {
 
     private fun storeInformation() {
         GlobalVariables.estate.fullAddress = root.textView_object_item_address.text.toString()
-        GlobalVariables.estate.floor = root.textView_object_item_floor.text.toString().toInt()
+        GlobalVariables.estate.floor = root.textView_object_item_floor.text.toString()
         GlobalVariables.estate.area = root.textView_object_item_square_ft.text.toString().toDouble()
         GlobalVariables.estate.parkingSpace = root.textView_object_item_parking_sapce.text.toString()
         GlobalVariables.estate.description = root.textView_object_item_content.text.toString()

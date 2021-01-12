@@ -52,6 +52,6 @@
     <fragment
         android:id="@+id/privacyFragment"
         android:name="com.smartperty.smartperty.login.pravicy.PrivacyFragment"
-        android:label="隱私政策"
+        android:label="隱私條款"
         tools:layout="@layout/fragment_privacy" />
 </navigation>

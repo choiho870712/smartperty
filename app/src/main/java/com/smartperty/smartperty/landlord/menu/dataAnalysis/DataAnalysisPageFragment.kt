@@ -252,11 +252,11 @@ class DataAnalysisPageFragment(
         leftAxis.setDrawGridLines(false)
         leftAxis.spaceTop = 35f
         leftAxis.axisMinimum = 0f // this replaces setStartAtZero(true)
-        leftAxis.granularity = 2000f
+        leftAxis.granularity = 10000f
         leftAxis.valueFormatter = object : ValueFormatter() {
             override fun getFormattedValue(value: Float): String {
-                return if (value >= 1000) {
-                    (value/1000).toInt().toString() + ",000台幣"
+                return if (value >= 10000) {
+                    (value/10000).toInt().toString() + "萬台幣"
                 } else
                     ""
             }

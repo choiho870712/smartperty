@@ -60,48 +60,45 @@
             style="@style/button_rectangle_primary_hollow"
             android:layout_width="0dp"
             android:layout_height="32dp"
-            android:layout_marginStart="16dp"
             android:layout_marginEnd="32dp"
             android:hint="點擊選擇"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView103"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView102" />
+            app:layout_constraintStart_toStartOf="@+id/button_select_sex" />
 
         <Button
             android:id="@+id/button_select_sex"
             style="@style/button_rectangle_primary_hollow"
             android:layout_width="0dp"
             android:layout_height="32dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:layout_marginEnd="32dp"
             android:hint="點擊選擇"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView104"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView102" />
+            app:layout_constraintStart_toEndOf="@+id/textView105" />
 
         <Button
             android:id="@+id/button_select_industry"
             style="@style/button_rectangle_primary_hollow"
             android:layout_width="0dp"
             android:layout_height="32dp"
-            android:layout_marginStart="16dp"
             android:layout_marginEnd="32dp"
             android:hint="點擊選擇"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView102"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView102" />
+            app:layout_constraintStart_toStartOf="@+id/button_select_sex" />
 
         <Button
             android:id="@+id/button_select_income"
             style="@style/button_rectangle_primary_hollow"
             android:layout_width="0dp"
             android:layout_height="32dp"
-            android:layout_marginStart="16dp"
             android:layout_marginEnd="32dp"
             android:hint="點擊選擇"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView105"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView102" />
+            app:layout_constraintStart_toStartOf="@+id/button_select_sex" />
 
         <Button
             android:id="@+id/button_select_image"
@@ -156,7 +153,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:text="年收入"
+            android:text="個人年收入"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView101" />
 

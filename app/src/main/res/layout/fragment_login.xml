@@ -14,10 +14,10 @@
         android:id="@+id/username_toggle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="48dp"
-        android:layout_marginEnd="72dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_logo">
 
@@ -41,12 +41,11 @@
         android:id="@+id/password_toggle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginEnd="72dp"
-        app:passwordToggleEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/username_toggle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_toggle">
+        app:layout_constraintTop_toBottomOf="@+id/username_toggle"
+        app:passwordToggleEnabled="true">
 
         <EditText
             android:id="@+id/password"
@@ -54,25 +53,25 @@
             android:layout_width="match_parent"
             android:layout_height="32dp"
 
+            android:autofillHints=""
             android:hint="@string/prompt_password"
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:selectAllOnFocus="true"
-            android:autofillHints="" />
+            android:selectAllOnFocus="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/login"
         style="@style/button_radius_primary"
-        android:layout_marginTop="32dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:enabled="false"
         android:text="@string/action_sign_in"
+        app:layout_constraintBottom_toBottomOf="@+id/password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_toggle" />
+        app:layout_constraintTop_toTopOf="@+id/username_toggle" />
 
     <TextView
         android:id="@+id/forget_password"
@@ -88,13 +87,13 @@
         style="@style/text_normal_black_12sp_no_padding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:text="@string/contact_us_description"
         app:layout_constraintEnd_toStartOf="@+id/textView_contact_us"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login" />
+        app:layout_constraintTop_toBottomOf="@+id/password_toggle" />
 
     <TextView
         android:id="@+id/textView_contact_us"
@@ -190,26 +189,10 @@
         style="@style/text_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/privacy_policy"
+        android:text="隱私條款"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/text_login_policy4" />
-
-    <Button
-        android:id="@+id/button_landlord_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Landlord"
-        app:layout_constraintBottom_toTopOf="@+id/button_tenant_test"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/button_tenant_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="tenant"
-        app:layout_constraintBottom_toTopOf="@+id/text_login_about_us"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

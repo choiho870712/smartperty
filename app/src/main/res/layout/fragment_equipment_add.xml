@@ -26,9 +26,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:hint="按選單可選擇已有地點"
         app:layout_constraintBottom_toBottomOf="@+id/textView80"
         app:layout_constraintEnd_toStartOf="@+id/button_select_room"
-        app:layout_constraintStart_toStartOf="@+id/guideline17"
+        app:layout_constraintStart_toEndOf="@+id/textView80"
         app:layout_constraintTop_toTopOf="@+id/textView80" />
 
     <EditText
@@ -36,24 +37,23 @@
         style="@style/edit_text_normal_black_16sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginEnd="32dp"
+        android:hint="例如：椅子、冰箱... 設備手冊 x1"
         app:layout_constraintBottom_toBottomOf="@+id/textView81"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline17"
+        app:layout_constraintStart_toStartOf="@+id/textView_room_name"
         app:layout_constraintTop_toTopOf="@+id/textView81" />
 
     <EditText
-        android:inputType="number"
         android:id="@+id/textView_equipment_count"
         style="@style/edit_text_normal_black_16sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginEnd="32dp"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@+id/textView82"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline17"
+        app:layout_constraintStart_toStartOf="@+id/textView_equipment_name"
         app:layout_constraintTop_toTopOf="@+id/textView82" />
 
     <TextView
@@ -89,13 +89,6 @@
         app:layout_constraintStart_toStartOf="@+id/textView82"
         app:layout_constraintTop_toBottomOf="@+id/textView82" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.3" />
-
     <Button
         android:id="@+id/button_select_room"
         style="@style/button_radius_primary"
@@ -112,12 +105,11 @@
         style="@style/button_rectangle_primary_hollow"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
         android:layout_marginEnd="32dp"
         android:text="新增照片"
         app:layout_constraintBottom_toBottomOf="@+id/textView86"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline17"
+        app:layout_constraintStart_toStartOf="@+id/textView_equipment_count"
         app:layout_constraintTop_toTopOf="@+id/textView86" />
 
     <ImageView

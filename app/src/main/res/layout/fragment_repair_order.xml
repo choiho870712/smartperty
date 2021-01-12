@@ -43,7 +43,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/colorWhiteSmoke"
-        android:text="客戶資訊"
+        android:text="填表人資訊"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,16 +62,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView37"
-        style="@style/text_normal_gray_16sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="公司"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toBottomOf="@+id/textView27" />
-
-    <TextView
         android:id="@+id/textView39"
         style="@style/text_normal_gray_16sp"
         android:layout_width="0dp"
@@ -80,7 +70,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toBottomOf="@+id/textView_repair_order_company" />
+        app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
     <TextView
         android:id="@+id/textView44"
@@ -158,17 +148,6 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
         app:layout_constraintTop_toBottomOf="@+id/textView_repair_order_plumber_name" />
-
-    <TextView
-        android:id="@+id/textView_repair_order_company"
-        style="@style/text_normal_black_16sp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toBottomOf="@+id/textView37" />
 
     <TextView
         android:id="@+id/textView_repair_order_plumber_name"
@@ -293,7 +272,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:text="選擇維修人員"
+        android:text="選維修人員"
         app:layout_constraintBottom_toBottomOf="@+id/textView_repair_order_plumber_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView39" />

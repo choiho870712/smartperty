@@ -32,7 +32,7 @@ tools:context=".tenant.home.contract.ContractUploadTextFragment">
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+        <EditText
             android:id="@+id/text_contract_upload_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -112,7 +112,6 @@ class RepairOrderFragment : Fragment() {
         val repairOrder = GlobalVariables.repairOrder
         val plumber = repairOrder.getTechnician()
         if (plumber != null) {
-            root.textView_repair_order_company.text = plumber.company
             root.textView_repair_order_plumber_name.text = plumber.name
             root.textView_repair_order_plumber_cell_phone.text = plumber.cellPhone
         }

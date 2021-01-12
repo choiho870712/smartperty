@@ -144,8 +144,19 @@
             android:layout_height="wrap_content"
             android:text="!"
             app:layout_constraintBottom_toBottomOf="@+id/text_home_greet_name"
-            app:layout_constraintStart_toEndOf="@+id/text_home_greet_name"
+            app:layout_constraintStart_toEndOf="@+id/text_home_greet_sex"
             app:layout_constraintTop_toTopOf="@+id/text_home_greet_name" />
+
+        <TextView
+            android:id="@+id/text_home_greet_sex"
+            style="@style/text_normal_black_24sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="君"
+            app:layout_constraintBottom_toBottomOf="@+id/text_home_greet_name"
+            app:layout_constraintStart_toEndOf="@+id/text_home_greet_name"
+            app:layout_constraintTop_toTopOf="@+id/text_home_greet_name"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/text_home_message"

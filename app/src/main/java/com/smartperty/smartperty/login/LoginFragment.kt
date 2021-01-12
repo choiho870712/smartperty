@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -100,6 +101,17 @@ class LoginFragment : Fragment() {
                 false
             }
 
+            password.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                    //Perform Code
+                    loading.visibility = View.VISIBLE
+                    loginViewModel.login(username.text.toString(), password.text.toString())
+
+                    return@OnKeyListener true
+                }
+                false
+            })
+
             login.setOnClickListener {
                 loading.visibility = View.VISIBLE
                 loginViewModel.login(username.text.toString(), password.text.toString())
@@ -126,18 +138,6 @@ class LoginFragment : Fragment() {
             root.findNavController().navigate(
                 R.id.action_loginFragment_to_privacyFragment
             )
-        }
-
-        root.button_landlord_test.setOnClickListener {
-            requireActivity().setResult(Activity.RESULT_OK)
-            startActivity(Intent(requireActivity(), LandlordActivity().javaClass))
-            requireActivity().finish()
-        }
-
-        root.button_tenant_test.setOnClickListener {
-            requireActivity().setResult(Activity.RESULT_OK)
-            startActivity(Intent(requireActivity(), TenantActivity().javaClass))
-            requireActivity().finish()
         }
 
         return root

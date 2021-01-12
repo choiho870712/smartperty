@@ -1,6 +1,7 @@
 package com.smartperty.smartperty.landlord.menu.estate
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.core.graphics.drawable.toBitmap
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,7 +20,6 @@ import com.smartperty.smartperty.repair.ImageListAdapter
 import com.smartperty.smartperty.utils.GlobalVariables
 import com.smartperty.smartperty.utils.Utils
 import kotlinx.android.synthetic.main.activity_landlord.*
-import kotlinx.android.synthetic.main.fragment_estate.view.*
 import kotlinx.android.synthetic.main.fragment_estate.view.imageView_add_image_button
 import kotlinx.android.synthetic.main.fragment_estate.view.recycler_image
 import kotlinx.android.synthetic.main.fragment_estate_create.view.*
@@ -77,20 +78,47 @@ class EstateCreateFragment : Fragment() {
                             GlobalVariables.estate.fullAddress =
                                 root.edit_create_property_full_address.text.toString()
                             GlobalVariables.estate.floor =
-                                root.edit_create_property_floor.text.toString().toInt()
+                                root.edit_create_property_floor.text.toString()
                             GlobalVariables.estate.area =
                                 root.edit_create_property_area.text.toString().toDouble()
                             GlobalVariables.estate.parkingSpace =
                                 root.edit_create_property_parking_space.text.toString()
                             GlobalVariables.estate.type =
-                                if (root.button_create_property_select_type.text.toString() != "選擇")
-                                    root.button_create_property_select_type.text.toString()
-                                else
-                                    ""
+                                when (root.button_create_property_select_type.text.toString()) {
+                                    "住宅" -> {
+                                        "Dwelling"
+                                    }
+                                    "套房" -> {
+                                        "Suite"
+                                    }
+                                    "店面" -> {
+                                        "Storefront"
+                                    }
+                                    "辦公" -> {
+                                        "Office"
+                                    }
+                                    "住辦" -> {
+                                        "DwellingOffice"
+                                    }
+                                    "廠房" -> {
+                                        "Factory"
+                                    }
+                                    "車位" -> {
+                                        "ParkingSpace"
+                                    }
+                                    "土地" -> {
+                                        "LandPlace"
+                                    }
+                                    else -> {
+                                        "Other"
+                                    }
+                                }
                             GlobalVariables.estate.description =
                                 root.edit_create_property_description.text.toString()
                             GlobalVariables.estate.purchasePrice =
-                                root.edit_create_property_purchase_price.text.toString().toLong()
+                                root.edit_create_property_rent.text.toString().toLong()
+                            GlobalVariables.estate.rent =
+                                root.edit_create_property_rent.text.toString().toInt()
 
                             GlobalVariables.estate.imageList.clear()
                             GlobalVariables.estate.imageList.addAll(imageList)
@@ -124,6 +152,31 @@ class EstateCreateFragment : Fragment() {
 
         root.imageView_add_image_button.setOnClickListener {
             pickImageFromGallery()
+        }
+
+        root.button_create_property_select_type.setOnClickListener {
+            val builderSingle: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+            val arrayAdapter = ArrayAdapter<String>(
+                requireContext(),
+                android.R.layout.select_dialog_singlechoice
+            )
+
+            arrayAdapter.add("住宅")
+            arrayAdapter.add("套房")
+            arrayAdapter.add("店面")
+            arrayAdapter.add("辦公")
+            arrayAdapter.add("住辦")
+            arrayAdapter.add("廠房")
+            arrayAdapter.add("車位")
+            arrayAdapter.add("土地")
+            arrayAdapter.add("其他")
+
+            builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
+            builderSingle.setAdapter(arrayAdapter) { _, which ->
+                val strName = arrayAdapter.getItem(which)
+                root.button_create_property_select_type.text = strName
+            }
+            builderSingle.show()
         }
 
         return root

@@ -16,7 +16,6 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/style_empty"
         android:gravity="start|top"
-        android:inputType="textMultiLine"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

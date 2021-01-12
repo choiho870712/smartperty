@@ -100,8 +100,8 @@
     <fragment
         android:id="@+id/repairListFragment"
         android:name="com.smartperty.smartperty.repair.RepairListFragment"
-        android:label="@string/landlord_title_repair"
-        tools:layout="@layout/fragment_recycler" >
+        android:label="線上報修"
+        tools:layout="@layout/fragment_recycler">
         <action
             android:id="@+id/action_repairListFragment_to_repairOrderFragment"
             app:destination="@id/repairOrderFragment" />
@@ -133,13 +133,13 @@
     <fragment
         android:id="@+id/estateDirectoryCreateFragment"
         android:name="com.smartperty.smartperty.landlord.menu.estate.EstateDirectroyCreateFragment"
-        android:label="新增物件"
+        android:label="新增物件群組"
         tools:layout="@layout/fragment_estate_directory_create" />
     <fragment
         android:id="@+id/repairOrderFragment"
         android:name="com.smartperty.smartperty.repair.RepairOrderFragment"
-        android:label="報修單"
-        tools:layout="@layout/fragment_repair_order" >
+        android:label="維修單"
+        tools:layout="@layout/fragment_repair_order">
         <action
             android:id="@+id/action_repairOrderFragment_to_chooseTenantFragment"
             app:destination="@id/choosePropertyFragment" />
@@ -153,8 +153,8 @@
     <fragment
         android:id="@+id/repairOrderCreateFragment"
         android:name="com.smartperty.smartperty.repair.RepairOrderCreateFragment"
-        android:label="填寫報修單"
-        tools:layout="@layout/fragment_repair_order_create" >
+        android:label="新增維修單"
+        tools:layout="@layout/fragment_repair_order_create">
         <action
             android:id="@+id/action_repairOrderCreateFragment_to_chooseTenantFragment"
             app:destination="@id/choosePropertyFragment" />

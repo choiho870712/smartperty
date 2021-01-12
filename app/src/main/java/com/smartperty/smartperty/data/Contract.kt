@@ -18,6 +18,7 @@ data class Contract(
     var pdfUrl: MutableList<String> = mutableListOf(),
     var jpgUrl: MutableList<String> = mutableListOf(),
 
+    var textString: String = "",
     var pdfString: String = "",
     var jpgBitmapList: MutableList<Bitmap> = mutableListOf()
 ) {

@@ -48,6 +48,15 @@ class Api {
     private val urlGetMessage = urlDirectory + "messagemanagement/getmessage"
     private val urlUploadPropertyRules = urlDirectory + "propertymanagement/uploadpropertyrules"
     private val urlUploadContractDocument = urlDirectory + "contractmanagement/uploadcontractdocument"
+    private val urlUpdateEventParticipant = urlDirectory + "eventmanagement/updateeventparticipant"
+
+    fun updateEventParticipant(landlord_id: String, event_id: String, user: User) : Boolean {
+        val id = user.id
+        val auth = user.auth
+        val json = "{\"landlord_id\": \"$landlord_id\", \"event_id\": \"$event_id\"" +
+                ", \"participant\": [{\"id\": \"$id\", \"auth\": \"$auth\"}]}"
+        return getJsonMessage(callApi(json, urlUpdateEventParticipant)) == "No Error"
+    }
 
     fun uploadContractDocumentJpg(landlord_id:String, contract_id:String, type:String,
                                   bitmapList: MutableList<Bitmap>) : Boolean {
@@ -71,8 +80,9 @@ class Api {
     }
 
     fun uploadContractDocument(landlord_id:String, contract_id:String, type:String, document:String) : Boolean {
+        val fixDocument = fixLineFeed(document)
         val json = "{\"landlord_id\": \"$landlord_id\", \"contract_id\": \"$contract_id\"" +
-                ", \"type\": \"$type\", \"document\": \"$document\"}"
+                ", \"type\": \"$type\", \"document\": \"$fixDocument\"}"
         return getJsonMessage(callApi(json, urlUploadContractDocument)) == "No Error"
     }
 
@@ -250,6 +260,8 @@ class Api {
             val document = backup.getString("document")
             if (backupType == "PDF")
                 contract.pdfString = document
+            else if (backupType == "TXT")
+                contract.textString = document
         }
         catch (e:Exception) {
         }
@@ -330,7 +342,7 @@ class Api {
                 "\"group_name\": \"$group_name\", \"object_name\": \"$object_name\", " +
                 "\"description\": \"$description\", \"region\": \"$region\", " +
                 "\"street\": \"$street\", \"road\": \"$road\", " +
-                "\"full_address\": \"$full_address\", \"floor\": $floor," +
+                "\"full_address\": \"$full_address\", \"floor\": \"$floor\"," +
                 "\"area\": \"$area\", \"rent\": $rent," +
                 "\"parking_space\": \"$parking_space\", \"type\": \"$type\"," +
                 "\"purchase_price\": $purchase_price}"
@@ -380,7 +392,7 @@ class Api {
 
             area = information.getString("area").toDouble(),
             description = information.getString("description"),
-            floor = information.getInt("floor"),
+            floor = information.getString("floor"),
             fullAddress = information.getString("full_address"),
             objectName = information.getString("object_name"),
             parkingSpace = information.getString("parking_space"),
@@ -562,12 +574,7 @@ class Api {
 
     fun getEventInformation(event_id:String): RepairOrder {
         val json = "{\"event_id\": \"$event_id\"}"
-        return try {
-            getEventInformationJson(callApi(json, urlGetEventInformation))
-        }
-        catch (e:Exception) {
-            RepairOrder()
-        }
+        return getEventInformationJson(callApi(json, urlGetEventInformation))
     }
 
     private fun getEventInformationJson(rawJsonString:String): RepairOrder {
@@ -622,22 +629,12 @@ class Api {
             repairOrder.postList.add(repairOrderPost)
         }
 
-        // TODO get participant
-//        val participant = item.getJSONArray("participant")
-//        for (j in 0 until(participant.length())) {
-//            val participantItem = participant.getJSONObject(j)
-//
-//            when (participantItem.getString("auth")) {
-//                "technician" -> {
-//                    repairOrder.plumber_id = participantItem.getString("id")
-//                }
-//                "tenant" -> {
-//                    repairOrder.tenant_id = participantItem.getString("id")
-//                }
-//                else -> {
-//                }
-//            }
-//        }
+        val participant = item.getJSONArray("participant")
+        for (j in 0 until(participant.length())) {
+            val participantItem = participant.getJSONObject(j)
+            repairOrder.participant.add(
+                Utils.getUser(participantItem.getString("id"))!!)
+        }
 
         return repairOrder
     }

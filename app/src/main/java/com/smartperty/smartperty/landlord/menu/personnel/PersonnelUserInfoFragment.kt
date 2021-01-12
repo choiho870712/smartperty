@@ -150,6 +150,7 @@ class PersonnelUserInfoFragment : Fragment() {
 
             arrayAdapter.add("男")
             arrayAdapter.add("女")
+            arrayAdapter.add("不公開")
 
             builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
             builderSingle.setAdapter(arrayAdapter) { _, which ->
@@ -166,14 +167,14 @@ class PersonnelUserInfoFragment : Fragment() {
                 android.R.layout.select_dialog_singlechoice
             )
 
-            arrayAdapter.add("NT100,000以下")
-            arrayAdapter.add("NT100,001~200,000")
-            arrayAdapter.add("NT200,001~400,000")
-            arrayAdapter.add("NT400,001~600,000")
-            arrayAdapter.add("NT600,001~1,000,000")
-            arrayAdapter.add("NT1,000,001~1,200,000")
-            arrayAdapter.add("NT1,200,001~1,500,000")
-            arrayAdapter.add("NT1,500,000以上")
+            arrayAdapter.add("NT10萬以下")
+            arrayAdapter.add("NT10萬~20萬")
+            arrayAdapter.add("NT20萬~40萬")
+            arrayAdapter.add("NT40萬~60萬")
+            arrayAdapter.add("NT60萬~1,00萬")
+            arrayAdapter.add("NT1,00萬~1,20萬")
+            arrayAdapter.add("NT1,20萬~1,50萬")
+            arrayAdapter.add("NT1,50萬以上")
 
             builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
             builderSingle.setAdapter(arrayAdapter) { _, which ->

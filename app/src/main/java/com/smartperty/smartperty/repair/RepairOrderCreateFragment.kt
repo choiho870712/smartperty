@@ -123,7 +123,6 @@ class RepairOrderCreateFragment : Fragment() {
     private fun writeInfoToView() {
         if (GlobalVariables.repairOrder.creator != null) {
             root.textView_repair_order_writer.text = GlobalVariables.repairOrder.creator!!.name
-            root.textView_repair_order_phone.text = GlobalVariables.repairOrder.creator!!.homePhone
             root.textView_repair_order_cell_phone.text = GlobalVariables.repairOrder.creator!!.cellPhone
             root.textView_repair_order_email.text = GlobalVariables.repairOrder.creator!!.email
         }

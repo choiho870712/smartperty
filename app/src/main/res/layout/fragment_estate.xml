@@ -30,15 +30,14 @@
             style="@style/text_normal_gray_16sp"
             android:text="@string/square_ft_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+            app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
         <TextView
             android:id="@+id/textView23"
             style="@style/text_normal_gray_16sp"
             android:text="@string/tenant_title"
-            app:layout_constraintBottom_toBottomOf="@+id/textView18"
             app:layout_constraintStart_toStartOf="@+id/guideline8"
-            app:layout_constraintTop_toTopOf="@+id/textView18" />
+            app:layout_constraintTop_toTopOf="@+id/textView20" />
 
         <TextView
             android:id="@+id/textView79"
@@ -46,7 +45,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/phone"
-            app:layout_constraintBottom_toBottomOf="@+id/textView20"
             app:layout_constraintStart_toStartOf="@+id/guideline8"
             app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
@@ -55,7 +53,7 @@
             style="@style/text_normal_gray_16sp"
             android:text="@string/floor_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView18" />
+            app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
         <TextView
             android:id="@+id/textView21"
@@ -69,7 +67,7 @@
             style="@style/text_normal_gray_16sp"
             android:text="@string/parking_space_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView20" />
+            app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
         <TextView
             android:id="@+id/textView78"
@@ -80,7 +78,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
-        <EditText
+        <TextView
             android:id="@+id/textView_object_item_address"
             style="@style/text_normal_black_16sp"
             android:layout_width="0dp"
@@ -88,7 +86,7 @@
             android:background="@drawable/style_empty"
             android:inputType="none"
             android:singleLine="true"
-            app:layout_constraintBottom_toTopOf="@+id/textView18"
+            app:layout_constraintBottom_toBottomOf="@+id/textView21"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/textView21"
@@ -108,7 +106,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="gone" />
 
-        <EditText
+        <TextView
             android:id="@+id/textView_object_item_phone"
             style="@style/text_normal_black_16sp"
             android:layout_width="0dp"
@@ -122,7 +120,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView23"
             app:layout_constraintVertical_bias="0.0" />
 
-        <EditText
+        <TextView
             android:id="@+id/textView_object_item_floor"
             style="@style/text_normal_black_16sp"
             android:layout_width="0dp"
@@ -134,9 +132,9 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/textView18"
-            app:layout_constraintTop_toBottomOf="@+id/textView18" />
+            app:layout_constraintTop_toTopOf="@+id/textView20" />
 
-        <EditText
+        <TextView
             android:id="@+id/textView_object_item_parking_sapce"
             style="@style/text_normal_black_16sp"
             android:layout_width="0dp"
@@ -243,7 +241,7 @@
             app:layout_constraintStart_toStartOf="@+id/guideline8"
             app:layout_constraintTop_toBottomOf="@+id/text_object_item_end_date" />
 
-        <EditText
+        <TextView
             android:id="@+id/textView_object_item_square_ft"
             style="@style/text_normal_black_16sp"
             android:layout_width="0dp"
@@ -255,7 +253,7 @@
             app:layout_constraintStart_toEndOf="@+id/textView18"
             app:layout_constraintTop_toTopOf="@+id/textView18" />
 
-        <EditText
+        <TextView
             android:id="@+id/textView_object_item_square_ft2"
             style="@style/text_normal_black_16sp"
             android:layout_width="0dp"
@@ -302,7 +300,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView36" />
 
-        <EditText
+        <TextView
             android:id="@+id/textView_object_item_content"
             style="@style/text_normal_black_16sp"
             android:layout_width="0dp"

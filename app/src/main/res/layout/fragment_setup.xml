@@ -169,7 +169,7 @@
 
             <TextView
                 style="@style/text_normal_black_20sp"
-                android:text="服務期限" />
+                android:text="使用條款" />
 
         </LinearLayout>
 

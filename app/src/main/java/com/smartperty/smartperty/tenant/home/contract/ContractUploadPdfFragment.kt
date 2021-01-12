@@ -26,6 +26,8 @@ class ContractUploadPdfFragment : Fragment() {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_contract_upload_pdf, container, false)
 
+        GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
+
         root.button_contract_upload_select_pdf.setOnClickListener {
             selectPdfFromStorage()
         }

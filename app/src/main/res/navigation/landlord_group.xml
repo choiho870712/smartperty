@@ -24,13 +24,13 @@
     <fragment
         android:id="@+id/privacyFragment2"
         android:name="com.smartperty.smartperty.login.pravicy.PrivacyFragment"
-        android:label="fragment_privacy"
+        android:label="隱私條款"
         tools:layout="@layout/fragment_privacy" />
     <fragment
         android:id="@+id/aboutUsFragment2"
         android:name="com.smartperty.smartperty.login.aboutUs.AboutUsFragment"
-        android:label="AboutUsFragment"
-        tools:layout="@layout/fragment_about_us"/>
+        android:label="使用條款"
+        tools:layout="@layout/fragment_about_us" />
     <fragment
         android:id="@+id/personnelUserInfoFragment"
         android:name="com.smartperty.smartperty.landlord.menu.personnel.PersonnelUserInfoFragment"

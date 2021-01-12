@@ -28,39 +28,6 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/textView_choose_plumber_company"
-        style="@style/text_normal_black_16sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="textView_choose_plumber_company"
-        app:layout_constraintBottom_toBottomOf="@+id/textView32"
-        app:layout_constraintStart_toStartOf="@+id/guideline14"
-        app:layout_constraintTop_toTopOf="@+id/textView32"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        style="@style/button_radius_primary"
-        android:id="@+id/textView_choose_plumber_date"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/selectDate"
-        app:layout_constraintBottom_toBottomOf="@+id/textView33"
-        app:layout_constraintStart_toEndOf="@+id/textView33"
-        app:layout_constraintTop_toTopOf="@+id/textView33" />
-
-    <Button
-        style="@style/button_radius_primary"
-        android:id="@+id/textView_choose_plumber_time"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/selectTime"
-        app:layout_constraintBottom_toBottomOf="@+id/textView33"
-        app:layout_constraintStart_toEndOf="@+id/textView_choose_plumber_date"
-        app:layout_constraintTop_toTopOf="@+id/textView33" />
-
-    <TextView
         android:id="@+id/textView16"
         style="@style/text_normal_black_16sp"
         android:layout_width="wrap_content"
@@ -79,26 +46,6 @@
         android:text="@string/phone"
         app:layout_constraintStart_toStartOf="@+id/guideline13"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
-
-    <TextView
-        android:id="@+id/textView32"
-        style="@style/text_normal_black_16sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/company"
-        app:layout_constraintStart_toStartOf="@+id/guideline13"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
-
-    <TextView
-        android:id="@+id/textView33"
-        style="@style/text_normal_black_16sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/dateTime"
-        app:layout_constraintStart_toStartOf="@+id/guideline13"
-        app:layout_constraintTop_toBottomOf="@+id/textView32" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_plumber_list"

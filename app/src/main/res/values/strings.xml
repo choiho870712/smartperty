@@ -21,7 +21,7 @@
     <string name="tenant_title_notification">消息</string>
     <string name="tenant_title_home">首頁</string>
     <string name="tenant_title_chat">聊天</string>
-    <string name="tenant_title_group">我們</string>
+    <string name="tenant_title_group">設定</string>
     <string name="tenant_home_greet">Hello~Derek君!</string>
     <string name="tenant_home_message">早安!!</string>
     <string name="tenant_home_temperature">21°C</string>
@@ -56,7 +56,7 @@
     <string name="landlord_title_notification">消息</string>
     <string name="landlord_title_home">首頁</string>
     <string name="landlord_title_chat">聊天</string>
-    <string name="landlord_title_group">我們</string>
+    <string name="landlord_title_group">設定</string>
     <string name="landlord_title_object_folder">物件</string>
     <string name="landlord_title_object_list">單位列表</string>
     <string name="landlord_title_object_item">單位資訊</string>

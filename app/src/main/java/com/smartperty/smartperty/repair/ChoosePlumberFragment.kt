@@ -39,14 +39,18 @@ class ChoosePlumberFragment : Fragment() {
                     builder.setTitle("確定維修人員？")
 
                     builder.setPositiveButton("是") { _, _ ->
-                        val dateTimeString = "" +
-                            root.textView_choose_plumber_date.text +
-                            " " +
-                            root.textView_choose_plumber_time.text
-                        GlobalVariables.repairOrder.date = dateTimeString
                         GlobalVariables.repairOrder.participant.add(
                             GlobalVariables.plumber
                         )
+
+                        Thread {
+                            GlobalVariables.api.updateEventParticipant(
+                                GlobalVariables.repairOrder.landlord!!.id,
+                                GlobalVariables.repairOrder.event_id,
+                                GlobalVariables.plumber
+                            )
+                        }.start()
+
                         root.findNavController().navigateUp()
                     }
 
@@ -71,41 +75,6 @@ class ChoosePlumberFragment : Fragment() {
 
         root.textView_choose_plumber_name.text = GlobalVariables.plumber.name
         root.textView_choose_plumber_cell_phone.text = GlobalVariables.plumber.cellPhone
-        root.textView_choose_plumber_company.text = GlobalVariables.plumber.company
-
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
-        val hour = calendar.get(Calendar.HOUR_OF_DAY)
-        val minute = calendar.get(Calendar.MINUTE)
-
-        datePickerDialog = DatePickerDialog(
-            requireContext(),
-            { _, y, m, d ->
-                val dateString = "$y/$m/$d"
-                root.textView_choose_plumber_date.text = dateString
-            },
-            year, month, day
-        )
-
-        root.textView_choose_plumber_date.setOnClickListener {
-            datePickerDialog.show()
-        }
-
-        timePickerDialog = TimePickerDialog(
-            requireContext(),
-            {
-                _, h, m ->
-                val timeString = "$h:$m"
-                root.textView_choose_plumber_time.text = timeString
-            },
-            hour, minute, true
-        )
-
-        root.textView_choose_plumber_time.setOnClickListener {
-            timePickerDialog.show()
-        }
 
         return root
     }

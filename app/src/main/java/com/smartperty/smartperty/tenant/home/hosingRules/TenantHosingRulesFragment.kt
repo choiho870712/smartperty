@@ -24,6 +24,8 @@ class TenantHosingRulesFragment : Fragment() {
         root = inflater.inflate(R.layout.tenant_fragment_housing_rules, container, false)
 
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
+        val defaultInputType = root.text_housing_rules.inputType
+        root.text_housing_rules.inputType = InputType.TYPE_NULL
         fillInformation()
 
         if (GlobalVariables.loginUser.auth == "landlord") {
@@ -33,7 +35,7 @@ class TenantHosingRulesFragment : Fragment() {
                     R.id.button_edit -> {
                         GlobalVariables.toolBarUtils.setEditButtonVisibility(false)
                         GlobalVariables.toolBarUtils.setSubmitButtonVisibility(true)
-                        root.text_housing_rules.inputType = InputType.TYPE_CLASS_TEXT
+                        root.text_housing_rules.inputType = defaultInputType
                         root.text_housing_rules.background =
                             resources.getDrawable(R.drawable.style_hollow_white_smoke)
                         true

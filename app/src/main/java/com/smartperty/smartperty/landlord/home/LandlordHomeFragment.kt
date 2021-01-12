@@ -147,6 +147,19 @@ class LandlordHomeFragment : Fragment() {
             root.findNavController().navigate(uri)
         }
 
+        root.text_home_greet_sex.text =
+            when(GlobalVariables.loginUser.sex) {
+                "男"-> {
+                    "君"
+                }
+                "女"-> {
+                    "醬"
+                }
+                else -> {
+                    ""
+                }
+            }
+
         return root
     }
 

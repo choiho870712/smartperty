@@ -28,7 +28,7 @@ data class Estate (
     var street: String = "",
     var road: String = "",
     var fullAddress: String = "",
-    var floor: Int = 0,
+    var floor: String = "",
     var area: Double = 0.0,
     var rent: Int = 0,
     var parkingSpace: String = "",

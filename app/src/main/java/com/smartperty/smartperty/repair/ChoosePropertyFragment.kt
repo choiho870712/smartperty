@@ -38,6 +38,7 @@ class ChoosePropertyFragment : Fragment() {
 
     private fun setToolBar() {
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
+        GlobalVariables.toolBarUtils.setTitle("選擇物件")
     }
 
     class SpinnerActivity : Activity(), AdapterView.OnItemSelectedListener {

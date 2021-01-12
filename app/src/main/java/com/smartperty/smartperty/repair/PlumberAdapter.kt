@@ -37,7 +37,6 @@ class PlumberAdapter(private val activity: Activity,
             GlobalVariables.plumber = myDataset[holder.index]
             parentView.textView_choose_plumber_name.text = GlobalVariables.plumber.name
             parentView.textView_choose_plumber_cell_phone.text = GlobalVariables.plumber.cellPhone
-            parentView.textView_choose_plumber_company.text = GlobalVariables.plumber.company
         }
     }
 

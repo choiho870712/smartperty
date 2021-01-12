@@ -14,7 +14,9 @@ import androidx.navigation.findNavController
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.EstateList
 import com.smartperty.smartperty.utils.GlobalVariables
+import com.smartperty.smartperty.utils.Utils
 import kotlinx.android.synthetic.main.activity_landlord.*
+import kotlinx.android.synthetic.main.fragment_estate_create.view.*
 import kotlinx.android.synthetic.main.fragment_estate_directory_create.view.*
 
 class EstateDirectroyCreateFragment : Fragment() {
@@ -35,25 +37,37 @@ class EstateDirectroyCreateFragment : Fragment() {
         GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.button_submit -> {
+                    // setup dialog builder
+                    val builder = android.app.AlertDialog.Builder(requireActivity())
+                    builder.setTitle("確定要送出嗎？")
 
-                    Thread {
-                        GlobalVariables.api.createPropertyGroupTag(
-                            GlobalVariables.loginUser.id,
-                            GlobalVariables.loginUser.system_id,
-                            root.text_object_folder_title.text.toString(),
-                            image
+                    builder.setPositiveButton("是") { _, _ ->
+
+                        Thread {
+                            GlobalVariables.api.createPropertyGroupTag(
+                                GlobalVariables.loginUser.id,
+                                GlobalVariables.loginUser.system_id,
+                                root.text_object_folder_title.text.toString(),
+                                image
+                            )
+                        }.start()
+
+                        GlobalVariables.estateDirectory.add(
+                            EstateList(
+                                title = root.text_object_folder_title.text.toString(),
+                                image = image
+                            )
                         )
-                    }.start()
 
-                    GlobalVariables.estateDirectory.add(
-                        EstateList(
-                            title = root.text_object_folder_title.text.toString(),
-                            image = image
-                        )
-                    )
+                        GlobalVariables.estateDirectoryAdapter!!.notifyDataSetChanged()
+                        root.findNavController().navigateUp()
+                    }
 
-                    GlobalVariables.estateDirectoryAdapter!!.notifyDataSetChanged()
-                    root.findNavController().navigateUp()
+                    // create dialog and show it
+                    requireActivity().runOnUiThread{
+                        val dialog = builder.create()
+                        dialog.show()
+                    }
 
                     true
                 }

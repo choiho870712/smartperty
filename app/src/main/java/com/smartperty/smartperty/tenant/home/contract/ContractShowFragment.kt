@@ -58,6 +58,16 @@ class ContractShowFragment : Fragment() {
                     .load()
             }
         }
+        else if (GlobalVariables.estate.contract!!.textString.isNotEmpty()) {
+            root.webView.visibility = View.VISIBLE
+
+            val webView = root.webView
+            val webSettings = webView.settings
+            val url = GlobalVariables.estate.contract!!.textString
+            webSettings.javaScriptEnabled = true
+            webView.webViewClient = WebViewClient()
+            webView.loadUrl(url)
+        }
         else if (GlobalVariables.estate.contract!!.jpgBitmapList.isNotEmpty()) {
             root.recycler_image.apply {
                 setHasFixedSize(true)

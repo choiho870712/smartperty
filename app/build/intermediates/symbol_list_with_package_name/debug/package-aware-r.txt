@@ -1962,7 +1962,6 @@ id button_home_rent_and_utilities
 id button_home_repair
 id button_is_not_rented
 id button_is_rented
-id button_landlord_test
 id button_next
 id button_personnel_control
 id button_select_image
@@ -1987,7 +1986,6 @@ id button_tenant_setup_logout
 id button_tenant_setup_person_info
 id button_tenant_setup_privacy
 id button_tenant_setup_score
-id button_tenant_test
 id button_upload_contract
 id button_view_contract_pdf
 id cache_measures
@@ -2076,7 +2074,8 @@ id edit_create_property_floor
 id edit_create_property_full_address
 id edit_create_property_name
 id edit_create_property_parking_space
-id edit_create_property_purchase_price
+id edit_create_property_purchase_price2
+id edit_create_property_rent
 id edit_query
 id end
 id end_padder
@@ -2122,7 +2121,6 @@ id guideline13
 id guideline14
 id guideline15
 id guideline16
-id guideline17
 id guideline18
 id guideline19
 id guideline2
@@ -2441,6 +2439,7 @@ id textView104
 id textView105
 id textView11
 id textView12
+id textView13
 id textView14
 id textView15
 id textView16
@@ -2461,12 +2460,9 @@ id textView29
 id textView3
 id textView30
 id textView31
-id textView32
-id textView33
 id textView34
 id textView35
 id textView36
-id textView37
 id textView38
 id textView39
 id textView4
@@ -2491,7 +2487,6 @@ id textView56
 id textView57
 id textView58
 id textView59
-id textView6
 id textView60
 id textView61
 id textView62
@@ -2537,10 +2532,7 @@ id textView98
 id textView99
 id textView_accountant_count
 id textView_choose_plumber_cell_phone
-id textView_choose_plumber_company
-id textView_choose_plumber_date
 id textView_choose_plumber_name
-id textView_choose_plumber_time
 id textView_contact_us
 id textView_create_contract_endDate
 id textView_data_analysis_type
@@ -2574,12 +2566,10 @@ id textView_phone
 id textView_plumber_count
 id textView_repair_order_address
 id textView_repair_order_cell_phone
-id textView_repair_order_company
 id textView_repair_order_content
 id textView_repair_order_creator_cell_phone
 id textView_repair_order_creator_name
 id textView_repair_order_email
-id textView_repair_order_phone
 id textView_repair_order_plumber_cell_phone
 id textView_repair_order_plumber_name
 id textView_repair_order_post_date_time
@@ -2598,6 +2588,7 @@ id textView_username
 id textWatcher
 id text_address
 id text_amount
+id text_amount2
 id text_contract_upload_text
 id text_date
 id text_equipment
@@ -2607,6 +2598,7 @@ id text_finance_item_value
 id text_home_greet
 id text_home_greet3
 id text_home_greet_name
+id text_home_greet_sex
 id text_home_message
 id text_home_message2
 id text_home_temperature
@@ -3859,6 +3851,7 @@ style button_rectangle_primary_hollow
 style card_80dp
 style card_notification
 style edit_text_normal_black_16sp
+style edit_text_normal_black_16sp_single_line
 style landlord_menu_icon
 style landlord_menu_text
 style tenant_home_select_button_icon

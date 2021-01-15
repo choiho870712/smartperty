@@ -9,9 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.smartperty.smartperty.R
+import com.smartperty.smartperty.data.EstateList
 import com.smartperty.smartperty.login.LoginActivity
 import com.smartperty.smartperty.utils.GlobalVariables
 import com.smartperty.smartperty.utils.GlobalVariables.Companion.toolBarUtils
+import kotlinx.android.synthetic.main.fragment_estate_directory_create.view.*
 import kotlinx.android.synthetic.main.fragment_setup.*
 import kotlinx.android.synthetic.main.fragment_setup.view.*
 
@@ -65,10 +67,22 @@ class SetupFragment : Fragment() {
         }
 
         root.button_tenant_setup_logout.setOnClickListener {
-            GlobalVariables.logout()
-            requireActivity().setResult(Activity.RESULT_OK)
-            startActivity(Intent(requireActivity(), LoginActivity().javaClass))
-            requireActivity().finish()
+            // setup dialog builder
+            val builder = android.app.AlertDialog.Builder(requireActivity())
+            builder.setTitle("確定要登出嗎？")
+
+            builder.setPositiveButton("是") { _, _ ->
+                GlobalVariables.logout()
+                requireActivity().setResult(Activity.RESULT_OK)
+                startActivity(Intent(requireActivity(), LoginActivity().javaClass))
+                requireActivity().finish()
+            }
+
+            // create dialog and show it
+            requireActivity().runOnUiThread{
+                val dialog = builder.create()
+                dialog.show()
+            }
         }
 
         return root

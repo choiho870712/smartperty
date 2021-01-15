@@ -23,6 +23,9 @@ class PersonnelFragment : Fragment() {
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
         GlobalVariables.toolBarUtils.setTitle(GlobalVariables.personnel.name)
 
+        if (GlobalVariables.personnel.icon != null)
+            root.image_userIcon.setImageBitmap(GlobalVariables.personnel.icon)
+
         root.textView_personnel_name.text = GlobalVariables.personnel.name
         root.textView_personnel_account.text = GlobalVariables.personnel.account
         root.textView_personnel_phone.text = GlobalVariables.personnel.cellPhone

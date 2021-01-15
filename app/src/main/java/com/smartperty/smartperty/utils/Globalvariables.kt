@@ -23,6 +23,10 @@ class GlobalVariables : Application() {
         val imageHelper = ImageHelper()
         val api = Api()
 
+        var welcomeMessage = ""
+        var rentedEstateList = EstateList(title = "已出租")
+        var notRentedEstateList = EstateList(title = "未出租")
+
         lateinit var toolbar: Toolbar
         lateinit var toolBarUtils: ToolBarUtils
         var currentNavController: LiveData<NavController>? = null
@@ -34,11 +38,15 @@ class GlobalVariables : Application() {
         var repairList = mutableListOf<RepairOrder>()
         var contractList = mutableListOf<Contract>()
 
+        // address tree
+        var addressTree = AddressTree()
+
         // pointer
         var estateDirectory = loginUser.estateDirectory
         var estateFolder = EstateList()
         var estate = Estate()
         var repairOrder = RepairOrder()
+        var repairOrderPost = RepairOrderPost()
         var contract = Contract()
 
         // adapter and manager
@@ -52,7 +60,8 @@ class GlobalVariables : Application() {
         lateinit var repairListLayoutManager: LinearLayoutManager
 
         // switch
-        var personnelUserInfoUsage: String = "read" // create update read
+        var personnelUserInfoUsage: String = "read" // create / update / read
+        var propertySelectorUsage: String = "rented" // rented / none
 
 
         // account
@@ -152,7 +161,129 @@ class GlobalVariables : Application() {
         }
 
         fun logout() {
+            welcomeMessage = ""
+            rentedEstateList = EstateList(title = "已出租")
+            notRentedEstateList = EstateList(title = "未出租")
 
+            currentNavController = null
+
+            // static storage
+            loginUser = User()
+            userList = mutableListOf()
+            estateList = mutableListOf()
+            repairList = mutableListOf()
+            contractList = mutableListOf()
+
+            // address tree
+            addressTree = AddressTree()
+
+            // pointer
+            estateDirectory = loginUser.estateDirectory
+            estateFolder = EstateList()
+            estate = Estate()
+            repairOrder = RepairOrder()
+            repairOrderPost = RepairOrderPost()
+            contract = Contract()
+
+            // adapter and manager
+            estateDirectoryAdapter = null
+            estateFolderAdapter = null
+            estateAdapter = null
+            repairListAdapter = null
+
+            // switch
+            personnelUserInfoUsage = "read" // create / update / read
+            propertySelectorUsage = "rented" // rented / none
+
+
+            // account
+            landlord = User()
+            tenant = User()
+            plumber = User()
+            personnel = User()
+
+            // notification
+            notificationList = mutableListOf(
+                Notification(
+                    message = "合約類型",
+                    date = "2020/12/01",
+                    type = NotificationType.CONTRACT
+                ),
+                Notification(
+                    message = "租金類型",
+                    date = "2020/12/01",
+                    type = NotificationType.RENT
+                ),
+                Notification(
+                    message = "代辦類型",
+                    date = "2020/12/01",
+                    type = NotificationType.AGENT
+                ),
+                Notification(
+                    message = "維修類型",
+                    date = "2020/12/01",
+                    type = NotificationType.EVENT
+                ),
+                Notification(
+                    message = "系統類型",
+                    date = "2020/12/01",
+                    type = NotificationType.SYSTEM
+                )
+            )
+
+            // chart
+            contractExpireLineChartDataSet = ChartData(
+                type = ChartDataType.LINE_CHART,
+                dataList = mutableListOf(
+                    ChartDataPair("11", 2),
+                    ChartDataPair("12", 3),
+                    ChartDataPair("13", 4),
+                    ChartDataPair("14", 5)
+                )
+            )
+            contractExpireIn3MonthBySquareFtPieChartDataSet = ChartData(
+                type = ChartDataType.PIE_CHART,
+                dataList = mutableListOf(
+                    ChartDataPair("0~20坪", 3),
+                    ChartDataPair("21~30坪", 5),
+                    ChartDataPair("31~50坪", 7),
+                    ChartDataPair("51~100坪", 9)
+                )
+            )
+            contractExpireIn3MonthByTypePieChartDataSet = ChartData(
+                type = ChartDataType.PIE_CHART,
+                dataList = mutableListOf(
+                    ChartDataPair("停車位", 2),
+                    ChartDataPair("辦公室", 4),
+                    ChartDataPair("店面", 6),
+                    ChartDataPair("套房", 8)
+                )
+            )
+            dataAnalysisByGroupBarChartDataSet = ChartData()
+            dataAnalysisByGroupPieChartDataSet = ChartData()
+            dataAnalysisByTypeBarChartDataSet = ChartData()
+            dataAnalysisByTypePieChartDataSet = ChartData()
+            dataAnalysisBySquareFtBarChartDataSet = ChartData()
+            dataAnalysisBySquareFtPieChartDataSet = ChartData()
+
+            // finance
+            finance = Finance(
+                income = mutableListOf(
+                    FinanceItem("租金",30000),
+                    FinanceItem("合計",30000)
+                ),
+                outcome = mutableListOf(
+                    FinanceItem("修繕 漏水 2020/03/20",8000),
+                    FinanceItem("修繕 冷氣 2020/01/20",10000),
+                    FinanceItem("地價",7500),
+                    FinanceItem("房屋稅",1500),
+                    FinanceItem("營業稅",1600),
+                    FinanceItem("廣告 519.c...",796),
+                    FinanceItem("水電",800),
+                    FinanceItem("利息 2%",24500),
+                    FinanceItem("合計",50000)
+                )
+            )
         }
     }
 }

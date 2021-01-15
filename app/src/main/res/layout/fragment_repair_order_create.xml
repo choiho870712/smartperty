@@ -19,6 +19,7 @@
     <TextView
         android:id="@+id/textView8"
         style="@style/text_normal_black_16sp"
+        android:layout_marginTop="8dp"
         android:text="行動電話"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -26,67 +27,56 @@
     <TextView
         android:id="@+id/textView10"
         style="@style/text_normal_black_16sp"
+        android:layout_marginTop="8dp"
         android:text="電子郵件"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <TextView
-        android:id="@+id/textView"
-        style="@style/text_normal_black_16sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="電子郵件"
-        app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <TextView
-        android:id="@+id/textView11"
-        style="@style/text_normal_black_16sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="報修地點"
-        app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
         android:id="@+id/textView12"
         style="@style/text_normal_black_16sp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:text="問題類別"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/textView33"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="選擇物件"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <TextView
         android:id="@+id/textView_repair_order_email"
         style="@style/text_normal_black_16sp"
-        android:text="textView_repair_order_email"
+        android:layout_width="0dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView10"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="@+id/textView10" />
 
     <TextView
-        android:id="@+id/textView_repair_order_address"
-        style="@style/text_normal_black_16sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="textView_repair_order_address"
-        app:layout_constraintBottom_toBottomOf="@+id/textView11"
-        app:layout_constraintStart_toStartOf="@+id/guideline6"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-    <TextView
         android:id="@+id/textView_repair_order_cell_phone"
         style="@style/text_normal_black_16sp"
-        android:text="textView_repair_order_cell_phone"
+        android:layout_width="0dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView8"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="@+id/textView8" />
 
     <TextView
         android:id="@+id/textView_repair_order_writer"
         style="@style/text_normal_black_16sp"
-        android:text="textView_repair_order_writer"
+        android:layout_width="0dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="@+id/textView5" />
 
@@ -109,6 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/textView12"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="@+id/textView12" />
@@ -124,7 +115,7 @@
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/textView33" />
 
     <EditText
         android:id="@+id/textView_repair_order_content"
@@ -173,13 +164,26 @@
     <Button
         android:id="@+id/button_choose_tenant"
         style="@style/button_rectangle_primary_hollow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
         android:layout_marginEnd="16dp"
-        android:text="選擇住戶"
+        android:text="點擊選擇"
+        app:layout_constraintBottom_toBottomOf="@+id/textView33"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_repair_order_address" />
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toTopOf="@+id/textView33" />
+
+    <Button
+        android:id="@+id/button_choose_repair_type"
+        style="@style/button_rectangle_primary_hollow"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="16dp"
+        android:text="點擊選擇"
+        app:layout_constraintBottom_toBottomOf="@+id/textView12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toTopOf="@+id/textView12" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

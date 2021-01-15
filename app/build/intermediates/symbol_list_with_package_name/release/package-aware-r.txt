@@ -1940,6 +1940,7 @@ id button_add_image
 id button_add_message
 id button_cancel
 id button_choose_plumber
+id button_choose_repair_type
 id button_choose_tenant
 id button_clear_tenant_contract_signature
 id button_contract_upload_select_image
@@ -1964,6 +1965,8 @@ id button_is_not_rented
 id button_is_rented
 id button_next
 id button_personnel_control
+id button_select_auth
+id button_select_dir_image
 id button_select_image
 id button_select_income
 id button_select_industry
@@ -2065,6 +2068,8 @@ id dropdown_menu
 id easeIn
 id easeInOut
 id easeOut
+id editTextPhone
+id editText_name
 id edit_create_contract_deposit
 id edit_create_contract_pay_times
 id edit_create_contract_rent
@@ -2437,6 +2442,7 @@ id textView102
 id textView103
 id textView104
 id textView105
+id textView106
 id textView11
 id textView12
 id textView13
@@ -2460,9 +2466,12 @@ id textView29
 id textView3
 id textView30
 id textView31
+id textView32
+id textView33
 id textView34
 id textView35
 id textView36
+id textView37
 id textView38
 id textView39
 id textView4
@@ -2487,6 +2496,7 @@ id textView56
 id textView57
 id textView58
 id textView59
+id textView6
 id textView60
 id textView61
 id textView62
@@ -2564,6 +2574,7 @@ id textView_personnel_password
 id textView_personnel_phone
 id textView_phone
 id textView_plumber_count
+id textView_property_title
 id textView_repair_order_address
 id textView_repair_order_cell_phone
 id textView_repair_order_content

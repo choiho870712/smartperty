@@ -75,7 +75,7 @@ class EstateDirectroyCreateFragment : Fragment() {
             }
         }
 
-        root.image_object_folder_add.setOnClickListener {
+        root.button_select_dir_image.setOnClickListener {
             pickImageFromGallery()
         }
 

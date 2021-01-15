@@ -179,6 +179,95 @@ class EstateCreateFragment : Fragment() {
             builderSingle.show()
         }
 
+
+        var selectedRegion = GlobalVariables.addressTree.regionList[0].region
+        var selectedRoad = GlobalVariables.addressTree.regionList[0].roadList[0].road
+        var selectedStreet = GlobalVariables.addressTree.regionList[0].roadList[0].streetList[0]
+
+        root.button_create_property_select_region.text = selectedRegion
+        root.button_create_property_select_road.text = selectedRoad
+        root.button_create_property_select_street.text = selectedStreet
+
+        root.button_create_property_select_region.setOnClickListener {
+            val builderSingle: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+            val arrayAdapter = ArrayAdapter<String>(
+                requireContext(),
+                android.R.layout.select_dialog_singlechoice
+            )
+
+            GlobalVariables.addressTree.regionList.forEach {
+                arrayAdapter.add(it.region)
+            }
+
+            builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
+            builderSingle.setAdapter(arrayAdapter) { _, which ->
+                val strName = arrayAdapter.getItem(which)
+
+                selectedRegion = strName!!
+                selectedRoad = GlobalVariables.addressTree
+                    .regionList.find { it.region == selectedRegion }!!
+                    .roadList[0].road
+                selectedStreet = GlobalVariables.addressTree
+                    .regionList.find { it.region == selectedRegion }!!
+                    .roadList.find { it.road == selectedRoad }!!
+                    .streetList[0]
+
+                root.button_create_property_select_region.text = selectedRegion
+                root.button_create_property_select_road.text = selectedRoad
+                root.button_create_property_select_street.text = selectedStreet
+            }
+            builderSingle.show()
+        }
+
+        root.button_create_property_select_road.setOnClickListener {
+            val builderSingle: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+            val arrayAdapter = ArrayAdapter<String>(
+                requireContext(),
+                android.R.layout.select_dialog_singlechoice
+            )
+
+            GlobalVariables.addressTree.regionList.find { it.region == selectedRegion }!!
+                .roadList.forEach {
+                    arrayAdapter.add(it.road)
+                }
+
+            builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
+            builderSingle.setAdapter(arrayAdapter) { _, which ->
+                val strName = arrayAdapter.getItem(which)
+                selectedRoad = strName!!
+                selectedStreet = GlobalVariables.addressTree
+                    .regionList.find { it.region == selectedRegion }!!
+                    .roadList.find { it.road == selectedRoad }!!
+                    .streetList[0]
+
+                root.button_create_property_select_road.text = selectedRoad
+                root.button_create_property_select_street.text = selectedStreet
+            }
+            builderSingle.show()
+        }
+
+        root.button_create_property_select_street.setOnClickListener {
+            val builderSingle: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+            val arrayAdapter = ArrayAdapter<String>(
+                requireContext(),
+                android.R.layout.select_dialog_singlechoice
+            )
+
+            GlobalVariables.addressTree.regionList.find { it.region == selectedRegion }!!
+                .roadList.find { it.road == selectedRoad }!!
+                .streetList.forEach {
+                    arrayAdapter.add(it)
+                }
+
+            builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
+            builderSingle.setAdapter(arrayAdapter) { _, which ->
+                val strName = arrayAdapter.getItem(which)
+                selectedStreet = strName!!
+                root.button_create_property_select_street.text = strName
+            }
+            builderSingle.show()
+        }
+
         return root
     }
 

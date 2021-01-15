@@ -15,6 +15,7 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.smartperty.smartperty.R
+import com.smartperty.smartperty.data.Estate
 import com.smartperty.smartperty.data.User
 import com.smartperty.smartperty.repair.ImageListAdapter
 import com.smartperty.smartperty.repair.RepairList2Adapter
@@ -118,7 +119,7 @@ class EstateFragment : Fragment() {
                     GlobalVariables.personnel = GlobalVariables.estate.tenant!!
                     GlobalVariables.personnelUserInfoUsage = "read"
                     root.findNavController().navigate(
-                        R.id.action_estateFragment_to_personnelUserInfoFragment2
+                        R.id.action_estateFragment_to_personnelFragment
                     )
                 }
             }
@@ -127,9 +128,9 @@ class EstateFragment : Fragment() {
                 root.textView_object_item_tenant_name.setOnClickListener {
                     GlobalVariables.personnel = User()
                     GlobalVariables.personnel.auth = "tenant"
-                    GlobalVariables.personnelUserInfoUsage = "create"
+//                    GlobalVariables.personnelUserInfoUsage = "create"
                     root.findNavController().navigate(
-                        R.id.action_estateFragment_to_personnelUserInfoFragment2
+                        R.id.action_estateFragment_to_personnelAddFragment
                     )
                 }
             }
@@ -206,7 +207,7 @@ class EstateFragment : Fragment() {
         return root
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "UseCompatLoadingForDrawables")
     private fun fillInformation() {
         root.textView_object_item_address.setText(
             GlobalVariables.estate.region +
@@ -229,7 +230,10 @@ class EstateFragment : Fragment() {
             GlobalVariables.estate.tenant!!.cellPhone)
 
         imageList.clear()
-        imageList.addAll(GlobalVariables.estate.imageList)
+        if (GlobalVariables.estate.imageList.isNotEmpty())
+            imageList.addAll(GlobalVariables.estate.imageList)
+        else
+            imageList.add(requireActivity().resources.getDrawable(R.drawable.empty_house).toBitmap())
 
         if (GlobalVariables.estate.contract != null) {
             root.text_object_item_rent.setText(

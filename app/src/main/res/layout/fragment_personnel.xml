@@ -66,9 +66,10 @@
         style="@style/text_normal_black_16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="@string/name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/image_userIcon" />
 
     <TextView
         android:id="@+id/textView30"
@@ -106,15 +107,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_personnel_phone" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:contentDescription="@string/head_image"
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image_userIcon"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/empty_head"
+        app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/empty_house" />
+        tools:ignore="VectorDrawableCompat" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline10"

@@ -10,6 +10,7 @@ enum class NotificationType{
 }
 
 data class Notification(
+    var sender:User? = null,
     var message: String = "nil",
     var type: NotificationType = NotificationType.UNKNOWN,
     var date: String = "nil"

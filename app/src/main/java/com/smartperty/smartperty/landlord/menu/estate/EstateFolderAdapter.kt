@@ -1,5 +1,6 @@
 package com.smartperty.smartperty.landlord.menu.estate
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
@@ -28,11 +29,12 @@ class EstateFolderAdapter(private val activity: Activity,
 
     override fun getItemCount(): Int = myDataset.size
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
         holder.index = position
         holder.title.text = myDataset[position].objectName
         holder.address.text = myDataset[position].fullAddress
-        holder.tenantName.text = myDataset[position].tenant?.name ?: ""
+        holder.tenantName.text = myDataset[position].tenant?.name ?: "沒有房客"
         holder.rentAmount.text = myDataset[position].rent.toString()
         holder.squareFt.text = myDataset[position].area.toString()
 

@@ -48,7 +48,23 @@ class ChoosePropertyFragment : Fragment() {
             // parent.getItemAtPosition(pos)
 
             propertyList.clear()
-            propertyList.addAll(GlobalVariables.estateDirectory[pos].list)
+            if (GlobalVariables.propertySelectorUsage == "rented") {
+                GlobalVariables.estateDirectory[pos].list.forEach {
+                    if (it.tenant != null) {
+                        propertyList.add(it)
+                    }
+                }
+            }
+            else if (GlobalVariables.propertySelectorUsage == "not rented") {
+                GlobalVariables.estateDirectory[pos].list.forEach {
+                    if (it.tenant == null) {
+                        propertyList.add(it)
+                    }
+                }
+            }
+            else {
+                propertyList.addAll(GlobalVariables.estateDirectory[pos].list)
+            }
             GlobalVariables.estateAdapter!!.notifyDataSetChanged()
         }
 
@@ -77,7 +93,23 @@ class ChoosePropertyFragment : Fragment() {
 
     private fun createTenantList() {
         propertyList.clear()
-        propertyList.addAll(GlobalVariables.estateDirectory[0].list)
+        if (GlobalVariables.propertySelectorUsage == "rented") {
+            GlobalVariables.estateDirectory[0].list.forEach {
+                if (it.tenant != null) {
+                    propertyList.add(it)
+                }
+            }
+        }
+        else if (GlobalVariables.propertySelectorUsage == "not rented") {
+            GlobalVariables.estateDirectory[0].list.forEach {
+                if (it.tenant == null) {
+                    propertyList.add(it)
+                }
+            }
+        }
+        else {
+            propertyList.addAll(GlobalVariables.estateDirectory[0].list)
+        }
         GlobalVariables.estateLayoutManager = LinearLayoutManager(activity)
         GlobalVariables.estateAdapter =
             EstateAdapter(requireActivity(), root, propertyList)

@@ -18,6 +18,8 @@ class PlumberAdapter(private val activity: Activity,
                      private val myDataset: MutableList<User>)
     : RecyclerView.Adapter<PlumberAdapter.CardHolder>() {
 
+    private var selectedCardView: View? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardHolder {
         val view = LayoutInflater.from(parent.context).inflate(
             R.layout.card_plumber, parent, false)
@@ -34,6 +36,11 @@ class PlumberAdapter(private val activity: Activity,
             holder.image.setImageBitmap(myDataset[position].icon)
 
         holder.cardView.setOnClickListener {
+            if (selectedCardView!= null) {
+                selectedCardView!!.alpha = 0.5f
+            }
+            holder.cardView.cardView_plumber.alpha = 1.0f
+            selectedCardView = holder.cardView.cardView_plumber
             GlobalVariables.plumber = myDataset[holder.index]
             parentView.textView_choose_plumber_name.text = GlobalVariables.plumber.name
             parentView.textView_choose_plumber_cell_phone.text = GlobalVariables.plumber.cellPhone

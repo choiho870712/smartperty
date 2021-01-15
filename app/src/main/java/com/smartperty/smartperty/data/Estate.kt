@@ -1,7 +1,6 @@
 package com.smartperty.smartperty.data
 
 import android.graphics.Bitmap
-import com.smartperty.smartperty.utils.GlobalVariables
 
 data class Equipment(
     var name: String = "nil",
@@ -121,3 +120,17 @@ data class EstateList(
         return null
     }
 }
+
+data class Road(
+    var road: String = "",
+    val streetList: MutableList<String> = mutableListOf()
+)
+
+data class Region(
+    var region: String = "",
+    val roadList: MutableList<Road> = mutableListOf()
+)
+
+data class AddressTree(
+    val regionList:MutableList<Region> = mutableListOf()
+)

@@ -22,6 +22,14 @@ class LoginDataSource {
                     GlobalVariables.loginUser.name
                 )
                 if (GlobalVariables.loginUser.auth == "landlord") {
+//                    Thread {
+//                        GlobalVariables.api.getPropertyRentalStatus(username)
+//                    }.start()
+                    GlobalVariables.api.getPropertyRentalStatus(username)
+                    Thread {
+                        GlobalVariables.welcomeMessage =
+                            GlobalVariables.api.welcomeMessage(username)
+                    }.start()
                     Utils.getEstateDirectoryByGroupTag()
                     Thread {
                         GlobalVariables.dataAnalysisByGroupBarChartDataSet =
@@ -48,7 +56,9 @@ class LoginDataSource {
                             GlobalVariables.api.getPieChartByArea(GlobalVariables.loginUser.id)
                     }.start()
                     Thread {
-                        GlobalVariables.api.getMessage()
+                        GlobalVariables.notificationList.addAll(
+                            GlobalVariables.api.getMessage()
+                        )
                     }.start()
                 }
                 Result.Success(user)

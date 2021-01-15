@@ -37,7 +37,7 @@ object TimeUtil {
 
         val simpleDateFormat = SimpleDateFormat("yyyy/MM/dd HH:mm", locale)
 
-        return simpleDateFormat.format(Date(time))
+        return simpleDateFormat.format(Date(time*1000))
     }
 
     @JvmStatic

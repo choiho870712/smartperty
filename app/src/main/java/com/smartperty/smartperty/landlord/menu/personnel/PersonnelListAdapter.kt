@@ -43,7 +43,7 @@ class PersonnelListAdapter(
             GlobalVariables.personnel = myDataset[position]
             GlobalVariables.personnelUserInfoUsage = "read"
             parentView.findNavController().navigate(
-                R.id.action_landlordPersonnelListFragment_to_personnelUserInfoFragment2
+                R.id.action_landlordPersonnelListFragment_to_personnelFragment
             )
         }
 

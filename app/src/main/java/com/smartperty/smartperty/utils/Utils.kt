@@ -11,6 +11,7 @@ object Utils {
     var isModifyingUserList = false
     var isModifyingRepairList = false
     var isModifyingEstate = false
+    var isModifyingContractList = false
 
     fun addUserToUserList(user: User) {
         Thread {
@@ -224,28 +225,29 @@ object Utils {
     }
 
     fun createAccount(user: User, objectId: String) {
+        val targetList =
+            when (user.auth) {
+                "tenant"-> {
+                    GlobalVariables.loginUser.tenantList
+                }
+                "agent"->{
+                    GlobalVariables.loginUser.agentList
+                }
+                "accountant"->{
+                    GlobalVariables.loginUser.accountantList
+                }
+                "technician"->{
+                    GlobalVariables.loginUser.technicianList
+                }
+                else-> {
+                    mutableListOf()
+                }
+            }
+
+        targetList.add(user)
+
         Thread {
             GlobalVariables.api.createAccount(user,objectId)
-            val targetList =
-                when (user.auth) {
-                    "tenant"-> {
-                        GlobalVariables.loginUser.tenantList
-                    }
-                    "agent"->{
-                        GlobalVariables.loginUser.agentList
-                    }
-                    "accountant"->{
-                        GlobalVariables.loginUser.accountantList
-                    }
-                    "technician"->{
-                        GlobalVariables.loginUser.technicianList
-                    }
-                    else-> {
-                        mutableListOf()
-                    }
-                }
-
-            targetList.add(user)
 
             if (objectId != "nil") {
                 val estate = getEstate(objectId)
@@ -262,18 +264,34 @@ object Utils {
 
     fun addContractToContractList(contract: Contract) {
         val updateTarget = searchContractFromContractList(contract.contractId)
+
+        isModifyingContractList = true
+
         if (updateTarget != null) {
             updateTarget.update(contract)
         }
         else
             GlobalVariables.contractList.add(contract)
+
+        isModifyingContractList = false
     }
 
     fun searchContractFromContractList(contractId: String): Contract? {
-        GlobalVariables.contractList.forEach {
-            if (it.compareId(contractId))
-                return it
+        while (isModifyingContractList)
+            Thread.sleep(500)
+
+        isModifyingContractList = true
+
+        val iterator = GlobalVariables.contractList.iterator()
+        while(iterator.hasNext()) {
+            val contract = iterator.next()
+            if (contract.compareId(contractId)) {
+                isModifyingContractList = false
+                return contract
+            }
         }
+
+        isModifyingContractList = false
 
         return null
     }

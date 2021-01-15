@@ -901,6 +901,116 @@ library {
     sha256: "\021K\334\037G3\212h\274\274\225\253\362\365\315\307+\356\354\221\201//\315{R\034\0317\207bf"
   }
 }
+library {
+  maven_library {
+    groupId: "me.relex"
+    artifactId: "circleindicator"
+    version: "2.1.4"
+  }
+  digests {
+    sha256: "\325\346K^\334\003\363Q\001\254\303F\205\217$\037\314t\342T\224P\347v/~,\200\372]\341\323"
+  }
+}
+library {
+  maven_library {
+    groupId: "com.github.barteksc"
+    artifactId: "android-pdf-viewer"
+    version: "2.8.2"
+  }
+  digests {
+    sha256: "\333\231\2127j\374\246Ui\256\001E\036\244\235r\223V_\373\373\002\244+\303\375\357k\030\262/D"
+  }
+}
+library {
+  maven_library {
+    groupId: "com.github.barteksc"
+    artifactId: "pdfium-android"
+    version: "1.7.1"
+  }
+  digests {
+    sha256: "\364\336p\334\254~E\035\376Xf1`\370\334\305.~\344*\273)\330\225[\263\320\215\365\351s\354"
+  }
+}
+library {
+  maven_library {
+    groupId: "com.mindorks.android"
+    artifactId: "prdownloader"
+    version: "0.6.0"
+  }
+  digests {
+    sha256: "\223\220\370o\351\200\241\320b\3015c!\207(\322\026\037\177\226DL#P\be\200Ax\251\377\376"
+  }
+}
+library {
+  maven_library {
+    groupId: "com.opencsv"
+    artifactId: "opencsv"
+    version: "4.6"
+  }
+  digests {
+    sha256: "\260\024>L\354h9\224\243\221I\221\271h\202\032H\314\271`\302\362\342,\001P\342\254\221O~\275"
+  }
+}
+library {
+  maven_library {
+    groupId: "org.apache.commons"
+    artifactId: "commons-lang3"
+    version: "3.8.1"
+  }
+  digests {
+    sha256: "\332\310\a\366[\ai\217\363\233\033\a\277\357=\207\256?\324m\221\273\370\242\274\002\262\2501aoh"
+  }
+}
+library {
+  maven_library {
+    groupId: "org.apache.commons"
+    artifactId: "commons-text"
+    version: "1.3"
+  }
+  digests {
+    sha256: "\201\205\263\2451\020\222\330>\321\361\204\302\320\223\263\020]rk\275v\206|2\263Q\025B\273\231\250"
+  }
+}
+library {
+  maven_library {
+    groupId: "commons-beanutils"
+    artifactId: "commons-beanutils"
+    version: "1.9.3"
+  }
+  digests {
+    sha256: "\300X\343\234|d =:D\217:\333X\214\260=cx\355\200\204\205a\217&\3417\362\235\256s"
+  }
+}
+library {
+  maven_library {
+    groupId: "org.apache.commons"
+    artifactId: "commons-collections4"
+    version: "4.2"
+  }
+  digests {
+    sha256: "jYG!\325\024D\375\227\263\352\357\311\230\247\177`m\355\260=\357IOtuZ\352\323\311\337>"
+  }
+}
+library {
+  maven_library {
+    groupId: "commons-logging"
+    artifactId: "commons-logging"
+    version: "1.2"
+  }
+  digests {
+    sha256: "\332\335\352\036\240\276\017V\227\212\263\000k\212\311(4\257\356\373\331\267\344\3461o\312W\337\017\2466"
+  }
+}
+library {
+  maven_library {
+    groupId: "commons-collections"
+    artifactId: "commons-collections"
+    version: "3.2.2"
+  }
+  digests {
+    sha256: "\356\352\351\027\221qD\246\212t\035L\r\377f\252\\\\_\330U\223\377!{\316\323\374\214\247\203\270"
+  }
+}
 library_dependencies {
   library_dep_index: 1
 }
@@ -1381,6 +1491,34 @@ library_dependencies {
   library_index: 88
   library_dep_index: 89
 }
+library_dependencies {
+  library_index: 90
+  library_dep_index: 6
+}
+library_dependencies {
+  library_index: 91
+  library_dep_index: 92
+}
+library_dependencies {
+  library_index: 92
+  library_dep_index: 59
+}
+library_dependencies {
+  library_index: 94
+  library_dep_index: 95
+  library_dep_index: 96
+  library_dep_index: 97
+  library_dep_index: 98
+}
+library_dependencies {
+  library_index: 96
+  library_dep_index: 95
+}
+library_dependencies {
+  library_index: 97
+  library_dep_index: 99
+  library_dep_index: 100
+}
 module_dependencies {
   module_name: "base"
   dependency_index: 0
@@ -1388,10 +1526,7 @@ module_dependencies {
   dependency_index: 5
   dependency_index: 69
   dependency_index: 6
-  dependency_index: 38
-  dependency_index: 40
   dependency_index: 73
-  dependency_index: 43
   dependency_index: 75
   dependency_index: 76
   dependency_index: 77
@@ -1401,9 +1536,16 @@ module_dependencies {
   dependency_index: 85
   dependency_index: 86
   dependency_index: 88
-  dependency_index: 57
+  dependency_index: 90
   dependency_index: 27
-  dependency_index: 59
+  dependency_index: 91
+  dependency_index: 93
   dependency_index: 30
+  dependency_index: 94
   dependency_index: 31
+  dependency_index: 38
+  dependency_index: 40
+  dependency_index: 43
+  dependency_index: 57
+  dependency_index: 59
 }

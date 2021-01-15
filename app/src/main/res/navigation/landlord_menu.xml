@@ -61,11 +61,14 @@
         <action
             android:id="@+id/action_estateFragment_to_personnelAddFragment"
             app:destination="@id/personnelAddFragment" />
+        <action
+            android:id="@+id/action_estateFragment_to_personnelFragment"
+            app:destination="@id/personnelFragment" />
     </fragment>
     <fragment
         android:id="@+id/estateDirectoryFragment"
         android:name="com.smartperty.smartperty.landlord.menu.estate.EstateDirectoryFragment"
-        android:label="@string/landlord_title_object_folder"
+        android:label="物件群組"
         tools:layout="@layout/fragment_estate_directory">
         <action
             android:id="@+id/action_landlordObjectFolderFragment_to_landlordObjectListFragment"
@@ -120,6 +123,9 @@
         <action
             android:id="@+id/action_landlordPersonnelListFragment_to_personnelUserInfoFragment2"
             app:destination="@id/personnelUserInfoFragment2" />
+        <action
+            android:id="@+id/action_landlordPersonnelListFragment_to_personnelFragment"
+            app:destination="@id/personnelFragment" />
     </fragment>
     <fragment
         android:id="@+id/landlordDataAnalysisFragment"
@@ -177,7 +183,11 @@
         android:id="@+id/addMessageFragment"
         android:name="com.smartperty.smartperty.repair.AddPostFragment"
         android:label="新增動態"
-        tools:layout="@layout/fragment_repair_add_post" />
+        tools:layout="@layout/fragment_repair_add_post" >
+        <action
+            android:id="@+id/action_addMessageFragment_to_repairOrderSignatureFragment"
+            app:destination="@id/repairOrderSignatureFragment" />
+    </fragment>
     <fragment
         android:id="@+id/financeFragment"
         android:name="com.smartperty.smartperty.landlord.menu.finance.FinanceFragment"
@@ -252,5 +262,15 @@
         android:name="com.smartperty.smartperty.tenant.home.contract.ContractUploadFragment"
         android:label="上傳合約"
         tools:layout="@layout/fragment_contract_upload" />
+    <fragment
+        android:id="@+id/repairOrderSignatureFragment"
+        android:name="com.smartperty.smartperty.repair.RepairOrderSignatureFragment"
+        android:label="簽名"
+        tools:layout="@layout/fragment_repair_order_signature" />
+    <fragment
+        android:id="@+id/personnelFragment"
+        android:name="com.smartperty.smartperty.landlord.menu.personnel.PersonnelFragment"
+        android:label="PersonnelFragment"
+        tools:layout="@layout/fragment_personnel"/>
 
 </navigation>

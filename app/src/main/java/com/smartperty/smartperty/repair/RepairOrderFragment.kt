@@ -222,11 +222,16 @@ class RepairOrderFragment : Fragment() {
     }
 
     private fun setChoosePlumberButton() {
-        root.button_choose_plumber.visibility = View.VISIBLE
-        root.button_choose_plumber.setOnClickListener {
-            root.findNavController().navigate(
-                R.id.action_repairOrderFragment_to_choosePlumberFragment
-            )
+        if (GlobalVariables.repairOrder.getTechnician() != null) {
+            root.button_choose_plumber.visibility = View.GONE
+        }
+        else {
+            root.button_choose_plumber.visibility = View.VISIBLE
+            root.button_choose_plumber.setOnClickListener {
+                root.findNavController().navigate(
+                    R.id.action_repairOrderFragment_to_choosePlumberFragment
+                )
+            }
         }
     }
 

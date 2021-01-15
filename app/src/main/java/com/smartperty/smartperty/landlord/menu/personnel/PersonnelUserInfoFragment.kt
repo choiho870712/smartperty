@@ -61,9 +61,12 @@ class PersonnelUserInfoFragment : Fragment() {
 
                             when(GlobalVariables.personnelUserInfoUsage) {
                                 "create" -> {
-                                    GlobalVariables.estate.tenant = GlobalVariables.personnel
+//                                    if (GlobalVariables.personnel.auth == "tenant")
+//                                        GlobalVariables.estate.tenant = GlobalVariables.personnel
+//                                    Utils.createAccount(
+//                                        GlobalVariables.personnel,GlobalVariables.estate.objectId)
                                     Utils.createAccount(
-                                        GlobalVariables.personnel,GlobalVariables.estate.objectId)
+                                        GlobalVariables.personnel,"nil")
                                 }
                                 "update" -> {
                                     Utils.updateAccount(GlobalVariables.personnel)
@@ -95,10 +98,14 @@ class PersonnelUserInfoFragment : Fragment() {
         root.textView_name.setText(GlobalVariables.personnel.name)
         root.textView_email.setText(GlobalVariables.personnel.email)
         root.textView_phone.setText(GlobalVariables.personnel.cellPhone)
-        root.button_select_profession.setText(GlobalVariables.personnel.profession)
-        root.button_select_sex.setText(GlobalVariables.personnel.sex)
-        root.button_select_industry.setText(GlobalVariables.personnel.industry)
-        root.button_select_income.setText(GlobalVariables.personnel.annual_income)
+        if (GlobalVariables.personnel.profession!= "nil")
+            root.button_select_profession.setText(GlobalVariables.personnel.profession)
+        if (GlobalVariables.personnel.sex!= "nil")
+            root.button_select_sex.setText(GlobalVariables.personnel.sex)
+        if (GlobalVariables.personnel.industry!= "nil")
+            root.button_select_industry.setText(GlobalVariables.personnel.industry)
+        if (GlobalVariables.personnel.annual_income!= "nil")
+            root.button_select_income.setText(GlobalVariables.personnel.annual_income)
 
         //createSpinner()
 

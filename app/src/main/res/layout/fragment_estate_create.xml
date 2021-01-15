@@ -110,9 +110,12 @@
 
         <EditText
             android:id="@+id/edit_create_property_description"
-            style="@style/edit_text_normal_black_16sp_single_line"
+            style="@style/edit_text_normal_black_16sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:singleLine="false"
+            android:lines="3"
+            android:maxLines="3"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView98"
             app:layout_constraintEnd_toEndOf="@+id/edit_create_property_rent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -214,8 +217,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="說明"
-            app:layout_constraintBottom_toTopOf="@+id/textView99"
-            app:layout_constraintEnd_toEndOf="@+id/textView99"
+            app:layout_constraintBottom_toTopOf="@+id/textView13"
+            app:layout_constraintEnd_toEndOf="@+id/textView13"
             app:layout_constraintTop_toBottomOf="@+id/textView97" />
 
         <TextView
@@ -225,20 +228,20 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:text="買入價格"
+            app:layout_constraintBottom_toTopOf="@+id/guideline22"
             app:layout_constraintEnd_toStartOf="@+id/guideline19"
-            app:layout_constraintTop_toBottomOf="@+id/textView98"
-            app:layout_constraintBottom_toTopOf="@+id/textView13"/>
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
         <TextView
             android:id="@+id/textView13"
             style="@style/text_normal_black_16sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="32dp"
             android:text="理想租金"
-            app:layout_constraintBottom_toTopOf="@+id/guideline22"
-            app:layout_constraintEnd_toStartOf="@+id/guideline19"
-            app:layout_constraintTop_toBottomOf="@+id/textView99" />
+            app:layout_constraintBottom_toTopOf="@+id/textView99"
+            app:layout_constraintEnd_toEndOf="@+id/textView99"
+            app:layout_constraintTop_toBottomOf="@+id/textView98" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline19"

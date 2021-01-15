@@ -69,7 +69,7 @@
 
             <TextView
                 style="@style/text_normal_black_20sp"
-                android:text="地區/語言" />
+                android:text="地區/語言 ( 繁體中文 )" />
 
         </LinearLayout>
 

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.smartperty.smartperty.R
 import com.github.gcacace.signaturepad.views.SignaturePad
 import kotlinx.android.synthetic.main.tenant_fragment_contract_page1.view.*

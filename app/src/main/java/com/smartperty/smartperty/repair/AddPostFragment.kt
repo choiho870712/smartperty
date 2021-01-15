@@ -21,7 +21,11 @@ class AddPostFragment : Fragment() {
 
     private lateinit var root: View
     private lateinit var imageListAdapter: ImageListAdapter
-    private var post = RepairOrderPost()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        GlobalVariables.repairOrderPost = RepairOrderPost()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +40,12 @@ class AddPostFragment : Fragment() {
         writeInfoToView()
 
         root.textView_date_time.text = GlobalVariables.getCurrentDateTime()
+
+        root.button_repair_signature.setOnClickListener {
+            root.findNavController().navigate(
+                R.id.action_addMessageFragment_to_repairOrderSignatureFragment
+            )
+        }
 
         return root
     }
@@ -52,16 +62,19 @@ class AddPostFragment : Fragment() {
                     builder.setTitle("確定送出訊息？")
 
                     builder.setPositiveButton("是") { _, _ ->
-                        post.message = root.textView_message.text.toString()
-                        post.createDateTime = root.textView_date_time.text.toString()
-                        post.sender = GlobalVariables.loginUser
-                        GlobalVariables.repairOrder.postList.add(post)
+                        GlobalVariables.repairOrderPost.message =
+                            root.textView_message.text.toString()
+                        GlobalVariables.repairOrderPost.createDateTime =
+                            root.textView_date_time.text.toString()
+                        GlobalVariables.repairOrderPost.sender =
+                            GlobalVariables.loginUser
+                        GlobalVariables.repairOrder.postList.add(GlobalVariables.repairOrderPost)
                         Thread {
                             GlobalVariables.api.updateEventInformation(
                                 GlobalVariables.repairOrder.landlord!!.id,
                                 GlobalVariables.repairOrder.event_id,
                                 GlobalVariables.repairOrder.description,
-                                post
+                                GlobalVariables.repairOrderPost
                             )
                         }.start()
                         root.findNavController().navigateUp()
@@ -88,7 +101,7 @@ class AddPostFragment : Fragment() {
 
     private fun createImageList() {
         imageListAdapter = ImageListAdapter(
-            requireActivity(), root, post.imageList)
+            requireActivity(), root, GlobalVariables.repairOrderPost.imageList)
         root.recyclerView_image.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false )
@@ -135,7 +148,7 @@ class AddPostFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
             val imageContainer = root.imageButton_add_image
-            val imageList = post.imageList
+            val imageList = GlobalVariables.repairOrderPost.imageList
 
             imageContainer.setImageURI(data?.data)
             if (imageList.isEmpty()) {

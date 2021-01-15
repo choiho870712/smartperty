@@ -1828,6 +1828,7 @@ id accessibility_custom_action_7
 id accessibility_custom_action_8
 id accessibility_custom_action_9
 id action0
+id action_addMessageFragment_to_repairOrderSignatureFragment
 id action_bar
 id action_bar_activity_content
 id action_bar_container
@@ -1846,6 +1847,7 @@ id action_estateFragment_to_contractCreateFragment
 id action_estateFragment_to_contractPdfShowFragment
 id action_estateFragment_to_contractUploadFragment
 id action_estateFragment_to_personnelAddFragment
+id action_estateFragment_to_personnelFragment
 id action_estateFragment_to_personnelUserInfoFragment2
 id action_estateFragment_to_repairOrderFragment
 id action_estateFragment_to_tenantAttractionsNearbyFragment2
@@ -1865,6 +1867,7 @@ id action_landlordMenuFragment_to_repairFragment
 id action_landlordObjectFolderFragment_to_landlordObjectListFragment
 id action_landlordObjectListFragment_to_landlordObjectItemFragment
 id action_landlordPersonnelListFragment_to_personnelAddFragment
+id action_landlordPersonnelListFragment_to_personnelFragment
 id action_landlordPersonnelListFragment_to_personnelUserInfoFragment2
 id action_loginFragment_to_aboutUsFragment
 id action_loginFragment_to_contactUsFragment
@@ -1928,7 +1931,6 @@ id bottom
 id bottom_nav
 id bounce
 id button
-id button2
 id button3
 id button4
 id button7
@@ -1940,6 +1942,7 @@ id button_add_image
 id button_add_message
 id button_cancel
 id button_choose_plumber
+id button_choose_repair_type
 id button_choose_tenant
 id button_clear_tenant_contract_signature
 id button_contract_upload_select_image
@@ -1964,6 +1967,9 @@ id button_is_not_rented
 id button_is_rented
 id button_next
 id button_personnel_control
+id button_repair_signature
+id button_select_auth
+id button_select_dir_image
 id button_select_image
 id button_select_income
 id button_select_industry
@@ -1992,6 +1998,7 @@ id cache_measures
 id cancel_action
 id cancel_button
 id cardView
+id cardView_plumber
 id card_contract
 id card_data_analysis
 id card_finance
@@ -2065,6 +2072,8 @@ id dropdown_menu
 id easeIn
 id easeInOut
 id easeOut
+id editTextPhone
+id editText_name
 id edit_create_contract_deposit
 id edit_create_contract_pay_times
 id edit_create_contract_rent
@@ -2164,7 +2173,6 @@ id imageView20
 id imageView21
 id imageView22
 id imageView3
-id imageView4
 id imageView8
 id imageView_add_image_button
 id imageView_card
@@ -2285,6 +2293,7 @@ id pdfView
 id peekHeight
 id percent
 id personnelAddFragment
+id personnelFragment
 id personnelUserInfoFragment
 id personnelUserInfoFragment2
 id pieChart
@@ -2325,6 +2334,7 @@ id recycler_view
 id repairListFragment
 id repairOrderCreateFragment
 id repairOrderFragment
+id repairOrderSignatureFragment
 id reverseSawtooth
 id right
 id right_icon
@@ -2437,7 +2447,7 @@ id textView102
 id textView103
 id textView104
 id textView105
-id textView11
+id textView106
 id textView12
 id textView13
 id textView14
@@ -2460,9 +2470,12 @@ id textView29
 id textView3
 id textView30
 id textView31
+id textView32
+id textView33
 id textView34
 id textView35
 id textView36
+id textView37
 id textView38
 id textView39
 id textView4
@@ -2487,6 +2500,7 @@ id textView56
 id textView57
 id textView58
 id textView59
+id textView6
 id textView60
 id textView61
 id textView62
@@ -2564,7 +2578,7 @@ id textView_personnel_password
 id textView_personnel_phone
 id textView_phone
 id textView_plumber_count
-id textView_repair_order_address
+id textView_property_title
 id textView_repair_order_cell_phone
 id textView_repair_order_content
 id textView_repair_order_creator_cell_phone
@@ -2827,6 +2841,7 @@ layout fragment_recycler
 layout fragment_repair_add_post
 layout fragment_repair_order
 layout fragment_repair_order_create
+layout fragment_repair_order_signature
 layout fragment_setup
 layout landlord_card_chat
 layout landlord_card_expiring_contract

@@ -24,17 +24,29 @@ class ContractUploadTextFragment : Fragment() {
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
 
         root.button_contract_upload_submit.setOnClickListener {
-            GlobalVariables.estate.contract!!.textString =
-                root.text_contract_upload_text.text.toString()
-            Thread {
-                GlobalVariables.api.uploadContractDocument(
-                    GlobalVariables.estate.contract!!.landlord!!.id,
-                    GlobalVariables.estate.contract!!.contractId,
-                    "TXT",
-                    GlobalVariables.estate.contract!!.textString
-                )
-            }.start()
-            root.findNavController().navigateUp()
+            // setup dialog builder
+            val builder = android.app.AlertDialog.Builder(requireActivity())
+            builder.setTitle("確定要送出嗎？")
+
+            builder.setPositiveButton("是") { _, _ ->
+                GlobalVariables.estate.contract!!.textString =
+                    root.text_contract_upload_text.text.toString()
+                Thread {
+                    GlobalVariables.api.uploadContractDocument(
+                        GlobalVariables.estate.contract!!.landlord!!.id,
+                        GlobalVariables.estate.contract!!.contractId,
+                        "TXT",
+                        GlobalVariables.estate.contract!!.textString
+                    )
+                }.start()
+                root.findNavController().navigateUp()
+            }
+
+            // create dialog and show it
+            requireActivity().runOnUiThread{
+                val dialog = builder.create()
+                dialog.show()
+            }
         }
 
         return root

@@ -1,5 +1,6 @@
 package com.smartperty.smartperty.landlord.home
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.graphics.Color
 import android.net.Uri
@@ -50,6 +51,7 @@ class LandlordHomeFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -117,32 +119,20 @@ class LandlordHomeFragment : Fragment() {
             GlobalVariables.activity.bottom_nav.selectedItemId = R.id.landlord_notification
         }
 
-        val isRentedEstateList = EstateList()
-        val isNotRentedEstateList = EstateList()
-        GlobalVariables.estateList.forEach {
-            if (it.isRented()) {
-                isRentedEstateList.list.add(it)
-            }
-            else {
-                isNotRentedEstateList.list.add(it)
-            }
-        }
-
         root.button_is_rented.text =
-            root.button_is_rented.text.toString() + isRentedEstateList.list.size.toString()
+            root.button_is_rented.text.toString() +
+                    GlobalVariables.rentedEstateList.list.size.toString()
         root.button_is_rented.setOnClickListener {
-            GlobalVariables.estateFolder = isRentedEstateList
-            isRentedEstateList.title = "已出租"
-
+            GlobalVariables.estateFolder = GlobalVariables.rentedEstateList
             val uri = Uri.parse("android-app://com.smartperty.smartperty/estateListFragment")
             root.findNavController().navigate(uri)
         }
 
         root.button_is_not_rented.text =
-            root.button_is_not_rented.text.toString() + isNotRentedEstateList.list.size.toString()
+            root.button_is_not_rented.text.toString() +
+                    GlobalVariables.notRentedEstateList.list.size.toString()
         root.button_is_not_rented.setOnClickListener {
-            GlobalVariables.estateFolder = isNotRentedEstateList
-            isNotRentedEstateList.title = "未出租"
+            GlobalVariables.estateFolder = GlobalVariables.notRentedEstateList
             val uri = Uri.parse("android-app://com.smartperty.smartperty/estateListFragment")
             root.findNavController().navigate(uri)
         }
@@ -159,6 +149,8 @@ class LandlordHomeFragment : Fragment() {
                     ""
                 }
             }
+
+        root.text_home_message.text = GlobalVariables.welcomeMessage
 
         return root
     }

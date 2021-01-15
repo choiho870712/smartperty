@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.smartperty.smartperty.R
+import com.smartperty.smartperty.data.Estate
 import com.smartperty.smartperty.data.User
 import com.smartperty.smartperty.tools.SwipeToDeleteCallback
 import com.smartperty.smartperty.utils.GlobalVariables
@@ -38,6 +39,9 @@ class PersonnelListFragment : Fragment() {
             when (it.itemId) {
                 R.id.button_add -> {
                     // setup dialog builder
+                    GlobalVariables.estate = Estate()
+                    GlobalVariables.personnel = User()
+                    GlobalVariables.personnel.auth = "nil"
                     root.findNavController().navigate(
                         R.id.action_landlordPersonnelListFragment_to_personnelAddFragment
                     )

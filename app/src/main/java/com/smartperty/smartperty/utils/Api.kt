@@ -8,6 +8,7 @@ import com.smartperty.smartperty.tools.TimeUtil
 import com.squareup.okhttp.*
 import org.json.JSONObject
 import java.io.IOException
+import java.util.*
 
 class Api {
     private val client = OkHttpClient()
@@ -49,6 +50,50 @@ class Api {
     private val urlUploadPropertyRules = urlDirectory + "propertymanagement/uploadpropertyrules"
     private val urlUploadContractDocument = urlDirectory + "contractmanagement/uploadcontractdocument"
     private val urlUpdateEventParticipant = urlDirectory + "eventmanagement/updateeventparticipant"
+    private val urlWelcomeMessage = urlDirectory + "accountmanagement/welcomemessage"
+    private val urlGetPropertyRentalStatus = urlDirectory + "propertymanagement/getpropertyrentalstatus"
+    private val urlForgotPassword = urlDirectory + "accountmanagement/forgotpassword"
+
+    fun forgotPassword(id: String, phone:String): Boolean {
+        val json = "{\"id\": \"$id\", \"phone\": \"$phone\"}"
+        return getJsonMessage(callApi(json, urlForgotPassword)) == "No Error"
+    }
+
+    fun getPropertyRentalStatus(landlord_id:String) {
+        val json = "{\"landlord_id\": \"$landlord_id\"}"
+        val rawJsonString = callApi(json, urlGetPropertyRentalStatus)
+        val jsonObject = JSONObject(rawJsonString)
+        val items = jsonObject.getJSONObject("Items")
+        val rented = items.getJSONObject("renting").getJSONArray("object_id_list")
+        val notRented = items.getJSONObject("not_on_rent").getJSONArray("object_id_list")
+
+        GlobalVariables.rentedEstateList.list.clear()
+        for (i in 0 until rented.length()) {
+            val id = rented.getString(i)
+            Thread {
+                GlobalVariables.rentedEstateList.list.add(
+                    Utils.getEstate(id)!!
+                )
+            }.start()
+        }
+
+        GlobalVariables.notRentedEstateList.list.clear()
+        for (i in 0 until notRented.length()) {
+            val id = notRented.getString(i)
+            Thread {
+                GlobalVariables.notRentedEstateList.list.add(
+                    Utils.getEstate(id)!!
+                )
+            }.start()
+        }
+    }
+
+    fun welcomeMessage(landlord_id:String) : String {
+        val json = "{\"landlord_id\": \"$landlord_id\"}"
+        val rawJsonString = callApi(json, urlWelcomeMessage)
+        val jsonObject = JSONObject(rawJsonString)
+        return jsonObject.getJSONObject("Items").getString("welcome_message")
+    }
 
     fun updateEventParticipant(landlord_id: String, event_id: String, user: User) : Boolean {
         val id = user.id
@@ -86,46 +131,43 @@ class Api {
         return getJsonMessage(callApi(json, urlUploadContractDocument)) == "No Error"
     }
 
-    // TODO get message
-    fun getMessage(): Boolean {
+    fun getMessage(): MutableList<Notification> {
         val user_id = GlobalVariables.loginUser.id
         val json = "{\"user_id\": \"$user_id\"}"
         val rawJsonString = callApi(json, urlGetMessage)
         val jsonObject = JSONObject(rawJsonString)
-        try {
-//            {
-//                "Message": "No Error",
-//                "Items": [
-//                {
-//                    "user_id": "hugo123",
-//                    "timestmp": 1610274140.0,
-//                    "information":
-//                    {
-//                        "content": "\u5df2\u4fee\u6539\u72c0\u614b"
-//                    },
-//                    "type": "Event",
-//                    "expiration_time": 1610288540.0
-//                },
-//                {
-//                    "user_id": "hugo123",
-//                    "timestmp": 1610274894.0,
-//                    "information":
-//                    {
-//                        "content": "\u5df2\u4fee\u6539\u72c0\u614b"
-//                    },
-//                    "type": "Event",
-//                    "expiration_time": 1610289294.0
-//                }
-//                ]
-//            }
+        val notificationList = mutableListOf<Notification>()
+        val messageList = jsonObject.getJSONArray("Items")
+        for (i in 0 until(messageList.length())) {
+            val messageItem = messageList.getJSONObject(i)
+            val user_id = messageItem.getString("user_id")
+            val type = messageItem.getString("type")
+            val timestmp = messageItem.getLong("timestmp")
+            val message = messageItem.getJSONObject("information").getString("content")
 
-            val item = jsonObject.getJSONObject("Items")
-        }
-        catch (e:Exception) {
+            val notification = Notification(
+                date = TimeUtil.StampToDateTime(timestmp, Locale.TAIWAN),
+                message = message
+            )
 
+            notification.type =
+                when(type){
+                    "Event" -> {
+                        NotificationType.EVENT
+                    }
+                    else -> {
+                        NotificationType.UNKNOWN
+                    }
+                }
+
+            Thread {
+                notification.sender = Utils.getUser(user_id)
+            }.start()
+
+            notificationList.add(notification)
         }
 
-        return getJsonMessage(rawJsonString) == "No Error"
+        return notificationList
     }
 
     fun updateUserInformation(user: User): Boolean {
@@ -151,8 +193,9 @@ class Api {
     }
 
     fun uploadPropertyRules(landlord_id: String, object_id: String, rules: String): Boolean {
+        val fixRules = fixLineFeed(rules)
         val json = "{\"landlord_id\": \"$landlord_id\", \"object_id\": \"$object_id\"," +
-                " \"rules\": \"$rules\"}"
+                " \"rules\": \"$fixRules\"}"
         return getJsonMessage(callApi(json, urlUploadPropertyRules)) == "No Error"
     }
 
@@ -400,10 +443,16 @@ class Api {
             region = information.getString("region"),
             rent = information.getInt("rent"),
             road = information.getString("road"),
-            rules = information.getString("rules"),
+            rules = fixLineFeedReverse(information.getString("rules")),
             street = information.getString("street"),
             type = information.getString("type")
         )
+
+        var iii = 0
+        if (estate.objectId == "10411710311149505116087769911610340408465863") {
+            iii += 1
+            iii +=2
+        }
 
         val tenant_id = item.getString("tenant_id")
         Thread {
@@ -1043,6 +1092,10 @@ class Api {
             else newJson += char
         }
         return newJson
+    }
+
+    private fun fixLineFeedReverse(json: String): String {
+        return json.replace("\\n", "\n")
     }
 
     private fun callApi(json:String, apiUrl: String) : String {

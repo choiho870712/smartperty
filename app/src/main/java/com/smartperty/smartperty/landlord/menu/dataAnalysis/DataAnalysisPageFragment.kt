@@ -140,7 +140,38 @@ class DataAnalysisPageFragment(
             entries.add(
                 PieEntry(
                     it.value.toFloat(),
-                    it.tag
+                    when (it.tag) {
+                        "Dwelling" -> {
+                            "住宅"
+                        }
+                        "Suite" -> {
+                            "套房"
+                        }
+                        "Storefront" -> {
+                            "店面"
+                        }
+                        "Office" -> {
+                            "辦公"
+                        }
+                        "DwellingOffice" -> {
+                            "住辦"
+                        }
+                        "Factory" -> {
+                            "廠房"
+                        }
+                        "ParkingSpace" -> {
+                            "車位"
+                        }
+                        "LandPlace" -> {
+                            "土地"
+                        }
+                        "Other" -> {
+                            "其他"
+                        }
+                        else -> {
+                            it.tag
+                        }
+                    }
                 )
             )
         }
@@ -240,8 +271,41 @@ class DataAnalysisPageFragment(
         xAxis.axisMaximum = myBarChartDataSet.dataList.size.toFloat()
         xAxis.valueFormatter = object : ValueFormatter() {
             override fun getFormattedValue(value: Float): String {
-                return if (myBarChartDataSet.dataList.size > value.toInt() && value.toInt() >= 0)
-                    myBarChartDataSet.dataList[value.toInt()].tag
+                return if (myBarChartDataSet.dataList.size > value.toInt() && value.toInt() >= 0) {
+                    when (myBarChartDataSet.dataList[value.toInt()].tag ) {
+                        "Dwelling" -> {
+                            "住宅"
+                        }
+                        "Suite" -> {
+                            "套房"
+                        }
+                        "Storefront" -> {
+                            "店面"
+                        }
+                        "Office" -> {
+                            "辦公"
+                        }
+                        "DwellingOffice" -> {
+                            "住辦"
+                        }
+                        "Factory" -> {
+                            "廠房"
+                        }
+                        "ParkingSpace" -> {
+                            "車位"
+                        }
+                        "LandPlace" -> {
+                            "土地"
+                        }
+                        "Other" -> {
+                            "其他"
+                        }
+                        else -> {
+                            myBarChartDataSet.dataList[value.toInt()].tag
+                        }
+                    }
+
+                }
                 else
                     value.toInt().toString()
             }

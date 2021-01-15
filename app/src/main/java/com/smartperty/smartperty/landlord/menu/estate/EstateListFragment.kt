@@ -27,7 +27,10 @@ class EstateListFragment : Fragment() {
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
         GlobalVariables.toolBarUtils.setTitle(GlobalVariables.estateFolder.title)
 
-        if (GlobalVariables.estateFolder.title.isNotEmpty()) {
+        if (GlobalVariables.estateFolder.title.isNotEmpty() &&
+            GlobalVariables.estateFolder.title != "已出租" &&
+            GlobalVariables.estateFolder.title != "未出租")
+        {
             GlobalVariables.toolBarUtils.setAddButtonVisibility(true)
             GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
                 when(it.itemId) {

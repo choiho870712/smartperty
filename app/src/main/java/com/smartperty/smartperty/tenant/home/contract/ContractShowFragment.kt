@@ -31,6 +31,8 @@ class ContractShowFragment : Fragment() {
 
         root.pdfView.visibility = View.GONE
         root.webView.visibility = View.GONE
+        root.textView.visibility = View.GONE
+        root.scrollView.visibility = View.GONE
 
         if (GlobalVariables.estate.contract!!.pdfString.isNotEmpty()) {
 
@@ -59,14 +61,21 @@ class ContractShowFragment : Fragment() {
             }
         }
         else if (GlobalVariables.estate.contract!!.textString.isNotEmpty()) {
-            root.webView.visibility = View.VISIBLE
+            if (GlobalVariables.estate.contract!!.textString.contains("https://")) {
+                root.webView.visibility = View.VISIBLE
 
-            val webView = root.webView
-            val webSettings = webView.settings
-            val url = GlobalVariables.estate.contract!!.textString
-            webSettings.javaScriptEnabled = true
-            webView.webViewClient = WebViewClient()
-            webView.loadUrl(url)
+                val webView = root.webView
+                val webSettings = webView.settings
+                val url = GlobalVariables.estate.contract!!.textString
+                webSettings.javaScriptEnabled = true
+                webView.webViewClient = WebViewClient()
+                webView.loadUrl(url)
+            }
+            else {
+                root.textView.visibility = View.VISIBLE
+                root.scrollView.visibility = View.VISIBLE
+                root.textView.text = GlobalVariables.estate.contract!!.textString
+            }
         }
         else if (GlobalVariables.estate.contract!!.jpgBitmapList.isNotEmpty()) {
             root.recycler_image.apply {

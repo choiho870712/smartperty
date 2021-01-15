@@ -3,6 +3,7 @@ package com.smartperty.smartperty.repair
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -23,9 +24,11 @@ import com.smartperty.smartperty.tools.TimeUtil
 import com.smartperty.smartperty.utils.GlobalVariables
 import com.smartperty.smartperty.utils.Utils
 import kotlinx.android.synthetic.main.activity_tenant.*
+import kotlinx.android.synthetic.main.fragment_personnel_add.view.*
 import kotlinx.android.synthetic.main.fragment_repair_add_post.view.*
 import kotlinx.android.synthetic.main.fragment_repair_order_create.view.*
 import kotlinx.android.synthetic.main.fragment_repair_order_create.view.recyclerView_image
+import kotlinx.android.synthetic.main.fragment_repair_order_create.view.spinner
 import java.util.*
 
 class RepairOrderCreateFragment : Fragment() {
@@ -33,10 +36,13 @@ class RepairOrderCreateFragment : Fragment() {
     private lateinit var root: View
     private lateinit var imageListAdapter: ImageListAdapter
     private var imageList = mutableListOf<Bitmap>()
+    private var repairTypeString = "點擊選擇"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        repairTypeString = "點擊選擇"
+        GlobalVariables.estate = Estate()
         GlobalVariables.repairOrder = RepairOrder(
             creator = GlobalVariables.loginUser,
             type = "maintain",
@@ -53,12 +59,35 @@ class RepairOrderCreateFragment : Fragment() {
         root = inflater.inflate(R.layout.fragment_repair_order_create, container, false)
 
         setToolBar()
-        createSpinner()
+        //createSpinner()
         writeInfoToView()
 
         setPickImageButton()
         createImageList()
         setChooseTenantButton()
+
+        root.button_choose_repair_type.text = repairTypeString
+        if (GlobalVariables.estate.objectId != "nil") {
+            root.button_choose_tenant.text = GlobalVariables.estate.objectName
+        }
+
+        root.button_choose_repair_type.setOnClickListener {
+            val builderSingle: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+            val arrayAdapter = ArrayAdapter<String>(
+                requireContext(),
+                android.R.layout.select_dialog_singlechoice
+            )
+            arrayAdapter.add("維修")
+
+            builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
+            builderSingle.setAdapter(arrayAdapter) { _, which ->
+                val strName = arrayAdapter.getItem(which)
+                root.button_choose_repair_type.text = strName
+                repairTypeString = strName!!
+                GlobalVariables.repairOrder.type = "maintain"
+            }
+            builderSingle.show()
+        }
 
         return root
     }
@@ -126,8 +155,6 @@ class RepairOrderCreateFragment : Fragment() {
             root.textView_repair_order_cell_phone.text = GlobalVariables.repairOrder.creator!!.cellPhone
             root.textView_repair_order_email.text = GlobalVariables.repairOrder.creator!!.email
         }
-        if (GlobalVariables.repairOrder.estate != null)
-            root.textView_repair_order_address.text = GlobalVariables.repairOrder.estate!!.getAddress()
     }
 
     private fun submitOrder() {
@@ -172,6 +199,7 @@ class RepairOrderCreateFragment : Fragment() {
     private fun setChooseTenantButton() {
         root.button_choose_tenant.visibility = View.VISIBLE
         root.button_choose_tenant.setOnClickListener {
+            GlobalVariables.propertySelectorUsage = "none"
             root.findNavController().navigate(
                 R.id.action_repairOrderCreateFragment_to_chooseTenantFragment)
         }

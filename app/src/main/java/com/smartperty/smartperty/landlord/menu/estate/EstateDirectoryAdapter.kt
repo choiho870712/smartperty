@@ -4,6 +4,7 @@ import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
@@ -12,6 +13,7 @@ import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.EstateList
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.card_estate_directory.view.*
+import kotlinx.android.synthetic.main.card_estate_directory_menu.view.*
 
 class EstateDirectoryAdapter(private val activity: Activity,
                              private val parentView: View,

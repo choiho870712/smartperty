@@ -2,6 +2,7 @@ package com.smartperty.smartperty.landlord.menu.estate
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -15,27 +16,41 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.smartperty.smartperty.R
-import com.smartperty.smartperty.data.Estate
 import com.smartperty.smartperty.repair.ImageListAdapter
+import com.smartperty.smartperty.tools.TimeUtil
 import com.smartperty.smartperty.utils.GlobalVariables
 import com.smartperty.smartperty.utils.Utils
 import kotlinx.android.synthetic.main.activity_landlord.*
 import kotlinx.android.synthetic.main.fragment_estate.view.imageView_add_image_button
 import kotlinx.android.synthetic.main.fragment_estate.view.recycler_image
 import kotlinx.android.synthetic.main.fragment_estate_create.view.*
+import java.util.*
+import kotlin.math.E
 
 class EstateCreateFragment : Fragment() {
 
     private lateinit var root:View
     private var imageList: MutableList<Bitmap> = mutableListOf()
     private lateinit var imageListAdapter: ImageListAdapter
+    private var isNewProperty = false
+    private lateinit var datePickerDialog_start: DatePickerDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        GlobalVariables.estate = Estate()
-        GlobalVariables.estate.landlord = GlobalVariables.loginUser
-        GlobalVariables.estate.groupName = GlobalVariables.estateFolder.title
+        GlobalVariables.imageListUsage = "edit"
+        GlobalVariables.imageEditIndexLog.clear()
+        for (i in 0 until(GlobalVariables.estate.imageList.size)) {
+            GlobalVariables.imageEditIndexLog.add(false)
+        }
+
+        if (GlobalVariables.estate.objectId.length < 5) {
+            isNewProperty = true
+        }
+        else {
+            isNewProperty = false
+            imageList.addAll(GlobalVariables.estate.imageList)
+        }
     }
 
     override fun onCreateView(
@@ -46,10 +61,12 @@ class EstateCreateFragment : Fragment() {
         root =  inflater.inflate(R.layout.fragment_estate_create, container, false)
 
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
+        if (!isNewProperty)
+            GlobalVariables.toolBarUtils.setTitle("編輯物件")
 
         if (GlobalVariables.loginUser.auth == "landlord") {
             GlobalVariables.toolBarUtils.setSubmitButtonVisibility(true)
-            GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
+            GlobalVariables.activity.toolbar.setOnMenuItemClickListener { it ->
                 when(it.itemId) {
                     R.id.button_submit -> {
                         // setup dialog builder
@@ -80,7 +97,7 @@ class EstateCreateFragment : Fragment() {
                             GlobalVariables.estate.floor =
                                 root.edit_create_property_floor.text.toString()
                             GlobalVariables.estate.area =
-                                root.edit_create_property_area.text.toString().toDouble()
+                                root.edit_create_property_area.text.toString().toInt()
                             GlobalVariables.estate.parkingSpace =
                                 root.edit_create_property_parking_space.text.toString()
                             GlobalVariables.estate.type =
@@ -116,14 +133,60 @@ class EstateCreateFragment : Fragment() {
                             GlobalVariables.estate.description =
                                 root.edit_create_property_description.text.toString()
                             GlobalVariables.estate.purchasePrice =
-                                root.edit_create_property_rent.text.toString().toLong()
+                                root.edit_create_property_purchase_price2.text.toString().toLong()
                             GlobalVariables.estate.rent =
                                 root.edit_create_property_rent.text.toString().toInt()
 
-                            GlobalVariables.estate.imageList.clear()
-                            GlobalVariables.estate.imageList.addAll(imageList)
+                            GlobalVariables.estate.purchaseDate =
+                                TimeUtil.DateToStamp(
+                                    root.button_create_property_select_purchase_date.text.toString(),
+                                    Locale.TAIWAN
+                                )
 
-                            Utils.createEstate(GlobalVariables.estate)
+                            if (isNewProperty) {
+                                GlobalVariables.estate.imageList.clear()
+                                GlobalVariables.estate.imageList.addAll(imageList)
+                                Utils.createEstate(GlobalVariables.estate)
+                            }
+                            else {
+                                Thread {
+                                    GlobalVariables.api.updatePropertyInformation(GlobalVariables.estate)
+                                }.start()
+                                Thread {
+                                    var removedCount = 0
+                                    val originalSize = GlobalVariables.imageEditIndexLog.size
+                                    for (index in originalSize - 1 downTo 0) {
+                                        val isRemoved = GlobalVariables.imageEditIndexLog[index]
+                                        if (isRemoved) {
+                                            val imageUrl = GlobalVariables.estate.imageUrlList[index]
+                                            Thread {
+                                                GlobalVariables.api.deletePropertyImage(
+                                                    GlobalVariables.estate.landlord!!.id,
+                                                    GlobalVariables.estate.objectId,
+                                                    index,
+                                                    imageUrl
+                                                )
+                                            }.start()
+                                            GlobalVariables.estate.imageList.removeAt(index)
+                                            GlobalVariables.estate.imageUrlList.removeAt(index)
+                                            removedCount++
+                                        }
+                                    }
+                                    for (index in (originalSize-removedCount) until(imageList.size) ) {
+                                        val imageIndex = GlobalVariables.estate.imageList.size
+                                        GlobalVariables.estate.imageList.add(imageList[index])
+                                        GlobalVariables.estate.imageUrlList.add("")
+                                        Thread {
+                                            val newImageUrl = GlobalVariables.api.uploadPropertyImage(
+                                                GlobalVariables.estate.landlord!!.id,
+                                                GlobalVariables.estate.objectId,
+                                                imageList[index]
+                                            )
+                                            GlobalVariables.estate.imageUrlList[imageIndex] = newImageUrl
+                                        }.start()
+                                    }
+                                }.start()
+                            }
 
                             root.findNavController().navigate(
                                 R.id.action_estateCreateFragment_to_estateFragment
@@ -187,6 +250,49 @@ class EstateCreateFragment : Fragment() {
         root.button_create_property_select_region.text = selectedRegion
         root.button_create_property_select_road.text = selectedRoad
         root.button_create_property_select_street.text = selectedStreet
+
+        root.edit_create_property_name.setText(GlobalVariables.estate.objectName)
+        root.edit_create_property_full_address.setText(GlobalVariables.estate.fullAddress)
+        root.edit_create_property_floor.setText(GlobalVariables.estate.floor)
+        root.edit_create_property_area.setText(GlobalVariables.estate.area.toString())
+        root.edit_create_property_parking_space.setText(GlobalVariables.estate.parkingSpace)
+        root.edit_create_property_description.setText(GlobalVariables.estate.description)
+        root.edit_create_property_purchase_price2.setText(GlobalVariables.estate.purchasePrice.toString())
+        root.edit_create_property_rent.setText(GlobalVariables.estate.rent.toString())
+        if (GlobalVariables.estate.purchaseDate > 0) {
+            root.button_create_property_select_purchase_date.text =
+                TimeUtil.StampToDate(GlobalVariables.estate.purchaseDate, Locale.TAIWAN)
+        }
+        root.button_create_property_select_type.text =
+            when (GlobalVariables.estate.type) {
+                "Dwelling" -> {
+                    "住宅"
+                }
+                "Suite" -> {
+                    "套房"
+                }
+                "Storefront" -> {
+                    "店面"
+                }
+                "Office" -> {
+                    "辦公"
+                }
+                "DwellingOffice" -> {
+                    "住辦"
+                }
+                "Factory" -> {
+                    "廠房"
+                }
+                "ParkingSpace" -> {
+                    "車位"
+                }
+                "LandPlace" -> {
+                    "土地"
+                }
+                else -> {
+                    "點擊選單"
+                }
+            }
 
         root.button_create_property_select_region.setOnClickListener {
             val builderSingle: AlertDialog.Builder = AlertDialog.Builder(requireContext())
@@ -268,6 +374,24 @@ class EstateCreateFragment : Fragment() {
             builderSingle.show()
         }
 
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+        datePickerDialog_start = DatePickerDialog(
+            requireContext(),
+            { _, y, m, d ->
+                val m2 = m+1
+                val dateString = "$y/$m2/$d"
+                root.button_create_property_select_purchase_date.text = dateString
+            },
+            year, month, day
+        )
+
+        root.button_create_property_select_purchase_date.setOnClickListener {
+            datePickerDialog_start.show()
+        }
+
         return root
     }
 
@@ -306,8 +430,10 @@ class EstateCreateFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
             root.imageView_add_image_button.setImageURI(data?.data)
+
+            imageList.add(root.imageView_add_image_button.drawable.toBitmap())
+
             if (imageList.isEmpty()) {
-                imageList.add(root.imageView_add_image_button.drawable.toBitmap())
                 imageListAdapter = ImageListAdapter(requireActivity(), root, imageList)
                 root.recycler_image.apply {
                     setHasFixedSize(true)
@@ -316,7 +442,6 @@ class EstateCreateFragment : Fragment() {
                 }
             }
             else {
-                imageList.add(root.imageView_add_image_button.drawable.toBitmap())
                 imageListAdapter.notifyDataSetChanged()
             }
 

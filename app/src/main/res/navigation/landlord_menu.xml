@@ -64,6 +64,9 @@
         <action
             android:id="@+id/action_estateFragment_to_personnelFragment"
             app:destination="@id/personnelFragment" />
+        <action
+            android:id="@+id/action_estateFragment_to_estateCreateFragment"
+            app:destination="@id/estateCreateFragment" />
     </fragment>
     <fragment
         android:id="@+id/estateDirectoryFragment"
@@ -138,7 +141,7 @@
     </fragment>
     <fragment
         android:id="@+id/estateDirectoryCreateFragment"
-        android:name="com.smartperty.smartperty.landlord.menu.estate.EstateDirectroyCreateFragment"
+        android:name="com.smartperty.smartperty.landlord.menu.estate.EstateDirectoryCreateFragment"
         android:label="新增物件群組"
         tools:layout="@layout/fragment_estate_directory_create" />
     <fragment
@@ -211,7 +214,11 @@
         android:id="@+id/tenantAttractionsNearbyFragment2"
         android:name="com.smartperty.smartperty.tenant.home.attractionsNearby.TenantAttractionsNearbyFragment"
         android:label="週邊景點"
-        tools:layout="@layout/tenant_fragment_attractions_nearby" />
+        tools:layout="@layout/tenant_fragment_attractions_nearby" >
+        <action
+            android:id="@+id/action_tenantAttractionsNearbyFragment2_to_nearbyAddFragment"
+            app:destination="@id/nearbyAddFragment" />
+    </fragment>
     <fragment
         android:id="@+id/tenantEquipmentManualFragment2"
         android:name="com.smartperty.smartperty.tenant.home.equipmentManual.TenantEquipmentManualFragment"
@@ -272,5 +279,10 @@
         android:name="com.smartperty.smartperty.landlord.menu.personnel.PersonnelFragment"
         android:label="PersonnelFragment"
         tools:layout="@layout/fragment_personnel"/>
+    <fragment
+        android:id="@+id/nearbyAddFragment"
+        android:name="com.smartperty.smartperty.tenant.home.attractionsNearby.NearbyAddFragment"
+        android:label="新增景點"
+        tools:layout="@layout/fragment_nearby_add" />
 
 </navigation>

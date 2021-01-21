@@ -67,6 +67,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:hint="台幣"
+            android:inputType="numberDecimal"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView13"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -80,6 +81,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:hint="台幣"
+            android:inputType="numberDecimal"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView99"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -228,9 +230,20 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:text="買入價格"
-            app:layout_constraintBottom_toTopOf="@+id/guideline22"
+            app:layout_constraintBottom_toTopOf="@+id/textView11"
             app:layout_constraintEnd_toStartOf="@+id/guideline19"
             app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+        <TextView
+            android:id="@+id/textView11"
+            style="@style/text_normal_black_16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="購入年份"
+            app:layout_constraintBottom_toTopOf="@+id/guideline22"
+            app:layout_constraintEnd_toStartOf="@+id/guideline19"
+            app:layout_constraintTop_toBottomOf="@+id/textView99" />
 
         <TextView
             android:id="@+id/textView13"
@@ -289,6 +302,17 @@
             android:layout_height="32dp"
             android:text="點擊選單"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView97"
+            app:layout_constraintEnd_toEndOf="@+id/edit_create_property_description"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/edit_create_property_description" />
+
+        <Button
+            android:id="@+id/button_create_property_select_purchase_date"
+            style="@style/button_rectangle_primary_hollow"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:text="選擇日期"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView11"
             app:layout_constraintEnd_toEndOf="@+id/edit_create_property_description"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/edit_create_property_description" />

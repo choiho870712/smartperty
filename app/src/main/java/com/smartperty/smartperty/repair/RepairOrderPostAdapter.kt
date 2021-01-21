@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.RepairOrderPost
+import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.card_repair_order_post.view.*
 
 class RepairOrderPostAdapter(private val activity: Activity,
@@ -28,6 +29,8 @@ class RepairOrderPostAdapter(private val activity: Activity,
     override fun getItemCount(): Int = myDataset.size
 
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
+        GlobalVariables.imageListUsage = "read"
+
         holder.index = position
         holder.sender.text = myDataset[position].sender!!.name
         holder.message.text = myDataset[position].message

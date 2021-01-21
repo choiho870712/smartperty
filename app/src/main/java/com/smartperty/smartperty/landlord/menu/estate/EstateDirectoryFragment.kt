@@ -1,13 +1,18 @@
 package com.smartperty.smartperty.landlord.menu.estate
 
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.smartperty.smartperty.R
+import com.smartperty.smartperty.tools.SwipeHelper
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.activity_landlord.*
 import kotlinx.android.synthetic.main.fragment_estate_directory.view.*
@@ -18,6 +23,7 @@ class EstateDirectoryFragment : Fragment() {
     private lateinit var root:View
     private var lockRefresh = false
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,6 +59,42 @@ class EstateDirectoryFragment : Fragment() {
             adapter = GlobalVariables.estateDirectoryAdapter
         }
 
+        var swipeHelper = object :SwipeHelper(requireContext(), root.recycler_object_folder) {
+            override fun instantiateUnderlayButton(
+                viewHolder: RecyclerView.ViewHolder?,
+                underlayButtons: MutableList<UnderlayButton>?
+            ) {
+//                underlayButtons?.add(UnderlayButton(
+//                    "Delete",
+//                    0,
+//                    Color.parseColor("#FF3C30")
+//                ) {
+//
+//                })
+                underlayButtons?.add(UnderlayButton(
+                    "Edit",
+                    0,
+                    Color.parseColor("#FF9502")
+                ) {
+                    if (viewHolder != null) {
+                        GlobalVariables.estateFolder =
+                            GlobalVariables.estateDirectory[viewHolder.adapterPosition]
+                        GlobalVariables.estateFolder.groupIndex = viewHolder.adapterPosition
+                    }
+                    root.findNavController().navigate(
+                        R.id.action_estateDirectoryFragment_to_estateDirectoryCreateFragment)
+                })
+//                underlayButtons?.add(UnderlayButton(
+//                    "Cancel",
+//                    0,
+//                    Color.parseColor("#C7C7CB")
+//                ) {
+
+//                })
+            }
+        }
+
+
         //linkRefreshListener()
 
         root.card_image_large.setOnClickListener {
@@ -84,4 +126,6 @@ class EstateDirectoryFragment : Fragment() {
 //            }
 //        }
 //    }
+
 }
+

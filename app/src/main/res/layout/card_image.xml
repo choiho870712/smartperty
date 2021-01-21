@@ -24,6 +24,15 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/empty_house" />
 
+        <ImageView
+            android:id="@+id/button_remove"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/button_remove" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

@@ -1,6 +1,7 @@
 package com.smartperty.smartperty.data
 
 import android.graphics.Bitmap
+import com.smartperty.smartperty.tenant.home.attractionsNearby.data.AttractionNearbyItem
 
 data class Equipment(
     var name: String = "nil",
@@ -28,16 +29,18 @@ data class Estate (
     var road: String = "",
     var fullAddress: String = "",
     var floor: String = "",
-    var area: Double = 0.0,
+    var area: Int = 0,
     var rent: Int = 0,
     var parkingSpace: String = "",
     var type: String = "",
     var purchasePrice: Long = 0,
     var rules: String = "",
+    var purchaseDate: Long = 0,
 
     var roomList: MutableList<Room> = mutableListOf(),
-    var attractionList: MutableList<String> = mutableListOf(),
+    var attractionList: MutableList<AttractionNearbyItem> = mutableListOf(),
     var imageList: MutableList<Bitmap> = mutableListOf(),
+    var imageUrlList: MutableList<String> = mutableListOf(),
     var repairList: MutableList<RepairOrder> = mutableListOf(),
     var contractHistoryList: MutableList<Contract> = mutableListOf()
 ) {
@@ -74,10 +77,12 @@ data class Estate (
         type = updateInfo.type
         purchasePrice = updateInfo.purchasePrice
         rules = updateInfo.rules
+        purchaseDate = updateInfo.purchaseDate
 
         roomList = updateInfo.roomList
         attractionList = updateInfo.attractionList
         imageList = updateInfo.imageList
+        imageUrlList = updateInfo.imageUrlList
         repairList = updateInfo.repairList
         contractHistoryList = updateInfo.contractHistoryList
     }
@@ -91,8 +96,11 @@ data class EstateList(
     var title: String = "",
     var image: Bitmap? = null,
     var imageUrl: String = "",
-    var list: MutableList<Estate> = mutableListOf()
+    var list: MutableList<Estate> = mutableListOf(),
+
+    var groupIndex: Int = -1
 ) {
+
     fun calculateSquareFt(): Double {
         var totalSquareFt = 0.0
         list.forEach {

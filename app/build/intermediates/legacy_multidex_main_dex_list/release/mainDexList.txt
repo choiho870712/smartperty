@@ -264,6 +264,7 @@ com/smartperty/smartperty/data/FinanceItem.class
 com/smartperty/smartperty/data/Notification$WhenMappings.class
 com/smartperty/smartperty/data/Notification.class
 com/smartperty/smartperty/data/NotificationType.class
+com/smartperty/smartperty/data/Permission.class
 com/smartperty/smartperty/data/RepairOrder.class
 com/smartperty/smartperty/data/RepairOrderPost.class
 com/smartperty/smartperty/data/Room.class
@@ -272,10 +273,13 @@ com/smartperty/smartperty/landlord/menu/estate/EstateDirectoryAdapter.class
 com/smartperty/smartperty/landlord/menu/estate/EstateFolderAdapter.class
 com/smartperty/smartperty/repair/EstateAdapter.class
 com/smartperty/smartperty/repair/RepairListAdapter.class
+com/smartperty/smartperty/tenant/home/attractionsNearby/data/AttractionNearbyItem.class
+com/smartperty/smartperty/tools/TimeUtil.class
 com/smartperty/smartperty/utils/Api$LandlordOpenPermissionAuth.class
 com/smartperty/smartperty/utils/Api$LandlordOpenPermissionPermissions.class
 com/smartperty/smartperty/utils/Api$callApi$1.class
 com/smartperty/smartperty/utils/Api$callApi$2.class
+com/smartperty/smartperty/utils/Api$createProperty$$inlined$forEach$lambda$1.class
 com/smartperty/smartperty/utils/Api$getContractByContractId$1.class
 com/smartperty/smartperty/utils/Api$getContractByContractId$2.class
 com/smartperty/smartperty/utils/Api$getContractByContractId$3.class
@@ -283,6 +287,7 @@ com/smartperty/smartperty/utils/Api$getEventInformationItemJson$1.class
 com/smartperty/smartperty/utils/Api$getEventInformationItemJson$2.class
 com/smartperty/smartperty/utils/Api$getEventInformationItemJson$3.class
 com/smartperty/smartperty/utils/Api$getEventInformationItemJson$4.class
+com/smartperty/smartperty/utils/Api$getMessage$1.class
 com/smartperty/smartperty/utils/Api$getPieChartByAreaJson$1.class
 com/smartperty/smartperty/utils/Api$getPieChartByGroupTagJson$1.class
 com/smartperty/smartperty/utils/Api$getPieChartByObjectTypeJson$1.class
@@ -291,6 +296,8 @@ com/smartperty/smartperty/utils/Api$getPropertyItemJson$2.class
 com/smartperty/smartperty/utils/Api$getPropertyItemJson$3.class
 com/smartperty/smartperty/utils/Api$getPropertyItemJson$4.class
 com/smartperty/smartperty/utils/Api$getPropertyItemJson$5.class
+com/smartperty/smartperty/utils/Api$getPropertyRentalStatus$1.class
+com/smartperty/smartperty/utils/Api$getPropertyRentalStatus$2.class
 com/smartperty/smartperty/utils/Api$getUserInformationJson$1.class
 com/smartperty/smartperty/utils/Api$getUserInformationJson$2.class
 com/smartperty/smartperty/utils/Api$getUserInformationJson$3.class

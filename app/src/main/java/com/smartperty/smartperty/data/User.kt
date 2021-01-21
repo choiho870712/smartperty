@@ -4,7 +4,7 @@ import android.graphics.Bitmap
 
 data class User(
     var id: String = "nil",
-    var permissions: String = "nil",
+    //var permissions: String = "nil",
 
     var accountantList: MutableList<User> = mutableListOf(),
     var agentList: MutableList<User> = mutableListOf(),
@@ -29,7 +29,9 @@ data class User(
     var sex: String = "nil",
     var annual_income: String = "nil",
     var industry: String = "nil",
-    var profession: String = "nil"
+    var profession: String = "nil",
+
+    var permission: Permission = Permission()
 ) {
     fun compareId(userId: String): Boolean {
         return userId == this.id
@@ -37,7 +39,7 @@ data class User(
 
     fun update(updateInfo:User) {
         id = updateInfo.id
-        permissions = updateInfo.permissions
+        //permissions = updateInfo.permissions
         accountantList = updateInfo.accountantList
         agentList = updateInfo.agentList
         contractList = updateInfo.contractList
@@ -60,5 +62,16 @@ data class User(
         sex = updateInfo.sex
         annual_income = updateInfo.annual_income
         industry = updateInfo.industry
+        profession = updateInfo.profession
+        permission = updateInfo.permission
     }
 }
+
+data class Permission(
+    var property: String = "A",
+    var contract: String = "A",
+    var data: String = "A",
+    var payment: String = "A",
+    var event: String = "A",
+    var staff: String = "A"
+)

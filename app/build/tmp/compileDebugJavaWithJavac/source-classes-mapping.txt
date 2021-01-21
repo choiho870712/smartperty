@@ -1,2 +1,9 @@
 com/smartperty/smartperty/BuildConfig.java
  com.smartperty.smartperty.BuildConfig
+com/smartperty/smartperty/tools/SwipeHelper.java
+ com.smartperty.smartperty.tools.SwipeHelper
+ com.smartperty.smartperty.tools.SwipeHelper$1
+ com.smartperty.smartperty.tools.SwipeHelper$2
+ com.smartperty.smartperty.tools.SwipeHelper$3
+ com.smartperty.smartperty.tools.SwipeHelper$UnderlayButton
+ com.smartperty.smartperty.tools.SwipeHelper$UnderlayButtonClickListener

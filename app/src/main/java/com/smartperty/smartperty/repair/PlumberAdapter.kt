@@ -50,7 +50,7 @@ class PlumberAdapter(private val activity: Activity,
     class CardHolder(card: View) : RecyclerView.ViewHolder(card) {
         val cardView: View = card
         var index: Int = -1
-        val name: TextView = card.text_name
+        val name: TextView = card.text_nearby_name
         val image: ImageView = card.image
     }
 }

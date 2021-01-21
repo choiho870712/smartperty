@@ -104,7 +104,7 @@
 
     <EditText
         android:id="@+id/editText_name"
-        style="@style/edit_text_normal_black_16sp"
+        style="@style/edit_text_normal_black_16sp_single_line"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

@@ -22,6 +22,7 @@ import com.smartperty.smartperty.repair.RepairList2Adapter
 import com.smartperty.smartperty.tools.TimeUtil
 import com.smartperty.smartperty.utils.GlobalVariables
 import com.smartperty.smartperty.utils.Utils
+import kotlinx.android.synthetic.main.activity_landlord.*
 import kotlinx.android.synthetic.main.fragment_contract_create.view.*
 import kotlinx.android.synthetic.main.fragment_estate.view.*
 import kotlinx.android.synthetic.main.fragment_estate.view.recycler_image
@@ -47,13 +48,26 @@ class EstateFragment : Fragment() {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_estate, container, false)
 
+        GlobalVariables.imageListUsage = "read"
+
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
         GlobalVariables.toolBarUtils.setTitle(GlobalVariables.estate.objectName)
 
         fillInformation()
 
         if (GlobalVariables.loginUser.auth == "landlord") {
-            //GlobalVariables.toolBarUtils.setEditButtonVisibility(true)
+            GlobalVariables.toolBarUtils.setEditButtonVisibility(true)
+            GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.button_edit -> {
+                        root.findNavController().navigate(
+                            R.id.action_estateFragment_to_estateCreateFragment
+                        )
+                        true
+                    }
+                    else -> false
+                }
+            }
 //            GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
 //                when(it.itemId) {
 //                    R.id.button_edit -> {
@@ -330,7 +344,7 @@ class EstateFragment : Fragment() {
             root.textView_object_item_floor.inputType = InputType.TYPE_NULL
             root.textView_object_item_square_ft.inputType = InputType.TYPE_NULL
             root.textView_object_item_parking_sapce.inputType = InputType.TYPE_NULL
-            root.textView_object_item_content.inputType = InputType.TYPE_NULL
+            //root.textView_object_item_content.inputType = InputType.TYPE_NULL
             root.textView_estate_title.inputType = InputType.TYPE_NULL
         }
     }
@@ -338,7 +352,7 @@ class EstateFragment : Fragment() {
     private fun storeInformation() {
         GlobalVariables.estate.fullAddress = root.textView_object_item_address.text.toString()
         GlobalVariables.estate.floor = root.textView_object_item_floor.text.toString()
-        GlobalVariables.estate.area = root.textView_object_item_square_ft.text.toString().toDouble()
+        GlobalVariables.estate.area = root.textView_object_item_square_ft.text.toString().toInt()
         GlobalVariables.estate.parkingSpace = root.textView_object_item_parking_sapce.text.toString()
         GlobalVariables.estate.description = root.textView_object_item_content.text.toString()
         GlobalVariables.estate.objectName = root.textView_estate_title.text.toString()

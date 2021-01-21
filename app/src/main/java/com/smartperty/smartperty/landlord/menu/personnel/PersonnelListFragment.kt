@@ -15,7 +15,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.Estate
 import com.smartperty.smartperty.data.User
-import com.smartperty.smartperty.tools.SwipeToDeleteCallback
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.activity_tenant.*
 import kotlinx.android.synthetic.main.fragment_personnel_list.view.*
@@ -128,29 +127,5 @@ class PersonnelListFragment : Fragment() {
         root.recycler_personnel_plumber.visibility = View.GONE
 
         return root
-    }
-
-    private fun enableSwipeToDeleteAndUndo(mAdapter: PersonnelListAdapter, recyclerView:RecyclerView) {
-        val swipeToDeleteCallback: SwipeToDeleteCallback = object : SwipeToDeleteCallback(requireContext()) {
-            override fun onSwiped(@NonNull viewHolder: RecyclerView.ViewHolder, i: Int) {
-                val position = viewHolder.adapterPosition
-                val item: User = mAdapter.getData()[position]
-                mAdapter.removeItem(position)
-                val snackbar = Snackbar
-                    .make(
-                        root,
-                        "Item was removed from the list.",
-                        Snackbar.LENGTH_LONG
-                    )
-                snackbar.setAction("UNDO") {
-                    mAdapter.restoreItem(item, position)
-                    recyclerView.scrollToPosition(position)
-                }
-                snackbar.setActionTextColor(Color.YELLOW)
-                snackbar.show()
-            }
-        }
-        val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
-        itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 }

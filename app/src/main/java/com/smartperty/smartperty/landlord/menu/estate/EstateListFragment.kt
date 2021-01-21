@@ -35,6 +35,10 @@ class EstateListFragment : Fragment() {
             GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
                 when(it.itemId) {
                     R.id.button_add -> {
+                        GlobalVariables.estate = Estate()
+                        GlobalVariables.estate.landlord = GlobalVariables.loginUser
+                        GlobalVariables.estate.groupName = GlobalVariables.estateFolder.title
+
                         root.findNavController().navigate(
                             R.id.action_estateListFragment_to_estateCreateFragment)
 

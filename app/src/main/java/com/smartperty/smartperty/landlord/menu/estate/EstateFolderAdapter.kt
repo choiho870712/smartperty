@@ -33,7 +33,7 @@ class EstateFolderAdapter(private val activity: Activity,
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
         holder.index = position
         holder.title.text = myDataset[position].objectName
-        holder.address.text = myDataset[position].fullAddress
+        holder.address.text = myDataset[position].getAddress()
         holder.tenantName.text = myDataset[position].tenant?.name ?: "沒有房客"
         holder.rentAmount.text = myDataset[position].rent.toString()
         holder.squareFt.text = myDataset[position].area.toString()

@@ -116,7 +116,7 @@ class RepairOrderFragment : Fragment() {
             root.textView_repair_order_plumber_cell_phone.text = plumber.cellPhone
         }
 
-        root.textView_repair_order_tenant_address.text = repairOrder.estate?.fullAddress ?: ""
+        root.textView_repair_order_tenant_address.text = repairOrder.estate?.getAddress() ?: "no estate"
 
         if (repairOrder.creator != null) {
             root.textView_repair_order_creator_name.text = repairOrder.creator!!.name

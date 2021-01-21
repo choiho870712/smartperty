@@ -22,10 +22,10 @@ class LoginDataSource {
                     GlobalVariables.loginUser.name
                 )
                 if (GlobalVariables.loginUser.auth == "landlord") {
-//                    Thread {
-//                        GlobalVariables.api.getPropertyRentalStatus(username)
-//                    }.start()
-                    GlobalVariables.api.getPropertyRentalStatus(username)
+                    Thread {
+                        GlobalVariables.api.getPropertyRentalStatus(username)
+                    }.start()
+//                    GlobalVariables.api.getPropertyRentalStatus(username)
                     Thread {
                         GlobalVariables.welcomeMessage =
                             GlobalVariables.api.welcomeMessage(username)
@@ -54,6 +54,9 @@ class LoginDataSource {
                     Thread {
                         GlobalVariables.dataAnalysisBySquareFtPieChartDataSet =
                             GlobalVariables.api.getPieChartByArea(GlobalVariables.loginUser.id)
+                    }.start()
+                    Thread {
+                        GlobalVariables.api.getContractByTimeIn3Months(GlobalVariables.loginUser.id)
                     }.start()
                     Thread {
                         GlobalVariables.notificationList.addAll(

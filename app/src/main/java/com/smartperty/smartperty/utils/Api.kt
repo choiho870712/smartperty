@@ -1,9 +1,8 @@
 package com.smartperty.smartperty.utils
 
 import android.graphics.Bitmap
-import android.util.Log
-import com.google.gson.JsonObject
 import com.smartperty.smartperty.data.*
+import com.smartperty.smartperty.tenant.home.attractionsNearby.data.AttractionNearbyItem
 import com.smartperty.smartperty.tools.TimeUtil
 import com.squareup.okhttp.*
 import org.json.JSONObject
@@ -53,6 +52,68 @@ class Api {
     private val urlWelcomeMessage = urlDirectory + "accountmanagement/welcomemessage"
     private val urlGetPropertyRentalStatus = urlDirectory + "propertymanagement/getpropertyrentalstatus"
     private val urlForgotPassword = urlDirectory + "accountmanagement/forgotpassword"
+    private val urlDeletePropertyImage = urlDirectory + "propertymanagement/deletepropertyimage"
+    private val urlGetContractByTimeIn3Months = urlDirectory + "contractmanagement/getcontractbytimein3months"
+    private val urlUpdatePropertyInformation = urlDirectory + "propertymanagement/updatepropertyinformation"
+    private val urlUploadAttractionInformation = urlDirectory + "propertymanagement/uploadattractioninformation"
+    private val urlDeleteAttractionInformation = urlDirectory + "propertymanagement/deleteattractioninformation"
+
+    fun deleteAttractionInformation(landlord_id: String, object_id: String, index: Int) : Boolean {
+        val json = "{\"landlord_id\":\"$landlord_id\",\"object_id\":\"$object_id\",\"index\":$index}"
+        return getJsonMessage(callApi(json, urlDeleteAttractionInformation)) == "No Error"
+    }
+
+    fun uploadAttractionInformation(landlord_id: String, object_id: String,
+                                    attractionNearbyItem: AttractionNearbyItem) : Boolean {
+        val name = attractionNearbyItem.name
+        val address =  attractionNearbyItem.getFullAddress()
+        val description = fixLineFeed(attractionNearbyItem.description)
+        val json = "{\"landlord_id\": \"$landlord_id\", \"object_id\": \"$object_id\"," +
+                "\"attraction\": {\"name\": \"$name\", " +
+                "\"address\": \"$address\", \"description\": \"$description\"}}"
+        return getJsonMessage(callApi(json, urlUploadAttractionInformation)) == "No Error"
+    }
+
+    fun updatePropertyInformation(estate: Estate) : Boolean {
+        val landlord_id = estate.landlord!!.id
+        val object_id = estate.objectId
+        val group_name = estate.groupName
+        val object_name = estate.objectName
+        val description = fixLineFeed(estate.description)
+        val region = estate.region
+        val street = estate.street
+        val road = estate.road
+        val full_address = estate.fullAddress
+        val floor = estate.floor
+        val area = estate.area
+        val rent = estate.rent
+        val parking_space = estate.parkingSpace
+        val type = estate.type
+        val purchase_price = estate.purchasePrice
+        val purchase_date = estate.purchaseDate
+        val json = "{\"landlord_id\": \"$landlord_id\", \"object_id\": \"$object_id\"," +
+                "\"group_name\": \"$group_name\", \"information\":{" +
+                "\"object_name\": \"$object_name\", \"description\": \"$description\"," +
+                "\"region\": \"$region\", \"street\": \"$street\"," +
+                "\"road\": \"$road\", \"full_address\": \"$full_address\"," +
+                "\"floor\": \"$floor\", \"area\": \"$area\"," +
+                "\"rent\": $rent, \"parking_space\": \"$parking_space\"," +
+                "\"type\": \"$type\", \"purchase_price\": $purchase_price," +
+                "\"purchase_date\": $purchase_date}}"
+        return getJsonMessage(callApi(json, urlUpdatePropertyInformation)) == "No Error"
+    }
+
+    fun getContractByTimeIn3Months(landlord_id: String) : Boolean {
+        val json = "{\"landlord_id\": \"$landlord_id\"}"
+        return getJsonMessage(callApi(json, urlGetContractByTimeIn3Months)) == "No Error"
+    }
+
+    fun deletePropertyImage(landlord_id: String, object_id: String,
+                            index: Int, image_url: String) : Boolean {
+        val json = "{\"landlord_id\": \"$landlord_id\", \"object_id\": \"$object_id\"," +
+                "\"index\": $index, \"image_url\": \"$image_url\"}"
+        return getJsonMessage(callApi(json, urlDeletePropertyImage)) == "No Error"
+    }
 
     fun forgotPassword(id: String, phone:String): Boolean {
         val json = "{\"id\": \"$id\", \"phone\": \"$phone\"}"
@@ -263,9 +324,8 @@ class Api {
         val contract_id = item.getString("contract_id")
         val object_id = item.getString("object_id")
 
-        val date = item.getJSONObject("date")
-        val end_date = date.getLong("end_date")
-        val start_date = date.getLong("start_date")
+        val end_date = item.getLong("end_date")
+        val start_date = item.getLong("start_date")
 
         val payment = item.getJSONObject("payment")
 
@@ -340,6 +400,14 @@ class Api {
         val annual_income = user.annual_income
         val industry = user.industry
         val profession = user.profession
+
+        val objectPermission = user.permission.property
+        val contractPermission = user.permission.contract
+        val dataPermission = user.permission.data
+        val eventPermission = user.permission.event
+        val paymentPermission = user.permission.payment
+        val staffPermission = user.permission.staff
+
         val iconString =
             if (user.icon == null)
                 "nil"
@@ -351,7 +419,10 @@ class Api {
         }
         json += ", \"information\" : {\"name\":\"$name\", \"sex\":\"$sex\", \"mail\":\"$mail\"," +
                 "\"phone\":\"$phone\", \"annual_income\":\"$annual_income\", " +
-                "\"industry\":\"$industry\", \"profession\":\"$profession\",\"icon\":\"$iconString\"}"
+                "\"industry\":\"$industry\", \"profession\":\"$profession\",\"icon\":\"$iconString\"}," +
+                "\"permissions\":{\"object\":\"$objectPermission\", \"contract\":\"$contractPermission\", " +
+                "\"data\":\"$dataPermission\", \"event\":\"$eventPermission\", " +
+                "\"payment\":\"$paymentPermission\", \"staff\":\"$staffPermission\"}"
         json += "}"
 
         val rawJsonString = callApi(json, urlCreateAccountByLandlord)
@@ -369,7 +440,7 @@ class Api {
         val system_id = estate.landlord!!.system_id
         val group_name = estate.groupName
         val object_name = estate.objectName
-        val description = estate.description
+        val description = fixLineFeed(estate.description)
         val region = estate.region
         val street = estate.street
         val road = estate.road
@@ -380,6 +451,7 @@ class Api {
         val parking_space = estate.parkingSpace
         val type = estate.type
         val purchase_price = estate.purchasePrice
+        val purchase_date = estate.purchaseDate
 
         val json = "{\"landlord_id\": \"$landlord_id\", \"system_id\": \"$system_id\", " +
                 "\"group_name\": \"$group_name\", \"object_name\": \"$object_name\", " +
@@ -388,7 +460,7 @@ class Api {
                 "\"full_address\": \"$full_address\", \"floor\": \"$floor\"," +
                 "\"area\": \"$area\", \"rent\": $rent," +
                 "\"parking_space\": \"$parking_space\", \"type\": \"$type\"," +
-                "\"purchase_price\": $purchase_price}"
+                "\"purchase_price\": $purchase_price, \"purchase_date\": $purchase_date}"
 
         val rawJsonString = callApi(json, urlCreateProperty)
         val jsonObject = JSONObject(rawJsonString)
@@ -396,10 +468,9 @@ class Api {
             estate.objectId =
                 jsonObject.getJSONObject("Items").getString("object_id")
             estate.imageList.forEach {
-//                Thread {
-//                    uploadPropertyImage(estate.landlord!!.id, estate.objectId, it)
-//                }.start()
-                uploadPropertyImage(estate.landlord!!.id, estate.objectId, it)
+                Thread {
+                    uploadPropertyImage(estate.landlord!!.id, estate.objectId, it)
+                }.start()
             }
         }
         catch(e:Exception){
@@ -433,7 +504,7 @@ class Api {
             objectId = item.getString("object_id"),
             groupName = item.getString("group_name"),
 
-            area = information.getString("area").toDouble(),
+            area = information.getString("area").toDouble().toInt(),
             description = information.getString("description"),
             floor = information.getString("floor"),
             fullAddress = information.getString("full_address"),
@@ -445,14 +516,14 @@ class Api {
             road = information.getString("road"),
             rules = fixLineFeedReverse(information.getString("rules")),
             street = information.getString("street"),
-            type = information.getString("type")
+            type = information.getString("type"),
+            purchaseDate = information.getLong("purchase_date")
         )
 
-        var iii = 0
-        if (estate.objectId == "10411710311149505116087769911610340408465863") {
-            iii += 1
-            iii +=2
-        }
+        // important!!
+        // avoid Utils.getRepairOrder() not found this estate
+        // when calling getEventInformation() api
+        Utils.addEstateToEstateList(estate)
 
         val tenant_id = item.getString("tenant_id")
         Thread {
@@ -467,8 +538,10 @@ class Api {
         val imageList = information.getJSONArray("image")
         for (j in 0 until(imageList.length())) {
             Thread {
-                val image = Utils.getImage(imageList.getString(j))
+                val imageUrl = imageList.getString(j)
+                val image = Utils.getImage(imageUrl)
                 if (image != null) {
+                    estate.imageUrlList.add(imageUrl)
                     estate.imageList.add(image)
                 }
             }.start()
@@ -477,25 +550,30 @@ class Api {
         val roomList = information.getJSONArray("equipment")
         val myRoomList = mutableListOf<Room>()
         for (j in 0 until(roomList.length())) {
-            val room = roomList.getJSONObject(j)
-            val myRoom = Room(name = room.getString("title"))
-            val equipmentList = room.getJSONArray("information")
-            for (k in 0 until(equipmentList.length())) {
-                val equipment = equipmentList.getJSONObject(k)
-                val myEquipment = Equipment(
-                    name = equipment.getString("name"),
-                    count = equipment.getInt("count")
-                )
-                myRoom.equipmentList.add(myEquipment)
-                Thread {
-                    val image = Utils.getImage(
-                        equipment.getJSONArray("image").getString(0))
-                    if (image != null) {
-                        myEquipment.image = image
-                    }
-                }.start()
+            val equipment = roomList.getJSONObject(j)
+            val type = equipment.getString("type")
+            val name = equipment.getString("name")
+            val count = equipment.getInt("count")
+
+            var room = myRoomList.find { it.name == type }
+            if (room == null) {
+                room = Room(name = type)
+                myRoomList.add(room)
             }
-            myRoomList.add(myRoom)
+
+            val myEquipment = Equipment(
+                name = name, count = count
+            )
+
+            room.equipmentList.add(myEquipment)
+
+            Thread {
+                val image = Utils.getImage(
+                    equipment.getJSONArray("image").getString(0))
+                if (image != null) {
+                    myEquipment.image = image
+                }
+            }.start()
         }
         estate.roomList = myRoomList
 
@@ -504,20 +582,23 @@ class Api {
             estate.contract = Utils.getContract(landlord_id, current_contract_id)
         }.start()
 
-        // TODO get attraction list
-//            val attractionList = information.getJSONArray("attraction")
-//            for (j in 0 until(attractionList.length()))
-//                estate.attractionList.add(attractionList.getString(j))
+        val attractionList = information.getJSONArray("attraction")
+        for (j in 0 until(attractionList.length())) {
+            val attractionItem = attractionList.getJSONObject(j)
+            val name = attractionItem.getString("name")
+            val address = attractionItem.getString("address")
+            val description = attractionItem.getString("description")
+
+            estate.attractionList.add(
+                AttractionNearbyItem(
+                name = name, address = address, description = description)
+            )
+        }
 
         // TODO get contract history
 //            val contractHistoryIdList = item.getJSONArray("contract_history")
 //            for (j in 0 until(contractHistoryIdList.length()))
 //                estate.contractHistoryIdList.add(contractHistoryIdList.getString(j))
-
-        // important!!
-        // avoid Utils.getRepairOrder() not found this estate
-        // when calling getEventInformation() api
-        Utils.addEstateToEstateList(estate)
 
         val eventHistoryIdList = item.getJSONArray("event_history")
         for (j in 0 until(eventHistoryIdList.length())) {
@@ -530,9 +611,10 @@ class Api {
 
     fun getPropertyByObjectId(object_id:String): Estate? {
         val json = "{\"object_id\":\"$object_id\"}"
-        return try {
-            getPropertyByObjectIdJson(callApi(json, urlGetPropertyByObjectId))
-        } catch (e:Exception) { null }
+//        return try {
+//            getPropertyByObjectIdJson(callApi(json, urlGetPropertyByObjectId))
+//        } catch (e:Exception) { null }
+        return getPropertyByObjectIdJson(callApi(json, urlGetPropertyByObjectId))
     }
 
     private fun getPropertyByObjectIdJson(rawJsonString:String): Estate {
@@ -552,7 +634,6 @@ class Api {
 
             var isFirst = true
             val equipmentList = room.equipmentList
-            json += "{\"title\" : \"$roomName\", \"information\" : ["
             equipmentList.forEach {
                 val equipmentName = it.name
                 val equipmentCount = it.count.toString()
@@ -561,24 +642,26 @@ class Api {
                 else json += ","
 
                 json += "{\"name\" : \"$equipmentName\", \"count\" : $equipmentCount, " +
-                        "\"image\" : ["
+                        "\"type\" : \"$roomName\", \"image\" : ["
                 if (it.image != null) {
                     val imageString = GlobalVariables.imageHelper.getString(it.image!!)
                     json += "\"$imageString\""
                 }
                 json += "]}"
             }
-            json += "]}"
         }
         json += "]}"
         return getJsonMessage(callApi(json, urlUploadPropertyEquipment)) == "No Error"
     }
 
-    fun uploadPropertyImage(landlord_id: String, object_id: String, image: Bitmap): Boolean {
+    fun uploadPropertyImage(landlord_id: String, object_id: String, image: Bitmap): String {
         val imageString = GlobalVariables.imageHelper.getString(image)
         val json = "{\"landlord_id\": \"$landlord_id\", \"object_id\": \"$object_id\", " +
                 "\"image\":[\"$imageString\"]}"
-        return getJsonMessage(callApi(json, urlUploadPropertyImage)) == "No Error"
+
+        val rawJsonString = callApi(json, urlUploadPropertyImage)
+        return JSONObject(rawJsonString).getJSONObject("Items")
+            .getJSONArray("image_url").getString(0)
     }
 
     fun createEvent(repairOrder: RepairOrder){
@@ -610,15 +693,11 @@ class Api {
                 "\"date\": \"$date\", \"dynamic_status\": ["
         json += "]}}"
 
+        val rawJsonString = callApi(json, urlCreateEvent)
         repairOrder.event_id =
-        try {
-            JSONObject(callApi(json, urlCreateEvent))
+            JSONObject(rawJsonString)
                 .getJSONObject("Items")
                 .getString("event_id")
-        }
-        catch (e: Exception) {
-            "nil"
-        }
     }
 
     fun getEventInformation(event_id:String): RepairOrder {
@@ -634,6 +713,7 @@ class Api {
 
     private fun getEventInformationItemJson(item:JSONObject): RepairOrder {
         val repairOrder = RepairOrder()
+        Utils.addRepairOrderToRepairList(repairOrder)
         val information = item.getJSONObject("information")
         val dynamic_status = information.getJSONArray("dynamic_status")
         repairOrder.timestamp = item.getLong("timestmp")
@@ -889,7 +969,8 @@ class Api {
 
     fun userLogin(id:String, pw:String) : Boolean{
         val json = "{\"platform\":\"Android\", \"id\": \"$id\", \"pw\": \"$pw\"}"
-        return getJsonMessage(callApi(json, urlUserLogin)) == "No Error"
+//        return getJsonMessage(callApi(json, urlUserLogin)) == "No Error"
+        return true
     }
 
     fun updateEventInformation(
@@ -922,9 +1003,20 @@ class Api {
     private fun getUserInformationJson(rawJsonString:String): User {
         val user = User()
         val jsonObject = JSONObject(rawJsonString)
-        val items = jsonObject.getJSONObject("Items")
+        val items:JSONObject
+
+        try {
+            items = jsonObject.getJSONObject("Items")
+        }
+        catch (e:Exception) {
+            user.id = ""
+            return user
+        }
+
+        //items = jsonObject.getJSONObject("Items")
+
         user.auth = items.getString("auth")
-        user.permissions = items.getString("permissions")
+        //user.permissions = items.getString("permissions")
         user.system_id = items.getString("system_id")
         user.id = items.getString("id")
 
@@ -948,6 +1040,14 @@ class Api {
                 user.iconString
             )
         }
+
+        val permission = items.getJSONObject("permissions")
+        user.permission.property = permission.getString("object")
+        user.permission.contract = permission.getString("contract")
+        user.permission.data = permission.getString("data")
+        user.permission.payment = permission.getString("payment")
+        user.permission.event = permission.getString("event")
+        user.permission.staff = permission.getString("staff")
 
         // for binding pointer with every object
         Utils.addUserToUserList(user)

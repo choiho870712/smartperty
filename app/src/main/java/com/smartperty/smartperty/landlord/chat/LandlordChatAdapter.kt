@@ -30,7 +30,7 @@ class LandlordChatAdapter(private val activity: Activity,
 
     class CardHolder(card: View) : RecyclerView.ViewHolder(card) {
         val cardView: View = card
-        val name: TextView = card.text_name
+        val name: TextView = card.text_nearby_name
         val message: TextView = card.text_message
     }
 }

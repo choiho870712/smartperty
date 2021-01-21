@@ -25,6 +25,7 @@ class AddPostFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         GlobalVariables.repairOrderPost = RepairOrderPost()
+        GlobalVariables.imageListUsage = "edit"
     }
 
     override fun onCreateView(

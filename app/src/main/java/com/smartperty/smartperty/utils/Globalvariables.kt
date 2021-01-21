@@ -12,6 +12,7 @@ import com.smartperty.smartperty.landlord.menu.estate.EstateDirectoryAdapter
 import com.smartperty.smartperty.landlord.menu.estate.EstateFolderAdapter
 import com.smartperty.smartperty.repair.EstateAdapter
 import com.smartperty.smartperty.repair.RepairListAdapter
+import com.smartperty.smartperty.tenant.home.attractionsNearby.data.AttractionNearbyItem
 import org.threeten.bp.LocalDateTime
 import java.text.SimpleDateFormat
 
@@ -48,6 +49,7 @@ class GlobalVariables : Application() {
         var repairOrder = RepairOrder()
         var repairOrderPost = RepairOrderPost()
         var contract = Contract()
+        var attractionList = mutableListOf<AttractionNearbyItem>()
 
         // adapter and manager
         var estateDirectoryAdapter:EstateDirectoryAdapter? = null
@@ -62,6 +64,9 @@ class GlobalVariables : Application() {
         // switch
         var personnelUserInfoUsage: String = "read" // create / update / read
         var propertySelectorUsage: String = "rented" // rented / none
+        var imageListUsage: String = "read" // read / edit
+
+        var imageEditIndexLog: MutableList<Boolean> = mutableListOf()
 
 
         // account

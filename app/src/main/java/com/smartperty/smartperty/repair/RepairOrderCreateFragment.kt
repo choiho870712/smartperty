@@ -41,6 +41,8 @@ class RepairOrderCreateFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        GlobalVariables.imageListUsage = "edit"
+
         repairTypeString = "點擊選擇"
         GlobalVariables.estate = Estate()
         GlobalVariables.repairOrder = RepairOrder(

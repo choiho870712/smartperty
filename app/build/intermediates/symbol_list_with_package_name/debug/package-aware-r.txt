@@ -1661,11 +1661,13 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable button_delete
 drawable button_nav_chat
 drawable button_nav_controll
 drawable button_nav_home
 drawable button_nav_notification
 drawable button_nav_setup
+drawable button_remove
 drawable button_toolbar_edit
 drawable button_toolbar_setup
 drawable common_full_open_on_phone
@@ -1846,6 +1848,7 @@ id action_estateDirectoryFragment_to_estateDirectoryCreateFragment
 id action_estateFragment_to_contractCreateFragment
 id action_estateFragment_to_contractPdfShowFragment
 id action_estateFragment_to_contractUploadFragment
+id action_estateFragment_to_estateCreateFragment
 id action_estateFragment_to_personnelAddFragment
 id action_estateFragment_to_personnelFragment
 id action_estateFragment_to_personnelUserInfoFragment2
@@ -1890,6 +1893,7 @@ id action_search
 id action_setupFragment_to_aboutUsFragment2
 id action_setupFragment_to_personnelUserInfoFragment
 id action_setupFragment_to_privacyFragment2
+id action_tenantAttractionsNearbyFragment2_to_nearbyAddFragment
 id action_tenantEquipmentManualFragment2_to_equipmentAddFragment
 id action_tenantEquipmentManualFragment_to_tenantEquipmentManualPdfFragment
 id action_tenantHomeFragment_to_repairListFragment
@@ -1931,8 +1935,6 @@ id bottom
 id bottom_nav
 id bounce
 id button
-id button3
-id button4
 id button7
 id button8
 id button9
@@ -1952,11 +1954,14 @@ id button_create_contract
 id button_create_contract_select_currency
 id button_create_contract_select_pay_method
 id button_create_contract_select_start_date
+id button_create_property_select_purchase_date
 id button_create_property_select_region
 id button_create_property_select_road
 id button_create_property_select_street
 id button_create_property_select_type
+id button_delete
 id button_edit
+id button_forgot_password_submit
 id button_home_attractions_nearby
 id button_home_contract
 id button_home_equipment_manual
@@ -1967,6 +1972,7 @@ id button_is_not_rented
 id button_is_rented
 id button_next
 id button_personnel_control
+id button_remove
 id button_repair_signature
 id button_select_auth
 id button_select_dir_image
@@ -2267,6 +2273,7 @@ id nav_controller_view_tag
 id nav_host_container
 id nav_host_fragment_container
 id navigation_header_container
+id nearbyAddFragment
 id never
 id noScroll
 id none
@@ -2448,6 +2455,7 @@ id textView103
 id textView104
 id textView105
 id textView106
+id textView11
 id textView12
 id textView13
 id textView14
@@ -2492,7 +2500,6 @@ id textView49
 id textView5
 id textView50
 id textView51
-id textView52
 id textView53
 id textView54
 id textView55
@@ -2507,8 +2514,6 @@ id textView62
 id textView63
 id textView64
 id textView65
-id textView66
-id textView67
 id textView68
 id textView69
 id textView7
@@ -2557,6 +2562,8 @@ id textView_equipment_count
 id textView_equipment_name
 id textView_estate_title
 id textView_finance_total
+id textView_forget_password_phone
+id textView_forget_password_username
 id textView_manager_count
 id textView_message
 id textView_name
@@ -2626,7 +2633,9 @@ id text_login_policy
 id text_login_policy4
 id text_login_policy_entry
 id text_message
-id text_name
+id text_nearby_address
+id text_nearby_description
+id text_nearby_name
 id text_object_folder_information2
 id text_object_folder_information4
 id text_object_folder_item_number
@@ -2781,6 +2790,7 @@ layout activity_login
 layout activity_tenant
 layout card_estate
 layout card_estate_directory
+layout card_estate_directory_menu
 layout card_estate_image
 layout card_finance_item
 layout card_image
@@ -2832,6 +2842,7 @@ layout fragment_estate_list_create
 layout fragment_finance
 layout fragment_forget_password
 layout fragment_login
+layout fragment_nearby_add
 layout fragment_personnel
 layout fragment_personnel_add
 layout fragment_personnel_list

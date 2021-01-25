@@ -54,17 +54,20 @@ class TenantAttractionsNearbyFragment : Fragment(), OnMapReadyCallback {
         root = inflater.inflate(R.layout.tenant_fragment_attractions_nearby, container, false)
 
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
-        GlobalVariables.toolBarUtils.setAddButtonVisibility(true)
-        GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
-            when(it.itemId) {
-                R.id.button_add -> {
-                    // setup dialog builder
-                    root.findNavController().navigate(
-                        R.id.action_tenantAttractionsNearbyFragment2_to_nearbyAddFragment)
 
-                    true
+        if (GlobalVariables.loginUser.auth == "landlord") {
+            GlobalVariables.toolBarUtils.setAddButtonVisibility(true)
+            GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
+                when(it.itemId) {
+                    R.id.button_add -> {
+                        // setup dialog builder
+                        root.findNavController().navigate(
+                            R.id.action_tenantAttractionsNearbyFragment2_to_nearbyAddFragment)
+
+                        true
+                    }
+                    else -> false
                 }
-                else -> false
             }
         }
 
@@ -80,40 +83,41 @@ class TenantAttractionsNearbyFragment : Fragment(), OnMapReadyCallback {
             adapter = attractionAdapter
         }
 
-        var swipeHelper = object : SwipeHelper(requireContext(), root.recycler_list) {
-            override fun instantiateUnderlayButton(
-                viewHolder: RecyclerView.ViewHolder?,
-                underlayButtons: MutableList<UnderlayButton>?
-            ) {
-                underlayButtons?.add(UnderlayButton(
-                    "Delete",
-                    0,
-                    Color.parseColor("#FF3C30")
+        if (GlobalVariables.loginUser.auth == "landlord") {
+            var swipeHelper = object : SwipeHelper(requireContext(), root.recycler_list) {
+                override fun instantiateUnderlayButton(
+                    viewHolder: RecyclerView.ViewHolder?,
+                    underlayButtons: MutableList<UnderlayButton>?
                 ) {
-                    // setup dialog builder
-                    val builder = android.app.AlertDialog.Builder(requireActivity())
-                    builder.setTitle("確定要刪除嗎？")
+                    underlayButtons?.add(UnderlayButton(
+                        "Delete",
+                        0,
+                        Color.parseColor("#FF3C30")
+                    ) {
+                        // setup dialog builder
+                        val builder = android.app.AlertDialog.Builder(requireActivity())
+                        builder.setTitle("確定要刪除嗎？")
 
-                    builder.setPositiveButton("是") { _, _ ->
-                        val position = viewHolder!!.adapterPosition
-                        val item = GlobalVariables.attractionList[position]
-                        GlobalVariables.attractionList.remove(item)
-                        attractionAdapter.notifyDataSetChanged()
-                        Thread {
-                            GlobalVariables.api.deleteAttractionInformation(
-                                GlobalVariables.estate.landlord!!.id,
-                                GlobalVariables.estate.objectId,
-                                position
-                            )
-                        }.start()
-                    }
+                        builder.setPositiveButton("是") { _, _ ->
+                            val position = viewHolder!!.adapterPosition
+                            val item = GlobalVariables.attractionList[position]
+                            GlobalVariables.attractionList.remove(item)
+                            attractionAdapter.notifyDataSetChanged()
+                            Thread {
+                                GlobalVariables.api.deleteAttractionInformation(
+                                    GlobalVariables.estate.landlord!!.id,
+                                    GlobalVariables.estate.objectId,
+                                    position
+                                )
+                            }.start()
+                        }
 
-                    // create dialog and show it
-                    requireActivity().runOnUiThread{
-                        val dialog = builder.create()
-                        dialog.show()
-                    }
-                })
+                        // create dialog and show it
+                        requireActivity().runOnUiThread{
+                            val dialog = builder.create()
+                            dialog.show()
+                        }
+                    })
 //                underlayButtons?.add(UnderlayButton(
 //                    "Edit",
 //                    0,
@@ -128,6 +132,7 @@ class TenantAttractionsNearbyFragment : Fragment(), OnMapReadyCallback {
 //                ) {
 
 //                })
+                }
             }
         }
 

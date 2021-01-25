@@ -24,8 +24,6 @@ class TenantHosingRulesFragment : Fragment() {
         root = inflater.inflate(R.layout.tenant_fragment_housing_rules, container, false)
 
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
-//        val defaultInputType = root.text_housing_rules.inputType
-//        root.text_housing_rules.inputType = InputType.TYPE_NULL
         root.text_housing_rules.isEnabled = false
         fillInformation()
 

@@ -13,6 +13,7 @@ import com.smartperty.smartperty.landlord.menu.estate.EstateFolderAdapter
 import com.smartperty.smartperty.repair.EstateAdapter
 import com.smartperty.smartperty.repair.RepairListAdapter
 import com.smartperty.smartperty.tenant.home.attractionsNearby.data.AttractionNearbyItem
+import com.smartperty.smartperty.tools.TimeUtil
 import org.threeten.bp.LocalDateTime
 import java.text.SimpleDateFormat
 
@@ -163,6 +164,20 @@ class GlobalVariables : Application() {
             val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
             val formatter = SimpleDateFormat("yyyy/MM/dd HH:mm")
             return formatter.format(parser.parse(LocalDateTime.now().toString())!!)
+        }
+
+        fun getContractExpireIn3MonthList() : MutableList<Contract> {
+            val list = mutableListOf<Contract>()
+
+            contractList.forEach {
+                if ((it.endDate - TimeUtil.getCurrentUnixTimeStamp()) < 3*30*24*60*60) {
+                    list.add(it)
+                }
+            }
+
+            list.sortBy { it.endDate }
+
+            return list
         }
 
         fun logout() {

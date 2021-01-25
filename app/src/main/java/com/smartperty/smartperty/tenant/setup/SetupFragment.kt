@@ -1,12 +1,14 @@
 package com.smartperty.smartperty.tenant.setup
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.navigation.findNavController
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.EstateList
@@ -14,8 +16,11 @@ import com.smartperty.smartperty.login.LoginActivity
 import com.smartperty.smartperty.utils.GlobalVariables
 import com.smartperty.smartperty.utils.GlobalVariables.Companion.toolBarUtils
 import kotlinx.android.synthetic.main.fragment_estate_directory_create.view.*
+import kotlinx.android.synthetic.main.fragment_personnel_user_info.view.*
 import kotlinx.android.synthetic.main.fragment_setup.*
 import kotlinx.android.synthetic.main.fragment_setup.view.*
+import kotlinx.android.synthetic.main.fragment_setup.view.button_tenant_setup_help
+import kotlinx.android.synthetic.main.fragment_setup.view.image_userIcon
 
 class SetupFragment : Fragment() {
 
@@ -43,7 +48,19 @@ class SetupFragment : Fragment() {
         }
 
         root.button_tenant_setup_language.setOnClickListener {
+            val builderSingle: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+            val arrayAdapter = ArrayAdapter<String>(
+                requireContext(),
+                android.R.layout.select_dialog_singlechoice
+            )
 
+            arrayAdapter.add("繁體中文")
+
+            builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
+            builderSingle.setAdapter(arrayAdapter) { _, which ->
+                val strName = arrayAdapter.getItem(which)
+            }
+            builderSingle.show()
         }
 
         root.button_tenant_setup_help.setOnClickListener {

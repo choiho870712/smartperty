@@ -44,12 +44,18 @@ class RepairOrderCreateFragment : Fragment() {
         GlobalVariables.imageListUsage = "edit"
 
         repairTypeString = "點擊選擇"
-        GlobalVariables.estate = Estate()
         GlobalVariables.repairOrder = RepairOrder(
             creator = GlobalVariables.loginUser,
             type = "maintain",
             status = "nil"
         )
+
+        if (GlobalVariables.loginUser.auth == "landlord") {
+            GlobalVariables.estate = Estate()
+        }
+        else {
+            GlobalVariables.repairOrder.estate = GlobalVariables.estate
+        }
     }
 
     @SuppressLint("ResourceType")
@@ -199,11 +205,17 @@ class RepairOrderCreateFragment : Fragment() {
     }
 
     private fun setChooseTenantButton() {
-        root.button_choose_tenant.visibility = View.VISIBLE
-        root.button_choose_tenant.setOnClickListener {
-            GlobalVariables.propertySelectorUsage = "none"
-            root.findNavController().navigate(
-                R.id.action_repairOrderCreateFragment_to_chooseTenantFragment)
+        if (GlobalVariables.loginUser.auth == "landlord") {
+            root.button_choose_tenant.visibility = View.VISIBLE
+            root.button_choose_tenant.setOnClickListener {
+                GlobalVariables.propertySelectorUsage = "none"
+                root.findNavController().navigate(
+                    R.id.action_repairOrderCreateFragment_to_chooseTenantFragment)
+            }
+        }
+        else {
+            root.button_choose_tenant.visibility = View.VISIBLE
+            root.button_choose_tenant.text = GlobalVariables.estate.getAddress()
         }
     }
 

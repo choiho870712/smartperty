@@ -7,12 +7,15 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.smartperty.smartperty.R
+import com.smartperty.smartperty.data.Contract
 import com.smartperty.smartperty.landlord.home.data.LandlordExpiringContract
+import com.smartperty.smartperty.tools.TimeUtil
 import kotlinx.android.synthetic.main.landlord_card_expiring_contract.view.*
+import java.util.*
 
 class LandlordExpiringContractAdapter(private val activity: Activity,
                                       private val parentView: View,
-                                      private val myDataset: MutableList<LandlordExpiringContract>)
+                                      private val myDataset: MutableList<Contract>)
     : RecyclerView.Adapter<LandlordExpiringContractAdapter.CardHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardHolder {
@@ -25,9 +28,9 @@ class LandlordExpiringContractAdapter(private val activity: Activity,
     override fun getItemCount(): Int = myDataset.size
 
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
-        holder.title.text = myDataset[position].title
-        holder.address.text = myDataset[position].address
-        holder.expireTime.text = myDataset[position].expireMonth
+        holder.title.text = myDataset[position].estate?.objectName ?: "?"
+        holder.address.text = myDataset[position].estate?.getAddress() ?: "?"
+        holder.expireTime.text = TimeUtil.StampToDate(myDataset[position].endDate, Locale.TAIWAN)
     }
 
     class CardHolder(card: View) : RecyclerView.ViewHolder(card) {

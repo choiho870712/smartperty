@@ -33,72 +33,74 @@ class RepairOrderFragment : Fragment() {
         setChoosePlumberButton()
         setAddMessageButton()
 
-        root.textView_repair_order_status.setOnClickListener {
-            val builderSingle: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+        if (GlobalVariables.loginUser.auth == "landlord") {
+            root.textView_repair_order_status.setOnClickListener {
+                val builderSingle: AlertDialog.Builder = AlertDialog.Builder(requireContext())
 
-            val arrayAdapter = ArrayAdapter<String>(
-                requireContext(),
-                android.R.layout.select_dialog_singlechoice
-            )
-            arrayAdapter.add("已接案")
-            arrayAdapter.add("已指派")
-            arrayAdapter.add("處理中")
-            arrayAdapter.add("已結案")
+                val arrayAdapter = ArrayAdapter<String>(
+                    requireContext(),
+                    android.R.layout.select_dialog_singlechoice
+                )
+                arrayAdapter.add("已接案")
+                arrayAdapter.add("已指派")
+                arrayAdapter.add("處理中")
+                arrayAdapter.add("已結案")
 
-            builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
+                builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
 
-            builderSingle.setAdapter(arrayAdapter) { _, which ->
-                val strName = arrayAdapter.getItem(which)
-                val builderInner: AlertDialog.Builder = AlertDialog.Builder(requireContext())
-                builderInner.setMessage(strName)
-                builderInner.setTitle("確定修改狀態？")
-                builderInner.setPositiveButton("是") { dialog, which ->
-                    root.textView_repair_order_status.text = strName
+                builderSingle.setAdapter(arrayAdapter) { _, which ->
+                    val strName = arrayAdapter.getItem(which)
+                    val builderInner: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+                    builderInner.setMessage(strName)
+                    builderInner.setTitle("確定修改狀態？")
+                    builderInner.setPositiveButton("是") { dialog, which ->
+                        root.textView_repair_order_status.text = strName
 
-                    GlobalVariables.repairOrder.status =
-                        when (strName) {
-                            "已接案" -> {
-                                "Received"
+                        GlobalVariables.repairOrder.status =
+                            when (strName) {
+                                "已接案" -> {
+                                    "Received"
+                                }
+                                "已指派" -> {
+                                    "Assigned"
+                                }
+                                "處理中" -> {
+                                    "Processing"
+                                }
+                                "已結案" -> {
+                                    "Closed"
+                                }
+                                else -> {
+                                    "nil"
+                                }
                             }
-                            "已指派" -> {
-                                "Assigned"
-                            }
-                            "處理中" -> {
-                                "Processing"
-                            }
-                            "已結案" -> {
-                                "Closed"
-                            }
-                            else -> {
-                                "nil"
-                            }
-                        }
-                    setStatusButtonColor()
-
-                    Thread {
-                        GlobalVariables.api.changeEventStatus(
-                            GlobalVariables.repairOrder.landlord!!.id,
-                            GlobalVariables.repairOrder.event_id,
-                            GlobalVariables.repairOrder.status
-                        )
-
-                        val userList = mutableListOf<User>()
-                        userList.addAll(GlobalVariables.repairOrder.participant)
-                        if (GlobalVariables.repairOrder.landlord != null)
-                            userList.add(GlobalVariables.repairOrder.landlord!!)
+                        setStatusButtonColor()
 
                         Thread {
-                            GlobalVariables.api.createMessage(
-                                userList, "已修改狀態", "Event")
+                            GlobalVariables.api.changeEventStatus(
+                                GlobalVariables.repairOrder.landlord!!.id,
+                                GlobalVariables.repairOrder.event_id,
+                                GlobalVariables.repairOrder.status
+                            )
+
+                            val userList = mutableListOf<User>()
+                            userList.addAll(GlobalVariables.repairOrder.participant)
+                            if (GlobalVariables.repairOrder.landlord != null)
+                                userList.add(GlobalVariables.repairOrder.landlord!!)
+
+                            Thread {
+                                GlobalVariables.api.createMessage(
+                                    userList, "已修改狀態", "Event")
+                            }.start()
                         }.start()
-                    }.start()
-                    dialog.dismiss()
+                        dialog.dismiss()
+                    }
+                    builderInner.setNegativeButton("否"
+                    ) { dialog, which -> dialog.dismiss() }
+                    builderInner.show()
                 }
-                builderInner.setNegativeButton("否"
-                ) { dialog, which -> dialog.dismiss() }
-                builderInner.show()
+                builderSingle.show()
             }
-            builderSingle.show()
         }
 
         return root

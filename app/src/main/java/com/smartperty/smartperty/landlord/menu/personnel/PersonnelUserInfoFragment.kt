@@ -178,10 +178,10 @@ class PersonnelUserInfoFragment : Fragment() {
             arrayAdapter.add("NT10萬~20萬")
             arrayAdapter.add("NT20萬~40萬")
             arrayAdapter.add("NT40萬~60萬")
-            arrayAdapter.add("NT60萬~1,00萬")
-            arrayAdapter.add("NT1,00萬~1,20萬")
-            arrayAdapter.add("NT1,20萬~1,50萬")
-            arrayAdapter.add("NT1,50萬以上")
+            arrayAdapter.add("NT60萬~100萬")
+            arrayAdapter.add("NT100萬~120萬")
+            arrayAdapter.add("NT120萬~150萬")
+            arrayAdapter.add("NT150萬以上")
 
             builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
             builderSingle.setAdapter(arrayAdapter) { _, which ->

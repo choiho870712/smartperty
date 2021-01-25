@@ -27,10 +27,10 @@ class PersonnelFragment : Fragment() {
             root.image_userIcon.setImageBitmap(GlobalVariables.personnel.icon)
 
         root.textView_personnel_name.text = GlobalVariables.personnel.name
-        root.textView_personnel_account.text = GlobalVariables.personnel.account
+        root.textView_personnel_account.text = GlobalVariables.personnel.id
         root.textView_personnel_phone.text = GlobalVariables.personnel.cellPhone
         root.textView_personnel_email.text = GlobalVariables.personnel.email
-        root.textView_personnel_password.text = GlobalVariables.personnel.password
+        root.textView_personnel_password.text = GlobalVariables.personnel.id
 
         return root
     }

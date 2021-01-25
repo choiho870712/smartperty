@@ -25,11 +25,11 @@
             android:id="@+id/action_tenantHomeFragment_to_tenantAttractionsNearbyFragment"
             app:destination="@id/tenantAttractionsNearbyFragment" />
         <action
-            android:id="@+id/action_tenantHomeFragment_to_tenantSetupFragment"
-            app:destination="@id/tenantSetupFragment" />
+            android:id="@+id/action_tenantHomeFragment_to_landlord_group"
+            app:destination="@id/landlord_group" />
         <action
-            android:id="@+id/action_tenantHomeFragment_to_repairListFragment"
-            app:destination="@id/repairListFragment" />
+            android:id="@+id/action_tenantHomeFragment_to_landlord_menu"
+            app:destination="@id/landlord_menu" />
     </fragment>
     <fragment
         android:id="@+id/tenantHosingRulesFragment"
@@ -65,41 +65,7 @@
         android:name="com.smartperty.smartperty.tenant.home.equipmentManualPdf.TenantEquipmentManualPdfFragment"
         android:label="TenantEquipmentManualPdfFragment"
         tools:layout="@layout/tenant_fragment_equipment_manual_pdf"/>
-    <fragment
-        android:id="@+id/tenantSetupFragment"
-        android:name="com.smartperty.smartperty.tenant.setup.SetupFragment"
-        android:label="設定"
-        tools:layout="@layout/fragment_setup">
-        <action
-            android:id="@+id/action_tenantSetupFragment_to_tenantHelpFragment"
-            app:destination="@id/tenantHelpFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/tenantHelpFragment"
-        android:name="com.smartperty.smartperty.tenant.setup.help.TenantHelpFragment"
-        android:label="支援中心"
-        tools:layout="@layout/tenant_fragment_help" />
-    <fragment
-        android:id="@+id/repairListFragment"
-        android:name="com.smartperty.smartperty.repair.RepairListFragment"
-        android:label="@string/tenant_home_title_repair"
-        tools:layout="@layout/fragment_recycler">
-        <action
-            android:id="@+id/action_repairListFragment_to_repairOrderFragment"
-            app:destination="@id/repairOrderFragment" />
-        <action
-            android:id="@+id/action_repairListFragment_to_repairOrderCreateFragment"
-            app:destination="@id/repairOrderCreateFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/repairOrderFragment"
-        android:name="com.smartperty.smartperty.repair.RepairOrderFragment"
-        android:label="報修單"
-        tools:layout="@layout/fragment_repair_order" />
-    <fragment
-        android:id="@+id/repairOrderCreateFragment"
-        android:name="com.smartperty.smartperty.repair.RepairOrderCreateFragment"
-        android:label="填寫報修單"
-        tools:layout="@layout/fragment_repair_order_create"/>
+    <include app:graph="@navigation/landlord_group" />
+    <include app:graph="@navigation/landlord_menu" />
 
 </navigation>

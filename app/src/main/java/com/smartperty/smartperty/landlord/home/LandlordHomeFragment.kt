@@ -25,6 +25,7 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.chartUtil.MyMarkerView
+import com.smartperty.smartperty.data.Contract
 import com.smartperty.smartperty.data.Estate
 import com.smartperty.smartperty.data.EstateList
 import com.smartperty.smartperty.landlord.home.data.LandlordExpiringContract
@@ -43,6 +44,7 @@ class LandlordHomeFragment : Fragment() {
     private lateinit var root:View
     private lateinit var chart: LineChart
 
+    @SuppressLint("SetTextI18n")
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
 
@@ -92,19 +94,7 @@ class LandlordHomeFragment : Fragment() {
         }
         root.recycler_rent_list.isFocusable = false
 
-        val expiringContractList = mutableListOf(
-            LandlordExpiringContract(
-                title = "大樓C",
-                address = "幸福大樓3樓15室",
-                expireMonth = "2個月後到期"
-            ),
-            LandlordExpiringContract(
-                title = "大樓D",
-                address = "大仁大樓3樓17室",
-                expireMonth = "2個月後到期"
-            )
-        )
-
+        val expiringContractList = mutableListOf<Contract>()
         root.recycler_contract_list.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(activity)

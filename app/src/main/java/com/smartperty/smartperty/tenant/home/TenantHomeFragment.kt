@@ -1,5 +1,6 @@
 package com.smartperty.smartperty.tenant.home
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,7 +25,7 @@ class TenantHomeFragment : Fragment() {
 
         root.button_tenant_setup.setOnClickListener {
             root.findNavController().navigate(
-                R.id.action_tenantHomeFragment_to_tenantSetupFragment)
+                R.id.action_tenantHomeFragment_to_landlord_group)
         }
 
         root.button_home_housing_rules.setOnClickListener {
@@ -48,8 +49,8 @@ class TenantHomeFragment : Fragment() {
                 R.id.action_tenantHomeFragment_to_tenantAttractionsNearbyFragment)
         }
         root.button_home_repair.setOnClickListener {
-            root.findNavController().navigate(
-                R.id.action_tenantHomeFragment_to_repairListFragment)
+            val uri = Uri.parse("android-app://com.smartperty.smartperty/repairListFragment")
+            root.findNavController().navigate(uri)
         }
 
         return root

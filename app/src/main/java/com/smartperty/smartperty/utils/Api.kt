@@ -1,6 +1,7 @@
 package com.smartperty.smartperty.utils
 
 import android.graphics.Bitmap
+import android.util.Log
 import com.smartperty.smartperty.data.*
 import com.smartperty.smartperty.tenant.home.attractionsNearby.data.AttractionNearbyItem
 import com.smartperty.smartperty.tools.TimeUtil
@@ -131,20 +132,21 @@ class Api {
         GlobalVariables.rentedEstateList.list.clear()
         for (i in 0 until rented.length()) {
             val id = rented.getString(i)
+            val estate = Estate()
+            GlobalVariables.rentedEstateList.list.add(estate)
+            //estate.update(Utils.getEstate(id)!!)
             Thread {
-                GlobalVariables.rentedEstateList.list.add(
-                    Utils.getEstate(id)!!
-                )
+                estate.update(Utils.getEstate(id)!!)
             }.start()
         }
 
         GlobalVariables.notRentedEstateList.list.clear()
         for (i in 0 until notRented.length()) {
             val id = notRented.getString(i)
+            val estate = Estate()
+            GlobalVariables.notRentedEstateList.list.add(estate)
             Thread {
-                GlobalVariables.notRentedEstateList.list.add(
-                    Utils.getEstate(id)!!
-                )
+                estate.update(Utils.getEstate(id)!!)
             }.start()
         }
     }
@@ -520,11 +522,6 @@ class Api {
             purchaseDate = information.getLong("purchase_date")
         )
 
-        // important!!
-        // avoid Utils.getRepairOrder() not found this estate
-        // when calling getEventInformation() api
-        Utils.addEstateToEstateList(estate)
-
         val tenant_id = item.getString("tenant_id")
         Thread {
             estate.tenant = Utils.getUser(tenant_id)
@@ -602,9 +599,9 @@ class Api {
 
         val eventHistoryIdList = item.getJSONArray("event_history")
         for (j in 0 until(eventHistoryIdList.length())) {
-            estate.repairList.add(
-                Utils.getRepairOrder(eventHistoryIdList.getString(j))!!
-            )
+            Thread {
+                estate.repairList.add(Utils.getRepairOrder(eventHistoryIdList.getString(j))!!)
+            }.start()
         }
         return estate
     }
@@ -713,7 +710,6 @@ class Api {
 
     private fun getEventInformationItemJson(item:JSONObject): RepairOrder {
         val repairOrder = RepairOrder()
-        Utils.addRepairOrderToRepairList(repairOrder)
         val information = item.getJSONObject("information")
         val dynamic_status = information.getJSONArray("dynamic_status")
         repairOrder.timestamp = item.getLong("timestmp")
@@ -761,8 +757,10 @@ class Api {
         val participant = item.getJSONArray("participant")
         for (j in 0 until(participant.length())) {
             val participantItem = participant.getJSONObject(j)
-            repairOrder.participant.add(
-                Utils.getUser(participantItem.getString("id"))!!)
+            Thread {
+                repairOrder.participant.add(
+                    Utils.getUser(participantItem.getString("id"))!!)
+            }.start()
         }
 
         return repairOrder
@@ -969,8 +967,7 @@ class Api {
 
     fun userLogin(id:String, pw:String) : Boolean{
         val json = "{\"platform\":\"Android\", \"id\": \"$id\", \"pw\": \"$pw\"}"
-//        return getJsonMessage(callApi(json, urlUserLogin)) == "No Error"
-        return true
+        return getJsonMessage(callApi(json, urlUserLogin)) == "No Error"
     }
 
     fun updateEventInformation(
@@ -1003,17 +1000,7 @@ class Api {
     private fun getUserInformationJson(rawJsonString:String): User {
         val user = User()
         val jsonObject = JSONObject(rawJsonString)
-        val items:JSONObject
-
-        try {
-            items = jsonObject.getJSONObject("Items")
-        }
-        catch (e:Exception) {
-            user.id = ""
-            return user
-        }
-
-        //items = jsonObject.getJSONObject("Items")
+        val items = jsonObject.getJSONObject("Items")
 
         user.auth = items.getString("auth")
         //user.permissions = items.getString("permissions")
@@ -1048,9 +1035,6 @@ class Api {
         user.permission.payment = permission.getString("payment")
         user.permission.event = permission.getString("event")
         user.permission.staff = permission.getString("staff")
-
-        // for binding pointer with every object
-        Utils.addUserToUserList(user)
 
         val list = items.getJSONObject("lists")
         if (list.has("group")){
@@ -1107,12 +1091,34 @@ class Api {
                     user.repairList.add(Utils.getRepairOrder(event.getString(i))!!)
                 }.start()
         }
+
+
         // TODO get contract
 //        if (list.has("contract")){
 //            val contract = list.getJSONArray("contract")
 //            for (i in 0 until(contract.length()))
 //                user.contractList.add(contract.getString(i))
 //        }
+
+        // tenant part
+        if (GlobalVariables.loginUser.auth != "landlord") {
+            if (items.has("object_id")) {
+                Thread {
+                    GlobalVariables.estate =
+                        Utils.getEstate(items.getString("object_id"))!!
+                }.start()
+            }
+
+            if (items.has("contract_id")) {
+                val landlord_id = items.getString("root_id")
+                val contract_id = items.getString("contract_id")
+                if (contract_id != "nil")
+                    Thread {
+                        user.contractList.add(
+                            Utils.getContract(landlord_id, contract_id)!!)
+                    }.start()
+            }
+        }
 
         return user
     }
@@ -1199,6 +1205,7 @@ class Api {
     }
 
     private fun callApi(json:String, apiUrl: String) : String {
+        Log.d(">>>>>callApi", apiUrl)
         val request = Request.Builder()
             .url(apiUrl)
             .post(RequestBody.create(jsonType, json))

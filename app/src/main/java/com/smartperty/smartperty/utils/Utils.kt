@@ -1,4 +1,4 @@
-    package com.smartperty.smartperty.utils
+package com.smartperty.smartperty.utils
 
 import android.graphics.Bitmap
 import android.util.Log
@@ -60,7 +60,11 @@ object Utils {
         var user = searchUserFromUserList(userId)
         if (user == null) {
             user = GlobalVariables.api.getUserInformation(userId)
-            Log.d(">>>>>>>>>>>>>", userId + ":" + user.name)
+            val searchAgain = searchUserFromUserList(userId)
+            if (searchAgain!= null) {
+                return searchAgain
+            }
+            Log.d(">>>>>getUser", userId + ":" + user.name)
             addUserToUserList(user)
         }
 
@@ -91,14 +95,18 @@ object Utils {
     }
 
     fun searchEstateFromEstateList(objectId: String): Estate? {
-        while (isModifyingEstate)
+        while (isModifyingEstate) {
+            Log.d(">>>>>searchEstate", objectId)
             Thread.sleep(500)
+        }
 
         isModifyingEstate = true
 
         GlobalVariables.estateList.forEach {
-            if (it.compareId(objectId))
+            if (it.compareId(objectId)) {
+                isModifyingEstate = false
                 return it
+            }
         }
 
         isModifyingEstate = false
@@ -107,12 +115,18 @@ object Utils {
     }
 
     fun getEstate(objectId: String): Estate? {
-        if (objectId == "nil")
+        if (objectId == "nil") {
             return null
+        }
 
         var estate = searchEstateFromEstateList(objectId)
         if (estate == null) {
             estate = GlobalVariables.api.getPropertyByObjectId(objectId)
+            val searchAgain = searchEstateFromEstateList(objectId)
+            if (searchAgain!= null) {
+                return searchAgain
+            }
+            Log.d(">>>>>getEstate", objectId + ":" + estate!!.objectName)
             addEstateToEstateList(estate!!)
         }
 
@@ -127,7 +141,10 @@ object Utils {
                     it.title, GlobalVariables.loginUser.id)
 
                 it.list.forEachIndexed { index, estate ->
-                    addEstateToEstateList(estate)
+                    if (searchEstateFromEstateList(estate.objectId) == null) {
+                        Log.d(">>>>>getEstateGroupTag", estate.objectId + ":" + estate.objectName)
+                        addEstateToEstateList(estate)
+                    }
                 }
             }.start()
         }
@@ -192,6 +209,11 @@ object Utils {
         var repairOrder = searchRepairOrderFromRepairList(repairOrderId)
         if (repairOrder == null) {
             repairOrder = GlobalVariables.api.getEventInformation(repairOrderId)
+            val searchAgain = searchRepairOrderFromRepairList(repairOrderId)
+            if (searchAgain!= null) {
+                return searchAgain
+            }
+            Log.d(">>>>>getRepairOrder", repairOrderId + ":" + repairOrder!!.description)
             addRepairOrderToRepairList(repairOrder)
         }
 
@@ -303,6 +325,11 @@ object Utils {
         var contract = searchContractFromContractList(contractId)
         if (contract == null) {
             contract = GlobalVariables.api.getContractByContractId(landlordId, contractId)
+            val searchAgain = searchContractFromContractList(contractId)
+            if (searchAgain!= null) {
+                return searchAgain
+            }
+            Log.d(">>>>>getContract", contractId)
             addContractToContractList(contract)
         }
 

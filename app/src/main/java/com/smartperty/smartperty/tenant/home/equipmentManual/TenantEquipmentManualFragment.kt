@@ -1,6 +1,7 @@
 package com.smartperty.smartperty.tenant.home.equipmentManual
 
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +9,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.Equipment
+import com.smartperty.smartperty.tools.SwipeHelper
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.activity_landlord.*
+import kotlinx.android.synthetic.main.fragment_estate_directory.view.*
 import kotlinx.android.synthetic.main.tenant_fragment_equipment_manual.view.*
 
 class TenantEquipmentManualFragment : Fragment() {

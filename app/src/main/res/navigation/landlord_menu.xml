@@ -108,6 +108,7 @@
         android:name="com.smartperty.smartperty.repair.RepairListFragment"
         android:label="線上報修"
         tools:layout="@layout/fragment_recycler">
+        <deepLink app:uri="android-app://com.smartperty.smartperty/repairListFragment" />
         <action
             android:id="@+id/action_repairListFragment_to_repairOrderFragment"
             app:destination="@id/repairOrderFragment" />

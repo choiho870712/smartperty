@@ -64,9 +64,9 @@ class TenantActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
 
         val navGraphIds = listOf(
-            R.navigation.tenant_notification,
+            R.navigation.landlord_notification,
             R.navigation.tenant_home,
-            R.navigation.tenant_chat
+            R.navigation.landlord_chat
         )
 
         // Setup the bottom navigation view with a list of navigation graphs

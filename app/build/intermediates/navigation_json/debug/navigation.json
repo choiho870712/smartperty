@@ -11,7 +11,10 @@
   },
   {
     "name": "tenant_home",
-    "navigationXmlIds": [],
+    "navigationXmlIds": [
+      "landlord_group",
+      "landlord_menu"
+    ],
     "deepLinks": []
   },
   {
@@ -44,6 +47,31 @@
             "mEndLine": 88,
             "mEndColumn": 89,
             "mEndOffset": 4503
+          }
+        },
+        "isAutoVerify": false
+      },
+      {
+        "schemes": [
+          "android-app"
+        ],
+        "host": "com.smartperty.smartperty",
+        "port": -1,
+        "path": "/repairListFragment",
+        "sourceFilePosition": {
+          "mSourceFile": {
+            "mSourceFile": {
+              "path": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/navigation/landlord_menu.xml"
+            },
+            "mDescription": "landlord_menu"
+          },
+          "mSourcePosition": {
+            "mStartLine": 110,
+            "mStartColumn": 8,
+            "mStartOffset": 5510,
+            "mEndLine": 110,
+            "mEndColumn": 89,
+            "mEndOffset": 5591
           }
         },
         "isAutoVerify": false

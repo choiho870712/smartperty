@@ -3,7 +3,7 @@
 
 
     <item
-        android:id="@+id/tenant_notification"
+        android:id="@+id/landlord_notification"
         android:icon="@drawable/button_nav_notification"
         android:title="@string/tenant_title_notification" />
 
@@ -13,7 +13,7 @@
         android:title="@string/tenant_title_home" />
 
     <item
-        android:id="@+id/tenant_chat"
+        android:id="@+id/landlord_chat"
         android:icon="@drawable/button_nav_chat"
         android:title="@string/tenant_title_chat" />
 

@@ -107,32 +107,11 @@ class GlobalVariables : Application() {
 
         // chart
         var contractExpireLineChartDataSet = ChartData(
-            type = ChartDataType.LINE_CHART,
-            dataList = mutableListOf(
-                ChartDataPair("11", 2),
-                ChartDataPair("12", 3),
-                ChartDataPair("13", 4),
-                ChartDataPair("14", 5)
-            )
-        )
+            type = ChartDataType.LINE_CHART)
         var contractExpireIn3MonthBySquareFtPieChartDataSet = ChartData(
-            type = ChartDataType.PIE_CHART,
-            dataList = mutableListOf(
-                ChartDataPair("0~20坪", 3),
-                ChartDataPair("21~30坪", 5),
-                ChartDataPair("31~50坪", 7),
-                ChartDataPair("51~100坪", 9)
-            )
-        )
+            type = ChartDataType.PIE_CHART)
         var contractExpireIn3MonthByTypePieChartDataSet = ChartData(
-            type = ChartDataType.PIE_CHART,
-            dataList = mutableListOf(
-                ChartDataPair("停車位", 2),
-                ChartDataPair("辦公室", 4),
-                ChartDataPair("店面", 6),
-                ChartDataPair("套房", 8)
-            )
-        )
+            type = ChartDataType.PIE_CHART)
         var dataAnalysisByGroupBarChartDataSet = ChartData()
         var dataAnalysisByGroupPieChartDataSet = ChartData()
         var dataAnalysisByTypeBarChartDataSet = ChartData()
@@ -176,6 +155,157 @@ class GlobalVariables : Application() {
             }
 
             list.sortBy { it.endDate }
+
+            return list
+        }
+
+        fun getContractExpireIn3MonthByAreaList(rangeMin: Int, rangeMax: Int) : MutableList<Estate> {
+            val contractExpireIn3MonthList = getContractExpireIn3MonthList()
+            val list = mutableListOf<Estate>()
+
+            contractExpireIn3MonthList.forEach {
+                if (it.estate!!.area in (rangeMin + 1) until rangeMax) {
+                    list.add(it.estate!!)
+                }
+            }
+
+            list.sortBy { it.contract!!.endDate }
+
+            return list
+        }
+
+        fun getContractExpireIn3MonthByTypeList(type:String) : MutableList<Estate> {
+            val contractExpireIn3MonthList = getContractExpireIn3MonthList()
+            val list = mutableListOf<Estate>()
+
+            contractExpireIn3MonthList.forEach {
+                if (it.estate!!.type == type) {
+                    list.add(it.estate!!)
+                }
+            }
+
+            list.sortBy { it.contract!!.endDate }
+
+            return list
+        }
+
+        fun prepareContractChartDataSet() {
+            var contract1MonthCount = 0
+            var contract2MonthCount = 0
+            var contract3MonthCount = 0
+
+            contractList.forEach {
+                if ((it.endDate - TimeUtil.getCurrentUnixTimeStamp())< 1*30*24*60*60) {
+                    contract1MonthCount++
+                }
+                else if ((it.endDate - TimeUtil.getCurrentUnixTimeStamp())< 2*30*24*60*60) {
+                    contract2MonthCount++
+                }
+                else if ((it.endDate - TimeUtil.getCurrentUnixTimeStamp())< 3*30*24*60*60) {
+                    contract3MonthCount++
+                }
+            }
+
+            val currentTimeStamp = TimeUtil.getCurrentDateTime()
+            val currentMonth = currentTimeStamp.subSequence(5, 6).toString().toInt()
+
+
+            contractExpireLineChartDataSet.dataList.clear()
+            contractExpireLineChartDataSet.dataList.add(ChartDataPair(
+                (currentMonth+1).toString(), contract1MonthCount))
+            contractExpireLineChartDataSet.dataList.add(ChartDataPair(
+                (currentMonth+2).toString(), contract2MonthCount))
+            contractExpireLineChartDataSet.dataList.add(ChartDataPair(
+                (currentMonth+3).toString(), contract3MonthCount))
+
+
+            contractExpireIn3MonthBySquareFtPieChartDataSet.dataList.clear()
+            var size = 0
+
+            size = getContractExpireIn3MonthByAreaList(0,20).size
+            if (size > 0) {
+                contractExpireIn3MonthBySquareFtPieChartDataSet.dataList.add(
+                    ChartDataPair(
+                        tag = "0~20坪",
+                        value = size,
+                        rangeMin = 0,
+                        rangeMax = 20
+                    )
+                )
+            }
+
+            size = getContractExpireIn3MonthByAreaList(20,30).size
+            if (size > 0) {
+                contractExpireIn3MonthBySquareFtPieChartDataSet.dataList.add(
+                    ChartDataPair(
+                        tag = "20~30坪",
+                        value = size,
+                        rangeMin = 20,
+                        rangeMax = 30
+                    )
+                )
+            }
+
+            size = getContractExpireIn3MonthByAreaList(30,50).size
+            if (size > 0) {
+                contractExpireIn3MonthBySquareFtPieChartDataSet.dataList.add(
+                    ChartDataPair(
+                        tag = "30~50坪",
+                        value = size,
+                        rangeMin = 30,
+                        rangeMax = 50
+                    )
+                )
+            }
+
+            size = getContractExpireIn3MonthByAreaList(50,100).size
+            if (size > 0) {
+                contractExpireIn3MonthBySquareFtPieChartDataSet.dataList.add(
+                    ChartDataPair(
+                        tag = "50~100坪",
+                        value = size,
+                        rangeMin = 50,
+                        rangeMax = 100
+                    )
+                )
+            }
+
+            size = getContractExpireIn3MonthByAreaList(100,Int.MAX_VALUE).size
+            if (size > 0) {
+                contractExpireIn3MonthBySquareFtPieChartDataSet.dataList.add(
+                    ChartDataPair(
+                        tag = "100坪以上",
+                        value = size,
+                        rangeMin = 100,
+                        rangeMax = Int.MAX_VALUE
+                    )
+                )
+            }
+
+            contractExpireIn3MonthByTypePieChartDataSet.dataList.clear()
+            getContractExpireIn3MonthList().forEach {
+                val tag = it.estate!!.type
+                if (contractExpireIn3MonthByTypePieChartDataSet.dataList.find { it.tag == tag } == null) {
+                    contractExpireIn3MonthByTypePieChartDataSet.dataList.add(
+                        ChartDataPair(
+                            tag = tag,
+                            value = getContractExpireIn3MonthByTypeList(tag).size
+                        )
+                    )
+                }
+            }
+        }
+
+        fun getContractexpiringRentList() : MutableList<Contract> {
+            val list = mutableListOf<Contract>()
+
+            contractList.forEach {
+                if ((it.getNextDate() - TimeUtil.getCurrentUnixTimeStamp()) < 3*30*24*60*60) {
+                    list.add(it)
+                }
+            }
+
+            list.sortBy { it.getNextDate() }
 
             return list
         }

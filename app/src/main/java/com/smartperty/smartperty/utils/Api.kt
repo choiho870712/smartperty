@@ -385,9 +385,20 @@ class Api {
             }
         }
         catch (e:Exception) {
+
         }
 
-        // TODO get rent record''
+        contract.rentRecordList.clear()
+        val rentRecord = item.getJSONArray("rent_record")
+        for (i in 0 until(rentRecord.length())) {
+            val rentRecordItem = rentRecord.getJSONObject(i)
+            contract.rentRecordList.add(
+                RentRecord(
+                    rentRecordItem.getLong("date"),
+                    rentRecordItem.getBoolean("status")
+                )
+            )
+        }
 
         return contract
     }

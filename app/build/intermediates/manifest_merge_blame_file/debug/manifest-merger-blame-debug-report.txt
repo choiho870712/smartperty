@@ -27,119 +27,122 @@
 19    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 19-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:13:5-80
 19-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:13:22-77
-20
-21    <uses-feature
-21-->[com.google.android.gms:play-services-maps:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/164db0e8100c0560953c5b2016d116db/jetified-play-services-maps-17.0.0/AndroidManifest.xml:26:5-28:35
-22        android:glEsVersion="0x00020000"
-22-->[com.google.android.gms:play-services-maps:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/164db0e8100c0560953c5b2016d116db/jetified-play-services-maps-17.0.0/AndroidManifest.xml:27:9-41
-23        android:required="true" />
-23-->[com.google.android.gms:play-services-maps:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/164db0e8100c0560953c5b2016d116db/jetified-play-services-maps-17.0.0/AndroidManifest.xml:28:9-32
-24
-25    <application
-25-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:15:5-54:19
-26        android:name="com.smartperty.smartperty.utils.GlobalVariables"
-26-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:16:9-46
-27        android:allowBackup="true"
-27-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:17:9-35
-28        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-28-->[androidx.core:core:1.3.2] /root/.gradle/caches/transforms-2/files-2.1/a510bdf27626ef8d83148f7f7a9f9a33/core-1.3.2/AndroidManifest.xml:24:18-86
-29        android:debuggable="true"
-30        android:icon="@mipmap/ic_launcher"
-30-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:18:9-43
-31        android:label="@string/app_name"
-31-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:19:9-41
-32        android:roundIcon="@mipmap/ic_launcher_round"
-32-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:20:9-54
-33        android:supportsRtl="true"
-33-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:21:9-35
-34        android:testOnly="true"
-35        android:theme="@style/AppTheme" >
-35-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:22:9-40
-36
-37        <!--
-38             The API key for Google Maps-based APIs is defined as a string resource.
-39             (See the file "res/values/google_maps_api.xml").
-40             Note that the API key is linked to the encryption key used to sign the APK.
-41             You need a different API key for each encryption key, including the release key that is used to
-42             sign the APK for publishing.
-43             You can define the keys for the debug and release targets in src/debug/ and src/release/.
-44        -->
-45        <meta-data
-45-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:32:9-34:55
-46            android:name="com.google.android.geo.API_KEY"
-46-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:33:13-58
-47            android:value="@string/google_maps_key" />
-47-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:34:13-52
-48
-49        <activity
-49-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:36:9-39:63
-50            android:name="com.smartperty.smartperty.landlord.LandlordActivity"
-50-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:37:13-54
-51            android:label="@string/title_activity_landlord"
-51-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:39:13-60
-52            android:screenOrientation="portrait" />
-52-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:38:13-49
-53        <activity
-53-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:40:9-43:61
-54            android:name="com.smartperty.smartperty.tenant.TenantActivity"
-54-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:41:13-50
-55            android:label="@string/title_activity_tenant"
-55-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:43:13-58
-56            android:screenOrientation="portrait" />
-56-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:42:13-49
-57        <activity
-57-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:44:9-53:20
-58            android:name="com.smartperty.smartperty.login.LoginActivity"
-58-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:45:13-48
-59            android:label="@string/app_name"
-59-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:47:13-45
-60            android:screenOrientation="portrait" >
-60-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:46:13-49
-61            <intent-filter>
-61-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:48:13-52:29
-62                <action android:name="android.intent.action.MAIN" />
-62-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:49:17-69
-62-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:49:25-66
-63
-64                <category android:name="android.intent.category.LAUNCHER" />
-64-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:51:17-77
-64-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:51:27-74
-65            </intent-filter>
-66        </activity>
-67        <!-- Needs to be explicitly declared on P+ -->
-68        <uses-library
-68-->[com.google.android.gms:play-services-maps:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/164db0e8100c0560953c5b2016d116db/jetified-play-services-maps-17.0.0/AndroidManifest.xml:33:9-35:40
-69            android:name="org.apache.http.legacy"
-69-->[com.google.android.gms:play-services-maps:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/164db0e8100c0560953c5b2016d116db/jetified-play-services-maps-17.0.0/AndroidManifest.xml:34:13-50
-70            android:required="false" />
-70-->[com.google.android.gms:play-services-maps:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/164db0e8100c0560953c5b2016d116db/jetified-play-services-maps-17.0.0/AndroidManifest.xml:35:13-37
-71
-72        <activity
-72-->[com.google.android.gms:play-services-base:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/6d8b2bae5849f16ef4cabde6b8ec9476/jetified-play-services-base-17.0.0/AndroidManifest.xml:23:9-26:75
-73            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-73-->[com.google.android.gms:play-services-base:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/6d8b2bae5849f16ef4cabde6b8ec9476/jetified-play-services-base-17.0.0/AndroidManifest.xml:24:13-79
-74            android:exported="false"
-74-->[com.google.android.gms:play-services-base:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/6d8b2bae5849f16ef4cabde6b8ec9476/jetified-play-services-base-17.0.0/AndroidManifest.xml:25:13-37
-75            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-75-->[com.google.android.gms:play-services-base:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/6d8b2bae5849f16ef4cabde6b8ec9476/jetified-play-services-base-17.0.0/AndroidManifest.xml:26:13-72
-76
-77        <meta-data
-77-->[com.google.android.gms:play-services-basement:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/bc13f0acd75a988cccadd5bbe939939f/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
-78            android:name="com.google.android.gms.version"
-78-->[com.google.android.gms:play-services-basement:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/bc13f0acd75a988cccadd5bbe939939f/jetified-play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
-79            android:value="@integer/google_play_services_version" />
-79-->[com.google.android.gms:play-services-basement:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/bc13f0acd75a988cccadd5bbe939939f/jetified-play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
-80
-81        <provider
-81-->[androidx.lifecycle:lifecycle-process:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/074abd9060072704ac256d127beff65b/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
-82            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-82-->[androidx.lifecycle:lifecycle-process:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/074abd9060072704ac256d127beff65b/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
-83            android:authorities="com.smartperty.smartperty.lifecycle-process"
-83-->[androidx.lifecycle:lifecycle-process:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/074abd9060072704ac256d127beff65b/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
-84            android:exported="false"
-84-->[androidx.lifecycle:lifecycle-process:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/074abd9060072704ac256d127beff65b/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
-85            android:multiprocess="true" />
-85-->[androidx.lifecycle:lifecycle-process:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/074abd9060072704ac256d127beff65b/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
-86    </application>
-87
-88</manifest>
+20    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+20-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:14:5-80
+20-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:14:22-78
+21
+22    <uses-feature
+22-->[com.google.android.gms:play-services-maps:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/164db0e8100c0560953c5b2016d116db/jetified-play-services-maps-17.0.0/AndroidManifest.xml:26:5-28:35
+23        android:glEsVersion="0x00020000"
+23-->[com.google.android.gms:play-services-maps:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/164db0e8100c0560953c5b2016d116db/jetified-play-services-maps-17.0.0/AndroidManifest.xml:27:9-41
+24        android:required="true" />
+24-->[com.google.android.gms:play-services-maps:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/164db0e8100c0560953c5b2016d116db/jetified-play-services-maps-17.0.0/AndroidManifest.xml:28:9-32
+25
+26    <application
+26-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:16:5-55:19
+27        android:name="com.smartperty.smartperty.utils.GlobalVariables"
+27-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:17:9-46
+28        android:allowBackup="true"
+28-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:18:9-35
+29        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+29-->[androidx.core:core:1.3.2] /root/.gradle/caches/transforms-2/files-2.1/a510bdf27626ef8d83148f7f7a9f9a33/core-1.3.2/AndroidManifest.xml:24:18-86
+30        android:debuggable="true"
+31        android:icon="@mipmap/ic_launcher"
+31-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:19:9-43
+32        android:label="@string/app_name"
+32-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:20:9-41
+33        android:roundIcon="@mipmap/ic_launcher_round"
+33-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:21:9-54
+34        android:supportsRtl="true"
+34-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:22:9-35
+35        android:testOnly="true"
+36        android:theme="@style/AppTheme" >
+36-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:23:9-40
+37
+38        <!--
+39             The API key for Google Maps-based APIs is defined as a string resource.
+40             (See the file "res/values/google_maps_api.xml").
+41             Note that the API key is linked to the encryption key used to sign the APK.
+42             You need a different API key for each encryption key, including the release key that is used to
+43             sign the APK for publishing.
+44             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+45        -->
+46        <meta-data
+46-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:33:9-35:55
+47            android:name="com.google.android.geo.API_KEY"
+47-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:34:13-58
+48            android:value="@string/google_maps_key" />
+48-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:35:13-52
+49
+50        <activity
+50-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:37:9-40:63
+51            android:name="com.smartperty.smartperty.landlord.LandlordActivity"
+51-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:38:13-54
+52            android:label="@string/title_activity_landlord"
+52-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:40:13-60
+53            android:screenOrientation="portrait" />
+53-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:39:13-49
+54        <activity
+54-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:41:9-44:61
+55            android:name="com.smartperty.smartperty.tenant.TenantActivity"
+55-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:42:13-50
+56            android:label="@string/title_activity_tenant"
+56-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:44:13-58
+57            android:screenOrientation="portrait" />
+57-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:43:13-49
+58        <activity
+58-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:45:9-54:20
+59            android:name="com.smartperty.smartperty.login.LoginActivity"
+59-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:46:13-48
+60            android:label="@string/app_name"
+60-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:48:13-45
+61            android:screenOrientation="portrait" >
+61-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:47:13-49
+62            <intent-filter>
+62-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:49:13-53:29
+63                <action android:name="android.intent.action.MAIN" />
+63-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:50:17-69
+63-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:50:25-66
+64
+65                <category android:name="android.intent.category.LAUNCHER" />
+65-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:52:17-77
+65-->/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/AndroidManifest.xml:52:27-74
+66            </intent-filter>
+67        </activity>
+68        <!-- Needs to be explicitly declared on P+ -->
+69        <uses-library
+69-->[com.google.android.gms:play-services-maps:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/164db0e8100c0560953c5b2016d116db/jetified-play-services-maps-17.0.0/AndroidManifest.xml:33:9-35:40
+70            android:name="org.apache.http.legacy"
+70-->[com.google.android.gms:play-services-maps:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/164db0e8100c0560953c5b2016d116db/jetified-play-services-maps-17.0.0/AndroidManifest.xml:34:13-50
+71            android:required="false" />
+71-->[com.google.android.gms:play-services-maps:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/164db0e8100c0560953c5b2016d116db/jetified-play-services-maps-17.0.0/AndroidManifest.xml:35:13-37
+72
+73        <activity
+73-->[com.google.android.gms:play-services-base:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/6d8b2bae5849f16ef4cabde6b8ec9476/jetified-play-services-base-17.0.0/AndroidManifest.xml:23:9-26:75
+74            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+74-->[com.google.android.gms:play-services-base:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/6d8b2bae5849f16ef4cabde6b8ec9476/jetified-play-services-base-17.0.0/AndroidManifest.xml:24:13-79
+75            android:exported="false"
+75-->[com.google.android.gms:play-services-base:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/6d8b2bae5849f16ef4cabde6b8ec9476/jetified-play-services-base-17.0.0/AndroidManifest.xml:25:13-37
+76            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+76-->[com.google.android.gms:play-services-base:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/6d8b2bae5849f16ef4cabde6b8ec9476/jetified-play-services-base-17.0.0/AndroidManifest.xml:26:13-72
+77
+78        <meta-data
+78-->[com.google.android.gms:play-services-basement:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/bc13f0acd75a988cccadd5bbe939939f/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
+79            android:name="com.google.android.gms.version"
+79-->[com.google.android.gms:play-services-basement:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/bc13f0acd75a988cccadd5bbe939939f/jetified-play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
+80            android:value="@integer/google_play_services_version" />
+80-->[com.google.android.gms:play-services-basement:17.0.0] /root/.gradle/caches/transforms-2/files-2.1/bc13f0acd75a988cccadd5bbe939939f/jetified-play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
+81
+82        <provider
+82-->[androidx.lifecycle:lifecycle-process:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/074abd9060072704ac256d127beff65b/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
+83            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+83-->[androidx.lifecycle:lifecycle-process:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/074abd9060072704ac256d127beff65b/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
+84            android:authorities="com.smartperty.smartperty.lifecycle-process"
+84-->[androidx.lifecycle:lifecycle-process:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/074abd9060072704ac256d127beff65b/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
+85            android:exported="false"
+85-->[androidx.lifecycle:lifecycle-process:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/074abd9060072704ac256d127beff65b/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
+86            android:multiprocess="true" />
+86-->[androidx.lifecycle:lifecycle-process:2.2.0] /root/.gradle/caches/transforms-2/files-2.1/074abd9060072704ac256d127beff65b/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
+87    </application>
+88
+89</manifest>

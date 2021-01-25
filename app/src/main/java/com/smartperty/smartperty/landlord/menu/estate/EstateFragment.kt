@@ -255,7 +255,7 @@ class EstateFragment : Fragment() {
             root.text_object_item_deposit.setText(
                 GlobalVariables.estate.contract!!.deposit.toString())
             root.text_object_item_next_date.setText(
-                TimeUtil.StampToDate(GlobalVariables.estate.contract!!.nextDate, Locale.TAIWAN))
+                TimeUtil.StampToDate(GlobalVariables.estate.contract!!.getNextDate(), Locale.TAIWAN))
             root.text_object_item_start_date.setText(
                 TimeUtil.StampToDate(GlobalVariables.estate.contract!!.startDate, Locale.TAIWAN))
             root.text_object_item_end_date.setText(

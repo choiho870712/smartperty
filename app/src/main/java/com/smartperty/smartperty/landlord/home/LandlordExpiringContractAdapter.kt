@@ -1,15 +1,18 @@
 package com.smartperty.smartperty.landlord.home
 
 import android.app.Activity
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.Contract
 import com.smartperty.smartperty.landlord.home.data.LandlordExpiringContract
 import com.smartperty.smartperty.tools.TimeUtil
+import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.landlord_card_expiring_contract.view.*
 import java.util.*
 
@@ -31,6 +34,12 @@ class LandlordExpiringContractAdapter(private val activity: Activity,
         holder.title.text = myDataset[position].estate?.objectName ?: "?"
         holder.address.text = myDataset[position].estate?.getAddress() ?: "?"
         holder.expireTime.text = TimeUtil.StampToDate(myDataset[position].endDate, Locale.TAIWAN)
+
+        holder.cardView.setOnClickListener {
+            GlobalVariables.estate = myDataset[position].estate!!
+            val uri = Uri.parse("android-app://com.smartperty.smartperty/estateFragment")
+            parentView.findNavController().navigate(uri)
+        }
     }
 
     class CardHolder(card: View) : RecyclerView.ViewHolder(card) {

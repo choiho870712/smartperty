@@ -34,6 +34,7 @@
         android:name="com.smartperty.smartperty.landlord.menu.estate.EstateFragment"
         android:label="@string/landlord_title_object_item"
         tools:layout="@layout/fragment_estate" >
+        <deepLink app:uri="android-app://com.smartperty.smartperty/estateFragment" />
         <action
             android:id="@+id/action_estateFragment_to_repairOrderFragment"
             app:destination="@id/repairOrderFragment" />
@@ -102,6 +103,9 @@
         <action
             android:id="@+id/action_landlordContractFragment_to_landlordObjectItemFragment"
             app:destination="@id/estateFragment" />
+        <action
+            android:id="@+id/action_landlordContractFragment_to_estateListFragment"
+            app:destination="@id/estateListFragment" />
     </fragment>
     <fragment
         android:id="@+id/repairListFragment"

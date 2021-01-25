@@ -173,7 +173,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/image_home_weather" />
 
             <TextView
-                android:id="@+id/text_home_message2"
+                android:id="@+id/text_home_notify"
                 style="@style/text_normal_black_16sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

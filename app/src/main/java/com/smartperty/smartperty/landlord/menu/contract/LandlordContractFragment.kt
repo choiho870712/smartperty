@@ -14,6 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.charts.PieChart
@@ -30,15 +31,15 @@ import com.github.mikephil.charting.utils.ColorTemplate
 import com.github.mikephil.charting.utils.MPPointF
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.chartUtil.MyMarkerView
+import com.smartperty.smartperty.data.EstateList
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.landlord_fragment_contract.view.*
-import kotlin.math.roundToInt
 
 
 class LandlordContractFragment : Fragment() {
 
-    private lateinit var root:View
     companion object {
+        private lateinit var root:View
         lateinit var lineChart: LineChart
         lateinit var pieChart1: PieChart
         lateinit var pieChart2: PieChart
@@ -52,6 +53,8 @@ class LandlordContractFragment : Fragment() {
         root = inflater.inflate(R.layout.landlord_fragment_contract, container, false)
 
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
+
+        GlobalVariables.prepareContractChartDataSet()
 
         createLineChart()
         createPieChart1()
@@ -134,7 +137,7 @@ class LandlordContractFragment : Fragment() {
             xAxis.valueFormatter = object : ValueFormatter() {
                 override fun getFormattedValue(value: Float): String {
                     val month = (value-1)%12 +1
-                    return month.toInt().toString() + "/16"
+                    return month.toInt().toString() + "/1"
                 }
             }
         }
@@ -219,7 +222,7 @@ class LandlordContractFragment : Fragment() {
         }
     }
 
-    class PieChartActivity() : OnChartValueSelectedListener {
+    class PieChartActivity1() : OnChartValueSelectedListener {
 
         override fun onValueSelected(e: Entry?, h: Highlight) {
             if (e == null) return
@@ -228,6 +231,16 @@ class LandlordContractFragment : Fragment() {
                 "Value: " + e.y.toString() + ", index: " + h.x
                     .toString() + ", DataSet index: " + h.dataSetIndex
             )
+
+            GlobalVariables.estateFolder = EstateList(
+                list = GlobalVariables.getContractExpireIn3MonthByAreaList(
+                    GlobalVariables.contractExpireIn3MonthBySquareFtPieChartDataSet.dataList[h.x.toInt()].rangeMin,
+                    GlobalVariables.contractExpireIn3MonthBySquareFtPieChartDataSet.dataList[h.x.toInt()].rangeMax
+                )
+            )
+            root.findNavController().navigate(
+                R.id.action_landlordContractFragment_to_estateListFragment
+            )
         }
 
         override fun onNothingSelected() {
@@ -235,6 +248,30 @@ class LandlordContractFragment : Fragment() {
         }
     }
 
+    class PieChartActivity2() : OnChartValueSelectedListener {
+
+        override fun onValueSelected(e: Entry?, h: Highlight) {
+            if (e == null) return
+            Log.i(
+                "VAL SELECTED",
+                "Value: " + e.y.toString() + ", index: " + h.x
+                    .toString() + ", DataSet index: " + h.dataSetIndex
+            )
+
+            GlobalVariables.estateFolder = EstateList(
+                list = GlobalVariables.getContractExpireIn3MonthByTypeList(
+                    GlobalVariables.contractExpireIn3MonthByTypePieChartDataSet.dataList[h.x.toInt()].tag
+                )
+            )
+            root.findNavController().navigate(
+                R.id.action_landlordContractFragment_to_estateListFragment
+            )
+        }
+
+        override fun onNothingSelected() {
+            Log.i("PieChart", "nothing selected")
+        }
+    }
     private fun createPieChart1() {
         pieChart1 = root.pieChart1
         pieChart1.setUsePercentValues(false)
@@ -259,7 +296,7 @@ class LandlordContractFragment : Fragment() {
         // chart.setDrawUnitsInChart(true);
 
         // add a selection listener
-        pieChart1.setOnChartValueSelectedListener(PieChartActivity())
+        pieChart1.setOnChartValueSelectedListener(PieChartActivity1())
         pieChart1.animateY(1400, Easing.EaseInOutQuad)
         // chart.spin(2000, 0, 360);
         val l = pieChart1.legend
@@ -365,7 +402,7 @@ class LandlordContractFragment : Fragment() {
         // chart.setDrawUnitsInChart(true);
 
         // add a selection listener
-        pieChart2.setOnChartValueSelectedListener(PieChartActivity())
+        pieChart2.setOnChartValueSelectedListener(PieChartActivity2())
         pieChart2.animateY(1400, Easing.EaseInOutQuad)
         // chart.spin(2000, 0, 360);
         val l = pieChart2.legend
@@ -396,7 +433,38 @@ class LandlordContractFragment : Fragment() {
             entries.add(
                 PieEntry(
                     it.value.toFloat(),
-                    it.tag
+                    when (it.tag) {
+                        "Dwelling" -> {
+                            "住宅"
+                        }
+                        "Suite" -> {
+                            "套房"
+                        }
+                        "Storefront" -> {
+                            "店面"
+                        }
+                        "Office" -> {
+                            "辦公"
+                        }
+                        "DwellingOffice" -> {
+                            "住辦"
+                        }
+                        "Factory" -> {
+                            "廠房"
+                        }
+                        "ParkingSpace" -> {
+                            "車位"
+                        }
+                        "LandPlace" -> {
+                            "土地"
+                        }
+                        "Other" -> {
+                            "其他"
+                        }
+                        else -> {
+                            it.tag
+                        }
+                    }
                 )
             )
         }

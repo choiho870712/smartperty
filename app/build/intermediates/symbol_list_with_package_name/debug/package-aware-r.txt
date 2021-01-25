@@ -1858,6 +1858,7 @@ id action_estateFragment_to_tenantEquipmentManualFragment2
 id action_estateFragment_to_tenantHosingRulesFragment2
 id action_estateListFragment_to_estateCreateFragment
 id action_image
+id action_landlordContractFragment_to_estateListFragment
 id action_landlordContractFragment_to_landlordObjectItemFragment
 id action_landlordDataAnalysisFragment_to_estateListFragment
 id action_landlordMenuFragment_to_financeFragment
@@ -2618,7 +2619,7 @@ id text_home_greet3
 id text_home_greet_name
 id text_home_greet_sex
 id text_home_message
-id text_home_message2
+id text_home_notify
 id text_home_temperature
 id text_housing_rules
 id text_input_end_icon

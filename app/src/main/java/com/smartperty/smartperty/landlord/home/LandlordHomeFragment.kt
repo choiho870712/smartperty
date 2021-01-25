@@ -66,26 +66,7 @@ class LandlordHomeFragment : Fragment() {
 
         root.scroll_view.requestFocus()
 
-        val expiringRentList = mutableListOf(
-            LandlordExpiringRent(
-                title = "大樓A",
-                tenantName = "Jason",
-                expireMonth = "3個月",
-                rentAmount = "$30000"
-            ),
-            LandlordExpiringRent(
-                title = "大樓B",
-                tenantName = "Aiden",
-                expireMonth = "20個月",
-                rentAmount = "$200000"
-            ),
-            LandlordExpiringRent(
-                title = "大樓C",
-                tenantName = "Hugo",
-                expireMonth = "4個月",
-                rentAmount = "$40000"
-            )
-        )
+        val expiringRentList = GlobalVariables.getContractexpiringRentList()
 
         root.recycler_rent_list.apply {
             setHasFixedSize(true)
@@ -94,7 +75,8 @@ class LandlordHomeFragment : Fragment() {
         }
         root.recycler_rent_list.isFocusable = false
 
-        val expiringContractList = mutableListOf<Contract>()
+        val expiringContractList = GlobalVariables.getContractExpireIn3MonthList()
+
         root.recycler_contract_list.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(activity)
@@ -141,6 +123,12 @@ class LandlordHomeFragment : Fragment() {
             }
 
         root.text_home_message.text = GlobalVariables.welcomeMessage
+
+        val size = GlobalVariables.notificationList.size
+        root.text_home_notify.text =
+            GlobalVariables.notificationList[size-1].message + "\n" +
+                    GlobalVariables.notificationList[size-1].message + "\n" +
+                    GlobalVariables.notificationList[size-2].message
 
         return root
     }

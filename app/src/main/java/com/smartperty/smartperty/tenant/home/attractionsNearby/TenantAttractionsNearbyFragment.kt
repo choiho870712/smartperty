@@ -2,46 +2,70 @@ package com.smartperty.smartperty.tenant.home.attractionsNearby
 
 
 import android.Manifest
+import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Color
+import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.MapView
-import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-
 import com.smartperty.smartperty.R
-import com.smartperty.smartperty.data.EstateList
 import com.smartperty.smartperty.tools.SwipeHelper
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.activity_landlord.*
-import kotlinx.android.synthetic.main.fragment_estate_directory.view.*
-import kotlinx.android.synthetic.main.fragment_estate_directory_create.view.*
 import kotlinx.android.synthetic.main.tenant_fragment_attractions_nearby.view.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class TenantAttractionsNearbyFragment : Fragment(), OnMapReadyCallback {
+class TenantAttractionsNearbyFragment : Fragment(), OnMapReadyCallback, LocationSource.OnLocationChangedListener {
 
     private lateinit var root:View
     private lateinit var mMap: GoogleMap
     private lateinit var myMapView: MapView
+    private lateinit var myLocation:LatLng
+    private lateinit var locationManager: LocationManager
+    private val MIN_TIME: Long = 400
+    private val MIN_DISTANCE = 1000f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         GlobalVariables.attractionList = GlobalVariables.estate.attractionList
+
+        locationManager = GlobalVariables.activity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        if (ActivityCompat.checkSelfPermission(
+                GlobalVariables.activity,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                GlobalVariables.activity,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            locationManager.requestLocationUpdates(
+                LocationManager.NETWORK_PROVIDER,
+                MIN_TIME,
+                MIN_DISTANCE,
+                LocationListener {
+                    myLocation = LatLng(it.latitude, it.longitude)
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 16.0f))
+                    myMapView.onResume()
+                }
+            ) //You can also use LocationManager.GPS_PROVIDER and LocationManager.PASSIVE_PROVIDER
+            return
+        }
     }
 
     override fun onCreateView(
@@ -62,7 +86,8 @@ class TenantAttractionsNearbyFragment : Fragment(), OnMapReadyCallback {
                     R.id.button_add -> {
                         // setup dialog builder
                         root.findNavController().navigate(
-                            R.id.action_tenantAttractionsNearbyFragment2_to_nearbyAddFragment)
+                            R.id.action_tenantAttractionsNearbyFragment2_to_nearbyAddFragment
+                        )
 
                         true
                     }
@@ -76,7 +101,8 @@ class TenantAttractionsNearbyFragment : Fragment(), OnMapReadyCallback {
         myMapView.onCreate(arguments)
 
         val attractionAdapter = TenantAttractionNearbyAdapter(
-            requireActivity(), root, GlobalVariables.attractionList)
+            requireActivity(), root, GlobalVariables.attractionList
+        )
         root.recycler_list.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(activity)
@@ -113,7 +139,7 @@ class TenantAttractionsNearbyFragment : Fragment(), OnMapReadyCallback {
                         }
 
                         // create dialog and show it
-                        requireActivity().runOnUiThread{
+                        requireActivity().runOnUiThread {
                             val dialog = builder.create()
                             dialog.show()
                         }
@@ -143,16 +169,31 @@ class TenantAttractionsNearbyFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         if (ContextCompat.checkSelfPermission(
-                GlobalVariables.activity, Manifest.permission.ACCESS_FINE_LOCATION)
+                GlobalVariables.activity, Manifest.permission.ACCESS_FINE_LOCATION
+            )
             == PackageManager.PERMISSION_GRANTED) {
 
             mMap.isMyLocationEnabled = true
-        }
 
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(25.0527073, 121.5161885)
-        mMap.addMarker(MarkerOptions().position(sydney).title("永昌大樓")).showInfoWindow()
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 16.0f))
-        myMapView.onResume()
+            val sydney = LatLng(25.0527073, 121.5161885)
+//            mMap.addMarker(MarkerOptions().position(sydney).title("永昌大樓")).showInfoWindow()
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 16.0f))
+            myMapView.onResume()
+        }
+        else {
+            // Add a marker in Sydney and move the camera
+            val sydney = LatLng(25.0527073, 121.5161885)
+            mMap.addMarker(MarkerOptions().position(sydney).title("永昌大樓")).showInfoWindow()
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 16.0f))
+            myMapView.onResume()
+        }
+    }
+
+    override fun onLocationChanged(p0: Location?) {
+        if (p0 != null) {
+            myLocation = LatLng(p0.latitude, p0.longitude)
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 16.0f))
+            myMapView.onResume()
+        }
     }
 }

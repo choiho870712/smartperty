@@ -1784,6 +1784,7 @@ id BOTTOM_END
 id BOTTOM_START
 id CTRL
 id FUNCTION
+id ImageContainer
 id META
 id NO_DEBUG
 id SHIFT
@@ -1858,6 +1859,7 @@ id action_estateFragment_to_tenantEquipmentManualFragment2
 id action_estateFragment_to_tenantHosingRulesFragment2
 id action_estateListFragment_to_estateCreateFragment
 id action_image
+id action_landlordContractFragment_to_estateListFragment
 id action_landlordContractFragment_to_landlordObjectItemFragment
 id action_landlordDataAnalysisFragment_to_estateListFragment
 id action_landlordMenuFragment_to_financeFragment
@@ -1896,14 +1898,13 @@ id action_setupFragment_to_privacyFragment2
 id action_tenantAttractionsNearbyFragment2_to_nearbyAddFragment
 id action_tenantEquipmentManualFragment2_to_equipmentAddFragment
 id action_tenantEquipmentManualFragment_to_tenantEquipmentManualPdfFragment
-id action_tenantHomeFragment_to_repairListFragment
+id action_tenantHomeFragment_to_landlord_group
+id action_tenantHomeFragment_to_landlord_menu
 id action_tenantHomeFragment_to_tenantAttractionsNearbyFragment
 id action_tenantHomeFragment_to_tenantContractFragment
 id action_tenantHomeFragment_to_tenantEquipmentManualFragment
 id action_tenantHomeFragment_to_tenantHosingRulesFragment
 id action_tenantHomeFragment_to_tenantRentAndUtilitiesFragment
-id action_tenantHomeFragment_to_tenantSetupFragment
-id action_tenantSetupFragment_to_tenantHelpFragment
 id action_text
 id actions
 id activity_chooser_view_content
@@ -1959,6 +1960,7 @@ id button_create_property_select_region
 id button_create_property_select_road
 id button_create_property_select_street
 id button_create_property_select_type
+id button_delete
 id button_edit
 id button_forgot_password_submit
 id button_home_attractions_nearby
@@ -2424,13 +2426,11 @@ id tenantContractFragment
 id tenantEquipmentManualFragment
 id tenantEquipmentManualFragment2
 id tenantEquipmentManualPdfFragment
-id tenantHelpFragment
 id tenantHomeFragment
 id tenantHosingRulesFragment
 id tenantHosingRulesFragment2
 id tenantNotificationFragment
 id tenantRentAndUtilitiesFragment
-id tenantSetupFragment
 id tenant_chat
 id tenant_home
 id tenant_notification
@@ -2620,7 +2620,7 @@ id text_home_greet3
 id text_home_greet_name
 id text_home_greet_sex
 id text_home_message
-id text_home_message2
+id text_home_notify
 id text_home_temperature
 id text_housing_rules
 id text_input_end_icon
@@ -2649,6 +2649,7 @@ id text_object_item_next_date
 id text_object_item_payment_method
 id text_object_item_rent
 id text_object_item_start_date
+id text_object_item_status
 id text_object_list_address
 id text_object_list_information
 id text_object_list_information4
@@ -2667,7 +2668,6 @@ id text_repair_list_title
 id text_repair_spend
 id text_repair_status
 id text_repair_title
-id text_repair_title14
 id text_repair_title2
 id text_repair_title3
 id text_repair_title5

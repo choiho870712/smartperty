@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.core.graphics.drawable.toBitmap
 import androidx.navigation.findNavController
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.EstateList
@@ -38,6 +39,9 @@ class SetupFragment : Fragment() {
         root.textView_username.text = GlobalVariables.loginUser.name
         if (GlobalVariables.loginUser.icon!= null)
             root.image_userIcon.setImageBitmap(GlobalVariables.loginUser.icon)
+        root.image_userIcon.setOnClickListener {
+            GlobalVariables.imageHelper.openLargeImage(root.image_userIcon.drawable.toBitmap())
+        }
 
         root.button_tenant_setup_person_info.setOnClickListener {
             GlobalVariables.personnel = GlobalVariables.loginUser

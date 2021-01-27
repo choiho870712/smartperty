@@ -16,6 +16,7 @@ import com.smartperty.smartperty.data.EstateList
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.activity_landlord.*
 import kotlinx.android.synthetic.main.fragment_estate_directory_create.view.*
+import kotlinx.android.synthetic.main.fragment_personnel_user_info.view.*
 
 class EstateDirectoryCreateFragment : Fragment() {
 
@@ -104,6 +105,10 @@ class EstateDirectoryCreateFragment : Fragment() {
 
         root.button_select_dir_image.setOnClickListener {
             pickImageFromGallery()
+        }
+
+        root.image_object_folder_add.setOnClickListener {
+            GlobalVariables.imageHelper.openLargeImage(root.image_object_folder_add.drawable.toBitmap())
         }
 
         return root

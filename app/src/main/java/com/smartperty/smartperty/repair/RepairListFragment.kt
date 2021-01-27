@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.smartperty.smartperty.R
+import com.smartperty.smartperty.data.RepairOrder
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.activity_landlord.*
 import kotlinx.android.synthetic.main.fragment_recycler.view.*
@@ -24,7 +25,6 @@ class RepairListFragment : Fragment() {
         root = inflater.inflate(R.layout.fragment_recycler, container, false)
 
         setToolBar()
-        refreshRepairList()
         createRepairListView()
 
         return root
@@ -60,15 +60,14 @@ class RepairListFragment : Fragment() {
         }
     }
 
-    private fun refreshRepairList() {
-        // TODO call api : refresh repair list
-    }
-
     private fun createRepairListView() {
         GlobalVariables.repairListLayoutManager = LinearLayoutManager(activity)
+        if (GlobalVariables.loginUser.auth == "tenant") {
+            GlobalVariables.loginUser.repairList = GlobalVariables.loginUser.estate.repairList
+        }
         GlobalVariables.repairListAdapter = RepairListAdapter(
             requireActivity(), root,
-            GlobalVariables.repairList
+            GlobalVariables.loginUser.repairList
         )
         root.recycler_view.apply {
             setHasFixedSize(true)

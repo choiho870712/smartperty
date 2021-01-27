@@ -18,8 +18,10 @@ import com.smartperty.smartperty.R
 import com.smartperty.smartperty.utils.GlobalVariables
 import com.smartperty.smartperty.utils.Utils
 import kotlinx.android.synthetic.main.activity_tenant.*
+import kotlinx.android.synthetic.main.fragment_personnel.view.*
 import kotlinx.android.synthetic.main.fragment_personnel_add.view.spinner
 import kotlinx.android.synthetic.main.fragment_personnel_user_info.view.*
+import kotlinx.android.synthetic.main.fragment_personnel_user_info.view.image_userIcon
 
 class PersonnelUserInfoFragment : Fragment() {
 
@@ -95,6 +97,10 @@ class PersonnelUserInfoFragment : Fragment() {
 
         if (GlobalVariables.personnel.icon != null)
             root.image_userIcon.setImageBitmap(GlobalVariables.personnel.icon)
+        root.image_userIcon.setOnClickListener {
+            GlobalVariables.imageHelper.openLargeImage(root.image_userIcon.drawable.toBitmap())
+        }
+
         root.textView_name.setText(GlobalVariables.personnel.name)
         root.textView_email.setText(GlobalVariables.personnel.email)
         root.textView_phone.setText(GlobalVariables.personnel.cellPhone)

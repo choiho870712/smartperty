@@ -254,6 +254,7 @@ class EstateFragment : Fragment() {
                 GlobalVariables.estate.contract!!.rent.toString())
             root.text_object_item_deposit.setText(
                 GlobalVariables.estate.contract!!.deposit.toString())
+            root.text_object_item_status.text = GlobalVariables.estate.contract!!.getStatusString()
             root.text_object_item_next_date.setText(
                 TimeUtil.StampToDate(GlobalVariables.estate.contract!!.getNextDate(), Locale.TAIWAN))
             root.text_object_item_start_date.setText(

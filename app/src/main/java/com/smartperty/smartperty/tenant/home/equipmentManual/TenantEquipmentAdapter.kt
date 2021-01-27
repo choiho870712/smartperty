@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.graphics.drawable.toBitmap
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.Equipment
 import com.smartperty.smartperty.utils.GlobalVariables
+import kotlinx.android.synthetic.main.fragment_estate_directory_create.view.*
 import kotlinx.android.synthetic.main.tenant_card_equipment.view.*
 import kotlinx.android.synthetic.main.tenant_card_image_page.view.*
 import kotlinx.android.synthetic.main.tenant_fragment_equipment_manual.view.*
@@ -38,14 +40,8 @@ class TenantEquipmentAdapter(private val activity: Activity,
         holder.amount.text = myDataset[position].count.toString()
 
         holder.image.setImageBitmap(myDataset[position].image)
-
         holder.image.setOnClickListener {
-            imageCard.image_card.setImageBitmap(myDataset[position].image)
-            imageCard.visibility = View.VISIBLE
-        }
-
-        imageCard.image_card.setOnClickListener {
-            imageCard.visibility = View.GONE
+            GlobalVariables.imageHelper.openLargeImage(holder.image.drawable.toBitmap())
         }
 
 //        holder.cardView.setOnClickListener {

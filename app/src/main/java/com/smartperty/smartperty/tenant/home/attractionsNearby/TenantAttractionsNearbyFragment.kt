@@ -44,28 +44,6 @@ class TenantAttractionsNearbyFragment : Fragment(), OnMapReadyCallback, Location
         super.onCreate(savedInstanceState)
 
         GlobalVariables.attractionList = GlobalVariables.estate.attractionList
-
-        locationManager = GlobalVariables.activity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        if (ActivityCompat.checkSelfPermission(
-                GlobalVariables.activity,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                GlobalVariables.activity,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            locationManager.requestLocationUpdates(
-                LocationManager.NETWORK_PROVIDER,
-                MIN_TIME,
-                MIN_DISTANCE,
-                LocationListener {
-                    myLocation = LatLng(it.latitude, it.longitude)
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 16.0f))
-                    myMapView.onResume()
-                }
-            ) //You can also use LocationManager.GPS_PROVIDER and LocationManager.PASSIVE_PROVIDER
-            return
-        }
     }
 
     override fun onCreateView(
@@ -168,25 +146,57 @@ class TenantAttractionsNearbyFragment : Fragment(), OnMapReadyCallback, Location
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+
         if (ContextCompat.checkSelfPermission(
                 GlobalVariables.activity, Manifest.permission.ACCESS_FINE_LOCATION
-            )
-            == PackageManager.PERMISSION_GRANTED) {
+            ) == PackageManager.PERMISSION_GRANTED) {
 
             mMap.isMyLocationEnabled = true
+        }
 
-            val sydney = LatLng(25.0527073, 121.5161885)
+        locationManager = GlobalVariables.activity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        if (ActivityCompat.checkSelfPermission(
+                GlobalVariables.activity,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                GlobalVariables.activity,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
+
+        locationManager.requestLocationUpdates(
+            LocationManager.NETWORK_PROVIDER,
+            MIN_TIME,
+            MIN_DISTANCE,
+            LocationListener {
+                myLocation = LatLng(it.latitude, it.longitude)
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                    LatLng(it.latitude, it.longitude), 16.0f))
+                myMapView.onResume()
+            }
+        ) //You can also use LocationManager.GPS_PROVIDER and LocationManager.PASSIVE_PROVIDER
+
+//        if (ContextCompat.checkSelfPermission(
+//                GlobalVariables.activity, Manifest.permission.ACCESS_FINE_LOCATION
+//            )
+//            == PackageManager.PERMISSION_GRANTED) {
+//
+//            mMap.isMyLocationEnabled = true
+//
+//            val sydney = LatLng(25.0527073, 121.5161885)
+////            mMap.addMarker(MarkerOptions().position(sydney).title("永昌大樓")).showInfoWindow()
+//            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 16.0f))
+//            myMapView.onResume()
+//        }
+//        else {
+//            // Add a marker in Sydney and move the camera
+//            val sydney = LatLng(25.0527073, 121.5161885)
 //            mMap.addMarker(MarkerOptions().position(sydney).title("永昌大樓")).showInfoWindow()
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 16.0f))
-            myMapView.onResume()
-        }
-        else {
-            // Add a marker in Sydney and move the camera
-            val sydney = LatLng(25.0527073, 121.5161885)
-            mMap.addMarker(MarkerOptions().position(sydney).title("永昌大樓")).showInfoWindow()
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 16.0f))
-            myMapView.onResume()
-        }
+//            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 16.0f))
+//            myMapView.onResume()
+//        }
     }
 
     override fun onLocationChanged(p0: Location?) {

@@ -96,7 +96,6 @@ object Utils {
 
     fun searchEstateFromEstateList(objectId: String): Estate? {
         while (isModifyingEstate) {
-            Log.d(">>>>>searchEstate", objectId)
             Thread.sleep(500)
         }
 
@@ -262,7 +261,7 @@ object Utils {
                     GlobalVariables.loginUser.technicianList
                 }
                 else-> {
-                    mutableListOf()
+                    GlobalVariables.loginUser.agentList
                 }
             }
 

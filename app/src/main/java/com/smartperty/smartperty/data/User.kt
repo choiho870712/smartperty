@@ -31,7 +31,8 @@ data class User(
     var industry: String = "nil",
     var profession: String = "nil",
 
-    var permission: Permission = Permission()
+    var permission: Permission = Permission(),
+    var estate: Estate = Estate()
 ) {
     fun compareId(userId: String): Boolean {
         return userId == this.id
@@ -64,6 +65,7 @@ data class User(
         industry = updateInfo.industry
         profession = updateInfo.profession
         permission = updateInfo.permission
+        estate = updateInfo.estate
     }
 }
 

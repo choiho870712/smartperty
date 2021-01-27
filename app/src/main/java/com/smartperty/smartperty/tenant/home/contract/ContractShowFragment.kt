@@ -29,6 +29,8 @@ class ContractShowFragment : Fragment() {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_contract_show, container, false)
 
+        GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
+
         root.pdfView.visibility = View.GONE
         root.webView.visibility = View.GONE
         root.textView.visibility = View.GONE

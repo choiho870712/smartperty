@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.smartperty.smartperty.R
+import com.smartperty.smartperty.utils.GlobalVariables
 import com.smartperty.smartperty.utils.GlobalVariables.Companion.toolBarUtils
 import com.smartperty.smartperty.utils.GlobalVariables.Companion.toolbar
 import kotlinx.android.synthetic.main.tenant_fragment_home_main.view.*
@@ -29,6 +30,7 @@ class TenantHomeFragment : Fragment() {
         }
 
         root.button_home_housing_rules.setOnClickListener {
+            GlobalVariables.estate = GlobalVariables.loginUser.estate
             root.findNavController().navigate(
                 R.id.action_tenantHomeFragment_to_tenantHosingRulesFragment)
         }
@@ -37,14 +39,17 @@ class TenantHomeFragment : Fragment() {
                 R.id.action_tenantHomeFragment_to_tenantRentAndUtilitiesFragment)
         }
         root.button_home_equipment_manual.setOnClickListener {
+            GlobalVariables.estate = GlobalVariables.loginUser.estate
             root.findNavController().navigate(
                 R.id.action_tenantHomeFragment_to_tenantEquipmentManualFragment)
         }
         root.button_home_contract.setOnClickListener {
+            GlobalVariables.estate = GlobalVariables.loginUser.estate
             root.findNavController().navigate(
                 R.id.action_tenantHomeFragment_to_tenantContractFragment)
         }
         root.button_home_attractions_nearby.setOnClickListener {
+            GlobalVariables.estate = GlobalVariables.loginUser.estate
             root.findNavController().navigate(
                 R.id.action_tenantHomeFragment_to_tenantAttractionsNearbyFragment)
         }

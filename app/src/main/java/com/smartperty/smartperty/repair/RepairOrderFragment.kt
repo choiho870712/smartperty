@@ -29,8 +29,16 @@ class RepairOrderFragment : Fragment() {
         setToolBar()
         writeInfoToView()
         createPostList()
-        setChooseTenantButton()
-        setChoosePlumberButton()
+
+        if (GlobalVariables.loginUser.auth == "landlord") {
+            setChooseTenantButton()
+            setChoosePlumberButton()
+        }
+        else {
+            root.button_choose_tenant.visibility = View.GONE
+            root.button_choose_plumber.visibility = View.GONE
+        }
+
         setAddMessageButton()
 
         if (GlobalVariables.loginUser.auth == "landlord") {

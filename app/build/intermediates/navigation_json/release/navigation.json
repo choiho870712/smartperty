@@ -11,7 +11,10 @@
   },
   {
     "name": "tenant_home",
-    "navigationXmlIds": [],
+    "navigationXmlIds": [
+      "landlord_group",
+      "landlord_menu"
+    ],
     "deepLinks": []
   },
   {
@@ -29,6 +32,31 @@
         ],
         "host": "com.smartperty.smartperty",
         "port": -1,
+        "path": "/estateFragment",
+        "sourceFilePosition": {
+          "mSourceFile": {
+            "mSourceFile": {
+              "path": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/navigation/landlord_menu.xml"
+            },
+            "mDescription": "landlord_menu"
+          },
+          "mSourcePosition": {
+            "mStartLine": 36,
+            "mStartColumn": 8,
+            "mStartOffset": 1807,
+            "mEndLine": 36,
+            "mEndColumn": 85,
+            "mEndOffset": 1884
+          }
+        },
+        "isAutoVerify": false
+      },
+      {
+        "schemes": [
+          "android-app"
+        ],
+        "host": "com.smartperty.smartperty",
+        "port": -1,
         "path": "/estateListFragment",
         "sourceFilePosition": {
           "mSourceFile": {
@@ -38,12 +66,37 @@
             "mDescription": "landlord_menu"
           },
           "mSourcePosition": {
-            "mStartLine": 88,
+            "mStartLine": 89,
             "mStartColumn": 8,
-            "mStartOffset": 4422,
-            "mEndLine": 88,
+            "mStartOffset": 4508,
+            "mEndLine": 89,
             "mEndColumn": 89,
-            "mEndOffset": 4503
+            "mEndOffset": 4589
+          }
+        },
+        "isAutoVerify": false
+      },
+      {
+        "schemes": [
+          "android-app"
+        ],
+        "host": "com.smartperty.smartperty",
+        "port": -1,
+        "path": "/repairListFragment",
+        "sourceFilePosition": {
+          "mSourceFile": {
+            "mSourceFile": {
+              "path": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/navigation/landlord_menu.xml"
+            },
+            "mDescription": "landlord_menu"
+          },
+          "mSourcePosition": {
+            "mStartLine": 114,
+            "mStartColumn": 8,
+            "mStartOffset": 5752,
+            "mEndLine": 114,
+            "mEndColumn": 89,
+            "mEndOffset": 5833
           }
         },
         "isAutoVerify": false

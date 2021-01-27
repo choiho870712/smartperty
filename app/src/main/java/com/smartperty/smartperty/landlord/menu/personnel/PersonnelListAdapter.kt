@@ -9,12 +9,14 @@ import android.widget.ArrayAdapter
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.graphics.drawable.toBitmap
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.User
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.card_personnel_list.view.*
+import kotlinx.android.synthetic.main.fragment_setup.view.*
 
 
 class PersonnelListAdapter(
@@ -38,6 +40,9 @@ class PersonnelListAdapter(
         holder.name.text = myDataset[position].name
         if (myDataset[position].icon != null)
             holder.image.setImageBitmap(myDataset[position].icon)
+        holder.image.setOnClickListener {
+            GlobalVariables.imageHelper.openLargeImage(holder.image.drawable.toBitmap())
+        }
 
         holder.cardView.setOnClickListener {
             GlobalVariables.personnel = myDataset[position]

@@ -6,9 +6,13 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64
+import android.view.View
 import android.widget.ImageView
+import androidx.core.graphics.drawable.toBitmap
 import androidx.core.graphics.scale
 import androidx.fragment.app.Fragment
+import com.igreenwood.loupe.Loupe
+import kotlinx.android.synthetic.main.activity_landlord.*
 import java.io.ByteArrayOutputStream
 import java.io.FileNotFoundException
 import java.net.URL
@@ -75,5 +79,29 @@ class ImageHelper {
         catch (e: Exception) {
             return convertString64ToImage(urlString)
         }
+    }
+
+    fun openLargeImage(image: Bitmap) {
+        val loupe = Loupe(
+            GlobalVariables.activity.image,
+            GlobalVariables.activity.ImageContainer).apply{ // imageView is your full screen ImageView and container is the direct parent of the ImageView
+            onViewTranslateListener = object : Loupe.OnViewTranslateListener {
+                override fun onStart(view: ImageView) {
+
+                }
+                override fun onViewTranslate(view: ImageView, amount: Float) {
+
+                }
+                override fun onRestore(view: ImageView) {
+
+                }
+                override fun onDismiss(view: ImageView) {
+                    GlobalVariables.activity.ImageContainer.visibility = View.GONE
+                }
+            }
+        }
+
+        GlobalVariables.activity.image.setImageBitmap( image)
+        GlobalVariables.activity.ImageContainer.visibility = View.VISIBLE
     }
 }

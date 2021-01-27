@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.RecyclerView
 import com.smartperty.smartperty.R
+import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.card_image2.view.*
 
 class ImageListAdapter2(private val activity: Activity,
@@ -27,6 +29,10 @@ class ImageListAdapter2(private val activity: Activity,
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
         holder.index = position
         holder.image.setImageBitmap(myDataset[position])
+
+        holder.image.setOnClickListener {
+            GlobalVariables.imageHelper.openLargeImage(holder.image.drawable.toBitmap())
+        }
     }
 
     class CardHolder(card: View) : RecyclerView.ViewHolder(card) {

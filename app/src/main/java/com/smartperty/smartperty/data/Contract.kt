@@ -29,6 +29,11 @@ data class Contract(
     var jpgBitmapList: MutableList<Bitmap> = mutableListOf()
 ) {
 
+    fun getStatusString(): String {
+        return if (getNextDate() == 0L) "已繳交"
+        else "未繳交"
+    }
+
     fun getNextDate(): Long {
         rentRecordList.forEach {
             if (!it.isPay) {

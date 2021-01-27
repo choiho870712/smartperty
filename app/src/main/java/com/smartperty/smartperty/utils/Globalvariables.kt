@@ -310,6 +310,36 @@ class GlobalVariables : Application() {
             return list
         }
 
+        fun refreshAllChart() {
+            Thread {
+                GlobalVariables.dataAnalysisByGroupBarChartDataSet =
+                    GlobalVariables.api.getBarChartByGroupTag(GlobalVariables.loginUser.id)
+            }.start()
+            Thread {
+                GlobalVariables.dataAnalysisByGroupPieChartDataSet =
+                    GlobalVariables.api.getPieChartByGroupTag(GlobalVariables.loginUser.id)
+            }.start()
+            Thread {
+                GlobalVariables.dataAnalysisByTypeBarChartDataSet =
+                    GlobalVariables.api.getBarChartByObjectType(GlobalVariables.loginUser.id)
+            }.start()
+            Thread {
+                GlobalVariables.dataAnalysisByTypePieChartDataSet =
+                    GlobalVariables.api.getPieChartByObjectType(GlobalVariables.loginUser.id)
+            }.start()
+            Thread {
+                GlobalVariables.dataAnalysisBySquareFtBarChartDataSet =
+                    GlobalVariables.api.getBarChartByArea(GlobalVariables.loginUser.id)
+            }.start()
+            Thread {
+                GlobalVariables.dataAnalysisBySquareFtPieChartDataSet =
+                    GlobalVariables.api.getPieChartByArea(GlobalVariables.loginUser.id)
+            }.start()
+            Thread {
+                GlobalVariables.api.getContractByTimeIn3Months(GlobalVariables.loginUser.id)
+            }.start()
+        }
+
         fun logout() {
             welcomeMessage = ""
             rentedEstateList = EstateList(title = "已出租")

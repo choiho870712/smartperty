@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import androidx.core.graphics.drawable.toBitmap
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.smartperty.smartperty.R
@@ -32,6 +33,10 @@ class ImageListAdapter(private val activity: Activity,
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
         holder.index = position
         holder.image.setImageBitmap(myDataset[position])
+
+        holder.image.setOnClickListener {
+            GlobalVariables.imageHelper.openLargeImage(holder.image.drawable.toBitmap())
+        }
 
         if (GlobalVariables.imageListUsage == "edit") {
             holder.removeButton.visibility = View.VISIBLE

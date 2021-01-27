@@ -7,13 +7,17 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.graphics.drawable.toBitmap
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.igreenwood.loupe.Loupe
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.EstateList
 import com.smartperty.smartperty.utils.GlobalVariables
+import kotlinx.android.synthetic.main.activity_landlord.*
 import kotlinx.android.synthetic.main.card_estate_directory.view.*
 import kotlinx.android.synthetic.main.card_estate_directory_menu.view.*
+import kotlinx.android.synthetic.main.fragment_estate_directory.view.*
 
 class EstateDirectoryAdapter(private val activity: Activity,
                              private val parentView: View,
@@ -41,6 +45,10 @@ class EstateDirectoryAdapter(private val activity: Activity,
         else
             holder.image.setImageDrawable(
                 activity.resources.getDrawable(R.drawable.empty_house))
+
+        holder.image.setOnClickListener {
+            GlobalVariables.imageHelper.openLargeImage(holder.image.drawable.toBitmap())
+        }
 
         holder.cardView.setOnClickListener {
             GlobalVariables.estateFolder = myDataset[holder.index]

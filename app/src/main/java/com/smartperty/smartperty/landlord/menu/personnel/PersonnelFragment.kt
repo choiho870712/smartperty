@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.graphics.drawable.toBitmap
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.fragment_personnel.view.*
@@ -25,6 +26,10 @@ class PersonnelFragment : Fragment() {
 
         if (GlobalVariables.personnel.icon != null)
             root.image_userIcon.setImageBitmap(GlobalVariables.personnel.icon)
+
+        root.image_userIcon.setOnClickListener {
+            GlobalVariables.imageHelper.openLargeImage(root.image_userIcon.drawable.toBitmap())
+        }
 
         root.textView_personnel_name.text = GlobalVariables.personnel.name
         root.textView_personnel_account.text = GlobalVariables.personnel.id

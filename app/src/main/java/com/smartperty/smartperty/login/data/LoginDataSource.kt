@@ -30,37 +30,11 @@ class LoginDataSource {
                         Utils.getEstateDirectoryByGroupTag()
                     }.start()
                     Thread {
-                        GlobalVariables.dataAnalysisByGroupBarChartDataSet =
-                            GlobalVariables.api.getBarChartByGroupTag(GlobalVariables.loginUser.id)
-                    }.start()
-                    Thread {
-                        GlobalVariables.dataAnalysisByGroupPieChartDataSet =
-                            GlobalVariables.api.getPieChartByGroupTag(GlobalVariables.loginUser.id)
-                    }.start()
-                    Thread {
-                        GlobalVariables.dataAnalysisByTypeBarChartDataSet =
-                            GlobalVariables.api.getBarChartByObjectType(GlobalVariables.loginUser.id)
-                    }.start()
-                    Thread {
-                        GlobalVariables.dataAnalysisByTypePieChartDataSet =
-                            GlobalVariables.api.getPieChartByObjectType(GlobalVariables.loginUser.id)
-                    }.start()
-                    Thread {
-                        GlobalVariables.dataAnalysisBySquareFtBarChartDataSet =
-                            GlobalVariables.api.getBarChartByArea(GlobalVariables.loginUser.id)
-                    }.start()
-                    Thread {
-                        GlobalVariables.dataAnalysisBySquareFtPieChartDataSet =
-                            GlobalVariables.api.getPieChartByArea(GlobalVariables.loginUser.id)
-                    }.start()
-                    Thread {
-                        GlobalVariables.api.getContractByTimeIn3Months(GlobalVariables.loginUser.id)
-                    }.start()
-                    Thread {
                         GlobalVariables.notificationList.addAll(
                             GlobalVariables.api.getMessage()
                         )
                     }.start()
+                    GlobalVariables.refreshAllChart()
                     GlobalVariables.api.getPropertyRentalStatus(username)
                 }
                 Result.Success(user)

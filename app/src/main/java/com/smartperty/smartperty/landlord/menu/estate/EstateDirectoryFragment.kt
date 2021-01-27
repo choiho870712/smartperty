@@ -7,11 +7,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.igreenwood.loupe.Loupe
 import com.smartperty.smartperty.R
+import com.smartperty.smartperty.data.EstateList
 import com.smartperty.smartperty.tools.SwipeHelper
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.activity_landlord.*
@@ -37,6 +40,7 @@ class EstateDirectoryFragment : Fragment() {
         GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.button_add -> {
+                    GlobalVariables.estateFolder = EstateList()
                     root.findNavController().navigate(
                         R.id.action_estateDirectoryFragment_to_estateDirectoryCreateFragment)
 

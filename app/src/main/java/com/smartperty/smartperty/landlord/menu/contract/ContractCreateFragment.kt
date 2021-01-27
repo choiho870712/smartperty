@@ -177,29 +177,25 @@ class ContractCreateFragment : Fragment() {
     fun calculateEndDate() {
         try {
             val payTimes = root.edit_create_contract_pay_times.text.toString().toInt()
-            val totalSecond =
+            val monthCount =
                 when(GlobalVariables.contract.payment_method) {
-                    "Permonth" -> {
-                        payTimes*30*24*60*60
-                    }
-                    "Perseason" -> {
-                        payTimes*30*24*60*60*3
-                    }
-                    "Perhalfyear" -> {
-                        payTimes*30*24*60*60*6
-                    }
-                    "Peryear" -> {
-                        payTimes*30*24*60*60*12
-                    }
-                    else -> {
-                        0
-                    }
+                    "Permonth" -> 1
+                    "Perseason" -> 3
+                    "Perhalfyear" -> 6
+                    "Peryear" -> 12
+                    else -> 0
                 }
 
-            val startDate = "$startYear/$startMonth/$startDay"
-            val startDateTimeStamp = TimeUtil.DateToStamp(startDate, Locale.TAIWAN)
-            val endDateTimeStamp = startDateTimeStamp + totalSecond
-            val endDate = TimeUtil.StampToDate(endDateTimeStamp, Locale.TAIWAN)
+            val dayOfMonthList = mutableListOf(31,28,31,30,31,30,31,31,30,31,30,31)
+            val endYear = startYear + (startMonth + payTimes*monthCount - 1)/12
+            val endMonth = (startMonth + payTimes*monthCount - 1)%12 + 1
+            val endDay =
+                if (startDay <= dayOfMonthList[endMonth-1])
+                    startDay
+                else
+                    dayOfMonthList[endMonth-1]
+
+            val endDate = "$endYear/$endMonth/$endDay"
             root.textView_create_contract_endDate.text = endDate
         }
         catch (e:Exception) {

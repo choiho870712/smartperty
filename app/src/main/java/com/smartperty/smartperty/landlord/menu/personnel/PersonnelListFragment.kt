@@ -1,14 +1,11 @@
 package com.smartperty.smartperty.landlord.menu.personnel
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
@@ -100,7 +97,7 @@ class PersonnelListFragment : Fragment() {
                 root.recycler_personnel_tenant.visibility = View.VISIBLE
         }
 
-        root.layout_manager_title.setOnClickListener {
+        root.layout_agent_title.setOnClickListener {
             if (root.recycler_personnel_manager.visibility == View.VISIBLE)
                 root.recycler_personnel_manager.visibility = View.GONE
             else

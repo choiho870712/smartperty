@@ -90,6 +90,7 @@ class TenantHosingRulesFragment : Fragment() {
 
     private fun fillInformation() {
         root.text_housing_rules.setText(GlobalVariables.estate.rules)
+
     }
 
 }

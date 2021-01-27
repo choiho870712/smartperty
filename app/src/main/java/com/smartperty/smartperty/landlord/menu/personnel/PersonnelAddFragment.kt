@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import androidx.navigation.findNavController
 import com.smartperty.smartperty.R
+import com.smartperty.smartperty.data.ChartData
+import com.smartperty.smartperty.data.Contract
 import com.smartperty.smartperty.data.Estate
 import com.smartperty.smartperty.data.User
 import com.smartperty.smartperty.utils.GlobalVariables
@@ -25,6 +27,7 @@ class PersonnelAddFragment : Fragment() {
 
     private lateinit var root: View
     private lateinit var authChinese: String
+    private lateinit var permissionStringList: MutableList<String>
     private var isKnownEstate = false
 
     companion object {
@@ -40,6 +43,14 @@ class PersonnelAddFragment : Fragment() {
         else {
             authChinese = "點擊選擇"
         }
+        permissionStringList = mutableListOf()
+        permissionStringList.add("可修改")
+        permissionStringList.add("可修改")
+        permissionStringList.add("可修改")
+        permissionStringList.add("可修改")
+        permissionStringList.add("可修改")
+        permissionStringList.add("可修改")
+
     }
 
     override fun onCreateView(
@@ -73,19 +84,41 @@ class PersonnelAddFragment : Fragment() {
                                 "租客"-> {
                                     "tenant"
                                 }
-                                "維修人員"-> {
+                                "維護"-> {
                                     "technician"
                                 }
                                 "會計"-> {
                                     "accountant"
                                 }
-                                "管理"-> {
+                                "代理"-> {
                                     "agent"
+                                }
+                                "老闆"-> {
+                                    "boss"
+                                }
+                                "物管"-> {
+                                    "propertymanger"
+                                }
+                                "仲介"-> {
+                                    "intermediary"
                                 }
                                 else -> {
                                     ""
                                 }
                             }
+
+                        GlobalVariables.personnel.permission.property =
+                            getPermissionSelected(root.button_select_permission_object)
+                        GlobalVariables.personnel.permission.contract =
+                            getPermissionSelected(root.button_select_permission_contract)
+                        GlobalVariables.personnel.permission.data =
+                            getPermissionSelected(root.button_select_permission_data)
+                        GlobalVariables.personnel.permission.payment =
+                            getPermissionSelected(root.button_select_permission_paymant)
+                        GlobalVariables.personnel.permission.event =
+                            getPermissionSelected(root.button_select_permission_event)
+                        GlobalVariables.personnel.permission.staff =
+                            getPermissionSelected(root.button_select_permission_staff)
 
                         GlobalVariables.personnel.name = root.editText_name.text.toString()
                         GlobalVariables.personnel.cellPhone = root.editTextPhone.text.toString()
@@ -131,9 +164,12 @@ class PersonnelAddFragment : Fragment() {
                 android.R.layout.select_dialog_singlechoice
             )
             arrayAdapter.add("租客")
-            arrayAdapter.add("維修人員")
+            arrayAdapter.add("維護")
             arrayAdapter.add("會計")
-            arrayAdapter.add("管理")
+            arrayAdapter.add("代理")
+            arrayAdapter.add("老闆")
+            arrayAdapter.add("物管")
+            arrayAdapter.add("仲介")
 
             builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
             builderSingle.setAdapter(arrayAdapter) { _, which ->
@@ -152,7 +188,50 @@ class PersonnelAddFragment : Fragment() {
             builderSingle.show()
         }
 
+        setSelectPermissionButtonOnClickListener(root.button_select_permission_object, 0)
+        setSelectPermissionButtonOnClickListener(root.button_select_permission_contract, 1)
+        setSelectPermissionButtonOnClickListener(root.button_select_permission_data, 2)
+        setSelectPermissionButtonOnClickListener(root.button_select_permission_paymant, 3)
+        setSelectPermissionButtonOnClickListener(root.button_select_permission_event, 4)
+        setSelectPermissionButtonOnClickListener(root.button_select_permission_staff, 5)
+
         return root
+    }
+
+    private fun setSelectPermissionButtonOnClickListener(button: Button, permissionStringIndex: Int) {
+        button.text = permissionStringList[permissionStringIndex]
+        button.setOnClickListener {
+            val builderSingle: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+            val arrayAdapter = ArrayAdapter<String>(
+                requireContext(),
+                android.R.layout.select_dialog_singlechoice
+            )
+            arrayAdapter.add("可修改")
+            arrayAdapter.add("可查看")
+            arrayAdapter.add("不可查看")
+
+            builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
+            builderSingle.setAdapter(arrayAdapter) { _, which ->
+                val strName = arrayAdapter.getItem(which)
+                button.text = strName
+                permissionStringList[permissionStringIndex] = strName!!
+            }
+            builderSingle.show()
+        }
+    }
+
+    private fun getPermissionSelected(button: Button): String {
+        return when(button.text) {
+            "可修改" -> {
+                "A"
+            }
+            "可查看" -> {
+                "R"
+            }
+            else -> {
+                "N"
+            }
+        }
     }
 
     class SpinnerActivity : Activity(), AdapterView.OnItemSelectedListener {
@@ -160,7 +239,8 @@ class PersonnelAddFragment : Fragment() {
         override fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {
             // An item was selected. You can retrieve the selected item using
             // parent.getItemAtPosition(pos)
-            val authArray = mutableListOf("tenant", "technician", "accountant", "agent")
+            val authArray = mutableListOf("tenant", "technician", "accountant", "agent"
+                , "boss", "propertymanger", "intermediary")
             GlobalVariables.personnel.auth = authArray[pos]
 
             if (pos > 0) {

@@ -673,8 +673,8 @@ class Api {
     }
 
     fun createEvent(repairOrder: RepairOrder){
-        val initiate_id = GlobalVariables.loginUser.id
-        val system_id = GlobalVariables.loginUser.system_id
+        val initiate_id = repairOrder.creator!!.id
+        val system_id = repairOrder.creator!!.system_id
         val timestmp = repairOrder.timestamp.toString()
         val type = repairOrder.type
         val status = repairOrder.status
@@ -685,18 +685,7 @@ class Api {
         var json = "{\"initiate_id\": \"$initiate_id\", \"system_id\": \"$system_id\", " +
                 "\"timestmp\": $timestmp, \"type\": \"$type\", \"status\": \"$status\"," +
                 "\"object_id\" : \"$object_id\",\"participant\": ["
-        // TODO add participant
-//        if (tenant.id.isNotEmpty() && tenant.id != "nil") {
-//            val tenantId = tenant.id
-//            json += "{\"id\": \"$tenantId\", \"auth\": \"tenant\"}"
-//        }
-//        if (tenant.id.isNotEmpty() && tenant.id != "nil" && technician.id.isNotEmpty() && technician.id != "nil") {
-//            json += ","
-//        }
-//        if (technician.id.isNotEmpty() && technician.id != "nil") {
-//            val technicianId = technician.id
-//            json += "{\"id\": \"$technicianId\", \"auth\": \"technician\"}"
-//        }
+
         json += "],\"information\": {\"description\": \"$description\", " +
                 "\"date\": \"$date\", \"dynamic_status\": ["
         json += "]}}"
@@ -928,17 +917,41 @@ class Api {
 
         val jsonObject = JSONObject(rawJsonString)
         val items = jsonObject.getJSONArray("Items")
+        chartData.dataList.add(ChartDataPair(tag = "0~20坪"))
+        chartData.dataList.add(ChartDataPair(tag = "20~30坪"))
+        chartData.dataList.add(ChartDataPair(tag = "30~50坪"))
+        chartData.dataList.add(ChartDataPair(tag = "50~100坪"))
+        chartData.dataList.add(ChartDataPair(tag = "100坪以上"))
+        val areaRangeList = mutableListOf(20, 30, 50, 100, Int.MAX_VALUE)
         for (i in 0 until(items.length())) {
             val item = items.getJSONObject(i)
-            chartData.dataList.add(
-                ChartDataPair(
-                    tag = item.getString("area"),
-                    value = item.getInt("rent"),
-                    value2 = item.getDouble("return_on_investment")
-                )
-            )
+            val area = item.getString("area").toInt()
+            val rent = item.getInt("rent")
+            val roi = item.getDouble("return_on_investment")
+
+            var done = false
+            areaRangeList.forEachIndexed { index, i ->
+                if (area < i && !done) {
+                    chartData.dataList[index].value += rent
+                    chartData.dataList[index].value2 += roi
+                    chartData.dataList[index].estateList.list.add(Estate())
+                    done = true
+                }
+            }
         }
-        return chartData
+
+        val anotherChartData = ChartData(type = ChartDataType.BAR_CHART)
+        chartData.dataList.forEach {
+            val size = it.estateList.list.size
+            if (size > 0) {
+                it.value /= size
+                it.value2 /= size
+                anotherChartData.dataList.add(it)
+            }
+        }
+
+
+        return anotherChartData
     }
 
     private fun getPieChartByAreaJson(rawJsonString:String): ChartData {
@@ -946,23 +959,46 @@ class Api {
 
         val jsonObject = JSONObject(rawJsonString)
         val items = jsonObject.getJSONArray("Items")
+        chartData.dataList.add(ChartDataPair(tag = "0~20坪"))
+        chartData.dataList.add(ChartDataPair(tag = "20~30坪"))
+        chartData.dataList.add(ChartDataPair(tag = "30~50坪"))
+        chartData.dataList.add(ChartDataPair(tag = "50~100坪"))
+        chartData.dataList.add(ChartDataPair(tag = "100坪以上"))
+        val areaRangeList = mutableListOf(20, 30, 50, 100, Int.MAX_VALUE)
         for (i in 0 until(items.length())) {
             val item = items.getJSONObject(i)
-            val dataPair = ChartDataPair(
-                tag = item.getString("area"),
-                value = item.getInt("counter")
-            )
-            val objectList = item.getJSONArray("object_id_list")
-            for (j in 0 until(objectList.length())) {
-                val objectId = objectList.getString(j)
-                Thread {
-                    dataPair.estateList.list.add(Utils.getEstate(objectId)!!)
-                }.start()
-            }
+            val area = item.getString("area").toInt()
+            val counter = item.getInt("counter")
 
-            chartData.dataList.add(dataPair)
+            var done = false
+            areaRangeList.forEachIndexed { index, i ->
+                if (area < i && !done) {
+                    chartData.dataList[index].value += counter
+
+                    val objectList = item.getJSONArray("object_id_list")
+                    for (j in 0 until(objectList.length())) {
+                        val objectId = objectList.getString(j)
+                        val myEstate = Estate()
+                        chartData.dataList[index].estateList.list.add(myEstate)
+                        Thread {
+                            myEstate.update(Utils.getEstate(objectId)!!)
+                        }.start()
+                    }
+
+                    done = true
+                }
+            }
         }
-        return chartData
+
+        val anotherChartData = ChartData(type = ChartDataType.BAR_CHART)
+        chartData.dataList.forEach {
+            val size = it.estateList.list.size
+            if (size > 0) {
+                anotherChartData.dataList.add(it)
+            }
+        }
+
+        return anotherChartData
     }
 
     fun createPropertyGroupTag(id:String, system_id:String, name: String, image: Bitmap?) : Boolean {
@@ -1094,6 +1130,27 @@ class Api {
                     user.tenantList.add(Utils.getUser(tenant.getString(i))!!)
                 }.start()
         }
+        if (list.has("boss")){
+            val agent = list.getJSONArray("boss")
+            for (i in 0 until(agent.length()))
+                Thread {
+                    user.agentList.add(Utils.getUser(agent.getString(i))!!)
+                }.start()
+        }
+        if (list.has("propertymanger")){
+            val agent = list.getJSONArray("propertymanger")
+            for (i in 0 until(agent.length()))
+                Thread {
+                    user.agentList.add(Utils.getUser(agent.getString(i))!!)
+                }.start()
+        }
+        if (list.has("intermediary")){
+            val agent = list.getJSONArray("intermediary")
+            for (i in 0 until(agent.length()))
+                Thread {
+                    user.agentList.add(Utils.getUser(agent.getString(i))!!)
+                }.start()
+        }
 
         if (list.has("event")){
             val event = list.getJSONArray("event")
@@ -1103,32 +1160,22 @@ class Api {
                 }.start()
         }
 
-
-        // TODO get contract
-//        if (list.has("contract")){
-//            val contract = list.getJSONArray("contract")
-//            for (i in 0 until(contract.length()))
-//                user.contractList.add(contract.getString(i))
-//        }
-
         // tenant part
-        if (GlobalVariables.loginUser.auth != "landlord") {
-            if (items.has("object_id")) {
-                Thread {
-                    GlobalVariables.estate =
-                        Utils.getEstate(items.getString("object_id"))!!
-                }.start()
-            }
+        if (items.has("object_id")) {
+            Thread {
+                user.estate =
+                    Utils.getEstate(items.getString("object_id"))!!
+            }.start()
+        }
 
-            if (items.has("contract_id")) {
-                val landlord_id = items.getString("root_id")
-                val contract_id = items.getString("contract_id")
-                if (contract_id != "nil")
-                    Thread {
-                        user.contractList.add(
-                            Utils.getContract(landlord_id, contract_id)!!)
-                    }.start()
-            }
+        if (items.has("contract_id")) {
+            val landlord_id = items.getString("root_id")
+            val contract_id = items.getString("contract_id")
+            if (contract_id != "nil")
+                Thread {
+                    user.contractList.add(
+                        Utils.getContract(landlord_id, contract_id)!!)
+                }.start()
         }
 
         return user
@@ -1257,6 +1304,12 @@ class Api {
             }
 
             Thread.sleep(500)
+        }
+
+        var iii = 0
+        if (responseString.contains("Unexpected Error")) {
+            iii++
+            iii++
         }
 
         return responseString

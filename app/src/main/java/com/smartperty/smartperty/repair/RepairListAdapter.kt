@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.graphics.drawable.toBitmap
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.smartperty.smartperty.R
@@ -76,6 +77,10 @@ class RepairListAdapter(private val activity: Activity,
             holder.date.text = ""
             holder.image.setImageDrawable(
                 activity.resources.getDrawable(R.drawable.empty_house))
+        }
+
+        holder.image.setOnClickListener {
+            GlobalVariables.imageHelper.openLargeImage(holder.image.drawable.toBitmap())
         }
 
         holder.cardView.setOnClickListener {

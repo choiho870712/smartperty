@@ -188,6 +188,7 @@ class EstateCreateFragment : Fragment() {
                                 }.start()
                             }
 
+                            GlobalVariables.refreshAllChart()
                             root.findNavController().navigate(
                                 R.id.action_estateCreateFragment_to_estateFragment
                             )

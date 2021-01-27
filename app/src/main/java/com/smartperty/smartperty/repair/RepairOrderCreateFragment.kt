@@ -45,7 +45,7 @@ class RepairOrderCreateFragment : Fragment() {
 
         repairTypeString = "點擊選擇"
         GlobalVariables.repairOrder = RepairOrder(
-            creator = GlobalVariables.loginUser,
+            creator = GlobalVariables.estate.landlord,
             type = "maintain",
             status = "nil"
         )
@@ -172,7 +172,7 @@ class RepairOrderCreateFragment : Fragment() {
         GlobalVariables.repairOrder.description = root.textView_repair_order_title.text.toString()
         GlobalVariables.repairOrder.date = TimeUtil.getCurrentDateTime()
 
-        GlobalVariables.repairList.add(GlobalVariables.repairOrder)
+        GlobalVariables.loginUser.repairList.add(GlobalVariables.repairOrder)
         GlobalVariables.repairListAdapter!!.notifyDataSetChanged()
 
         val post = RepairOrderPost()

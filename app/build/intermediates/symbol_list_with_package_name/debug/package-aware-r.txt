@@ -1784,6 +1784,7 @@ id BOTTOM_END
 id BOTTOM_START
 id CTRL
 id FUNCTION
+id ImageContainer
 id META
 id NO_DEBUG
 id SHIFT
@@ -1979,6 +1980,12 @@ id button_select_dir_image
 id button_select_image
 id button_select_income
 id button_select_industry
+id button_select_permission_contract
+id button_select_permission_data
+id button_select_permission_event
+id button_select_permission_object
+id button_select_permission_paymant
+id button_select_permission_staff
 id button_select_profession
 id button_select_property
 id button_select_room
@@ -2219,8 +2226,8 @@ id landlord_notification
 id largeLabel
 id layout
 id layout_accountant_title
+id layout_agent_title
 id layout_image_card
-id layout_manager_title
 id layout_plumber_title
 id layout_tenant_title
 id left
@@ -2453,7 +2460,11 @@ id textView103
 id textView104
 id textView105
 id textView106
+id textView107
+id textView108
+id textView109
 id textView11
+id textView110
 id textView12
 id textView13
 id textView14
@@ -2498,6 +2509,7 @@ id textView49
 id textView5
 id textView50
 id textView51
+id textView52
 id textView53
 id textView54
 id textView55
@@ -2512,6 +2524,8 @@ id textView62
 id textView63
 id textView64
 id textView65
+id textView66
+id textView67
 id textView68
 id textView69
 id textView7
@@ -2648,6 +2662,7 @@ id text_object_item_next_date
 id text_object_item_payment_method
 id text_object_item_rent
 id text_object_item_start_date
+id text_object_item_status
 id text_object_list_address
 id text_object_list_information
 id text_object_list_information4
@@ -2666,7 +2681,6 @@ id text_repair_list_title
 id text_repair_spend
 id text_repair_status
 id text_repair_title
-id text_repair_title14
 id text_repair_title2
 id text_repair_title3
 id text_repair_title5

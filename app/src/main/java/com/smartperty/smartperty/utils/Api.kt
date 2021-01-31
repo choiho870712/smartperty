@@ -58,6 +58,70 @@ class Api {
     private val urlUpdatePropertyInformation = urlDirectory + "propertymanagement/updatepropertyinformation"
     private val urlUploadAttractionInformation = urlDirectory + "propertymanagement/uploadattractioninformation"
     private val urlDeleteAttractionInformation = urlDirectory + "propertymanagement/deleteattractioninformation"
+    private val urlDeleteGroupTag = urlDirectory + "grouptagmanagement/deletegrouptag"
+
+    fun getLocation() : String {
+        val latitude = 23.48386540
+        val longitude = 120.45358340
+        val language = "zh-TW"
+        val key = "AIzaSyD5NwBWiAw9fwESrCMgvTuI8DiaJWAmBHE"
+        val url = "https://maps.googleapis.com/maps/api/geocode/json" +
+                "?" + "latlng=$latitude,$longitude" +
+                "&" + "language=$language" +
+                "&" + "key=$key"
+        val rawJsonString = callApi("", url, "get")
+        return rawJsonString
+    }
+
+    fun getWeather(location: String) : Weather {
+        val authorization = "CWB-83AF700E-A5E2-40EC-A59E-7464326235F5"
+        val url = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001" +
+                "?" + "Authorization=$authorization" +
+                "&" + "locationName=$location"
+        val rawJsonString = callApi("", url, "get")
+        val jsonObject = JSONObject(rawJsonString)
+        val weatherElementList = jsonObject
+            .getJSONObject("records")
+            .getJSONArray("location")
+            .getJSONObject(0)
+            .getJSONArray("weatherElement")
+
+        var wx = ""
+        var wx_number = 0
+        var minT = 0
+        var maxT = 0
+        for ( i in 0 until(weatherElementList.length())) {
+            val weatherElement = weatherElementList.getJSONObject(i)
+            val elementName = weatherElement.getString("elementName")
+            val parameterName = weatherElement
+                .getJSONArray("time")
+                .getJSONObject(0)
+                .getJSONObject("parameter")
+                .getString("parameterName")
+            when (elementName) {
+                "Wx" -> {
+                    wx = parameterName
+                    val parameterValue = weatherElement
+                        .getJSONArray("time")
+                        .getJSONObject(0)
+                        .getJSONObject("parameter")
+                        .getString("parameterValue")
+                        .toInt()
+                    wx_number = parameterValue
+                }
+                "MinT" -> minT = parameterName.toInt()
+                "MaxT" -> maxT = parameterName.toInt()
+                else -> {}
+            }
+        }
+
+        return Weather(wx, wx_number, (minT+maxT)/2)
+    }
+
+    fun deleteGroupTag(id: String, index: Int, image_url: String) : Boolean {
+        val json = "{\"id\":\"$id\",\"index\":$index,\"image_url\":\"$image_url\"}"
+        return getJsonMessage(callApi(json, urlDeleteGroupTag)) == "No Error"
+    }
 
     fun deleteAttractionInformation(landlord_id: String, object_id: String, index: Int) : Boolean {
         val json = "{\"landlord_id\":\"$landlord_id\",\"object_id\":\"$object_id\",\"index\":$index}"
@@ -621,7 +685,7 @@ class Api {
         val json = "{\"object_id\":\"$object_id\"}"
 //        return try {
 //            getPropertyByObjectIdJson(callApi(json, urlGetPropertyByObjectId))
-//        } catch (e:Exception) { null }
+//        } catch (e:Exception) { Estate() }
         return getPropertyByObjectIdJson(callApi(json, urlGetPropertyByObjectId))
     }
 
@@ -674,19 +738,18 @@ class Api {
 
     fun createEvent(repairOrder: RepairOrder){
         val initiate_id = repairOrder.creator!!.id
-        val system_id = repairOrder.creator!!.system_id
-        val timestmp = repairOrder.timestamp.toString()
+        val landlord_id = repairOrder.landlord!!.id
+        val system_id = repairOrder.landlord!!.system_id
         val type = repairOrder.type
         val status = repairOrder.status
-        val description = repairOrder.description
+        val description = repairOrder.title
         val date = repairOrder.date
         val object_id = repairOrder.estate!!.objectId
 
         var json = "{\"initiate_id\": \"$initiate_id\", \"system_id\": \"$system_id\", " +
-                "\"timestmp\": $timestmp, \"type\": \"$type\", \"status\": \"$status\"," +
-                "\"object_id\" : \"$object_id\",\"participant\": ["
-
-        json += "],\"information\": {\"description\": \"$description\", " +
+                "\"landlord_id\": \"$landlord_id\", \"object_id\" : \"$object_id\","
+        json += "\"information\": {\"description\": \"$description\", " +
+                "\"type\": \"$type\", \"status\": \"$status\",\"participant\": []," +
                 "\"date\": \"$date\", \"dynamic_status\": ["
         json += "]}}"
 
@@ -704,6 +767,12 @@ class Api {
 
     private fun getEventInformationJson(rawJsonString:String): RepairOrder {
         val jsonObject = JSONObject(rawJsonString)
+        try {
+            val item = jsonObject.getJSONArray("Items").getJSONObject(0)
+        }
+        catch (e:Exception) {
+            return RepairOrder()
+        }
         val item = jsonObject.getJSONArray("Items").getJSONObject(0)
         return getEventInformationItemJson(item)
     }
@@ -712,12 +781,20 @@ class Api {
         val repairOrder = RepairOrder()
         val information = item.getJSONObject("information")
         val dynamic_status = information.getJSONArray("dynamic_status")
-        repairOrder.timestamp = item.getLong("timestmp")
-        repairOrder.status = item.getString("status")
-        repairOrder.event_id = item.getString("event_id")
-        repairOrder.type = item.getString("type")
+
+        var iii = 0
+        if (!information.has("status")) {
+            iii++
+            iii++
+        }
+        else {
+            repairOrder.status = information.getString("status")
+        }
+        repairOrder.type = information.getString("type")
         repairOrder.date = information.getString("date")
-        repairOrder.description = information.getString("description")
+        repairOrder.title = information.getString("description")
+
+        repairOrder.event_id = item.getString("event_id")
 
         val initiate_id = item.getString("initiate_id")
         Thread {
@@ -754,13 +831,15 @@ class Api {
             repairOrder.postList.add(repairOrderPost)
         }
 
-        val participant = item.getJSONArray("participant")
+        val participant = information.getJSONArray("participant")
         for (j in 0 until(participant.length())) {
             val participantItem = participant.getJSONObject(j)
-            Thread {
-                repairOrder.participant.add(
-                    Utils.getUser(participantItem.getString("id"))!!)
-            }.start()
+            val userId = participantItem.getString("id")
+            if (userId.isNotEmpty() && userId != "nil") {
+                Thread {
+                    repairOrder.participant.add(Utils.getUser(userId)!!)
+                }.start()
+            }
         }
 
         return repairOrder
@@ -1055,7 +1134,7 @@ class Api {
         user.id = items.getString("id")
 
         var iii = 0
-        if (user.id != "hugo123") {
+        if (user.id == "T485273") {
             iii += 1
             iii += 2
         }
@@ -1070,9 +1149,11 @@ class Api {
         user.profession = information.getString("profession")
         user.iconString = information.getString("icon")
         if (user.iconString != "nil") {
-            user.icon = GlobalVariables.imageHelper.convertUrlToImage(
-                user.iconString
-            )
+            Thread {
+                user.icon = GlobalVariables.imageHelper.convertUrlToImage(
+                    user.iconString
+                )
+            }.start()
         }
 
         val permission = items.getJSONObject("permissions")
@@ -1093,8 +1174,10 @@ class Api {
                     imageUrl = groupItem.getString("image")
                 )
 
-                if (newGroup.imageUrl != "nil")
-                    newGroup.image = Utils.getImage(newGroup.imageUrl)
+                Thread {
+                    if (newGroup.imageUrl != "nil")
+                        newGroup.image = Utils.getImage(newGroup.imageUrl)
+                }.start()
 
                 user.estateDirectory.add(newGroup)
 
@@ -1262,12 +1345,18 @@ class Api {
         return json.replace("\\n", "\n")
     }
 
-    private fun callApi(json:String, apiUrl: String) : String {
+    private fun callApi(json:String = "", apiUrl: String = "", method:String = "post") : String {
         Log.d(">>>>>callApi", apiUrl)
-        val request = Request.Builder()
+        var request = Request.Builder()
             .url(apiUrl)
-            .post(RequestBody.create(jsonType, json))
+            .get()
             .build()
+        if (method == "post") {
+            request = Request.Builder()
+                .url(apiUrl)
+                .post(RequestBody.create(jsonType, json))
+                .build()
+        }
 
         var responseString = ""
         var needToCallAgain = false
@@ -1307,7 +1396,7 @@ class Api {
         }
 
         var iii = 0
-        if (responseString.contains("Unexpected Error")) {
+        if (!responseString.contains("No Error")) {
             iii++
             iii++
         }

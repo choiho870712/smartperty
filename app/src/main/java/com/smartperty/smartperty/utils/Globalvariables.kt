@@ -26,6 +26,7 @@ class GlobalVariables : Application() {
         val api = Api()
 
         var welcomeMessage = ""
+        var weather = Weather()
         var rentedEstateList = EstateList(title = "已出租")
         var notRentedEstateList = EstateList(title = "未出租")
 
@@ -342,6 +343,7 @@ class GlobalVariables : Application() {
 
         fun logout() {
             welcomeMessage = ""
+            weather = Weather()
             rentedEstateList = EstateList(title = "已出租")
             notRentedEstateList = EstateList(title = "未出租")
 

@@ -16,23 +16,20 @@ class LoginDataSource {
             // TODO: handle loggedInUser authentication
 
             return if (GlobalVariables.api.userLogin(username, password)) {
-                GlobalVariables.loginUser = Utils.getUser(username)!!
                 val user = LoggedInUser(
                     java.util.UUID.randomUUID().toString(),
-                    GlobalVariables.loginUser.name
+                    username
                 )
+                GlobalVariables.loginUser = Utils.getUser(username)!!
+                GlobalVariables.weather =
+                    GlobalVariables.api.getWeather("臺北市")
+                GlobalVariables.welcomeMessage =
+                    GlobalVariables.api.welcomeMessage(username)
+                GlobalVariables.notificationList.addAll(
+                    GlobalVariables.api.getMessage())
                 if (GlobalVariables.loginUser.auth == "landlord") {
                     Thread {
-                        GlobalVariables.welcomeMessage =
-                            GlobalVariables.api.welcomeMessage(username)
-                    }.start()
-                    Thread {
                         Utils.getEstateDirectoryByGroupTag()
-                    }.start()
-                    Thread {
-                        GlobalVariables.notificationList.addAll(
-                            GlobalVariables.api.getMessage()
-                        )
                     }.start()
                     GlobalVariables.refreshAllChart()
                     GlobalVariables.api.getPropertyRentalStatus(username)

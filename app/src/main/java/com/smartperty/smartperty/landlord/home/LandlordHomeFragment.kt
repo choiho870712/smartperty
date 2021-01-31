@@ -130,6 +130,12 @@ class LandlordHomeFragment : Fragment() {
                     GlobalVariables.notificationList[size-1].message + "\n" +
                     GlobalVariables.notificationList[size-2].message
 
+        root.text_home_temperature.text = GlobalVariables.weather.avgT.toString()
+
+        root.image_home_weather.setImageBitmap(
+            GlobalVariables.weather.getWeatherBitmap()
+        )
+
         return root
     }
 

@@ -16,6 +16,7 @@ data class RepairOrder(
     var description: String = "nil",
     var date: String = "nil",
     var cost: Int = 0,
+    var title: String = "nil",
 
     var participant: MutableList<User> = mutableListOf(),
     var postList: MutableList<RepairOrderPost> = mutableListOf()
@@ -60,6 +61,8 @@ data class RepairOrder(
         type = updateInfo.type
         description = updateInfo.description
         date = updateInfo.date
+
+        title = updateInfo.title
 
         participant = updateInfo.participant
         postList = updateInfo.postList

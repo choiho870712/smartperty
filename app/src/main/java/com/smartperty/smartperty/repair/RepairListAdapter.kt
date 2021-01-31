@@ -43,7 +43,7 @@ class RepairListAdapter(private val activity: Activity,
         else {
             holder.address.text = "nil"
         }
-        holder.title.text = myDataset[position].description
+        holder.title.text = myDataset[position].title
         holder.date.text = myDataset[position].date
 
         val myText = when(myDataset[position].status) {

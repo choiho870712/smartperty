@@ -12,6 +12,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.navigation.findNavController
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.data.Contract
+import com.smartperty.smartperty.data.RentRecord
 import com.smartperty.smartperty.tools.TimeUtil
 import com.smartperty.smartperty.utils.GlobalVariables
 import com.smartperty.smartperty.utils.Utils
@@ -83,6 +84,10 @@ class ContractCreateFragment : Fragment() {
                             root.edit_create_contract_deposit.text.toString().toInt()
                         GlobalVariables.contract.currency =
                             root.button_create_contract_select_currency.text.toString()
+
+                        GlobalVariables.contract.rentRecordList.add(
+                            RentRecord(timeStamp = GlobalVariables.contract.startDate)
+                        )
 
                         GlobalVariables.estate.contract = GlobalVariables.contract
                         Utils.createContract(GlobalVariables.contract)
@@ -174,7 +179,7 @@ class ContractCreateFragment : Fragment() {
         return root
     }
 
-    fun calculateEndDate() {
+    private fun calculateEndDate() {
         try {
             val payTimes = root.edit_create_contract_pay_times.text.toString().toInt()
             val monthCount =

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -6,77 +7,212 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="上次繳房租"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="2020/11/16"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView3"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/textView3"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:id="@+id/textView_object_item_square_ft"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/style_empty"
+        android:inputType="none"
+        android:singleLine="true"
+        app:layout_constraintBottom_toBottomOf="@+id/textView18"
+        app:layout_constraintStart_toEndOf="@+id/textView18"
+        app:layout_constraintTop_toTopOf="@+id/textView18" />
+
+    <TextView
+        android:id="@+id/textView_object_item_square_ft2"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/style_empty"
+        android:inputType="none"
+        android:singleLine="true"
+        android:text="坪"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_object_item_square_ft"
+        app:layout_constraintStart_toEndOf="@+id/textView_object_item_square_ft"
+        app:layout_constraintTop_toTopOf="@+id/textView_object_item_square_ft" />
+
+    <TextView
+        android:id="@+id/textView62"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorWhiteSmoke"
+        android:text="@string/rentInformationTitle"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_set_equipment" />
+
+    <TextView
+        android:id="@+id/textView_object_item_content"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/style_empty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView78"
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+    <TextView
+        android:id="@+id/text_repair_title"
+        style="@style/text_normal_gray_16sp"
+        android:layout_width="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/rentAmount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView62" />
+
+    <TextView
+        android:id="@+id/text_object_item_rent"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/text_repair_title"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintStart_toEndOf="@+id/text_repair_title"
+        app:layout_constraintTop_toBottomOf="@+id/textView62" />
+
+    <TextView
+        android:id="@+id/text_object_item_end_date"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/text_repair_title8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_repair_title8"
+        app:layout_constraintTop_toBottomOf="@+id/text_repair_title6" />
+
+    <TextView
+        android:id="@+id/text_object_item_start_date"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/text_repair_title8"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintStart_toEndOf="@+id/text_repair_title2"
+        app:layout_constraintTop_toBottomOf="@+id/text_repair_title6" />
+
+    <TextView
+        android:id="@+id/text_object_item_deposit"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/text_repair_title6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/text_repair_title6"
+        app:layout_constraintTop_toTopOf="@+id/text_repair_title6"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:text="未繳交"
+        android:id="@+id/text_object_item_status"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="繳房租日"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/text_repair_title6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_repair_title7"
+        app:layout_constraintTop_toBottomOf="@+id/textView62" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/text_object_item_payment_method"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="2020/12/1"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
+        app:layout_constraintBottom_toBottomOf="@+id/text_repair_title5"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintStart_toEndOf="@+id/text_repair_title5"
+        app:layout_constraintTop_toTopOf="@+id/text_repair_title5" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
+        android:id="@+id/text_object_item_next_date"
+        style="@style/text_normal_black_16sp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="房租"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintBottom_toBottomOf="@+id/text_repair_title3"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintStart_toEndOf="@+id/text_repair_title3"
+        app:layout_constraintTop_toTopOf="@+id/text_repair_title3" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/text_repair_title6"
+        style="@style/text_normal_gray_16sp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="NT$ 20000"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView4"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/textView4" />
+        android:text="押金"
+        app:layout_constraintBottom_toBottomOf="@+id/text_repair_title3"
+        app:layout_constraintStart_toStartOf="@+id/text_repair_title7"
+        app:layout_constraintTop_toTopOf="@+id/text_repair_title3" />
+
+    <TextView
+        android:id="@+id/text_repair_title8"
+        style="@style/text_normal_gray_16sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="租期結束"
+        app:layout_constraintStart_toStartOf="@+id/text_repair_title7"
+        app:layout_constraintTop_toBottomOf="@+id/text_repair_title3" />
+
+    <TextView
+        android:id="@+id/text_repair_title7"
+        style="@style/text_normal_gray_16sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="狀態"
+        app:layout_constraintBottom_toBottomOf="@+id/text_repair_title"
+        app:layout_constraintStart_toStartOf="@+id/guideline8"
+        app:layout_constraintTop_toTopOf="@+id/text_repair_title" />
+
+    <TextView
+        android:id="@+id/text_repair_title3"
+        style="@style/text_normal_gray_16sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="繳交日"
+        app:layout_constraintStart_toStartOf="@+id/text_repair_title"
+        app:layout_constraintTop_toBottomOf="@+id/text_repair_title" />
+
+    <TextView
+        android:id="@+id/text_repair_title5"
+        style="@style/text_normal_gray_16sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="繳交週期"
+        app:layout_constraintStart_toStartOf="@+id/text_repair_title"
+        app:layout_constraintTop_toBottomOf="@+id/text_repair_title2" />
+
+    <TextView
+        android:id="@+id/text_repair_title2"
+        style="@style/text_normal_gray_16sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="租期開始"
+        app:layout_constraintStart_toStartOf="@+id/text_repair_title"
+        app:layout_constraintTop_toBottomOf="@+id/text_repair_title3" />
 
     <Button
         android:id="@+id/button"
+        style="@style/button_rectangle_primary_hollow"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="32dp"
         android:text="繳費"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline8"
+        app:layout_constraintTop_toBottomOf="@+id/text_repair_title8" />
 </androidx.constraintlayout.widget.ConstraintLayout>

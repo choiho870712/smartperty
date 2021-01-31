@@ -44,8 +44,9 @@ class RepairOrderCreateFragment : Fragment() {
         GlobalVariables.imageListUsage = "edit"
 
         repairTypeString = "點擊選擇"
+
         GlobalVariables.repairOrder = RepairOrder(
-            creator = GlobalVariables.estate.landlord,
+            creator = GlobalVariables.loginUser,
             type = "maintain",
             status = "nil"
         )
@@ -169,7 +170,9 @@ class RepairOrderCreateFragment : Fragment() {
         GlobalVariables.repairOrder.timestamp = TimeUtil.getCurrentUnixTimeStamp()
         if (GlobalVariables.repairOrder.estate != null)
             GlobalVariables.repairOrder.landlord = GlobalVariables.repairOrder.estate!!.landlord
-        GlobalVariables.repairOrder.description = root.textView_repair_order_title.text.toString()
+
+        GlobalVariables.repairOrder.title = root.textView_repair_order_title.text.toString()
+        GlobalVariables.repairOrder.description = root.textView_repair_order_content.text.toString()
         GlobalVariables.repairOrder.date = TimeUtil.getCurrentDateTime()
 
         GlobalVariables.loginUser.repairList.add(GlobalVariables.repairOrder)

@@ -133,7 +133,7 @@ class RepairOrderFragment : Fragment() {
             root.textView_repair_order_creator_cell_phone.text = repairOrder.creator!!.cellPhone
         }
 
-        root.textView_repair_order_title.text = repairOrder.description
+        root.textView_repair_order_title.text = repairOrder.title
         root.textView_repair_order_repair_date_time.text = repairOrder.date
 
         setStatusButtonColor()

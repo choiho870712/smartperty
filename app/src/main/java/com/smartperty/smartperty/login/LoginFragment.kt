@@ -157,7 +157,7 @@ class LoginFragment : Fragment() {
             requireActivity().intent = Intent(requireActivity(), LandlordActivity().javaClass)
             startActivity(requireActivity().intent)
         }
-        else if (GlobalVariables.loginUser.auth == "tenant") {
+        else {
             requireActivity().intent = Intent(requireActivity(), TenantActivity().javaClass)
             startActivity(requireActivity().intent)
         }

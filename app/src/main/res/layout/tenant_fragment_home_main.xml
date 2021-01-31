@@ -160,8 +160,35 @@
                 android:id="@+id/text_home_greet"
                 style="@style/text_normal_black_24sp"
                 android:layout_marginStart="16dp"
-                android:text="@string/tenant_home_greet"
+                android:text="Hello~"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView22" />
+
+            <TextView
+                android:id="@+id/text_home_greet_name"
+                style="@style/text_normal_black_24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Derek"
+                app:layout_constraintStart_toEndOf="@+id/text_home_greet"
+                app:layout_constraintTop_toBottomOf="@+id/imageView22" />
+
+            <TextView
+                android:id="@+id/text_home_greet_sex"
+                style="@style/text_normal_black_24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="君"
+                app:layout_constraintStart_toEndOf="@+id/text_home_greet_name"
+                app:layout_constraintTop_toBottomOf="@+id/imageView22" />
+
+            <TextView
+                android:id="@+id/text_home_greet5"
+                style="@style/text_normal_black_24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="!"
+                app:layout_constraintStart_toEndOf="@+id/text_home_greet_sex"
                 app:layout_constraintTop_toBottomOf="@+id/imageView22" />
 
             <TextView
@@ -185,9 +212,22 @@
             <TextView
                 android:id="@+id/text_home_temperature"
                 style="@style/text_normal_black_24sp"
-                android:text="@string/tenant_home_temperature"
-                app:layout_constraintEnd_toEndOf="@+id/image_home_weather"
+                android:text="21"
+                app:layout_constraintEnd_toStartOf="@+id/text_home_temperature3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="@+id/image_home_weather"
+                app:layout_constraintTop_toBottomOf="@+id/image_home_weather" />
+
+            <TextView
+                android:id="@+id/text_home_temperature3"
+                style="@style/text_normal_black_24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="℃"
+                app:layout_constraintEnd_toEndOf="@+id/image_home_weather"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/text_home_temperature"
                 app:layout_constraintTop_toBottomOf="@+id/image_home_weather" />
 
             <ImageView
@@ -215,6 +255,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/button_tenant_setup"
                 app:layout_constraintEnd_toStartOf="@+id/button_tenant_setup"
                 app:layout_constraintStart_toEndOf="@+id/imageView22"

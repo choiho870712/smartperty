@@ -19,6 +19,7 @@ import com.smartperty.smartperty.tools.SwipeHelper
 import com.smartperty.smartperty.utils.GlobalVariables
 import kotlinx.android.synthetic.main.activity_landlord.*
 import kotlinx.android.synthetic.main.fragment_estate_directory.view.*
+import kotlinx.android.synthetic.main.fragment_estate_directory_create.view.*
 
 
 class EstateDirectoryFragment : Fragment() {
@@ -68,26 +69,58 @@ class EstateDirectoryFragment : Fragment() {
                 viewHolder: RecyclerView.ViewHolder?,
                 underlayButtons: MutableList<UnderlayButton>?
             ) {
-//                underlayButtons?.add(UnderlayButton(
-//                    "Delete",
-//                    0,
-//                    Color.parseColor("#FF3C30")
-//                ) {
-//
-//                })
                 underlayButtons?.add(UnderlayButton(
-                    "Edit",
+                    "Delete",
                     0,
-                    Color.parseColor("#FF9502")
+                    Color.parseColor("#FF3C30")
                 ) {
                     if (viewHolder != null) {
+                        val index = viewHolder.adapterPosition
                         GlobalVariables.estateFolder =
-                            GlobalVariables.estateDirectory[viewHolder.adapterPosition]
-                        GlobalVariables.estateFolder.groupIndex = viewHolder.adapterPosition
+                            GlobalVariables.estateDirectory[index]
+                        val url = GlobalVariables.estateFolder.imageUrl
+
+                        // setup dialog builder
+                        val builder = android.app.AlertDialog.Builder(requireActivity())
+
+                        if (GlobalVariables.estateFolder.list.isEmpty()) {
+                            builder.setTitle("確定要刪除嗎？")
+                            builder.setPositiveButton("是") { _, _ ->
+                                Thread {
+                                    GlobalVariables.api.deleteGroupTag(
+                                        GlobalVariables.loginUser.id,
+                                        index,
+                                        url
+                                    )
+                                }.start()
+                                GlobalVariables.estateDirectory.remove(GlobalVariables.estateFolder)
+                                GlobalVariables.estateDirectoryAdapter!!.notifyDataSetChanged()
+                            }
+                        } else {
+                            builder.setTitle("不可刪除已有物件的群組")
+                            builder.setPositiveButton("是") { _, _ -> }
+                        }
+
+                        // create dialog and show it
+                        requireActivity().runOnUiThread {
+                            val dialog = builder.create()
+                            dialog.show()
+                        }
                     }
-                    root.findNavController().navigate(
-                        R.id.action_estateDirectoryFragment_to_estateDirectoryCreateFragment)
                 })
+//                underlayButtons?.add(UnderlayButton(
+//                    "Edit",
+//                    0,
+//                    Color.parseColor("#FF9502")
+//                ) {
+//                    if (viewHolder != null) {
+//                        GlobalVariables.estateFolder =
+//                            GlobalVariables.estateDirectory[viewHolder.adapterPosition]
+//                        GlobalVariables.estateFolder.groupIndex = viewHolder.adapterPosition
+//                    }
+//                    root.findNavController().navigate(
+//                        R.id.action_estateDirectoryFragment_to_estateDirectoryCreateFragment)
+//                })
 //                underlayButtons?.add(UnderlayButton(
 //                    "Cancel",
 //                    0,

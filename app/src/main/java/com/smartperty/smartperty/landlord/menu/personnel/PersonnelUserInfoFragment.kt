@@ -101,9 +101,12 @@ class PersonnelUserInfoFragment : Fragment() {
             GlobalVariables.imageHelper.openLargeImage(root.image_userIcon.drawable.toBitmap())
         }
 
-        root.textView_name.setText(GlobalVariables.personnel.name)
-        root.textView_email.setText(GlobalVariables.personnel.email)
-        root.textView_phone.setText(GlobalVariables.personnel.cellPhone)
+        if (GlobalVariables.personnel.name != "nil")
+            root.textView_name.setText(GlobalVariables.personnel.name)
+        if (GlobalVariables.personnel.email != "nil")
+            root.textView_email.setText(GlobalVariables.personnel.email)
+        if (GlobalVariables.personnel.cellPhone != "nil")
+            root.textView_phone.setText(GlobalVariables.personnel.cellPhone)
         if (GlobalVariables.personnel.profession!= "nil")
             root.button_select_profession.setText(GlobalVariables.personnel.profession)
         if (GlobalVariables.personnel.sex!= "nil")

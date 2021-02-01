@@ -1980,6 +1980,12 @@ id button_select_dir_image
 id button_select_image
 id button_select_income
 id button_select_industry
+id button_select_permission_contract
+id button_select_permission_data
+id button_select_permission_event
+id button_select_permission_object
+id button_select_permission_paymant
+id button_select_permission_staff
 id button_select_profession
 id button_select_property
 id button_select_room
@@ -2137,6 +2143,7 @@ id guideline13
 id guideline14
 id guideline15
 id guideline16
+id guideline17
 id guideline18
 id guideline19
 id guideline2
@@ -2220,8 +2227,8 @@ id landlord_notification
 id largeLabel
 id layout
 id layout_accountant_title
+id layout_agent_title
 id layout_image_card
-id layout_manager_title
 id layout_plumber_title
 id layout_tenant_title
 id left
@@ -2454,7 +2461,11 @@ id textView103
 id textView104
 id textView105
 id textView106
+id textView107
+id textView108
+id textView109
 id textView11
+id textView110
 id textView12
 id textView13
 id textView14
@@ -2463,7 +2474,6 @@ id textView16
 id textView17
 id textView18
 id textView19
-id textView2
 id textView20
 id textView21
 id textView22
@@ -2474,7 +2484,6 @@ id textView26
 id textView27
 id textView28
 id textView29
-id textView3
 id textView30
 id textView31
 id textView32
@@ -2485,7 +2494,6 @@ id textView36
 id textView37
 id textView38
 id textView39
-id textView4
 id textView40
 id textView41
 id textView42
@@ -2499,6 +2507,7 @@ id textView49
 id textView5
 id textView50
 id textView51
+id textView52
 id textView53
 id textView54
 id textView55
@@ -2513,6 +2522,8 @@ id textView62
 id textView63
 id textView64
 id textView65
+id textView66
+id textView67
 id textView68
 id textView69
 id textView7
@@ -2617,11 +2628,14 @@ id text_finance_item_title
 id text_finance_item_value
 id text_home_greet
 id text_home_greet3
+id text_home_greet5
 id text_home_greet_name
 id text_home_greet_sex
 id text_home_message
 id text_home_notify
 id text_home_temperature
+id text_home_temperature2
+id text_home_temperature3
 id text_housing_rules
 id text_input_end_icon
 id text_input_start_icon

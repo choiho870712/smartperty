@@ -544,11 +544,19 @@ class Api {
         try {
             estate.objectId =
                 jsonObject.getJSONObject("Items").getString("object_id")
-            estate.imageList.forEach {
-                Thread {
-                    uploadPropertyImage(estate.landlord!!.id, estate.objectId, it)
-                }.start()
-            }
+
+
+            estate.imageUrlList.addAll(
+                uploadPropertyImage(estate.landlord!!.id, estate.objectId, estate.imageList)
+            )
+
+//            estate.imageList.forEachIndexed { index, bitmap ->
+//                estate.imageUrlList.add("")
+//                Thread {
+//                    estate.imageUrlList[index] =
+//                        uploadPropertyImage(estate.landlord!!.id, estate.objectId, bitmap)
+//                }.start()
+//            }
         }
         catch(e:Exception){
             estate.objectId = "nil"
@@ -736,6 +744,34 @@ class Api {
             .getJSONArray("image_url").getString(0)
     }
 
+    fun uploadPropertyImage(landlord_id: String, object_id: String, imageList: MutableList<Bitmap>):
+            MutableList<String> {
+        var json = "{\"landlord_id\": \"$landlord_id\", \"object_id\": \"$object_id\", " +
+                "\"image\":["
+
+        var isFirst = true
+        imageList.forEach {
+            if (isFirst) isFirst = false
+            else json += ","
+            val imageString = GlobalVariables.imageHelper.getString(it)
+            json += "\"$imageString\""
+        }
+
+        json += "]}"
+
+        val rawJsonString = callApi(json, urlUploadPropertyImage)
+        val stringList = mutableListOf<String>()
+        val imageUrlList =
+            JSONObject(rawJsonString).getJSONObject("Items").getJSONArray("image_url")
+
+        for (i in 0 until(imageUrlList.length())) {
+            val url = imageUrlList.getString(0)
+            stringList.add(url)
+        }
+
+        return stringList
+    }
+
     fun createEvent(repairOrder: RepairOrder){
         val initiate_id = repairOrder.creator!!.id
         val landlord_id = repairOrder.landlord!!.id
@@ -782,14 +818,7 @@ class Api {
         val information = item.getJSONObject("information")
         val dynamic_status = information.getJSONArray("dynamic_status")
 
-        var iii = 0
-        if (!information.has("status")) {
-            iii++
-            iii++
-        }
-        else {
-            repairOrder.status = information.getString("status")
-        }
+        repairOrder.status = information.getString("status")
         repairOrder.type = information.getString("type")
         repairOrder.date = information.getString("date")
         repairOrder.title = information.getString("description")
@@ -1396,7 +1425,7 @@ class Api {
         }
 
         var iii = 0
-        if (!responseString.contains("No Error")) {
+        if (responseString.contains("Message") && !responseString.contains("No Error")) {
             iii++
             iii++
         }

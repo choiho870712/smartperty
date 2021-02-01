@@ -74,7 +74,7 @@ class AddPostFragment : Fragment() {
                             GlobalVariables.api.updateEventInformation(
                                 GlobalVariables.repairOrder.landlord!!.id,
                                 GlobalVariables.repairOrder.event_id,
-                                GlobalVariables.repairOrder.description,
+                                GlobalVariables.repairOrder.title,
                                 GlobalVariables.repairOrderPost
                             )
                         }.start()

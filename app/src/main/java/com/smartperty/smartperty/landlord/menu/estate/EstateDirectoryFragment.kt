@@ -63,7 +63,42 @@ class EstateDirectoryFragment : Fragment() {
             layoutManager = GlobalVariables.estateDirectoryLayoutManager
             adapter = GlobalVariables.estateDirectoryAdapter
         }
+        makeSwipeHelper()
 
+        //linkRefreshListener()
+
+        root.card_image_large.setOnClickListener {
+            root.card_image_large.visibility = View.GONE
+        }
+
+        return root
+    }
+
+//    private fun linkRefreshListener() {
+//        root.swipe_layout.setOnRefreshListener {
+//            if (!lockRefresh) {
+//                lockRefresh = true
+//
+//                GlobalVariables.estateDirectory.forEach {
+//                    it.image = null
+//                }
+//                GlobalVariables.estateDirectory.clear()
+//                GlobalVariables.estateDirectoryAdapter!!.notifyDataSetChanged()
+//
+//                Thread {
+//                    GlobalVariables.api.getGroupTag(GlobalVariables.user.id)
+//                    if (activity != null) requireActivity().runOnUiThread {
+//                        GlobalVariables.estateDirectoryAdapter!!.notifyDataSetChanged()
+//                        lockRefresh = false
+//                        root.swipe_layout.isRefreshing = false
+//                    }
+//                }.start()
+//            }
+//        }
+//    }
+
+
+    fun makeSwipeHelper() {
         var swipeHelper = object :SwipeHelper(requireContext(), root.recycler_object_folder) {
             override fun instantiateUnderlayButton(
                 viewHolder: RecyclerView.ViewHolder?,
@@ -130,39 +165,6 @@ class EstateDirectoryFragment : Fragment() {
 //                })
             }
         }
-
-
-        //linkRefreshListener()
-
-        root.card_image_large.setOnClickListener {
-            root.card_image_large.visibility = View.GONE
-        }
-
-        return root
     }
-
-//    private fun linkRefreshListener() {
-//        root.swipe_layout.setOnRefreshListener {
-//            if (!lockRefresh) {
-//                lockRefresh = true
-//
-//                GlobalVariables.estateDirectory.forEach {
-//                    it.image = null
-//                }
-//                GlobalVariables.estateDirectory.clear()
-//                GlobalVariables.estateDirectoryAdapter!!.notifyDataSetChanged()
-//
-//                Thread {
-//                    GlobalVariables.api.getGroupTag(GlobalVariables.user.id)
-//                    if (activity != null) requireActivity().runOnUiThread {
-//                        GlobalVariables.estateDirectoryAdapter!!.notifyDataSetChanged()
-//                        lockRefresh = false
-//                        root.swipe_layout.isRefreshing = false
-//                    }
-//                }.start()
-//            }
-//        }
-//    }
-
 }
 

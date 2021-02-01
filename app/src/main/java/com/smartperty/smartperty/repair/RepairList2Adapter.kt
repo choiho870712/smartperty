@@ -30,7 +30,7 @@ class RepairList2Adapter(private val activity: Activity,
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
         holder.index = position
-        holder.title.text = myDataset[position].description
+        holder.title.text = myDataset[position].title
         holder.date.text = myDataset[position].date
         holder.cost.text = myDataset[position].cost.toString()
 

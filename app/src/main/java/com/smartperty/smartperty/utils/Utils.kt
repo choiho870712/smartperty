@@ -101,10 +101,12 @@ object Utils {
 
         isModifyingEstate = true
 
-        GlobalVariables.estateList.forEach {
-            if (it.compareId(objectId)) {
+        val iterator = GlobalVariables.estateList.iterator()
+        while(iterator.hasNext()) {
+            val estate = iterator.next()
+            if (estate.compareId(objectId)) {
                 isModifyingEstate = false
-                return it
+                return estate
             }
         }
 
@@ -239,7 +241,7 @@ object Utils {
             GlobalVariables.api.updateEventInformation(
                 GlobalVariables.repairOrder.landlord!!.id,
                 GlobalVariables.repairOrder.event_id,
-                GlobalVariables.repairOrder.description,
+                GlobalVariables.repairOrder.title,
                 GlobalVariables.repairOrder.postList[0]
             )
         }.start()

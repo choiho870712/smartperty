@@ -173,16 +173,24 @@ class EstateCreateFragment : Fragment() {
                                         }
                                     }
                                     for (index in (originalSize-removedCount) until(imageList.size) ) {
-                                        val imageIndex = GlobalVariables.estate.imageList.size
+//                                        val imageIndex = GlobalVariables.estate.imageList.size
                                         GlobalVariables.estate.imageList.add(imageList[index])
-                                        GlobalVariables.estate.imageUrlList.add("")
+//                                        GlobalVariables.estate.imageUrlList.add("")
                                         Thread {
-                                            val newImageUrl = GlobalVariables.api.uploadPropertyImage(
-                                                GlobalVariables.estate.landlord!!.id,
-                                                GlobalVariables.estate.objectId,
-                                                imageList[index]
+//                                            val newImageUrl = GlobalVariables.api.uploadPropertyImage(
+//                                                GlobalVariables.estate.landlord!!.id,
+//                                                GlobalVariables.estate.objectId,
+//                                                imageList[index]
+//                                            )
+//                                            GlobalVariables.estate.imageUrlList[imageIndex] = newImageUrl
+
+                                            GlobalVariables.estate.imageUrlList.addAll(
+                                                GlobalVariables.api.uploadPropertyImage(
+                                                    GlobalVariables.estate.landlord!!.id,
+                                                    GlobalVariables.estate.objectId,
+                                                    imageList
+                                                )
                                             )
-                                            GlobalVariables.estate.imageUrlList[imageIndex] = newImageUrl
                                         }.start()
                                     }
                                 }.start()
@@ -243,10 +251,15 @@ class EstateCreateFragment : Fragment() {
             builderSingle.show()
         }
 
-
         var selectedRegion = GlobalVariables.addressTree.regionList[0].region
         var selectedRoad = GlobalVariables.addressTree.regionList[0].roadList[0].road
         var selectedStreet = GlobalVariables.addressTree.regionList[0].roadList[0].streetList[0]
+
+        if (GlobalVariables.estate.region.isNotEmpty()) {
+            selectedRegion = GlobalVariables.estate.region
+            selectedRoad = GlobalVariables.estate.road
+            selectedStreet = GlobalVariables.estate.street
+        }
 
         root.button_create_property_select_region.text = selectedRegion
         root.button_create_property_select_road.text = selectedRoad

@@ -59,10 +59,14 @@ object TimeUtil {
 
     @JvmStatic
     fun DateToStamp(date: String, locale: Locale): Long {
-        val simpleDateFormat = SimpleDateFormat("yyyy/MM/dd", locale)
+        return try {
+            val simpleDateFormat = SimpleDateFormat("yyyy/MM/dd", locale)
 
-        /// 輸出為毫秒為單位
-        return simpleDateFormat.parse(date).time/1000
+            /// 輸出為毫秒為單位
+            simpleDateFormat.parse(date).time/1000
+        } catch (e: Exception) {
+            0
+        }
     }
 }
 

@@ -21,7 +21,6 @@ import com.smartperty.smartperty.tools.TimeUtil
 import com.smartperty.smartperty.utils.GlobalVariables
 import com.smartperty.smartperty.utils.Utils
 import kotlinx.android.synthetic.main.activity_landlord.*
-import kotlinx.android.synthetic.main.fragment_estate.view.imageView_add_image_button
 import kotlinx.android.synthetic.main.fragment_estate.view.recycler_image
 import kotlinx.android.synthetic.main.fragment_estate_create.view.*
 import java.util.*
@@ -64,154 +63,158 @@ class EstateCreateFragment : Fragment() {
         if (!isNewProperty)
             GlobalVariables.toolBarUtils.setTitle("編輯物件")
 
-        if (GlobalVariables.loginUser.auth == "landlord") {
-            GlobalVariables.toolBarUtils.setSubmitButtonVisibility(true)
-            GlobalVariables.activity.toolbar.setOnMenuItemClickListener { it ->
-                when(it.itemId) {
-                    R.id.button_submit -> {
-                        // setup dialog builder
-                        val builder = android.app.AlertDialog.Builder(requireActivity())
-                        builder.setTitle("確定要送出嗎？")
+        GlobalVariables.toolBarUtils.setSubmitButtonVisibility(true)
+        GlobalVariables.activity.toolbar.setOnMenuItemClickListener { it ->
+            when(it.itemId) {
+                R.id.button_submit -> {
+                    // setup dialog builder
+                    val builder = android.app.AlertDialog.Builder(requireActivity())
+                    builder.setTitle("確定要送出嗎？")
 
-                        builder.setPositiveButton("是") { _, _ ->
+                    builder.setPositiveButton("是") { _, _ ->
 
-                            GlobalVariables.estate.objectName =
-                                root.edit_create_property_name.text.toString()
-                            GlobalVariables.estate.region =
-                                if (root.button_create_property_select_region.text.toString() != "選擇")
-                                    root.button_create_property_select_region.text.toString()
-                                else
-                                    ""
-                            GlobalVariables.estate.road =
-                                if (root.button_create_property_select_road.text.toString() != "選擇")
-                                    root.button_create_property_select_road.text.toString()
-                                else
-                                    ""
-                            GlobalVariables.estate.street =
-                                if (root.button_create_property_select_street.text.toString() != "選擇")
-                                    root.button_create_property_select_street.text.toString()
-                                else
-                                    ""
-                            GlobalVariables.estate.fullAddress =
-                                root.edit_create_property_full_address.text.toString()
-                            GlobalVariables.estate.floor =
-                                root.edit_create_property_floor.text.toString()
-                            GlobalVariables.estate.area =
-                                root.edit_create_property_area.text.toString().toInt()
-                            GlobalVariables.estate.parkingSpace =
-                                root.edit_create_property_parking_space.text.toString()
-                            GlobalVariables.estate.type =
-                                when (root.button_create_property_select_type.text.toString()) {
-                                    "住宅" -> {
-                                        "Dwelling"
-                                    }
-                                    "套房" -> {
-                                        "Suite"
-                                    }
-                                    "店面" -> {
-                                        "Storefront"
-                                    }
-                                    "辦公" -> {
-                                        "Office"
-                                    }
-                                    "住辦" -> {
-                                        "DwellingOffice"
-                                    }
-                                    "廠房" -> {
-                                        "Factory"
-                                    }
-                                    "車位" -> {
-                                        "ParkingSpace"
-                                    }
-                                    "土地" -> {
-                                        "LandPlace"
-                                    }
-                                    else -> {
-                                        "Other"
+                        GlobalVariables.estate.objectName =
+                            root.edit_create_property_name.text.toString()
+                        GlobalVariables.estate.region =
+                            if (root.button_create_property_select_region.text.toString() != "選擇")
+                                root.button_create_property_select_region.text.toString()
+                            else
+                                ""
+                        GlobalVariables.estate.road =
+                            if (root.button_create_property_select_road.text.toString() != "選擇")
+                                root.button_create_property_select_road.text.toString()
+                            else
+                                ""
+                        GlobalVariables.estate.street =
+                            if (root.button_create_property_select_street.text.toString() != "選擇")
+                                root.button_create_property_select_street.text.toString()
+                            else
+                                ""
+                        GlobalVariables.estate.fullAddress =
+                            root.edit_create_property_full_address.text.toString()
+                        GlobalVariables.estate.floor =
+                            root.edit_create_property_floor.text.toString()
+                        GlobalVariables.estate.area =
+                            root.edit_create_property_area.text.toString().toInt()
+                        GlobalVariables.estate.parkingSpace =
+                            root.edit_create_property_parking_space.text.toString()
+                        GlobalVariables.estate.type =
+                            when (root.button_create_property_select_type.text.toString()) {
+                                "住宅" -> {
+                                    "Dwelling"
+                                }
+                                "套房" -> {
+                                    "Suite"
+                                }
+                                "店面" -> {
+                                    "Storefront"
+                                }
+                                "辦公" -> {
+                                    "Office"
+                                }
+                                "住辦" -> {
+                                    "DwellingOffice"
+                                }
+                                "廠房" -> {
+                                    "Factory"
+                                }
+                                "車位" -> {
+                                    "ParkingSpace"
+                                }
+                                "土地" -> {
+                                    "LandPlace"
+                                }
+                                else -> {
+                                    "Other"
+                                }
+                            }
+                        GlobalVariables.estate.description =
+                            root.edit_create_property_description.text.toString()
+                        GlobalVariables.estate.purchasePrice =
+                            root.edit_create_property_purchase_price2.text.toString().toLong()
+                        GlobalVariables.estate.rent =
+                            root.edit_create_property_rent.text.toString().toInt()
+
+                        GlobalVariables.estate.purchaseDate =
+                            TimeUtil.DateToStamp(
+                                root.button_create_property_select_purchase_date.text.toString(),
+                                Locale.TAIWAN
+                            )
+
+                        if (isNewProperty) {
+                            GlobalVariables.estate.imageList.clear()
+                            GlobalVariables.estate.imageList.addAll(imageList)
+                            Utils.createEstate(GlobalVariables.estate)
+                        }
+                        else {
+                            Thread {
+                                GlobalVariables.api.updatePropertyInformation(GlobalVariables.estate)
+                            }.start()
+                            Thread {
+                                var removedCount = 0
+                                val originalSize = GlobalVariables.imageEditIndexLog.size
+                                for (index in originalSize - 1 downTo 0) {
+                                    val isRemoved = GlobalVariables.imageEditIndexLog[index]
+                                    if (isRemoved) {
+                                        val imageUrl = GlobalVariables.estate.imageUrlList[index]
+                                        Thread {
+                                            GlobalVariables.api.deletePropertyImage(
+                                                GlobalVariables.estate.landlord!!.id,
+                                                GlobalVariables.estate.objectId,
+                                                index,
+                                                imageUrl
+                                            )
+                                        }.start()
+                                        GlobalVariables.estate.imageList.removeAt(index)
+                                        GlobalVariables.estate.imageUrlList.removeAt(index)
+                                        removedCount++
                                     }
                                 }
-                            GlobalVariables.estate.description =
-                                root.edit_create_property_description.text.toString()
-                            GlobalVariables.estate.purchasePrice =
-                                root.edit_create_property_purchase_price2.text.toString().toLong()
-                            GlobalVariables.estate.rent =
-                                root.edit_create_property_rent.text.toString().toInt()
 
-                            GlobalVariables.estate.purchaseDate =
-                                TimeUtil.DateToStamp(
-                                    root.button_create_property_select_purchase_date.text.toString(),
-                                    Locale.TAIWAN
-                                )
-
-                            if (isNewProperty) {
-                                GlobalVariables.estate.imageList.clear()
-                                GlobalVariables.estate.imageList.addAll(imageList)
-                                Utils.createEstate(GlobalVariables.estate)
-                            }
-                            else {
-                                Thread {
-                                    GlobalVariables.api.updatePropertyInformation(GlobalVariables.estate)
-                                }.start()
-                                Thread {
-                                    var removedCount = 0
-                                    val originalSize = GlobalVariables.imageEditIndexLog.size
-                                    for (index in originalSize - 1 downTo 0) {
-                                        val isRemoved = GlobalVariables.imageEditIndexLog[index]
-                                        if (isRemoved) {
-                                            val imageUrl = GlobalVariables.estate.imageUrlList[index]
-                                            Thread {
-                                                GlobalVariables.api.deletePropertyImage(
-                                                    GlobalVariables.estate.landlord!!.id,
-                                                    GlobalVariables.estate.objectId,
-                                                    index,
-                                                    imageUrl
-                                                )
-                                            }.start()
-                                            GlobalVariables.estate.imageList.removeAt(index)
-                                            GlobalVariables.estate.imageUrlList.removeAt(index)
-                                            removedCount++
-                                        }
-                                    }
-                                    for (index in (originalSize-removedCount) until(imageList.size) ) {
-//                                        val imageIndex = GlobalVariables.estate.imageList.size
-                                        GlobalVariables.estate.imageList.add(imageList[index])
-//                                        GlobalVariables.estate.imageUrlList.add("")
-                                        Thread {
+                                val updateImageList = mutableListOf<Bitmap>()
+                                for (index in (originalSize-removedCount) until(imageList.size) ) {
+                                    val imageIndex = GlobalVariables.estate.imageList.size
+                                    GlobalVariables.estate.imageList.add(imageList[index])
+                                    updateImageList.add(imageList[index])
+//                                    Thread {
 //                                            val newImageUrl = GlobalVariables.api.uploadPropertyImage(
 //                                                GlobalVariables.estate.landlord!!.id,
 //                                                GlobalVariables.estate.objectId,
 //                                                imageList[index]
 //                                            )
 //                                            GlobalVariables.estate.imageUrlList[imageIndex] = newImageUrl
-
-                                            GlobalVariables.estate.imageUrlList.addAll(
-                                                GlobalVariables.api.uploadPropertyImage(
-                                                    GlobalVariables.estate.landlord!!.id,
-                                                    GlobalVariables.estate.objectId,
-                                                    imageList
-                                                )
-                                            )
-                                        }.start()
-                                    }
+//                                    }.start()
+                                }
+                                if (updateImageList.size >0)
+                                Thread {
+                                    GlobalVariables.estate.imageUrlList.addAll(
+                                        GlobalVariables.api.uploadPropertyImage(
+                                            GlobalVariables.estate.landlord!!.id,
+                                            GlobalVariables.estate.objectId,
+                                            updateImageList
+                                        )
+                                    )
                                 }.start()
-                            }
 
-                            GlobalVariables.refreshAllChart()
-                            root.findNavController().navigate(
-                                R.id.action_estateCreateFragment_to_estateFragment
-                            )
+                            }.start()
                         }
 
-                        // create dialog and show it
-                        requireActivity().runOnUiThread{
-                            val dialog = builder.create()
-                            dialog.show()
-                        }
+                        GlobalVariables.refreshAllChart(GlobalVariables.estate.landlord!!.id)
 
-                        true
+                        root.findNavController().navigate(
+                            R.id.action_estateCreateFragment_to_estateFragment
+                        )
                     }
-                    else -> false
+
+                    // create dialog and show it
+                    requireActivity().runOnUiThread{
+                        val dialog = builder.create()
+                        dialog.show()
+                    }
+
+                    true
                 }
+                else -> false
             }
         }
 

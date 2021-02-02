@@ -4,6 +4,8 @@ import android.graphics.Bitmap
 
 data class User(
     var id: String = "nil",
+    var rootId: String = "nil",
+    var rootUser: User? = null,
     //var permissions: String = "nil",
 
     var accountantList: MutableList<User> = mutableListOf(),
@@ -40,6 +42,7 @@ data class User(
 
     fun update(updateInfo:User) {
         id = updateInfo.id
+        rootUser = updateInfo.rootUser
         //permissions = updateInfo.permissions
         accountantList = updateInfo.accountantList
         agentList = updateInfo.agentList

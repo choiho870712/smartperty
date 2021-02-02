@@ -36,6 +36,7 @@ class GlobalVariables : Application() {
 
         // static storage
         var loginUser = User()
+        var rootUser = User()
         var userList = mutableListOf<User>()
         var estateList = mutableListOf<Estate>()
         var repairList = mutableListOf<RepairOrder>()
@@ -311,33 +312,33 @@ class GlobalVariables : Application() {
             return list
         }
 
-        fun refreshAllChart() {
+        fun refreshAllChart(userId:String) {
             Thread {
                 GlobalVariables.dataAnalysisByGroupBarChartDataSet =
-                    GlobalVariables.api.getBarChartByGroupTag(GlobalVariables.loginUser.id)
+                    GlobalVariables.api.getBarChartByGroupTag(userId)
             }.start()
             Thread {
                 GlobalVariables.dataAnalysisByGroupPieChartDataSet =
-                    GlobalVariables.api.getPieChartByGroupTag(GlobalVariables.loginUser.id)
+                    GlobalVariables.api.getPieChartByGroupTag(userId)
             }.start()
             Thread {
                 GlobalVariables.dataAnalysisByTypeBarChartDataSet =
-                    GlobalVariables.api.getBarChartByObjectType(GlobalVariables.loginUser.id)
+                    GlobalVariables.api.getBarChartByObjectType(userId)
             }.start()
             Thread {
                 GlobalVariables.dataAnalysisByTypePieChartDataSet =
-                    GlobalVariables.api.getPieChartByObjectType(GlobalVariables.loginUser.id)
+                    GlobalVariables.api.getPieChartByObjectType(userId)
             }.start()
             Thread {
                 GlobalVariables.dataAnalysisBySquareFtBarChartDataSet =
-                    GlobalVariables.api.getBarChartByArea(GlobalVariables.loginUser.id)
+                    GlobalVariables.api.getBarChartByArea(userId)
             }.start()
             Thread {
                 GlobalVariables.dataAnalysisBySquareFtPieChartDataSet =
-                    GlobalVariables.api.getPieChartByArea(GlobalVariables.loginUser.id)
+                    GlobalVariables.api.getPieChartByArea(userId)
             }.start()
             Thread {
-                GlobalVariables.api.getContractByTimeIn3Months(GlobalVariables.loginUser.id)
+                GlobalVariables.api.getContractByTimeIn3Months(userId)
             }.start()
         }
 
@@ -351,6 +352,7 @@ class GlobalVariables : Application() {
 
             // static storage
             loginUser = User()
+            rootUser = User()
             userList = mutableListOf()
             estateList = mutableListOf()
             repairList = mutableListOf()

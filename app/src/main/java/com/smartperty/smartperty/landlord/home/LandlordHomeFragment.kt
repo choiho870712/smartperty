@@ -66,47 +66,61 @@ class LandlordHomeFragment : Fragment() {
 
         root.scroll_view.requestFocus()
 
-        val expiringRentList = GlobalVariables.getContractexpiringRentList()
+        if (GlobalVariables.loginUser.permission.property != "N" &&
+            GlobalVariables.loginUser.permission.contract != "N") {
+            val expiringRentList = GlobalVariables.getContractexpiringRentList()
 
-        root.recycler_rent_list.apply {
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(activity)
-            adapter = LandlordExpiringRentAdapter(requireActivity(), root, expiringRentList)
+            root.recycler_rent_list.apply {
+                setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(activity)
+                adapter = LandlordExpiringRentAdapter(requireActivity(), root, expiringRentList)
+            }
+            root.recycler_rent_list.isFocusable = false
+
+            val expiringContractList = GlobalVariables.getContractExpireIn3MonthList()
+
+            root.recycler_contract_list.apply {
+                setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(activity)
+                adapter = LandlordExpiringContractAdapter(requireActivity(), root, expiringContractList)
+            }
+            root.recycler_contract_list.isFocusable = false
+
+            root.button_is_rented.text =
+                root.button_is_rented.text.toString() +
+                        GlobalVariables.rentedEstateList.list.size.toString()
+            root.button_is_rented.setOnClickListener {
+                GlobalVariables.estateFolder = GlobalVariables.rentedEstateList
+                val uri = Uri.parse("android-app://com.smartperty.smartperty/estateListFragment")
+                root.findNavController().navigate(uri)
+            }
+
+            root.button_is_not_rented.text =
+                root.button_is_not_rented.text.toString() +
+                        GlobalVariables.notRentedEstateList.list.size.toString()
+            root.button_is_not_rented.setOnClickListener {
+                GlobalVariables.estateFolder = GlobalVariables.notRentedEstateList
+                val uri = Uri.parse("android-app://com.smartperty.smartperty/estateListFragment")
+                root.findNavController().navigate(uri)
+            }
         }
-        root.recycler_rent_list.isFocusable = false
-
-        val expiringContractList = GlobalVariables.getContractExpireIn3MonthList()
-
-        root.recycler_contract_list.apply {
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(activity)
-            adapter = LandlordExpiringContractAdapter(requireActivity(), root, expiringContractList)
+        else {
+            root.button_is_rented.visibility = View.GONE
+            root.button_is_not_rented.visibility = View.GONE
+            root.textView64.visibility = View.GONE
+            root.textView65.visibility = View.GONE
         }
-        root.recycler_contract_list.isFocusable = false
 
 
-        createLineChart()
+        if (GlobalVariables.loginUser.permission.data != "N"&&
+            GlobalVariables.loginUser.permission.payment != "N")
+            createLineChart()
+        else {
+            root.chart1.visibility = View.GONE
+        }
 
         root.card_landlord_home_notification.setOnClickListener {
             GlobalVariables.activity.bottom_nav.selectedItemId = R.id.landlord_notification
-        }
-
-        root.button_is_rented.text =
-            root.button_is_rented.text.toString() +
-                    GlobalVariables.rentedEstateList.list.size.toString()
-        root.button_is_rented.setOnClickListener {
-            GlobalVariables.estateFolder = GlobalVariables.rentedEstateList
-            val uri = Uri.parse("android-app://com.smartperty.smartperty/estateListFragment")
-            root.findNavController().navigate(uri)
-        }
-
-        root.button_is_not_rented.text =
-            root.button_is_not_rented.text.toString() +
-                    GlobalVariables.notRentedEstateList.list.size.toString()
-        root.button_is_not_rented.setOnClickListener {
-            GlobalVariables.estateFolder = GlobalVariables.notRentedEstateList
-            val uri = Uri.parse("android-app://com.smartperty.smartperty/estateListFragment")
-            root.findNavController().navigate(uri)
         }
 
         root.text_home_greet_sex.text =

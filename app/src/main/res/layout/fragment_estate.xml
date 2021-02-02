@@ -15,8 +15,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_estate_title" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline8"
@@ -91,20 +90,6 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/textView21"
             app:layout_constraintTop_toTopOf="@+id/textView21" />
-
-        <EditText
-            android:id="@+id/textView_estate_title"
-            style="@style/text_normal_black_16sp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/style_empty"
-            android:inputType="none"
-            android:singleLine="true"
-            android:text="桃園中壢大仁5街123"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="gone" />
 
         <TextView
             android:id="@+id/textView_object_item_phone"
@@ -314,16 +299,6 @@
             app:layout_constraintStart_toEndOf="@+id/textView78"
             app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
-        <ImageView
-            android:id="@+id/imageView_add_image_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_image"
-            app:srcCompat="@drawable/add_photo"
-            tools:visibility="gone" />
-
         <TextView
             android:id="@+id/text_repair_title"
             style="@style/text_normal_gray_16sp"
@@ -378,7 +353,6 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:text="未繳交"
             android:id="@+id/text_object_item_status"
             style="@style/text_normal_black_16sp"
             android:layout_width="0dp"

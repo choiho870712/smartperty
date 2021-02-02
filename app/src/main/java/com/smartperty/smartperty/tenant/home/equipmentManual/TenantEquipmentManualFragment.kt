@@ -31,7 +31,7 @@ class TenantEquipmentManualFragment : Fragment() {
 
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
 
-        if (GlobalVariables.loginUser.auth == "landlord") {
+        if (GlobalVariables.loginUser.permission.property == "A") {
             GlobalVariables.toolBarUtils.setAddButtonVisibility(true)
             GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
                 when(it.itemId) {

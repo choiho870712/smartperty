@@ -1,5 +1,6 @@
 package com.smartperty.smartperty.tenant.home
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -19,6 +20,15 @@ import kotlinx.android.synthetic.main.tenant_fragment_home_main.view.text_home_n
 import kotlinx.android.synthetic.main.tenant_fragment_home_main.view.text_home_temperature
 
 class TenantHomeFragment : Fragment() {
+
+    @SuppressLint("SetTextI18n")
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+
+        if (hidden) {
+            GlobalVariables.toolBarUtils.setVisibility(true)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

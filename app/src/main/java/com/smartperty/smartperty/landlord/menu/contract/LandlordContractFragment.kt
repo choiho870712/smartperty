@@ -232,15 +232,17 @@ class LandlordContractFragment : Fragment() {
                     .toString() + ", DataSet index: " + h.dataSetIndex
             )
 
-            GlobalVariables.estateFolder = EstateList(
-                list = GlobalVariables.getContractExpireIn3MonthByAreaList(
-                    GlobalVariables.contractExpireIn3MonthBySquareFtPieChartDataSet.dataList[h.x.toInt()].rangeMin,
-                    GlobalVariables.contractExpireIn3MonthBySquareFtPieChartDataSet.dataList[h.x.toInt()].rangeMax
+            if (GlobalVariables.loginUser.permission.property != "N") {
+                GlobalVariables.estateFolder = EstateList(
+                    list = GlobalVariables.getContractExpireIn3MonthByAreaList(
+                        GlobalVariables.contractExpireIn3MonthBySquareFtPieChartDataSet.dataList[h.x.toInt()].rangeMin,
+                        GlobalVariables.contractExpireIn3MonthBySquareFtPieChartDataSet.dataList[h.x.toInt()].rangeMax
+                    )
                 )
-            )
-            root.findNavController().navigate(
-                R.id.action_landlordContractFragment_to_estateListFragment
-            )
+                root.findNavController().navigate(
+                    R.id.action_landlordContractFragment_to_estateListFragment
+                )
+            }
         }
 
         override fun onNothingSelected() {
@@ -258,14 +260,16 @@ class LandlordContractFragment : Fragment() {
                     .toString() + ", DataSet index: " + h.dataSetIndex
             )
 
-            GlobalVariables.estateFolder = EstateList(
-                list = GlobalVariables.getContractExpireIn3MonthByTypeList(
-                    GlobalVariables.contractExpireIn3MonthByTypePieChartDataSet.dataList[h.x.toInt()].tag
+            if (GlobalVariables.loginUser.permission.property != "N") {
+                GlobalVariables.estateFolder = EstateList(
+                    list = GlobalVariables.getContractExpireIn3MonthByTypeList(
+                        GlobalVariables.contractExpireIn3MonthByTypePieChartDataSet.dataList[h.x.toInt()].tag
+                    )
                 )
-            )
-            root.findNavController().navigate(
-                R.id.action_landlordContractFragment_to_estateListFragment
-            )
+                root.findNavController().navigate(
+                    R.id.action_landlordContractFragment_to_estateListFragment
+                )
+            }
         }
 
         override fun onNothingSelected() {

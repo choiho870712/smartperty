@@ -30,7 +30,7 @@ class RepairOrderFragment : Fragment() {
         writeInfoToView()
         createPostList()
 
-        if (GlobalVariables.loginUser.auth == "landlord") {
+        if (GlobalVariables.loginUser.permission.event == "A") {
             setChooseTenantButton()
             setChoosePlumberButton()
         }
@@ -41,7 +41,7 @@ class RepairOrderFragment : Fragment() {
 
         setAddMessageButton()
 
-        if (GlobalVariables.loginUser.auth == "landlord") {
+        if (GlobalVariables.loginUser.permission.property == "A") {
             root.textView_repair_order_status.setOnClickListener {
                 val builderSingle: AlertDialog.Builder = AlertDialog.Builder(requireContext())
 

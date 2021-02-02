@@ -31,8 +31,11 @@ class RepairListFragment : Fragment() {
     }
 
     private fun setToolBar() {
+        GlobalVariables.toolBarUtils.setVisibility(true)
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
-        GlobalVariables.toolBarUtils.setAddButtonVisibility(true)
+
+        if (GlobalVariables.loginUser.permission.event == "A")
+            GlobalVariables.toolBarUtils.setAddButtonVisibility(true)
 
         GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
             when(it.itemId) {
@@ -64,6 +67,15 @@ class RepairListFragment : Fragment() {
         GlobalVariables.repairListLayoutManager = LinearLayoutManager(activity)
         if (GlobalVariables.loginUser.auth == "tenant") {
             GlobalVariables.loginUser.repairList = GlobalVariables.loginUser.estate.repairList
+        }
+        else if (GlobalVariables.loginUser.auth == "technician") {
+            GlobalVariables.loginUser.repairList = mutableListOf()
+            GlobalVariables.loginUser.rootUser!!.repairList.forEach {
+                val me = it.participant.find { it.id == GlobalVariables.loginUser.id }
+                if (me != null) {
+                    GlobalVariables.loginUser.repairList.add(it)
+                }
+            }
         }
         GlobalVariables.repairListAdapter = RepairListAdapter(
             requireActivity(), root,

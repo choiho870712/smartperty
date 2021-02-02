@@ -44,12 +44,12 @@ class PersonnelAddFragment : Fragment() {
             authChinese = "點擊選擇"
         }
         permissionStringList = mutableListOf()
-        permissionStringList.add("可修改")
-        permissionStringList.add("可修改")
-        permissionStringList.add("可修改")
-        permissionStringList.add("可修改")
-        permissionStringList.add("可修改")
-        permissionStringList.add("可修改")
+        permissionStringList.add("只可查看")
+        permissionStringList.add("只可查看")
+        permissionStringList.add("只可查看")
+        permissionStringList.add("只可查看")
+        permissionStringList.add("只可查看")
+        permissionStringList.add("只可查看")
 
     }
 
@@ -207,7 +207,7 @@ class PersonnelAddFragment : Fragment() {
                 android.R.layout.select_dialog_singlechoice
             )
             arrayAdapter.add("可修改")
-            arrayAdapter.add("可查看")
+            arrayAdapter.add("只可查看")
             arrayAdapter.add("不可查看")
 
             builderSingle.setNegativeButton("cancel") { dialog, which -> dialog.dismiss() }
@@ -225,7 +225,7 @@ class PersonnelAddFragment : Fragment() {
             "可修改" -> {
                 "A"
             }
-            "可查看" -> {
+            "只可查看" -> {
                 "R"
             }
             else -> {

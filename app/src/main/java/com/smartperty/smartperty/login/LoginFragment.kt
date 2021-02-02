@@ -144,21 +144,20 @@ class LoginFragment : Fragment() {
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {
-        val welcome = getString(R.string.welcome)
-        val displayName = model.displayName
-        // TODO : initiate successful logged in experience
-        Toast.makeText(
-            requireContext(),
-            "$welcome $displayName",
-            Toast.LENGTH_LONG
-        ).show()
-
         if (GlobalVariables.loginUser.auth == "landlord") {
             requireActivity().intent = Intent(requireActivity(), LandlordActivity().javaClass)
             startActivity(requireActivity().intent)
         }
-        else {
+        else if (GlobalVariables.loginUser.auth == "accountant") {
+
+        }
+        else if (GlobalVariables.loginUser.auth == "tenant" ||
+                 GlobalVariables.loginUser.auth == "technician") {
             requireActivity().intent = Intent(requireActivity(), TenantActivity().javaClass)
+            startActivity(requireActivity().intent)
+        }
+        else {
+            requireActivity().intent = Intent(requireActivity(), LandlordActivity().javaClass)
             startActivity(requireActivity().intent)
         }
     }

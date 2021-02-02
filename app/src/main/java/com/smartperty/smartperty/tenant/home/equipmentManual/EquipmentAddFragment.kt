@@ -72,7 +72,7 @@ class EquipmentAddFragment : Fragment() {
 
                         Thread {
                             GlobalVariables.api.uploadPropertyEquipment(
-                                GlobalVariables.loginUser.id,
+                                GlobalVariables.estate.landlord!!.id,
                                 GlobalVariables.estate.objectId,
                                 updateRoomList
                             )

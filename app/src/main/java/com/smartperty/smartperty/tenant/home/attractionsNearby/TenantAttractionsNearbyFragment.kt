@@ -57,7 +57,7 @@ class TenantAttractionsNearbyFragment : Fragment(), OnMapReadyCallback, Location
 
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
 
-        if (GlobalVariables.loginUser.auth == "landlord") {
+        if (GlobalVariables.loginUser.permission.property == "A") {
             GlobalVariables.toolBarUtils.setAddButtonVisibility(true)
             GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
                 when(it.itemId) {
@@ -87,7 +87,7 @@ class TenantAttractionsNearbyFragment : Fragment(), OnMapReadyCallback, Location
             adapter = attractionAdapter
         }
 
-        if (GlobalVariables.loginUser.auth == "landlord") {
+        if (GlobalVariables.loginUser.permission.property == "A") {
             var swipeHelper = object : SwipeHelper(requireContext(), root.recycler_list) {
                 override fun instantiateUnderlayButton(
                     viewHolder: RecyclerView.ViewHolder?,

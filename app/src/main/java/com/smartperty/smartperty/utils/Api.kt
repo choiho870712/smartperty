@@ -468,7 +468,10 @@ class Api {
     }
 
     fun createAccount(user: User, object_id: String = "") {
-        val root_id = GlobalVariables.loginUser.id
+        var root_id = GlobalVariables.loginUser.id
+        if (GlobalVariables.loginUser.auth != "landlord")
+            root_id = GlobalVariables.loginUser.rootId
+
         val auth = user.auth
         val name = user.name
         val sex = user.sex
@@ -617,14 +620,12 @@ class Api {
 
         val imageList = information.getJSONArray("image")
         for (j in 0 until(imageList.length())) {
-            Thread {
-                val imageUrl = imageList.getString(j)
-                val image = Utils.getImage(imageUrl)
-                if (image != null) {
-                    estate.imageUrlList.add(imageUrl)
-                    estate.imageList.add(image)
-                }
-            }.start()
+            val imageUrl = imageList.getString(j)
+            val image = Utils.getImage(imageUrl)
+            if (image != null) {
+                estate.imageUrlList.add(imageUrl)
+                estate.imageList.add(image)
+            }
         }
 
         val roomList = information.getJSONArray("equipment")
@@ -1163,7 +1164,7 @@ class Api {
         user.id = items.getString("id")
 
         var iii = 0
-        if (user.id == "T485273") {
+        if (user.id == "T034528") {
             iii += 1
             iii += 2
         }
@@ -1211,6 +1212,10 @@ class Api {
                 user.estateDirectory.add(newGroup)
 
             }
+
+            Thread {
+                Utils.getEstateDirectoryByGroupTag(user)
+            }.start()
         }
 
         if (list.has("accountant")){
@@ -1270,6 +1275,15 @@ class Api {
                 Thread {
                     user.repairList.add(Utils.getRepairOrder(event.getString(i))!!)
                 }.start()
+        }
+
+
+        if (items.has("root_id")) {
+            user.rootId = items.getString("root_id")
+            Thread {
+                user.rootUser =
+                    Utils.getUser(user.rootId)!!
+            }.start()
         }
 
         // tenant part

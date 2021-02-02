@@ -36,7 +36,9 @@ class EstateDirectoryFragment : Fragment() {
         root = inflater.inflate(R.layout.fragment_estate_directory, container, false)
 
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
-        GlobalVariables.toolBarUtils.setAddButtonVisibility(true)
+
+        if (GlobalVariables.loginUser.permission.property == "A")
+            GlobalVariables.toolBarUtils.setAddButtonVisibility(true)
 
         GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
             when(it.itemId) {
@@ -63,7 +65,9 @@ class EstateDirectoryFragment : Fragment() {
             layoutManager = GlobalVariables.estateDirectoryLayoutManager
             adapter = GlobalVariables.estateDirectoryAdapter
         }
-        makeSwipeHelper()
+
+        if (GlobalVariables.loginUser.permission.property == "A")
+            makeSwipeHelper()
 
         //linkRefreshListener()
 
@@ -121,9 +125,12 @@ class EstateDirectoryFragment : Fragment() {
                         if (GlobalVariables.estateFolder.list.isEmpty()) {
                             builder.setTitle("確定要刪除嗎？")
                             builder.setPositiveButton("是") { _, _ ->
+                                var userId = GlobalVariables.loginUser.id
+                                if (GlobalVariables.loginUser.auth != "landlord")
+                                    userId = GlobalVariables.loginUser.rootId
                                 Thread {
                                     GlobalVariables.api.deleteGroupTag(
-                                        GlobalVariables.loginUser.id,
+                                        userId,
                                         index,
                                         url
                                     )

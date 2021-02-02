@@ -27,7 +27,7 @@ class TenantHosingRulesFragment : Fragment() {
         root.text_housing_rules.isEnabled = false
         fillInformation()
 
-        if (GlobalVariables.loginUser.auth == "landlord") {
+        if (GlobalVariables.loginUser.permission.property == "A") {
             GlobalVariables.toolBarUtils.setEditButtonVisibility(true)
             GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
                 when(it.itemId) {
@@ -56,7 +56,7 @@ class TenantHosingRulesFragment : Fragment() {
 
                             Thread {
                                 GlobalVariables.api.uploadPropertyRules(
-                                    GlobalVariables.loginUser.id,
+                                    GlobalVariables.estate.landlord!!.id,
                                     GlobalVariables.estate.objectId,
                                     GlobalVariables.estate.rules
                                 )

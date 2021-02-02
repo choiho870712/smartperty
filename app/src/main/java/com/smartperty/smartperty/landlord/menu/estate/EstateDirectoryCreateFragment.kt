@@ -55,6 +55,10 @@ class EstateDirectoryCreateFragment : Fragment() {
 
                     builder.setPositiveButton("是") { _, _ ->
 
+                        var user = GlobalVariables.loginUser
+                        if (GlobalVariables.loginUser.auth!= "landlord")
+                            user = GlobalVariables.loginUser.rootUser!!
+
                         if (!isNewFolder) {
                             GlobalVariables.estateFolder.title =
                                 root.text_object_folder_title.text.toString()
@@ -62,8 +66,8 @@ class EstateDirectoryCreateFragment : Fragment() {
                             Thread {
                                 GlobalVariables.api.updatePropertyGroupTagInformation(
                                     group_index = GlobalVariables.estateFolder.groupIndex,
-                                    id = GlobalVariables.loginUser.id,
-                                    system_id = GlobalVariables.loginUser.system_id,
+                                    id = user.id,
+                                    system_id = user.system_id,
                                     image = image!!,
                                     name = root.text_object_folder_title.text.toString()
                                 )
@@ -72,8 +76,8 @@ class EstateDirectoryCreateFragment : Fragment() {
                         else {
                             Thread {
                                 GlobalVariables.api.createPropertyGroupTag(
-                                    GlobalVariables.loginUser.id,
-                                    GlobalVariables.loginUser.system_id,
+                                    user.id,
+                                    user.system_id,
                                     root.text_object_folder_title.text.toString(),
                                     image
                                 )

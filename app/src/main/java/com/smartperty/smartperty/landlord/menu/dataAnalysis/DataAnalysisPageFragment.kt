@@ -75,10 +75,12 @@ class DataAnalysisPageFragment(
                     .toString() + ", DataSet index: " + h.dataSetIndex
             )
 
-            GlobalVariables.estateFolder = myPieChartDataSet.dataList[h.x.toInt()].estateList
-            root.findNavController().navigate(
-                R.id.action_landlordDataAnalysisFragment_to_estateListFragment
-            )
+            if (GlobalVariables.loginUser.permission.property != "N") {
+                GlobalVariables.estateFolder = myPieChartDataSet.dataList[h.x.toInt()].estateList
+                root.findNavController().navigate(
+                    R.id.action_landlordDataAnalysisFragment_to_estateListFragment
+                )
+            }
         }
 
         override fun onNothingSelected() {

@@ -51,11 +51,11 @@ class RepairOrderCreateFragment : Fragment() {
             status = "nil"
         )
 
-        if (GlobalVariables.loginUser.auth == "landlord") {
-            GlobalVariables.estate = Estate()
+        if (GlobalVariables.loginUser.auth == "tenant") {
+            GlobalVariables.repairOrder.estate = GlobalVariables.estate
         }
         else {
-            GlobalVariables.repairOrder.estate = GlobalVariables.estate
+            GlobalVariables.estate = Estate()
         }
     }
 
@@ -208,7 +208,7 @@ class RepairOrderCreateFragment : Fragment() {
     }
 
     private fun setChooseTenantButton() {
-        if (GlobalVariables.loginUser.auth == "landlord") {
+        if (GlobalVariables.loginUser.permission.property == "A") {
             root.button_choose_tenant.visibility = View.VISIBLE
             root.button_choose_tenant.setOnClickListener {
                 GlobalVariables.propertySelectorUsage = "none"

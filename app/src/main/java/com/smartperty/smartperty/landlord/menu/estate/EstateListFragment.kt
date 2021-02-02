@@ -31,12 +31,17 @@ class EstateListFragment : Fragment() {
             GlobalVariables.estateFolder.title != "已出租" &&
             GlobalVariables.estateFolder.title != "未出租")
         {
-            GlobalVariables.toolBarUtils.setAddButtonVisibility(true)
+            if (GlobalVariables.loginUser.permission.property == "A")
+                GlobalVariables.toolBarUtils.setAddButtonVisibility(true)
+
             GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
                 when(it.itemId) {
                     R.id.button_add -> {
                         GlobalVariables.estate = Estate()
-                        GlobalVariables.estate.landlord = GlobalVariables.loginUser
+                        if (GlobalVariables.loginUser.auth == "landlord")
+                            GlobalVariables.estate.landlord = GlobalVariables.loginUser
+                        else
+                            GlobalVariables.estate.landlord = GlobalVariables.loginUser.rootUser
                         GlobalVariables.estate.groupName = GlobalVariables.estateFolder.title
 
                         root.findNavController().navigate(

@@ -96,7 +96,7 @@ object Utils {
 
     fun searchEstateFromEstateList(objectId: String): Estate? {
         while (isModifyingEstate) {
-            Thread.sleep(500)
+            Thread.sleep(1000)
         }
 
         isModifyingEstate = true
@@ -134,15 +134,15 @@ object Utils {
         return estate
     }
 
-    fun getEstateDirectoryByGroupTag() {
-        GlobalVariables.estateDirectory = GlobalVariables.loginUser.estateDirectory
-        GlobalVariables.estateDirectory.forEach {
+    fun getEstateDirectoryByGroupTag(user:User) {
+        user.estateDirectory.forEach {
             Thread {
                 it.list = GlobalVariables.api.getPropertyByGroupTag(
-                    it.title, GlobalVariables.loginUser.id)
+                    it.title, user.id)
 
                 it.list.forEachIndexed { index, estate ->
-                    if (searchEstateFromEstateList(estate.objectId) == null) {
+                    val anotherEstate = searchEstateFromEstateList(estate.objectId)
+                    if (anotherEstate == null) {
                         Log.d(">>>>>getEstateGroupTag", estate.objectId + ":" + estate.objectName)
                         addEstateToEstateList(estate)
                     }

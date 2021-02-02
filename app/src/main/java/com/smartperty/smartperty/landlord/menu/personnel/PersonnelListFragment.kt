@@ -29,7 +29,9 @@ class PersonnelListFragment : Fragment() {
         root = inflater.inflate(R.layout.fragment_personnel_list, container, false)
 
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
-        GlobalVariables.toolBarUtils.setAddButtonVisibility(true)
+
+        if (GlobalVariables.loginUser.permission.staff == "A")
+            GlobalVariables.toolBarUtils.setAddButtonVisibility(true)
 
         GlobalVariables.activity.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {

@@ -10,6 +10,8 @@ import androidx.navigation.findNavController
 
 import com.smartperty.smartperty.R
 import com.smartperty.smartperty.utils.GlobalVariables
+import com.smartperty.smartperty.utils.Utils
+import kotlinx.android.synthetic.main.fragment_personnel_add.view.*
 import kotlinx.android.synthetic.main.landlord_fragment_menu_main.view.*
 
 /**
@@ -29,33 +31,135 @@ class LandlordMenuFragment : Fragment() {
         GlobalVariables.toolBarUtils.removeAllButtonAndLogo()
 
         root.card_object_folder.setOnClickListener {
-            root.findNavController().navigate(
-                R.id.action_landlordMenuFragment_to_landlordObjectFolderFragment)
+            if (GlobalVariables.loginUser.permission.property == "N") {
+                // setup dialog builder
+                val builder = android.app.AlertDialog.Builder(requireActivity())
+                builder.setTitle("您沒有權限查看")
+
+                builder.setPositiveButton("是") { _, _ ->
+
+                }
+
+                // create dialog and show it
+                requireActivity().runOnUiThread{
+                    val dialog = builder.create()
+                    dialog.show()
+                }
+            }
+            else {
+                root.findNavController().navigate(
+                    R.id.action_landlordMenuFragment_to_landlordObjectFolderFragment)
+            }
         }
 
         root.card_contract.setOnClickListener {
-            root.findNavController().navigate(
-                R.id.action_landlordMenuFragment_to_landlordContractFragment)
+            if (GlobalVariables.loginUser.permission.contract == "N") {
+                // setup dialog builder
+                val builder = android.app.AlertDialog.Builder(requireActivity())
+                builder.setTitle("您沒有權限查看")
+
+                builder.setPositiveButton("是") { _, _ ->
+
+                }
+
+                // create dialog and show it
+                requireActivity().runOnUiThread{
+                    val dialog = builder.create()
+                    dialog.show()
+                }
+            }
+            else {
+                root.findNavController().navigate(
+                    R.id.action_landlordMenuFragment_to_landlordContractFragment)
+            }
         }
 
         root.card_repair.setOnClickListener {
-            root.findNavController().navigate(
-                R.id.action_landlordMenuFragment_to_repairFragment)
+            if (GlobalVariables.loginUser.permission.event == "N") {
+                // setup dialog builder
+                val builder = android.app.AlertDialog.Builder(requireActivity())
+                builder.setTitle("您沒有權限查看")
+
+                builder.setPositiveButton("是") { _, _ ->
+
+                }
+
+                // create dialog and show it
+                requireActivity().runOnUiThread{
+                    val dialog = builder.create()
+                    dialog.show()
+                }
+            }
+            else {
+                root.findNavController().navigate(
+                    R.id.action_landlordMenuFragment_to_repairFragment)
+            }
         }
 
         root.card_personnel.setOnClickListener {
-            root.findNavController().navigate(
-                R.id.action_landlordMenuFragment_to_landlordPersonnelListFragment)
+            if (GlobalVariables.loginUser.permission.staff == "N") {
+                // setup dialog builder
+                val builder = android.app.AlertDialog.Builder(requireActivity())
+                builder.setTitle("您沒有權限查看")
+
+                builder.setPositiveButton("是") { _, _ ->
+
+                }
+
+                // create dialog and show it
+                requireActivity().runOnUiThread{
+                    val dialog = builder.create()
+                    dialog.show()
+                }
+            }
+            else {
+                root.findNavController().navigate(
+                    R.id.action_landlordMenuFragment_to_landlordPersonnelListFragment)
+            }
         }
 
         root.card_data_analysis.setOnClickListener {
-            root.findNavController().navigate(
-                R.id.action_landlordMenuFragment_to_landlordDataAnalysisFragment)
+            if (GlobalVariables.loginUser.permission.data == "N") {
+                // setup dialog builder
+                val builder = android.app.AlertDialog.Builder(requireActivity())
+                builder.setTitle("您沒有權限查看")
+
+                builder.setPositiveButton("是") { _, _ ->
+
+                }
+
+                // create dialog and show it
+                requireActivity().runOnUiThread{
+                    val dialog = builder.create()
+                    dialog.show()
+                }
+            }
+            else {
+                root.findNavController().navigate(
+                    R.id.action_landlordMenuFragment_to_landlordDataAnalysisFragment)
+            }
         }
 
         root.card_finance.setOnClickListener {
-            root.findNavController().navigate(
-                R.id.action_landlordMenuFragment_to_financeFragment)
+            if (GlobalVariables.loginUser.permission.payment == "N") {
+                // setup dialog builder
+                val builder = android.app.AlertDialog.Builder(requireActivity())
+                builder.setTitle("您沒有權限查看")
+
+                builder.setPositiveButton("是") { _, _ ->
+
+                }
+
+                // create dialog and show it
+                requireActivity().runOnUiThread{
+                    val dialog = builder.create()
+                    dialog.show()
+                }
+            }
+            else {
+                root.findNavController().navigate(
+                    R.id.action_landlordMenuFragment_to_financeFragment)
+            }
         }
 
 

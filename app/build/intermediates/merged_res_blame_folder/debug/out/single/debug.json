@@ -408,6 +408,10 @@
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/ic_baseline_add_24.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/drawable_before_login_1.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/before_login_1.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/debug/layout_fragment_choose_plumber.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_choose_plumber.xml"
     },

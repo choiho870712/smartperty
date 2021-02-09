@@ -17,7 +17,7 @@
             android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView_add_image_button"
-            app:layout_constraintTop_toBottomOf="@+id/textView_estate_title" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView_add_image_button"
@@ -115,13 +115,13 @@
             style="@style/edit_text_normal_black_16sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:singleLine="false"
-            android:lines="3"
-            android:maxLines="3"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textView98"
+            android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="@+id/edit_create_property_rent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/edit_create_property_rent" />
+            app:layout_constraintStart_toStartOf="@+id/edit_create_property_rent"
+            tools:layout_editor_absoluteY="549dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView13"
+            app:layout_constraintTop_toBottomOf="@+id/textView97"/>
 
         <EditText
             android:id="@+id/edit_create_property_parking_space"
@@ -209,7 +209,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="型態"
-            app:layout_constraintBottom_toTopOf="@+id/textView98"
+            app:layout_constraintBottom_toTopOf="@+id/edit_create_property_description"
             app:layout_constraintEnd_toEndOf="@+id/textView98"
             app:layout_constraintTop_toBottomOf="@+id/textView96" />
 
@@ -219,9 +219,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="說明"
-            app:layout_constraintBottom_toTopOf="@+id/textView13"
             app:layout_constraintEnd_toEndOf="@+id/textView13"
-            app:layout_constraintTop_toBottomOf="@+id/textView97" />
+            app:layout_constraintTop_toTopOf="@+id/edit_create_property_description" />
 
         <TextView
             android:id="@+id/textView99"
@@ -250,11 +249,10 @@
             style="@style/text_normal_black_16sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:text="理想租金"
             app:layout_constraintBottom_toTopOf="@+id/textView99"
             app:layout_constraintEnd_toEndOf="@+id/textView99"
-            app:layout_constraintTop_toBottomOf="@+id/textView98" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_create_property_description" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline19"

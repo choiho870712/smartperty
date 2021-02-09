@@ -26,6 +26,11 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        if(!isTaskRoot){
+            finish()
+            return
+        }
+
         setContentView(R.layout.activity_login)
 
         GlobalVariables.activity = this

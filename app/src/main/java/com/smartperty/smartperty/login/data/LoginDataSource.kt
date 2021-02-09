@@ -12,7 +12,7 @@ import java.io.IOException
 class LoginDataSource {
 
     fun login(username: String, password: String): Result<LoggedInUser> {
-        try {
+//        try {
             // TODO: handle loggedInUser authentication
 
             return if (GlobalVariables.api.userLogin(username, password)) {
@@ -29,8 +29,10 @@ class LoginDataSource {
                     GlobalVariables.api.getMessage())
 
                 if (GlobalVariables.loginUser.auth == "landlord") {
-                    GlobalVariables.estateDirectory = GlobalVariables.loginUser.estateDirectory
-                    GlobalVariables.refreshAllChart(GlobalVariables.loginUser.id)
+                    Thread {
+                        GlobalVariables.estateDirectory = GlobalVariables.loginUser.estateDirectory
+                        GlobalVariables.refreshAllChart(GlobalVariables.loginUser.id)
+                    }.start()
                     GlobalVariables.api.getPropertyRentalStatus(username)
                 }
                 else {
@@ -59,14 +61,14 @@ class LoginDataSource {
                     )
                 )
             }
-        } catch (e: Throwable) {
-            return Result.Error(
-                IOException(
-                    "Error logging in",
-                    e
-                )
-            )
-        }
+//        } catch (e: Throwable) {
+//            return Result.Error(
+//                IOException(
+//                    "Error logging in",
+//                    e
+//                )
+//            )
+//        }
     }
 
     fun logout() {

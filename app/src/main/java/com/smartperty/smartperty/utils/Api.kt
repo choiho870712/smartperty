@@ -355,12 +355,13 @@ class Api {
         val deposit = contract.deposit.toString()
         val start_date = contract.startDate.toString()
         val end_date = contract.endDate.toString()
+        val count = contract.count
         val payment_method = contract.payment_method
 
         val json = "{\"object_id\": \"$object_id\", \"tenant_id\": \"$tenant_id\"," +
                 "\"landlord_id\": \"$landlord_id\", \"currency\": \"$currency\"," +
-                "\"rent\": $rent, \"deposit\": $deposit, \"start_date\": $start_date," +
-                "\"end_date\": $end_date, \"payment_method\": \"$payment_method\"}"
+                "\"rent\": $rent, \"deposit\": $deposit, \"date\": $start_date," +
+                "\"count\": $count, \"payment_method\": \"$payment_method\"}"
 
         val rawJsonString = callApi(json, urlCreateContract)
         val jsonObject = JSONObject(rawJsonString)

@@ -28,7 +28,7 @@ class BeforeLoginViewPagerFragment : Fragment() {
         viewPagerAdapter = CommonViewPagerAdapter(manager = childFragmentManager)
         viewPagerAdapter.addFragment(
             BeforeLoginPageFragment(
-                R.mipmap.before_login_1_foreground,
+                R.drawable.before_login_1,
                 "雲端數據", "即時，一致，正確，遠距工作"
             )
         )

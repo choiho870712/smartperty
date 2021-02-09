@@ -19,6 +19,7 @@ data class Contract(
     var timeLeft: Int = 0,
     var currency: String = "nil",
     var deposit: Int = 0,
+    var count: Int = 0,
     var pdfUrl: MutableList<String> = mutableListOf(),
     var jpgUrl: MutableList<String> = mutableListOf(),
 
@@ -60,6 +61,7 @@ data class Contract(
         timeLeft = updateInfo.timeLeft
         currency = updateInfo.currency
         deposit = updateInfo.deposit
+        count = updateInfo.count
         pdfUrl = updateInfo.pdfUrl
         jpgUrl = updateInfo.jpgUrl
         rentRecordList = updateInfo.rentRecordList

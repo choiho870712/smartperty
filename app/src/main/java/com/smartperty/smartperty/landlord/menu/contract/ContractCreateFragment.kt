@@ -85,6 +85,9 @@ class ContractCreateFragment : Fragment() {
                         GlobalVariables.contract.currency =
                             root.button_create_contract_select_currency.text.toString()
 
+                        GlobalVariables.contract.count =
+                            root.edit_create_contract_pay_times.text.toString().toInt()
+
                         GlobalVariables.contract.rentRecordList.add(
                             RentRecord(timeStamp = GlobalVariables.contract.startDate)
                         )

@@ -1650,6 +1650,7 @@ drawable add_photo
 drawable add_video
 drawable avd_hide_password
 drawable avd_show_password
+drawable before_login_1
 drawable before_login_2
 drawable before_login_3
 drawable before_login_4
@@ -2570,7 +2571,6 @@ id textView_date_time
 id textView_email
 id textView_equipment_count
 id textView_equipment_name
-id textView_estate_title
 id textView_finance_total
 id textView_forget_password_phone
 id textView_forget_password_username

@@ -524,6 +524,10 @@
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/style_hollow_red.xml"
     },
     {
+        "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/release/drawable_before_login_1.xml.flat",
+        "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/drawable/before_login_1.xml"
+    },
+    {
         "merged": "/home/chou/AndroidStudioProjects/SmartPerty/app/build/intermediates/res/merged/release/layout_fragment_estate_list_create.xml.flat",
         "source": "/home/chou/AndroidStudioProjects/SmartPerty/app/src/main/res/layout/fragment_estate_list_create.xml"
     },
